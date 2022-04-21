@@ -2,9 +2,10 @@
 import FaAlignLeft from 'svelte-icons/fa/FaAlignLeft.svelte'
 import FaAlignCenter from 'svelte-icons/fa/FaAlignCenter.svelte'
 import FaAlignRight from 'svelte-icons/fa/FaAlignRight.svelte'
-import Changefontsize, { changeTextSize, getCoordinatesByElementId } from './changefontsize.svelte';
+import Changefontsize, { changeTextSize, getCoordinatesByElementId,rotateText } from './changefontsize.svelte';
 import Colorpicker,{click} from './colorpicker.svelte';
 import { setContext, getContext } from 'svelte';
+import AlignText,{textLeftAlignFunction,textCenterAlignFunction,textRightAlignFunction} from './alignText.svelte'
 
 
 
@@ -41,15 +42,17 @@ let yaxis;
             <span class="text-sm font-bold ">Y:</span> 
             <input type="input" bind:value={yaxis} class=" mr-2 border-2 text-black border-gray-500 w-8 h-auto x text-sm font-bold dark:text-gray-800">
          </div>
-          <div class="flex mt-2">
+          <div class="flex flex-col mt-2">
+            <button on:click={()=>getCoordinatesByElementId('box', (x, y)=>{
+              xaxis =x;
+              yaxis=y;
+            })} class="hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white btn btn-gray-50 flex mt-2 w-2/4 text-sm p-1" >Enter</button>    
+          
           <h1 class="text-sm font-bold left flex items-start justify-start self-start" draggable="true">Rotate:</h1>
-          <input type="input"  class=" ml-4 mr-2 border-2 text-black border-gray-500 w-24 h-auto  text-sm font-bold dark:text-gray-800">
+          <input type="input" id="inputRotate"  class="mb-2  border-2 text-black border-gray-500 w-2/4 h-auto  text-sm font-bold dark:text-gray-800">
+          <button class="btn w-2/4" on:click={rotateText}>rotate</button>
         </div>
-          <button on:click={()=>getCoordinatesByElementId('box', (x, y)=>{
-            xaxis =x;
-            yaxis=y;
-          })} class="hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white btn btn-gray-50 flex items-center self-center mt-2 w-3/6 text-sm p-1" >Enter</button>    
-        </li>
+      </li>
     
                 
             <li class="p-3">
@@ -106,18 +109,21 @@ let yaxis;
 
                 <li class="p-4">
                   <div class="flex  flex-col items-start justify-start  ">
-                    <h1 class="text-sm font-bold " draggable="true">Align-Items:</h1>
-                    <div class="flex">
-                    <span class="w-4 h-auto flex mt-2 mx-3">
+                    <h1 class="text-sm font-bold mb-2" draggable="true">Align-Items:</h1>
+                    <div class="flex ">
+                      <button on:click={textLeftAlignFunction}  class="bg-gray-800 mx-2 p-1 hover:bg-white hover:text-gray-800 hover:border-gray-800 w-8">
                       <FaAlignLeft/>
-                    </span>
-                    <span class="w-4 h-auto flex-col mt-2 mx-3">
+                  </button>
+                  
+
+                  <button on:click={textCenterAlignFunction}  class="bg-gray-800 mx-2 p-1 hover:bg-white hover:text-gray-800 hover:border-gray-800 w-8">
                       <FaAlignCenter/>
-                    </span>
-                    <span class="w-4 h-auto flex-col mt-2 mx-3">
+                  </button>
+                
+                  <button on:click={textRightAlignFunction}  class="bg-gray-800 mx-2 p-1 hover:bg-white hover:text-gray-800 hover:border-gray-800 w-8">
                       <FaAlignRight/>
-                    </span>
-                  </div>
+                  </button>
+                </div>
                   </div>
                     </li>
 

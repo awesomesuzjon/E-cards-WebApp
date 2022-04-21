@@ -4,8 +4,7 @@ import { setContext, getContext } from 'svelte';
 
    export function changeTextSize() {
   var input = document.getElementById('input').value;
-  document.getElementById('text').style.fontSize = input + "px"; 
-  // document.getElementById('text').style.background= input;
+  document.getElementById('canvasText').style.fontSize = input + "px"; 
 }
 
 
@@ -21,7 +20,17 @@ export function getCoordinatesByElementId(elementId, callback) {
    console.log(yaxis);
 }
 
+
+export function rotateText() {
+  var inputRotate = document.getElementById('inputRotate').value;
+//   document.getElementById("textRotate").style.transformOrigin = "50% 50%"
+  document.getElementById("textRotate").style.transform = "rotate(" + inputRotate + "deg)"
+
+    }
+
  
+
+
 </script>
 
 

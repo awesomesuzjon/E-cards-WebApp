@@ -2,7 +2,9 @@
 import Editsidebar from "$lib/editsidebar.svelte";
 import SidebarToggle from "$lib/sidebar-toggle.svelte";
 import Sidebar from "$lib/sidebar.svelte";
+import {allowDrop,drag,drop} from '../routes/dragdropclone.svelte'
 import { onMount } from "svelte";
+
 
 
 
@@ -23,3 +25,21 @@ import { onMount } from "svelte";
 
 <SidebarToggle/>
 <Editsidebar/>
+
+
+<style>
+	#divLeft {
+height: 400px;
+float: left;
+}
+
+#divRight {
+height:400px;
+float: left;
+}
+#divRight1 {
+height: 55px;
+width: 55px;
+border: 1px solid #000;
+}
+</style>

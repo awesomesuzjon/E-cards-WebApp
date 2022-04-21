@@ -21,11 +21,11 @@
 	
 // 	$: console.log(moving);
 </script>
-<section on:mousedown={onMouseDown} style="left: {left}px; top: {top}px;" class="draggable">
+<section   style="left: {left}px; top: {top}px;" class="draggable" id="test">
 	<slot></slot>
 </section>
 
-<svelte:window on:mouseup={onMouseUp} on:mousemove={onMouseMove} />
+<svelte:window on:mousedown={onMouseDown} on:mouseup={onMouseUp} on:mousemove={onMouseMove} />
 
 <style>
 	.draggable {

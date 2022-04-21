@@ -23,13 +23,13 @@
 
 
 <div
-	class="px-3 py-4 overflow-y-auto rounded bg-gray-100 dark:bg-gray-800 h-screen  pt-10 pb-10 w-1/6  text-center relative min-h-screen  flex  sidebarxx    "
+	class="px-8  overflow-y-auto rounded bg-gray-100 dark:bg-gray-800 h-screen   pt-10 pb-10 w-1/6  text-center relative min-h-screen  flex  sidebarxx    "
 >
-	<ul class="space-y-2 divide-y border-3 border w-full">
-		<li>
+	<ul class="space-y-0 divide-y border-3 border w-full">
+		<li class="w-full py-6 hover:shadow-xl hover:bg-gray-100 dark:hover:bg-gray-700">
 			<a
 				href="/dashboard"
-				class="hover:shadow-xl flex items-center  p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+				class="w-full   flex items-center  p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white "
 			>
 			<div class="flex items-center align-middle">
 				
@@ -37,10 +37,10 @@
 				</div>
 				</a>
 		</li>
-		<li>
+		<li class="w-full py-6 hover:shadow-xl hover:bg-gray-100 dark:hover:bg-gray-700">
 			<button 
 				type="button"
-				class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+				class=" flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group  dark:text-white "
 				data-collapse-toggle="dropdown-example" aria-expanded="false"
 			>
 			<div class="flex items-center align-middle">
@@ -53,21 +53,21 @@
 				<li>
 					<a
 						href="/trendingtemplates"
-						class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
+						class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 "
 						>Trending E-cards</a
 					>
 				</li>
 				<li>
 					<a
 						href="/mostdownloadedtemplates"
-						class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
+						class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 "
 						>Most Downloaded
 					</a>
 				</li>
 				<li>
 					<a
 						href="/communitytemplates"
-						class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
+						class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 "
 						>Community E-cards</a
 					>
 				</li>
@@ -76,10 +76,10 @@
 
 		</li>
 
-		<li>
+		<li class="w-full py-6 hover:shadow-xl hover:bg-gray-100 dark:hover:bg-gray-700">
 			<a
 				href="/stickers"
-				class="hover:shadow-xl flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+				class=" flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white "
 			>
 				<div class="flex items-center align-middle">
 				
@@ -87,10 +87,10 @@
 				</div>
 			</a>
 		</li>
-		<li>
+		<li class="w-full py-6 hover:shadow-xl hover:bg-gray-100 dark:hover:bg-gray-700">
 			<a
 				href="/messages"
-				class="hover:shadow-xl flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+				class=" flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white "
 			>
 			<div class="flex items-center align-middle">
 				
@@ -99,10 +99,10 @@
 			</a>
 		</li>
 
-		<li>
+		<li class="w-full py-6 hover:shadow-xl hover:bg-gray-100 dark:hover:bg-gray-700">
 			<a
 				href="/category"
-				class="hover:shadow-xl flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+				class=" flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white "
 			>
 			<div class="flex items-center align-middle">
 				

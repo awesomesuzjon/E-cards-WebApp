@@ -12,9 +12,7 @@ onMount(() =>{
       let elCoordinates = el.getBoundingClientRect();
         xaxis = elCoordinates.x;
          yaxis = elCoordinates.y;
-    console.log(xaxis,yaxis)
-    
-   
+        
 
     })
 

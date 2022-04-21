@@ -3,37 +3,8 @@ import FaEye from 'svelte-icons/fa/FaEye.svelte'
 import FaPlus from 'svelte-icons/fa/FaPlus.svelte'
 import { onMount } from "svelte";
 import EcardTemplateBtn from './ecardTemplateBtn.svelte';
-
-
-function previewtbl(){
-
-  
-  const targetDiv = document.getElementById("toggleContent");
-		const btn = document.getElementById("toggletbl");
-    
-		btn.onclick = function () {
-      console.log('hello its me');
-			if (targetDiv.style.display !== "none") {
-				targetDiv.style.display = "none";
-			} else {
-        targetDiv.style.display = "block";
-      }
-    }
-  }
-
-function previewImg() {
-
-  const targetDiv = document.getElementById("targetContent");
-		const btn = document.getElementById("toggleimgbtn");
-		btn.onclick = function () {
-			if (targetDiv.style.display !== "none") {
-				targetDiv.style.display = "none";
-			} else {
-				targetDiv.style.display = "block";
-			}
-  }
-
-}
+import { previewtbl,previewImgFunc } from './previewImgntbl.svelte';
+import Pagination from './pagination.svelte';
 
 
 
@@ -42,8 +13,16 @@ function previewImg() {
 
 <EcardTemplateBtn/>
 
-<div class="relative">
-<table class="shadow-lg text-sm center z-10 bg-white ml-56  mt-10  dark:bg-gray-800 dark:text-gray-100  ">
+
+<div class="flex  " >
+
+  
+
+    <img id="targetContent" class="z-50    absolute w-4/12 h-4/5 hidden   justify-center" src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/holi-design-template-44ce589f65c0ac4315a373fff00def9d_screen.jpg?ts=1600223391" alt="">
+    
+    
+<!-- <div class="relative"> -->
+<table class="shadow-lg text-sm w-full mx-5   bg-white    mt-10  dark:bg-gray-800 dark:text-gray-100  ">
   
     <tr>
       <th class="bg-gray-100 border  px-8 py-4 text-center dark:bg-gray-800 dark:text-gray-100">Id</th>
@@ -56,19 +35,16 @@ function previewImg() {
     <tr>
       <td class="border px-8 py-4">1</td>
       <td class="border px-8 py-4">Holi Templates</td>
-      <td class="border px-8 py-4"><span><button id="toggleimgbtn"  on:click={previewImg}>👁</button></span> </td>
+      <td class="border px-8 py-4 " id="toggleimgbtn"><span><button   on:click={previewImgFunc}>👁</button></span> </td>
       
       <td class="border px-8 py-4">Tag1</td>
     
       <td class="border px-8 py-4">No</td>
-      <td class="border px-8 py-4" ><button id="toggletbl"  class="btn  hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white " on:click={previewtbl}>:</button></td>
+      <td class="border px-8 py-4" ><button   class="toggletbl btn  hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white " on:click={previewtbl}>:</button></td>
 
-      <div class="absolute top:0 left 0 w-24 z-40 hidden" id="targetContent">
-       <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/holi-design-template-44ce589f65c0ac4315a373fff00def9d_screen.jpg?ts=1600223391" alt="">
-      </div>  
-        
-	<div class="  justify-center relative  hidden " id="toggleContent">
-		<ul class="w-50  h-auto absolute top-0 ml-12 center border-gray-500 border">
+
+	<div class="  justify-center relative z-10  hidden " id="toggleContent" >
+		<ul class="w-50  h-auto absolute top-0 -ml-28 mt-16 center border-gray-500 border">
 		  <li class=" bg-gray-200  text-sm border border-b-gray-500 ">
 			<a href="/">Publish/Unpublish</a>
 		  </li>
@@ -78,8 +54,11 @@ function previewImg() {
 		  <li class=" bg-gray-200 text-sm border  border-b-gray-500">
 			<a href="/">Delete</a>
 		</li>
-		  <li class=" bg-gray-200  text-sm border  ">
+		  <li class=" bg-gray-200  text-sm border border-b-gray-500 ">
 			<a href="/">Mark as Trending</a>
+		</li>
+    <li class=" bg-gray-200  text-sm border  ">
+			<a href="/">Clone</a>
 		</li>
 		</ul>
 	</div>
@@ -94,27 +73,14 @@ function previewImg() {
       <td class="border px-8 py-4">Tag2</td>
 
       <td class="border px-8 py-4">No</td>
-      <td class="border px-8 py-4" ><button id="toggle" class="btn  hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white">:</button></td>
-      	<div class="  justify-center relative  hidden " id="toggleContent">
-		<ul class="w-50  h-auto absolute top-0   center border-gray-500 border">
-		  <li class=" bg-red-100  text-sm border border-b-gray-500 ">
-			<a href="/">Publish/Unpublish</a>
-		  </li>
-		  <li class=" bg-red-100  text-sm border  border-b-gray-500">
-			<a href="/">Edit</a>
-		</li>
-		  <li class=" bg-red-100 text-sm border  border-b-gray-500">
-			<a href="/">Delete</a>
-		</li>
-		  <li class=" bg-red-100  text-sm border  ">
-			<a href="/">Mark as Trending</a>
-		</li>
-		</ul>
-	</div>
+      <td class="border px-8 py-4" ><button  class="toggletbl btn  hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white">:</button></td>
+
+
+      
+</tr>
   
 
       
-    </tr>
     
     <tr>
       <td class="border px-8 py-4">3</td>
@@ -123,7 +89,7 @@ function previewImg() {
       <td class="border px-8 py-4">Tag3</td>
 
       <td class="border px-8 py-4">No</td>
-      <td class="border px-8 py-4" ><button id="toggle" class="btn  hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white">:</button></td>
+      <td class="border px-8 py-4" ><button class="toggletbl btn  hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white">:</button></td>
 
 
 
@@ -135,12 +101,14 @@ function previewImg() {
       <td class="border px-8 py-4">Tag4</td>
 
         <td class="border px-8 py-4">No</td>
-      <td class="border px-8 py-4" ><button id="toggle" class="btn  hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white">:</button></td>
+      <td class="border px-8 py-4" ><button  class="btn  hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white">:</button></td>
 
     </tr>
 
   </table>
 </div>
+<!-- </div>   -->
 
+<Pagination/>
   
   <!-- <button id="toggle" class="btn mt-50 ml-40 ">button</button> -->
