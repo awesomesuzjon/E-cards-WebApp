@@ -3,7 +3,7 @@ import FaAlignLeft from 'svelte-icons/fa/FaAlignLeft.svelte'
 import FaAlignCenter from 'svelte-icons/fa/FaAlignCenter.svelte'
 import FaAlignRight from 'svelte-icons/fa/FaAlignRight.svelte'
 import Changefontsize, { changeTextSize, getCoordinatesByElementId,rotateText } from './changefontsize.svelte';
-import Colorpicker,{click} from './colorpicker.svelte';
+import Colorpicker,{click,changeCanvasBgColorFunc} from './colorpicker.svelte';
 import { setContext, getContext } from 'svelte';
 import AlignText,{textLeftAlignFunction,textCenterAlignFunction,textRightAlignFunction} from './alignText.svelte'
 
@@ -28,7 +28,7 @@ let yaxis;
     <input id="my-drawer-4" type="checkbox" class="drawer-toggle">
  
 
-    <div class="drawer-side w-6/6 h-screen overflow-hidden">
+    <div class="drawer-side w-12/13 h-screen overflow-x-hidden">
       <label for="my-drawer-4" class="drawer-overlay"></label>
       <ul class="divide-y-2 overflow-y-auto  md:w-80 bg-F6F0F0  text-sm text-white">
         <!-- Sidebar content here -->
@@ -76,6 +76,16 @@ let yaxis;
               <button on:click={click}  class=" hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white btn btn-gray-50 flex items-center self-center mt-2 w-3/6 text-sm p-1">Enter</button>    
                 </li>
 
+                <li class="p-2">
+                  <div class="flex  items-start justify-start  ">
+                    <h1 class="text-sm font-bold " draggable="true">Change Bg Color:</h1>
+                    
+                    <input type="color" id='colorBginput' value="#e66465"  class=" mx-2 border-2 text-black  border-gray-500 w-10 h-6  text-sm font-bold dark:text-gray-800">
+                  </div>
+    
+    
+                  <button on:click={changeCanvasBgColorFunc}  class=" hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white btn btn-gray-50 flex items-center self-center mt-2 w-3/6 text-sm p-1">Enter</button>    
+                    </li>
                 
                 <li class="p-4">
                   <div class="flex  flex-col items-start justify-start  ">

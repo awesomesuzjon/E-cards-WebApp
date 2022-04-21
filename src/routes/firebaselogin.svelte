@@ -31,24 +31,7 @@ const firebaseConfig = {
  const googleProvider = new firebase.auth.GoogleAuthProvider()
 //  const db = firebase.firestore();
  const db = getFirestore();
-
-
-
-
-    // async function loginWithGoogle() {
-    //     try{
-    //         const provider = new firebase.auth.GoogleAuthProvider();
-    //          await firebase.auth().signInWithPopup
-    //          (provider);
-
-    //     }
-    //     catch(e)
-    //     {
-    //         console.log(e)
-    //     }
-    //     }
-
-
+ 
     let user 
 
     const unsubscribe = authState(auth).subscribe(usr=>user=usr)
@@ -64,7 +47,7 @@ const firebaseConfig = {
     }
 
     </script>
-
+        
 
 <div>
     <h1 class="mt-5 text-lg">Login With Google</h1>

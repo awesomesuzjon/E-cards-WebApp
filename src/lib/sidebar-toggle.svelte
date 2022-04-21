@@ -7,8 +7,9 @@ import Draggable from './Draggable.svelte';
 import CloneElement,{cloneElementFunc} from './cloneElement.svelte';
 import SaveTemplate from '$lib/saveTemplate.svelte';
 import {allowDrop,drag,drop} from '../routes/dragdropclone.svelte';
-
 import {draggableStore} from "../stores/store.js";
+
+let input,imgCanvas;
 
 let array = [];
 // $: reactiveArray = `${array}`;
@@ -66,9 +67,7 @@ function positionfunc(){
             <div class="flex flex-col items-start justify-center mt-2">
                 <h1 class="text-sm font-bold  truncate mb-2   " >Select a theme template</h1>
                 
-                <input type="file" bind:files  class="text-sm  z-10"  accept="image/*" multiple>
-                
-          
+                <input type="file" bind:files bind:this={input}  class="text-sm  z-10"  accept="image/*" multiple>
             </div>
                 
         </li>
