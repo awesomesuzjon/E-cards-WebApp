@@ -8,6 +8,8 @@ import CloneElement,{cloneElementFunc} from './cloneElement.svelte';
 import SaveTemplate from '$lib/saveTemplate.svelte';
 import {allowDrop,drag,drop} from '../routes/dragdropclone.svelte';
 import {draggableStore} from "../stores/store.js";
+import AlignText,{textLeftAlignFunction,textCenterAlignFunction,textRightAlignFunction} from './alignText.svelte'
+
 
 let input,imgCanvas;
 
@@ -18,6 +20,10 @@ let array = [];
 })
 
 
+function removeImgFunc(){
+    document.getElementById('ImgFileUploadinCanvas').value=null;
+  console.log('removed')
+}
 
 
 
@@ -67,8 +73,10 @@ function positionfunc(){
             <div class="flex flex-col items-start justify-center mt-2">
                 <h1 class="text-sm font-bold  truncate mb-2   " >Select a theme template</h1>
                 
-                <input type="file" bind:files bind:this={input}  class="text-sm  z-10"  accept="image/*" multiple>
+                <input type="file" bind:files id="ImgFileUploadinCanvas" class="text-sm  z-10"  accept="image/*" multiple>
             </div>
+
+            <button class="btn" on:click={removeImgFunc}>RemoveImg</button>
                 
         </li>
         <li class="p-4">
@@ -109,12 +117,14 @@ function positionfunc(){
                       <p>An error occurred!</p>
                     {/await}
                   </li>
+
+                
                     </div>
                   
                       <div class="flex z-50">
                         
                    <li>
-                     <img id="imgz"  draggable="true" on:dragstart={drag}  class="clonedStickers  w-12 h-12 rounded-full "  src="https://ih1.redbubble.net/image.1181734964.5719/st,small,507x507-pad,600x600,f8f8f8.jpg" alt="">
+                       <img id="imgz"  draggable="true" on:dragstart={drag}  class="clonedStickers  w-12 h-12 rounded-full "  src="https://ih1.redbubble.net/image.1181734964.5719/st,small,507x507-pad,600x600,f8f8f8.jpg" alt="">
                    </li>
                   
                    <li>
@@ -215,10 +225,11 @@ function positionfunc(){
     <label tabindex="0" class="btn hover:bg-gray-50  w-36 truncate bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">Choose Messages :
 
   </label>
+  <div>
     <ul tabindex="0" class="dropdown-content menu text-black    w-32  shadow bg-gray-100  " >
 
         <li>
-          <a  id="clonedElement" on:click={cloneElementFunc} class="z-20 relative bg-gray-200 hover:bg-gray-50 border-b-2 border-gray-800">Happy New Year To you !!!🎉🎉</a>
+          <a  id="clonedElement"  on:click={cloneElementFunc} class="z-20 relative bg-gray-200 hover:bg-gray-50 border-b-2 border-gray-800">Happy New Year To you !!!🎉🎉</a>
         </li>
         
         <li>
@@ -230,6 +241,7 @@ function positionfunc(){
         </li>
     </ul>
   </div>
+</div>
 
 
 
@@ -244,7 +256,7 @@ function positionfunc(){
 <!-- canvas div  -->
 <div class="flex w-screen   items-center justify-center h-full">
 
-   <div  on:drop={drop}   on:dragover={allowDrop}  id="canvasText"  class="  text-black dark:text-white cursor-move w-4/6  h-80 self-center  border-8 bg-gray-100  overflow-hidden " >
+   <div  on:drop={drop}   on:dragover={allowDrop}  id="canvasText"  class="  text-black dark:text-white cursor-move w-5/6  h-80 self-center  border-8 bg-gray-100  overflow-hidden " >
     <!-- <img src="https://cdn.logo.com/hotlink-ok/logo-social.png" alt="" id="clonedElement"> -->
     <!-- <p id="alignedText">Lorem ipsum dolor sit amet consectetur </p> -->
     
@@ -327,7 +339,9 @@ function positionfunc(){
   position: relative;
   z-index: 50;
   top: 0px;
-  font-size: x-small;
+  padding:5;
+  font-size:smaller;
+  width: 100%;
 }
 
 #canvasText{
@@ -359,4 +373,6 @@ top:0;
   height:auto;
   position: absolute;
 }
+
+
   </style>

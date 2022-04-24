@@ -24,19 +24,19 @@ let yaxis;
 
 
 
-<div class="drawer drawer-end">
+<div class="drawer drawer-end w-1/3">
     <input id="my-drawer-4" type="checkbox" class="drawer-toggle">
  
 
-    <div class="drawer-side w-12/13 h-screen overflow-x-hidden">
+    <div class="drawer-side w-full h-screen overflow-hidden">
       <label for="my-drawer-4" class="drawer-overlay"></label>
-      <ul class="divide-y-2 overflow-y-auto  md:w-80 bg-F6F0F0  text-sm text-white">
+      <ul class="divide-y-2   bg-F6F0F0  text-sm text-white">
         <!-- Sidebar content here -->
        
         <li class="p-4">
           
           <div class="flex  items-start justify-start  ">   
-            <h1 class="text-sm font-bold " draggable="true" >Position X:</h1>
+            <h1 class="text-sm font-bold ">Position X:</h1>
             <input type="input"  bind:value={xaxis} class=" mr-2 border-2 text-black border-gray-500 w-8 h-auto text-sm font-bold dark:text-gray-800">
           
             <span class="text-sm font-bold ">Y:</span> 
@@ -76,9 +76,9 @@ let yaxis;
               <button on:click={click}  class=" hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white btn btn-gray-50 flex items-center self-center mt-2 w-3/6 text-sm p-1">Enter</button>    
                 </li>
 
-                <li class="p-2">
+                <li class="p-1">
                   <div class="flex  items-start justify-start  ">
-                    <h1 class="text-sm font-bold " draggable="true">Change Bg Color:</h1>
+                    <h1 class="text-sm font-bold p-0">Change BgColor:</h1>
                     
                     <input type="color" id='colorBginput' value="#e66465"  class=" mx-2 border-2 text-black  border-gray-500 w-10 h-6  text-sm font-bold dark:text-gray-800">
                   </div>

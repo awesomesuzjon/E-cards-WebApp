@@ -30,6 +30,13 @@
       <input type="text" class="border-b-2  hover:bg-gray-200  hover:no-underline" />
       
     </div>
+
+    <div class="flex justify-start   mt-5 text-sm">
+      <h1>Add Category </h1>
+      <span class="mx-10">:</span>
+      <input type="text" class="border-b-2  hover:bg-gray-200  hover:no-underline" />
+      
+    </div>
     
     <div class="flex justify-start  mt-5 text-sm">
       <h1>Priority </h1>

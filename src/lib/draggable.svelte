@@ -17,21 +17,14 @@
 	
 	function onMouseUp() {
 		moving = false;
+		console.log('onMouseup')
 	}
 	
-// 	$: console.log(moving);
 </script>
-<section   style="left: {left}px; top: {top}px;" class="draggable" id="test">
+<section on:mousedown={onMouseDown}   style="left:{left}px; top:{top}px;" class="draggable select-none cursor-move absolute"  id="test">
 	<slot></slot>
 </section>
 
-<svelte:window on:mousedown={onMouseDown} on:mouseup={onMouseUp} on:mousemove={onMouseMove} />
+<svelte:window on:mousemove={onMouseMove} on:mouseup={onMouseUp}  />
 
-<style>
-	.draggable {
-		user-select: none;
-		cursor: move;
-		position: absolute;	
-	
-	}
-</style>
+

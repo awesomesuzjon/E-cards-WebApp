@@ -53,15 +53,7 @@ const firebaseConfig = {
     <h1 class="mt-5 text-lg">Login With Google</h1>
 </div>
 
-<!-- <div class="flex justify-center mt-5    ">
-<img on:click={loginWithGoogle} class="w-96 h-auto cursor-pointer" src="https://onymos.com/wp-content/uploads/2020/10/google-signin-button-1024x260.png" alt="login with google">
-</div> -->
-
-
-
-    
-
-    {#if user}
+{#if user}
     <!-- Successfully Logged in as {user.uid} -->
     <button class="btn" on:click={logout}>logOut</button>
     {:else }
