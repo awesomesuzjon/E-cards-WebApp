@@ -1,7 +1,7 @@
 <script context="module">
     export function click() {
    var colorinput = document.getElementById('colorinput').value;
-   document.getElementById('colortext').style.color = colorinput; 
+   document.getElementById('textRotate').style.color = colorinput; 
    // document.getElementById('text').style.background= input;
  }
  
@@ -12,6 +12,13 @@
    // document.getElementById('text').style.background= input;
  }
  
+
+
+ export function revertCanvasBgColorFunc() {
+   document.getElementById('canvasText').style.backgroundColor = ""; 
+ }
+ 
+
  
  
  

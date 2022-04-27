@@ -101,7 +101,7 @@ import Pagination from './pagination.svelte';
       <td class="border px-8 py-4">Tag4</td>
 
         <td class="border px-8 py-4">No</td>
-      <td class="border px-8 py-4" ><button  class="btn  hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white">:</button></td>
+      <td class="border px-8 py-4" ><button  class=" btn  hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white">:</button></td>
 
     </tr>
 

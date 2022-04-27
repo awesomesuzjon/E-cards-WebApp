@@ -4,6 +4,7 @@
    export function textLeftAlignFunction() {
     //    document.getElementById('alignedText').style.textAlign = "left"; 
         let result = document.getElementById('colortext').style.textAlign = "left"; 
+        console.log(result);
    }
 
    export function textCenterAlignFunction() {
