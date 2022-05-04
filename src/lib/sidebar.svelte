@@ -6,7 +6,10 @@
   import FaSearch from 'svelte-icons/fa/FaSearch.svelte'
   import FaAngleDown from 'svelte-icons/fa/FaAngleDown.svelte'
 import {toggleSidebarFunc} from './toggleComponent.svelte'
+<<<<<<< HEAD
 import FaAngleRight from 'svelte-icons/fa/FaAngleRight.svelte';
+=======
+>>>>>>> 48f5d994a8207e1a37b11ad34f886ec892120290
 
 
 
@@ -26,6 +29,7 @@ import FaAngleRight from 'svelte-icons/fa/FaAngleRight.svelte';
 <div class="sidebarParentDiv bg-gradient-to-r from-cyan-500 to-blue-500   rounded dark:bg-gray-800 h-screen    pt-10 pb-10   text-center relative min-h-screen  flex  sidebarxx">
 	
 <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="w-30 absolute top-0 left-0"><path fill="#0099ff" fill-opacity="1" d="M0,0L120,10.7C240,21,480,43,720,90.7C960,139,1200,213,1320,250.7L1440,288L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path></svg> -->
+<<<<<<< HEAD
 
 <!-- toggle Sidebar code -->
 <div class="drawer-content z-50 ">
@@ -39,6 +43,11 @@ import FaAngleRight from 'svelte-icons/fa/FaAngleRight.svelte';
 
 	<ul class="space-y-0 divide-y border-3 border w-full mt-4		 ">
 
+=======
+	
+	<ul class="space-y-0 divide-y border-3 border w-full  ">
+
+>>>>>>> 48f5d994a8207e1a37b11ad34f886ec892120290
 		<div class="form-control">
 			<label class="label cursor-pointer">
 			  <span class="label-text text-white ">Show Sidebar</span>
