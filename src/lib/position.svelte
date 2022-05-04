@@ -1,10 +1,6 @@
 <script >
 import { onMount } from "svelte";
 
-
-
-
-    
     let xaxis;
     let yaxis;
 onMount(() =>{
@@ -25,3 +21,17 @@ onMount(() =>{
 
 X-Axis =    <h1>{xaxis}</h1>
 Y-Axis =    <h1>{yaxis}</h1>
+
+<!-- 
+
+function positionfunc(){
+    let xaxis;
+        let yaxis;
+              let el = document.getElementById('box')
+        let elCoordinates = el.getBoundingClientRect();
+        xaxis = elCoordinates.x;
+           yaxis = elCoordinates.y;
+           alert(yaxis)
+           console.log(xaxis)
+      } -->
+  

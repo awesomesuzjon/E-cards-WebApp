@@ -14,20 +14,6 @@ const targetDiv = document.getElementById("targetContent");
 }
 
 
-// export function previewtbl(){
-// const targetDiv = document.getElementById("toggleContent");
-//       const btn = document.getElementById("toggletbl");
-  
-//       btn.onclick = function () {
-//             console.log('hello its me');
-//           if (targetDiv.style.display !== "none") {
-//               targetDiv.style.display = "none";
-//           } else {
-//       targetDiv.style.display = "block";
-//     }
-//   }
-// }
-
 
 export function previewtbl(){
 const targetDiv = document.getElementById("toggleContent");
@@ -35,10 +21,10 @@ let btn = document.getElementsByClassName("toggletbl");
     for (var i = 0; i < btn.length; i++) {
         btn[i].addEventListener("click", function () {
             console.log('hello its me');
-          if (targetDiv.style.display !== "none") {
-              targetDiv.style.display = "none";
+          if (targetDiv.style.display == "none") {
+              targetDiv.style.display = "block";
           } else {
-      targetDiv.style.display = "block";
+      targetDiv.style.display = "none";
     }
   }
 
