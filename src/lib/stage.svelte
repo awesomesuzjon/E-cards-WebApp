@@ -17,6 +17,8 @@
 	});
 
 	
+
+	
 </script>
 
 <div bind:this={container} class="absolute top-50 left-50">

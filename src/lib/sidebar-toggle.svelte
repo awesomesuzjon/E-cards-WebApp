@@ -9,6 +9,7 @@
 	import Draggable from './Draggable.svelte';
 	import CloneElement, { cloneElementFunc } from './cloneElement.svelte';
 	import SaveTemplate from '$lib/saveTemplate.svelte';
+	import KonvaTestRoute from '$lib/konvaTestRoute.svelte';
 	import { allowDrop, drag, drop } from '../routes/dragdropclone.svelte';
 	import { draggableStoreSticker } from '../stores/storeStickers.js';
 	import { draggableStoreText, textStore } from '../stores/storeText.js';
@@ -387,7 +388,6 @@
 			</ul>
 		</div>
 	</div>
-	<!-- <button class=" hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white btn btn-gray-50 center mt-2 w-3/6 text-sm p-1">Add</button>     -->
 
 	<!-- canvas div  -->
 	<div id="canvasContainer" class=" flex w-screen   items-center justify-center h-full">
@@ -403,9 +403,7 @@
 			id="canvasText"
 			class="  text-black dark:text-white cursor-move w-5/6  h-80 self-center  border-8 bg-gray-100  overflow-hidden "
 		>
-			<!-- <img src="https://cdn.logo.com/hotlink-ok/logo-social.png" alt="" id="clonedElement">
-     <p id="alignedText">Lorem ipsum dolor sit amet consectetur </p> -->
-
+	
 			<div
 				id="canvasImgContainer"
 				class=" flex z-0 items-center justify-center relative  content-center "
@@ -466,19 +464,17 @@
 				</Draggable>
 			{/each}
 
-			<!-- {JSON.stringify(arrayText)} -->
 			<Stage>
 				{#each arrayText as itemText, index}
 					<Layer>
-						<!-- <Konva> -->
-						<!-- <Rotate>
-					<Resize> -->
 						<div class="textDivCanvas ">
-							<Circle x="30" y="50" someText={itemText}  id={itemText}/>
+							<Circle x="30" y="50" someText={itemText}  id='container'/>
 						</div>
-					</Layer>
-				{/each}
-			</Stage>
+					</Layer> 
+
+					<!-- <KonvaTestRoute someText={itemText}/> -->
+					{/each}
+				</Stage>
 
 			<!-- <Draggable> -->
 			<!-- <div class="textDivCanvas " id="container"> -->
