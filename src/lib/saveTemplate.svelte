@@ -9,9 +9,9 @@
 
     
     <div class="flex justify-start   mt-5 text-sm">
-      <h1 class="truncate">Add Title </h1>
-      <span class="mx-10">:</span>
-      <input type="text" class="border-b-2 w-full hover:bg-gray-200  hover:no-underline" />
+      <h1 class="truncate">Title </h1>
+      <span class="mr-2">:</span>
+      <input type="text" class=" ml-4 border-b-2 w-96 hover:bg-gray-200  hover:no-underline" />
       
     </div> 
     

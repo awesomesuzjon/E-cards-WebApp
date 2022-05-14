@@ -40,11 +40,14 @@
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "axios": "^0.26.1",
+    "canvas": "^2.9.1",
+    "chart.js": "^3.7.1",
+    "countup.js": "^2.1.0",
     "daisyui": "^2.11.1",
     "firebase": "^9.6.11",
     "interactjs": "^1.10.11",
     "kinetic": "^5.2.0",
-    "konva": "^8.3.6",
+    "konva": "^8.3.8",
     "rxfire": "^6.0.3",
     "rxjs": "^7.5.5",
     "svelte-agnostic-draggable": "^0.1.11",
@@ -53,6 +56,7 @@
     "svelte-fa": "^2.4.0",
     "svelte-icons": "^2.1.0",
     "svelte-moveable": "^0.20.0",
-    "sveltestrap": "^5.9.0"
+    "sveltestrap": "^5.9.0",
+    "uuid": "^8.3.2"
   }
 }

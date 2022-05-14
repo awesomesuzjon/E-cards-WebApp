@@ -31,7 +31,7 @@
     <Sidebar/>
     
     
-        <div class="w-5/6 text-center text-bold text-4xl h-screen dark:bg-gray-800 dark:text-gray-100" id="main-container">
+        <div class="w-full   text-center text-bold text-4xl h-screen dark:bg-gray-800 dark:text-gray-100" id="main-container">
             <slot/>
         </div>
                     <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
@@ -39,5 +39,11 @@
 
                 
                 
+
+                <style>
+                    #main-container{
+                        background: #f7f7f8 ;
+                    }
+                </style>
 
      

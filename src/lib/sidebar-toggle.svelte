@@ -6,8 +6,6 @@
 	import Editsidebar from './editsidebar.svelte';
 	import Resize from '$lib/resize.svelte';
 	import Rotate from '$lib/rotate.svelte';
-	import KonvaText from '$lib/konvaTestRoute.svelte';
-	// import Konva from "./konva.svelte";
 	import Draggable from './Draggable.svelte';
 	import CloneElement, { cloneElementFunc } from './cloneElement.svelte';
 	import SaveTemplate from '$lib/saveTemplate.svelte';
@@ -19,7 +17,24 @@
 	import { removeImgFunc, removeFgImgFunc } from './removeImg.svelte';
 	import { pushTextToCanvasFunc } from './pushTextToCanvas.svelte';
 	import FaAngleRight from 'svelte-icons/fa/FaAngleRight.svelte';
+	import Stage from '$lib/stage.svelte';
+	import Layer from '$lib/layer.svelte';
+	import Circle from '$lib/circle.svelte';
+	import { onMount } from 'svelte';
 
+
+// onMount(()=>{
+// let canvasDiv =document.getElementById("canvasText")
+// 	canvasDiv.addEventListener('click', function handleClick(event) {
+//  let EventClass = event.target.setAttribute('id','eventDiv');
+// console.log(EventClass.id);
+  
+// });
+
+// })
+
+	
+	let someText;
 	let arraySticker = [];
 	// $: reactiveArray = `${array}`;
 	draggableStoreSticker.subscribe((sticker) => {
@@ -376,6 +391,12 @@
 
 	<!-- canvas div  -->
 	<div id="canvasContainer" class=" flex w-screen   items-center justify-center h-full">
+		<label
+			for="my-drawer"
+			class=" btn p-0 w-10 h-8 drawer-button   justify-left  hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white"
+		>
+			<h6 class="text-sm w-6  h-auto p-1"><FaAngleRight /></h6>
+		</label>
 		<div
 			on:drop={drop}
 			on:dragover={allowDrop}
@@ -444,24 +465,34 @@
 					</div>
 				</Draggable>
 			{/each}
-			{JSON.stringify(arrayText)}
-			{#each arrayText as itemText, index}
-				<!-- <Konva> -->
-				<!-- <Rotate>
-				<Draggable>
-					<Resize> -->
 
-				<div class="textDivCanvas   ">
-					<!-- <div class="textDivCanvas " id="container"> -->
-					<KonvaText containerId={`container_${index}`} someText={itemText} />
-					<!-- {@html itemText.outerHTML} -->
-				</div>
-				<!-- 				
+			<!-- {JSON.stringify(arrayText)} -->
+			<Stage>
+				{#each arrayText as itemText, index}
+					<Layer>
+						<!-- <Konva> -->
+						<!-- <Rotate>
+					<Resize> -->
+						<div class="textDivCanvas ">
+							<Circle x="30" y="50" someText={itemText}  id={itemText}/>
+						</div>
+					</Layer>
+				{/each}
+			</Stage>
+
+			<!-- <Draggable> -->
+			<!-- <div class="textDivCanvas " id="container"> -->
+
+			<!-- <KonvaTestRoute someText={itemText} containerId={`container_${index}`} > -->
+			<!-- <div  containerId={`container_${index}`}> -->
+			<!-- </div> -->
+			<!-- </KonvaTestRoute>  -->
+			<!-- </Draggable> -->
+			<!-- {@html itemText.outerHTML} -->
+			<!-- 				
 				</Resize>	
-</Draggable>
 </Rotate> -->
-				<!-- </Konva> -->
-			{/each}
+			<!-- </Konva> -->
 
 			<Draggable>
 				<div class="cloneMessageDiv" />
@@ -569,5 +600,11 @@
 		word-wrap: break-word;
 		/* width:     calc(100% - 20px);
   height:    calc(100vh - 20px); */
+	}
+
+	.helloClass{
+		background-color:red;
+		color:green;
+		padding:50px;
 	}
 </style>

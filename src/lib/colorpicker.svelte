@@ -1,7 +1,9 @@
 <script context="module">
-    export function click() {
+    export function click(stage, id) {
    var colorinput = document.getElementById('colorinput').value;
-   document.getElementById('textRotate').style.color = colorinput; 
+   var colorchoosed=document.getElementById('canvasInput').style.color = colorinput; 
+   var colorchoosed=document.getElementById('uniqueIdentifier').style.background = colorinput; 
+   
    // document.getElementById('text').style.background= input;
  }
  

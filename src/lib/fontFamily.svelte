@@ -2,7 +2,7 @@
     function fontFamilyChangeFunc() {
       var selector = document.getElementById('selectFontFamily');
       var family = selector.options[selector.selectedIndex].value;
-      var h1 = document.getElementById('textRotate')
+      var h1 = document.getElementById('containerId')
       h1.style.fontFamily = family;        
     }
 

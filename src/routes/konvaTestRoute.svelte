@@ -5,8 +5,8 @@
 	export let containerId;
 
 	onMount(() => {
-		var width = 500;
-		var height = 400;
+		var width = 800;
+		var height = 800;
 
 		var stage = new Konva.Stage({
 			container: 'container',
@@ -56,7 +56,7 @@
 		y: 50,
 		fontSize: 18,
 		fill: 'green',
-		text: someText,
+		text: "someText",
 		draggable: true,
 		id: someText
 	});

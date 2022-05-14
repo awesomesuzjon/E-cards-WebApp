@@ -17,7 +17,6 @@
 	
 	function onMouseUp() {
 		moving = false;
-		console.log('onMouseup')
 	}
 	
 </script>
