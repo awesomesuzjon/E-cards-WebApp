@@ -22,6 +22,7 @@
 	export let arrayText = [];
 	textStore.subscribe((text) => {
 		arrayText = text;
+        console.log(textStore);
 	});
 
 	let firstName = [];

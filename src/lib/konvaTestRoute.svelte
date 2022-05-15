@@ -2,19 +2,32 @@
 	import Konva from 'konva';
 	import { onMount } from 'svelte';
 	export let someText;
+	import { getContext, onDestroy } from 'svelte';
 
+
+	
+	const { getStage } = getContext("konva");
+	const { getLayer } = getContext('konva_layer');
+
+
+	
 	onMount(() => {
-		var width = 800;
-		var height = 800;
+		
+		
+		const stage = getStage();
 
-		var stage = new Konva.Stage({
-			container: container,
-			width: width,
-			height: height
-		});
+	const layer = getLayer();
+		// var width = 800;
+		// var height = 800;
 
-		var layer = new Konva.Layer();
-		stage.add(layer);
+		// var stage = new Konva.Stage({
+		// 	container: container,
+		// 	width: width,
+		// 	height: height
+		// });
+
+		// var layer = new Konva.Layer();
+		// stage.add(layer);
 
 		var Text = new Konva.Text({
 			x: 50,
@@ -22,9 +35,10 @@
 			fontSize: 18,
 			fill: 'green',
 			text: someText,
-			draggable: true,
-			id: someText
+			draggable: true
 		});
+
+		console.log(Text);
 		layer.add(Text);
 
 		var previousTarget = null;

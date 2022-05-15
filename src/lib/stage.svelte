@@ -1,6 +1,7 @@
 <script>
 	import Konva from 'konva';
 	import { onMount, setContext } from 'svelte';
+	import layer from '$lib/layer.svelte'
 
 	let container;
 	let stage;
@@ -11,10 +12,13 @@
 			width: 680,
 			height: 300
 		});
+		
+	
 	});
 	setContext('konva', {
 		getStage: () => stage
 	});
+
 
 	
 

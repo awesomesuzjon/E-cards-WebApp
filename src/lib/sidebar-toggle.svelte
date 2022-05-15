@@ -12,29 +12,28 @@
 	import KonvaTestRoute from '$lib/konvaTestRoute.svelte';
 	import { allowDrop, drag, drop } from '../routes/dragdropclone.svelte';
 	import { draggableStoreSticker } from '../stores/storeStickers.js';
-	import { draggableStoreText, textStore } from '../stores/storeText.js';
+	// import { draggableStoreText, textStore } from '../stores/storeText.js';
 	import MdFullscreen from 'svelte-icons/md/MdFullscreen.svelte';
 	import { openFullScreenFunc } from './openFullScreen.svelte';
 	import { removeImgFunc, removeFgImgFunc } from './removeImg.svelte';
 	import { pushTextToCanvasFunc } from './pushTextToCanvas.svelte';
 	import FaAngleRight from 'svelte-icons/fa/FaAngleRight.svelte';
+	import { textStore } from '../stores/storeText';
 	import Stage from '$lib/stage.svelte';
 	import Layer from '$lib/layer.svelte';
 	import Circle from '$lib/circle.svelte';
 	import { onMount } from 'svelte';
 
+	// onMount(()=>{
+	// let canvasDiv =document.getElementById("canvasText")
+	// 	canvasDiv.addEventListener('click', function handleClick(event) {
+	//  let EventClass = event.target.setAttribute('id','eventDiv');
+	// console.log(EventClass.id);
 
-// onMount(()=>{
-// let canvasDiv =document.getElementById("canvasText")
-// 	canvasDiv.addEventListener('click', function handleClick(event) {
-//  let EventClass = event.target.setAttribute('id','eventDiv');
-// console.log(EventClass.id);
-  
-// });
+	// });
 
-// })
+	// })
 
-	
 	let someText;
 	let arraySticker = [];
 	// $: reactiveArray = `${array}`;
@@ -125,7 +124,9 @@
 							for="my-drawer-4"
 							class=" hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white btn drawer-button btn-gray-50 center w-3/6 mt-2 text-sm p-1 items-center justify-left flex"
 						>
-							<btn class="text-sm w-26 h-auto  p-1 " on:click={pushTextToCanvasFunc}>Add</btn>
+							<btn class="text-sm w-26 h-auto  p-1 " on:click={pushTextToCanvasFunc}
+								>Add text to canvas</btn
+							>
 						</label>
 					</div>
 				</li>
@@ -403,7 +404,6 @@
 			id="canvasText"
 			class="  text-black dark:text-white cursor-move w-5/6  h-80 self-center  border-8 bg-gray-100  overflow-hidden "
 		>
-	
 			<div
 				id="canvasImgContainer"
 				class=" flex z-0 items-center justify-center relative  content-center "
@@ -465,16 +465,16 @@
 			{/each}
 
 			<Stage>
-				{#each arrayText as itemText, index}
-					<Layer>
-						<div class="textDivCanvas ">
-							<Circle x="30" y="50" someText={itemText}  id='container'/>
-						</div>
-					</Layer> 
+			{#each $textStore as itemText, index}
+				<Layer>
+				<div class="textDivCanvas ">
+					<!-- <Circle x="30" y="50" someText={itemText}  id='container'/> -->
+					<KonvaTestRoute someText={itemText} id="container" />
+				</div>
+				</Layer> 
+			{/each}
 
-					<!-- <KonvaTestRoute someText={itemText}/> -->
-					{/each}
-				</Stage>
+			</Stage>
 
 			<!-- <Draggable> -->
 			<!-- <div class="textDivCanvas " id="container"> -->
@@ -598,9 +598,9 @@
   height:    calc(100vh - 20px); */
 	}
 
-	.helloClass{
-		background-color:red;
-		color:green;
-		padding:50px;
+	.helloClass {
+		background-color: red;
+		color: green;
+		padding: 50px;
 	}
 </style>

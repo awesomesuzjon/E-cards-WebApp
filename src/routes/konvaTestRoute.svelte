@@ -25,7 +25,8 @@
 			draggable: true,
 			id: someText
 		});
-		layer.add(Text);
+		layerAdded = layer.add(Text);
+		console.log(layerAdded + 'layer added');
 
 		var previousTarget = null;
 
