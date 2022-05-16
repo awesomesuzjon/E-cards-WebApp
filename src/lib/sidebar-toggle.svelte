@@ -4,8 +4,6 @@
 	// }
 
 	import Editsidebar from './editsidebar.svelte';
-	import Resize from '$lib/resize.svelte';
-	import Rotate from '$lib/rotate.svelte';
 	import Draggable from './Draggable.svelte';
 	import CloneElement, { cloneElementFunc } from './cloneElement.svelte';
 	import SaveTemplate from '$lib/saveTemplate.svelte';
@@ -21,7 +19,6 @@
 	import { textStore } from '../stores/storeText';
 	import Stage from '$lib/stage.svelte';
 	import Layer from '$lib/layer.svelte';
-	import Circle from '$lib/circle.svelte';
 	import { onMount } from 'svelte';
 
 	// onMount(()=>{
@@ -76,12 +73,15 @@
 </script>
 
 <div class="flex justify-between items-center">
-	<div class="drawer w-1/3 z-50 ">
+	<div class="drawer  z-50 " style="width:10em;">
 		<input id="my-drawer" type="checkbox" class="drawer-toggle" />
 
-		<div class="imgcontainer drawer-side w-6/6  overflow-hidden  ">
+		<div
+			class="imgcontainer drawer-side   
+		  "
+		>
 			<label for="my-drawer" class="drawer-overlay" />
-			<ul class=" divide-y-2 max-h-full  md:w-80 bg-F6F0F0  text-sm text-white">
+			<ul class=" divide-y-2 w-full bg-F6F0F0  text-sm text-white">
 				<li class="p-4 divide-y-2">
 					<div class="flex flex-col  items-start justify-center mt-2">
 						<h1 class="text-sm font-bold  truncate mb-2   ">Select background template</h1>
@@ -95,7 +95,7 @@
 							multiple
 						/>
 					</div>
-					<button class="btn flex mt-2  " on:click={removeImgFunc}>RemoveImg</button>
+					<button class="btn flex mt-2  " on:click={removeImgFunc}>Remove Bg Image</button>
 				</li>
 
 				<li class="p-4 divide-y-2">
@@ -112,7 +112,7 @@
 							}}
 						/>
 					</div>
-					<button class="btn flex mt-2  " on:click={removeFgImgFunc}>RemoveImg</button>
+					<button class="btn flex mt-2  " on:click={removeFgImgFunc}>Remove Fg Img</button>
 				</li>
 
 				<li class="p-4">
@@ -391,18 +391,20 @@
 	</div>
 
 	<!-- canvas div  -->
-	<div id="canvasContainer" class=" flex w-screen   items-center justify-center h-full">
+	<div id="canvasContainer" class=" flex    items-center 	 h-full">
 		<label
 			for="my-drawer"
 			class=" btn p-0 w-10 h-8 drawer-button   justify-left  hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white"
 		>
 			<h6 class="text-sm w-6  h-auto p-1"><FaAngleRight /></h6>
 		</label>
+
 		<div
 			on:drop={drop}
 			on:dragover={allowDrop}
 			id="canvasText"
-			class="  text-black dark:text-white cursor-move w-5/6  h-80 self-center  border-8 bg-gray-100  overflow-hidden "
+			style="width:20em;"
+			class="  text-black dark:text-white cursor-move  h-80 self-center  border-8 bg-gray-100  "
 		>
 			<div
 				id="canvasImgContainer"
@@ -465,15 +467,14 @@
 			{/each}
 
 			<Stage>
-			{#each $textStore as itemText, index}
-				<Layer>
-				<div class="textDivCanvas ">
-					<!-- <Circle x="30" y="50" someText={itemText}  id='container'/> -->
-					<KonvaTestRoute someText={itemText} id="container" />
-				</div>
-				</Layer> 
-			{/each}
-
+				{#each $textStore as itemText, index}
+					<Layer>
+						<div class="textDivCanvas ">
+							<!-- <Circle x="30" y="50" someText={itemText}  id='container'/> -->
+							<KonvaTestRoute someText={itemText} id={someText} />
+						</div>
+					</Layer>
+				{/each}
 			</Stage>
 
 			<!-- <Draggable> -->

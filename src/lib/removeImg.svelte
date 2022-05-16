@@ -7,7 +7,7 @@ export function removeImgFunc(){
 
 
 export function removeFgImgFunc(){
-  let canvasFgImg= document.getElementById("avatar").src="";
+  let canvasFgImg= document.getElementById("canvasImg").src="";
   document.getElementById("canvasFbImg").value="";
 }
 

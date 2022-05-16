@@ -2,7 +2,6 @@
 
 import { createEventDispatcher, onMount } from "svelte";
 import { setContext, getContext } from 'svelte';
-import selectedText from './circle.svelte'
 
 
    export function changeTextSize() {

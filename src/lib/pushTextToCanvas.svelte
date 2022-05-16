@@ -4,7 +4,6 @@
 	export function pushTextToCanvasFunc() {
 		var textCanvas = [];
 		var i, slen, inputText, text;
-		console.log('i m here');
 		inputText = document.getElementById('addNew').value;
 		textCanvas.push(inputText);
 

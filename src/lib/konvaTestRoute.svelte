@@ -2,6 +2,7 @@
 	import Konva from 'konva';
 	import { onMount } from 'svelte';
 	export let someText;
+	export let id;
 	import { getContext, onDestroy } from 'svelte';
 
 
@@ -17,17 +18,7 @@
 		const stage = getStage();
 
 	const layer = getLayer();
-		// var width = 800;
-		// var height = 800;
 
-		// var stage = new Konva.Stage({
-		// 	container: container,
-		// 	width: width,
-		// 	height: height
-		// });
-
-		// var layer = new Konva.Layer();
-		// stage.add(layer);
 
 		var Text = new Konva.Text({
 			x: 50,
@@ -35,10 +26,10 @@
 			fontSize: 18,
 			fill: 'green',
 			text: someText,
-			draggable: true
+			draggable: true,
+			id: someText
 		});
-
-		console.log(Text);
+		console.log(id);
 		layer.add(Text);
 
 		var previousTarget = null;

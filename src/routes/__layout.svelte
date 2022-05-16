@@ -1,28 +1,9 @@
         <script lang="ts">
         import '../app.css'
-        import Button from '$lib/button.svelte'
         import Nav from '$lib/nav.svelte'
         import Sidebar from '$lib/sidebar.svelte'
-        import Table from '$lib/table.svelte';
-        import firebase from 'firebase/compat/app';
-        // import authStore from '../stores/authStore';
         import {onMount} from 'svelte'
         
-
-  
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-
-
-// firebase.auth().onAuthStateChanged(user=>{
-//     authStore.set({
-//         isLoggedIn:user !==null,
-//         user,
-//         firebaseControlled: true
-//     });
-// });
-
-
-
 
  </script>
 
