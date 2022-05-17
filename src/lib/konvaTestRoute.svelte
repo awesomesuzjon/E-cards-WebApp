@@ -4,7 +4,6 @@
 	import { selected } from '../stores/selectedItemId';
 	import { v4 as uuidv4 } from 'uuid';
 	export let someText;
-	export let id;
 
 	import { getContext, onDestroy } from 'svelte';
 
@@ -20,10 +19,11 @@
 			x: 50,
 			y: 50,
 			fontSize: 18,
-			fill: 'green',
+			fill: '#D9230F',
 			text: someText,
 			draggable: true,
-			id: 'text'
+			id: 'text',
+			fontFamily:'arial'
 		});
 
 		// $selected = text;
@@ -48,6 +48,7 @@
 			// text.fill = 'red';
 			// selected.set(e.target);
 			$selected = e.target;
+			console.log(selected);
 			transformer.attachTo(e.target);
 			previousTarget = e.target;
 

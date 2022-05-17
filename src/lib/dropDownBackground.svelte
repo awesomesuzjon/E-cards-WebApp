@@ -1,5 +1,5 @@
 <script>
-  import Colorpicker,{click,changeCanvasBgColorFunc,revertCanvasBgColorFunc} from './colorpicker.svelte';
+  import Colorpicker,{changeCanvasBgColorFunc,revertCanvasBgColorFunc} from './colorpicker.svelte';
   import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte'
 
 

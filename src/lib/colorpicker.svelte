@@ -1,20 +1,34 @@
 <script context="module">
-    export function click(stage, id) {
-   var colorinput = document.getElementById('colorinput').value;
-   var colorchoosed=document.getElementById('canvasInput').style.color = colorinput; 
-   var colorchoosed=document.getElementById('uniqueIdentifier').style.background = colorinput; 
-   
-   // document.getElementById('text').style.background= input;
- }
- 
+import {selected } from '../stores/selectedItemId';
 
+let subscribe = false;
+
+export function changeColorOfCanvasText() {
+		subscribe = true;
+		const unSubscribe = selected.subscribe((data) => {
+			if (!subscribe) {
+				return;
+			}
+			
+			const colorInput = document.getElementById('colorInput').value;
+			if (data == null) {
+				return;
+			}
+			data.setAttrs({
+        fill:`#(colorInput)`
+			});
+			subscribe = false;
+			unSubscribe();
+		});
+	}
+
+  
+
+ 
  export function changeCanvasBgColorFunc() {
    var colorinput = document.getElementById('colorBginput').value;
    document.getElementById('canvasText').style.backgroundColor = colorinput; 
-   // document.getElementById('text').style.background= input;
  }
- 
-
 
  export function revertCanvasBgColorFunc() {
    document.getElementById('canvasText').style.backgroundColor = ""; 
