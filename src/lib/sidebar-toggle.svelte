@@ -43,8 +43,8 @@
 		arrayText = text;
 	});
 
-	let firstName = [];
-	$: fullName = `${firstName}`;
+	let canvasUploadedText = [];
+	$: CanvasText = `${canvasUploadedText}`;
 
 	//upload a new theme template from the local device
 	let files = [];
@@ -133,9 +133,7 @@
 							for="my-drawer-4"
 							class="drawer-button hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white btn  btn-gray-50 center w-3/6 mt-2 text-sm p-1 items-center justify-left flex"
 						>
-							<btn class="text-sm w-26 h-auto  p-1 " 
-								>Open Editbar</btn
-							>
+							<btn class="text-sm w-26 h-auto  p-1 ">Open Editbar</btn>
 						</label>
 					</div>
 				</li>
@@ -460,7 +458,7 @@
 							style="transform-origin:50% 50%;"
 							id="colortext"
 						>
-							{fullName}
+							{CanvasText}
 						</h1>
 					</span>
 				</div>
