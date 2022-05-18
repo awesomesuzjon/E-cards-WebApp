@@ -12,9 +12,9 @@
 	import { draggableStoreSticker } from '../stores/storeStickers.js';
 	// import { draggableStoreText, textStore } from '../stores/storeText.js';
 	import MdFullscreen from 'svelte-icons/md/MdFullscreen.svelte';
-	import { openFullScreenFunc } from './openFullScreen.svelte';
-	import { removeImgFunc, removeFgImgFunc } from './removeImg.svelte';
-	import { pushTextToCanvasFunc } from './pushTextToCanvas.svelte';
+	import { openFullScreenFunc } from '../utils/openFullScreen';
+	import { removeImgFunc, removeFgImgFunc } from '../utils/removeImg';
+	import { pushTextToCanvasFunc } from '../utils/pushTextToCanvas';
 	import FaAngleRight from 'svelte-icons/fa/FaAngleRight.svelte';
 	import { textStore } from '../stores/storeText';
 	import Stage from '$lib/stage.svelte';

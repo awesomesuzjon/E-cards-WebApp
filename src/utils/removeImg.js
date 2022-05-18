@@ -1,4 +1,3 @@
-<script context="module"> 
 export function removeImgFunc(){
   let canvasImg= document.getElementById("canvasImg").src="";
   document.getElementById("canvasImg").src="";
@@ -12,5 +11,3 @@ export function removeFgImgFunc(){
 }
 
 
-
-</script>

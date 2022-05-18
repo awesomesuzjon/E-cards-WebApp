@@ -1,4 +1,3 @@
-<script context="module">
     export   function toggleSidebarFunc() {
   var toggleSidebar = document.getElementById("sidebarToggleDiv");
   var iconSidebar = document.getElementById("iconsSidebarToggle");
@@ -20,5 +19,3 @@
 
 
 
-
-</script>

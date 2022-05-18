@@ -7,11 +7,11 @@
 		getCoordinatesByElementId,
 		rotateText
 	} from '../utils/editTextonCanvas';
-	import AlignText, {
+	import {
 		textLeftAlignFunction,
 		textCenterAlignFunction,
 		textRightAlignFunction
-	} from './alignText.svelte';
+	} from '../utils/alignText';
 	import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte';
 	import FontFamily from './fontFamily.svelte';
 

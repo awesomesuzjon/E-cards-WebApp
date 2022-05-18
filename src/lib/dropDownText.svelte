@@ -2,11 +2,11 @@
 	import FontFamily from './fontFamily.svelte';
 	import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte';
 	import { editFontSize, editTextColor,editRotateText, getCoordinatesByElementId } from '../utils/editTextonCanvas';
-	import AlignText, {
+	import  {
 		textLeftAlignFunction,
 		textCenterAlignFunction,
 		textRightAlignFunction
-	} from './alignText.svelte';
+	} from '../utils/alignText';
 	import FaAlignLeft from 'svelte-icons/fa/FaAlignLeft.svelte';
 	import FaAlignCenter from 'svelte-icons/fa/FaAlignCenter.svelte';
 	import FaAlignRight from 'svelte-icons/fa/FaAlignRight.svelte';

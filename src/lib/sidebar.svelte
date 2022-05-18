@@ -5,7 +5,7 @@
   import IoMdText from 'svelte-icons/io/IoMdText.svelte'
   import FaSearch from 'svelte-icons/fa/FaSearch.svelte'
   import FaAngleDown from 'svelte-icons/fa/FaAngleDown.svelte'
-import {toggleSidebarFunc} from './toggleComponent.svelte'
+import {toggleSidebarFunc} from '../utils/toggleComponent'
 import FaCloudMoon from 'svelte-icons/fa/FaCloudMoon.svelte'
 
 

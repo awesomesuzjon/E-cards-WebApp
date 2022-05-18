@@ -1,4 +1,3 @@
-<script context="module">
    export  function previewImgFunc() {
 
 const targetDiv = document.getElementById("targetContent");
@@ -30,4 +29,3 @@ let btn = document.getElementsByClassName("toggletbl");
 
         )}
 }
-</script>

@@ -1,4 +1,3 @@
-<script context="module">
 	import { textStore } from '../stores/storeText';
 	
 	export function pushTextToCanvasFunc() {
@@ -14,7 +13,3 @@
 		});
 		textStore.set([...storeArrayText, inputText]);
 	}
-
-	//
-	// document.getElementById(ev).querySelector('.child')
-</script>

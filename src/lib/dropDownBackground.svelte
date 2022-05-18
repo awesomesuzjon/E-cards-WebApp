@@ -1,5 +1,6 @@
 <script>
-  import Colorpicker,{changeCanvasBgColorFunc,revertCanvasBgColorFunc} from './colorpicker.svelte';
+  import {changeCanvasBgColorFunc,revertCanvasBgColorFunc} from '../utils/colorpicker.js';
+  
   import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte'
 
 

@@ -3,7 +3,7 @@ import FaEye from 'svelte-icons/fa/FaEye.svelte'
 import FaPlus from 'svelte-icons/fa/FaPlus.svelte'
 import { onMount } from "svelte";
 import EcardTemplateBtn from './ecardTemplateBtn.svelte';
-import { previewtbl,previewImgFunc } from './previewImgntbl.svelte';
+import { previewtbl,previewImgFunc } from '../utils/previewImgntbl';
 import Pagination from './pagination.svelte';
 
 

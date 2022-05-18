@@ -1,4 +1,3 @@
- <script context="module"> 
  export function openFullScreenFunc() {
     var elem = document.getElementById("canvasText");
       if (elem.requestFullscreen) {
@@ -9,4 +8,3 @@
         elem.msRequestFullscreen();
       }
     }
-  </script>
