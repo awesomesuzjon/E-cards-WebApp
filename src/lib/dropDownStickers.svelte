@@ -1,7 +1,7 @@
 <script>
 	import FontFamily from './fontFamily.svelte';
 	import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte';
-	import { editTextStyles, getCoordinatesByElementId, rotateText } from './changefontsize.svelte';
+	import {  getCoordinatesByElementId, rotateText } from '../utils/editTextonCanvas';
 	import AlignText, {
 		textLeftAlignFunction,
 		textCenterAlignFunction,
@@ -81,7 +81,7 @@
 				/>
 			</div>
 			<button
-				on:click={editTextStyles}
+		
 				class=" hover:text-gray-800 hover:no-underline 
            hover:border-gray-800 hover:bg-white btn btn-gray-50 flex items-center self-center mt-2
            w-full text-sm p-1">Enter</button

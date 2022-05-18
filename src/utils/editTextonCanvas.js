@@ -1,7 +1,8 @@
-<script context="module">
+
 	import { selected } from '../stores/selectedItemId';
 	let subscribe = false;
-	export function editTextStyles() {
+
+	export function editFontSize() {
 		subscribe = true;
 		const unSubscribe = selected.subscribe((data) => {
 			// console.log(data);
@@ -9,23 +10,57 @@
 				return;
 			}
 			const input = document.getElementById('input').value;
-			const fontInput = document.getElementById('fontInput').value;
-			const colorInput = document.getElementById('colorInput').value;
-			const rotationInput = document.getElementById('inputDegree').value;
-			console.log(rotationInput	)
 			if (data == null) {
 				return;
 			}
 			data.setAttrs({
-				fontSize: parseInt(input),
-				fontFamily: fontInput,
-				stroke : colorInput,
-				rotateText:rotationInput
+				fontSize: parseInt(input)
+		
 			});
 			subscribe = false;
 			unSubscribe();
 		});
 	}
+
+	export function editTextColor() {
+		subscribe = true;
+		const unSubscribe = selected.subscribe((data) => {
+			// console.log(data);
+			if (!subscribe) {
+				return;
+			}
+			const colorInput = document.getElementById('colorInput').value;
+			if (data == null) {
+				return;
+			}
+			data.setAttrs({
+				stroke : colorInput,
+			});
+			subscribe = false;
+			unSubscribe();
+		});
+	}
+
+	export function editRotateText() {
+		subscribe = true;
+		const unSubscribe = selected.subscribe((data) => {
+			if (!subscribe) {
+				return;
+			}
+			const rotationInput = document.getElementById('inputDegree').value;
+			if (data == null) {
+				return;
+			}
+			data.setAttrs({
+				rotateText:rotationInput
+
+			});
+			subscribe = false;
+			unSubscribe();
+		});
+	}
+
+
 
 	export function getCoordinatesByElementId(elementId, callback) {
 		let el = document.getElementById(elementId);
@@ -46,4 +81,4 @@
 		document.getElementById('uniqueIdentifier').style.transform = 'rotate(' + inputRotate + 'deg)';
 		document.getElementById('uniqueIdentifier').style.background = 'red';
 	}
-</script>
+

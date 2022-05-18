@@ -1,5 +1,4 @@
 <script context="module">
-// AAA
     
    export function textLeftAlignFunction() {
     //    document.getElementById('alignedText').style.textAlign = "left"; 

@@ -2,11 +2,11 @@
 	import FaAlignLeft from 'svelte-icons/fa/FaAlignLeft.svelte';
 	import FaAlignCenter from 'svelte-icons/fa/FaAlignCenter.svelte';
 	import FaAlignRight from 'svelte-icons/fa/FaAlignRight.svelte';
-	import Changefontsize, {
-		editTextStyles,
+	import  {
+		
 		getCoordinatesByElementId,
 		rotateText
-	} from './changefontsize.svelte';
+	} from '../utils/editTextonCanvas';
 	import AlignText, {
 		textLeftAlignFunction,
 		textCenterAlignFunction,
@@ -86,7 +86,7 @@ hover:border-gray-800 hover:bg-white btn btn-gray-50 flex mt-2 w-full text-sm p-
 				/>
 			</div>
 			<button
-				on:click={editTextStyles}
+				
 				class=" hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white btn btn-gray-50 flex items-center self-center mt-2 w-full text-sm p-1"
 				>Enter</button
 			>

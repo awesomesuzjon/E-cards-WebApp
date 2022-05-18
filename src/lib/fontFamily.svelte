@@ -15,7 +15,6 @@
 			if (!subscribe) {
 				return;
 			}
-			const input = document.getElementById('input').value;
 			const fontInput = document.getElementById('fontInput').value;
 			if (data == null) {
 				return;

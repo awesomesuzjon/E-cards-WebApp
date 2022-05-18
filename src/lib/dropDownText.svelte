@@ -1,7 +1,7 @@
 <script>
 	import FontFamily from './fontFamily.svelte';
 	import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte';
-	import { editTextStyles, getCoordinatesByElementId, rotateText } from './changefontsize.svelte';
+	import { editFontSize, editTextColor,editRotateText, getCoordinatesByElementId } from '../utils/editTextonCanvas';
 	import AlignText, {
 		textLeftAlignFunction,
 		textCenterAlignFunction,
@@ -64,7 +64,7 @@
 					id="inputDegree"
 					class="mb-2  border-2 text-black border-gray-500 w-full h-auto  text-sm font-bold dark:text-gray-800"
 				/>
-				<button class="btn w-full" on:click={editTextStyles}>rotate</button>
+				<button class="btn w-full" on:click={editRotateText}>rotate</button>
 			</div>
 		</li>
 
@@ -84,7 +84,7 @@
 				/>
 			</div>
 			<button
-				on:click={editTextStyles}
+				on:click={editFontSize}
 				class=" hover:text-gray-800 hover:no-underline 
        hover:border-gray-800 hover:bg-white btn btn-gray-50 flex items-center 
        self-center mt-2 w-full text-sm p-1">Enter</button
@@ -108,14 +108,14 @@
 			</div>
 
 			<button
-				on:click={editTextStyles}
+				on:click={editTextColor}
 				class=" hover:text-gray-800 hover:no-underline 
        hover:border-gray-800 hover:bg-white btn btn-gray-50 flex items-center 
        self-center mt-2 w-full text-sm p-1">Enter</button
 			>
 		</li>
 
-		<li class="p-4">
+		<!-- <li class="p-4">
 			<div class="flex  flex-col items-start justify-start  ">
 				<h1 class="text-sm font-bold mb-2" draggable="true">Align-Items:</h1>
 				<div class="flex ">
@@ -142,6 +142,6 @@
 					</button>
 				</div>
 			</div>
-		</li>
+		</li> -->
 	</div>
 </div>

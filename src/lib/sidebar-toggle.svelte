@@ -5,7 +5,7 @@
 
 	import Editsidebar from './editsidebar.svelte';
 	import Draggable from './Draggable.svelte';
-	import CloneElement, { cloneElementFunc } from './cloneElement.svelte';
+	import { cloneElementFunc } from '../utils/cloneElement';
 	import SaveTemplate from '$lib/saveTemplate.svelte';
 	import KonvaTestRoute from '$lib/konvaTestRoute.svelte';
 	import { allowDrop, drag, drop } from '../routes/dragdropclone.svelte';
