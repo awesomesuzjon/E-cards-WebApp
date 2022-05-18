@@ -11,14 +11,16 @@
 			const input = document.getElementById('input').value;
 			const fontInput = document.getElementById('fontInput').value;
 			const colorInput = document.getElementById('colorInput').value;
-			console.log(colorInput)
+			const rotationInput = document.getElementById('inputDegree').value;
+			console.log(rotationInput	)
 			if (data == null) {
 				return;
 			}
 			data.setAttrs({
 				fontSize: parseInt(input),
 				fontFamily: fontInput,
-				fill: `{colorInput}`
+				stroke : colorInput,
+				rotateText:rotationInput
 			});
 			subscribe = false;
 			unSubscribe();

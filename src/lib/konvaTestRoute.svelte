@@ -14,16 +14,17 @@
 		const stage = getStage();
 
 		const layer = getLayer();
-
+ 
+		
 		var text = new Konva.Text({
 			x: 50,
 			y: 50,
 			fontSize: 18,
-			fill: '#D9230F',
+			fill: 'black',
 			text: someText,
 			draggable: true,
 			id: 'text',
-			fontFamily:'arial'
+			fontFamily:'arial',
 		});
 
 		// $selected = text;

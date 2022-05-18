@@ -61,7 +61,7 @@
 				</h1>
 				<input
 					type="input"
-					id="inputRotate"
+					id="inputDegree"
 					class="mb-2  border-2 text-black border-gray-500 w-full h-auto  text-sm font-bold dark:text-gray-800"
 				/>
 				<button class="btn w-full" on:click={editTextStyles}>rotate</button>
