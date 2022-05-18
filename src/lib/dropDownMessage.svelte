@@ -5,7 +5,6 @@
 	import  {
 		
 		getCoordinatesByElementId,
-		rotateText
 	} from '../utils/editTextonCanvas';
 	import {
 		textLeftAlignFunction,
@@ -66,7 +65,7 @@ hover:border-gray-800 hover:bg-white btn btn-gray-50 flex mt-2 w-full text-sm p-
 					id="inputRotate"
 					class="mb-2  border-2 text-black border-gray-500 w-full h-auto  text-sm font-bold dark:text-gray-800"
 				/>
-				<button class="btn w-full" on:click={rotateText}>rotate</button>
+				<button class="btn w-full" >rotate</button>
 			</div>
 		</li>
 

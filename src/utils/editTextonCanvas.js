@@ -47,12 +47,34 @@
 			if (!subscribe) {
 				return;
 			}
-			const rotationInput = document.getElementById('inputDegree').value;
+			const rotationInput = document.getElementById('inputRotateDegree').value;
 			if (data == null) {
 				return;
 			}
 			data.setAttrs({
-				rotateText:rotationInput
+				
+				rotationDeg: rotationInput,
+			});
+			subscribe = false;
+			unSubscribe();
+		});
+	}
+
+	export function editElementPosition() {
+		subscribe = true;
+		const unSubscribe = selected.subscribe((data) => {
+			// console.log(data);
+			if (!subscribe) {
+				return;
+			}
+			const positionXInput = document.getElementById('positionX').value;
+			const positionYInput = document.getElementById('positionY').value;
+			if (data == null) {
+				return;
+			}
+			data.setAttrs({
+				X: positionXInput,
+				Y: positionYInput
 
 			});
 			subscribe = false;
@@ -72,13 +94,5 @@
 		let yaxis = elCoordinates.y;
 		callback(xaxis, yaxis);
 		console.log(yaxis);
-	}
-
-	//rotate the selected text
-
-	export function rotateText() {
-		var inputRotate = document.getElementById('inputRotate').value;
-		document.getElementById('uniqueIdentifier').style.transform = 'rotate(' + inputRotate + 'deg)';
-		document.getElementById('uniqueIdentifier').style.background = 'red';
 	}
 

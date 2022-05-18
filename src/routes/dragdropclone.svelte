@@ -36,7 +36,6 @@
 			//  ev.target.appendChild(nodeCopy);
 			ev.stopPropagation();
 		}
-		console.log(data);
 		ev.preventDefault();
 
 		return false;

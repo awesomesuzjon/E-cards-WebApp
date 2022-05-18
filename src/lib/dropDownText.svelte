@@ -1,7 +1,7 @@
 <script>
 	import FontFamily from './fontFamily.svelte';
 	import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte';
-	import { editFontSize, editTextColor,editRotateText, getCoordinatesByElementId } from '../utils/editTextonCanvas';
+	import { editFontSize,editElementPosition, editTextColor,editRotateText } from '../utils/editTextonCanvas';
 	import  {
 		textLeftAlignFunction,
 		textCenterAlignFunction,
@@ -31,24 +31,20 @@
 
 				<input
 					type="input"
-					bind:value={xaxis}
+					id="positionX"
 					class=" mr-1 border-2 text-black border-gray-500 w-12 h-auto text-sm font-bold dark:text-gray-800"
 				/>
 
 				<span class="text-sm font-bold ">Y:</span>
 				<input
 					type="input"
-					bind:value={yaxis}
+				id="positionY"
 					class=" mr-1 border-2 text-black border-gray-500 w-12 h-auto x text-sm font-bold dark:text-gray-800"
 				/>
 			</div>
 			<div class="flex flex-col mt-2">
 				<button
-					on:click={() =>
-						getCoordinatesByElementId('box', (x, y) => {
-							xaxis = x;
-							yaxis = y;
-						})}
+					on:click={editElementPosition}
 					class="hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white btn btn-gray-50 flex mt-2 w-full text-sm p-1"
 					>Enter</button
 				>
@@ -61,7 +57,7 @@
 				</h1>
 				<input
 					type="input"
-					id="inputDegree"
+					id="inputRotateDegree"
 					class="mb-2  border-2 text-black border-gray-500 w-full h-auto  text-sm font-bold dark:text-gray-800"
 				/>
 				<button class="btn w-full" on:click={editRotateText}>rotate</button>

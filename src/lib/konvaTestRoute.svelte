@@ -6,6 +6,7 @@
 	export let someText;
 
 	import { getContext, onDestroy } from 'svelte';
+import { text } from 'svelte/internal';
 
 	const { getStage } = getContext('konva');
 	const { getLayer } = getContext('konva_layer');
@@ -30,6 +31,29 @@
 		// $selected = text;
 		layer.add(text);
 
+		var itemURL = '';
+		var Img = document.getElementById('drag-items');
+        Img.addEventListener('dragstart', function (e) {
+          itemURL = e.target.src;
+		  
+        });
+
+		// var con = stage.container
+
+		// con.addEventListener('dragover',function(e){
+		// 	e.preventDefault();
+		// })
+
+		// con.addEventListener('drop',function(e){
+		// 	e.preventDefault();
+		// 	stage.setPointersPositions(e);
+		// 	Konva.Image.fromURL(itemURL,function(image){
+		// 		layer.add(image);
+		// 		image.position(stage.getPointerPosition());
+		// 		image.draggable(true);
+		// 	})
+		// })
+
 		var previousTarget = null;
 
 		var transformer = new Konva.Transformer();
@@ -49,7 +73,6 @@
 			// text.fill = 'red';
 			// selected.set(e.target);
 			$selected = e.target;
-			console.log(selected);
 			transformer.attachTo(e.target);
 			previousTarget = e.target;
 

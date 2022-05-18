@@ -1,7 +1,7 @@
 <script>
 	import FontFamily from './fontFamily.svelte';
 	import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte';
-	import {  getCoordinatesByElementId, rotateText } from '../utils/editTextonCanvas';
+	import {  getCoordinatesByElementId } from '../utils/editTextonCanvas';
 	import {
 		textLeftAlignFunction,
 		textCenterAlignFunction,
@@ -63,7 +63,7 @@
 					id="inputRotate"
 					class="mb-2  border-2 text-black border-gray-500 w-full h-auto  text-sm font-bold dark:text-gray-800"
 				/>
-				<button class="btn w-full" on:click={rotateText}>rotate</button>
+				<button class="btn w-full">rotate</button>
 			</div>
 		</li>
 
