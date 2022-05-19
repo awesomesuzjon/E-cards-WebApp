@@ -1,16 +1,7 @@
 <script>
-	import FontFamily from './fontFamily.svelte';
 	import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte';
 	import {  getCoordinatesByElementId } from '../utils/editTextonCanvas';
-	import {
-		textLeftAlignFunction,
-		textCenterAlignFunction,
-		textRightAlignFunction
-	} from '../utils/alignText';
-	import FaAlignLeft from 'svelte-icons/fa/FaAlignLeft.svelte';
-	import FaAlignCenter from 'svelte-icons/fa/FaAlignCenter.svelte';
-	import FaAlignRight from 'svelte-icons/fa/FaAlignRight.svelte';
-	
+
 	let xaxis;
 	let yaxis;
 </script>

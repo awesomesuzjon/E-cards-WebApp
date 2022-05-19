@@ -3,12 +3,7 @@ import DropDownText from './dropDownText.svelte'
 import DropDownStickers from './dropDownStickers.svelte';
 import DropDownBackground from './dropDownBackground.svelte';
 import DropDownMessage from './dropDownMessage.svelte';
-  
-let  xaxis; 
-  let yaxis;
-  </script>
-  
-  
+  </script>  
   
   <div class="drawer drawer-end w-1/3">
       <input id="my-drawer-4" type="checkbox" class="drawer-toggle">

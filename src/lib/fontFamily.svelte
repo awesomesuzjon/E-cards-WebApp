@@ -1,11 +1,5 @@
 <script>
-    // function fontFamilyChangeFunc() {
-    //   var selector = document.getElementById('selectFontFamily');
-    //   var family = selector.options[selector.selectedIndex].value;
-    //   var h1 = document.getElementById('containerId')
-    //   h1.style.fontFamily = family;        
-    // }
-    import { eventArray, selected } from '../stores/selectedItemId';
+    import {  selected } from '../stores/selectedItemId';
 
     let subscribe = false;
     export function fontFamilyChangeFunc() {
@@ -26,7 +20,6 @@
 			unSubscribe();
 		});
 	}
-
   </script>
 
 

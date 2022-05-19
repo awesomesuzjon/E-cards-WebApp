@@ -1,19 +1,18 @@
 <script>
-	import Editsidebar from './editsidebar.svelte';
 	import SaveTemplate from '$lib/saveTemplate.svelte';
 	import KonvaAddText from '$lib/konvaAddText.svelte';
 	import KonvaImgDragTest from '$lib/konvaImgDragTest.svelte';
 	import { allowDrop, drag, drop } from '../routes/dragdropclone.svelte';
-	import { draggableStoreSticker } from '../stores/storeStickers.js';
 	import MdFullscreen from 'svelte-icons/md/MdFullscreen.svelte';
 	import { openFullScreenFunc } from '../utils/openFullScreen';
-	import { removeImgFunc, removeFgImgFunc } from '../utils/removeImg';
+	import { removeImgFunc } from '../utils/removeImg';
 	import FaAngleRight from 'svelte-icons/fa/FaAngleRight.svelte';
 	import { textStore } from '../stores/storeText';
 	import Stage from '$lib/stage.svelte';
 	import Layer from '$lib/layer.svelte';
 	import Stickers from '$lib/stickers.svelte';
 	import ElementPushToCanvas from '$lib/elementPushToCanvas.svelte';
+import EditSidebar from './editSidebar.svelte';
 
 	let someText;
 	let files = [];
@@ -56,7 +55,6 @@
 		</div>
 	</div>
 
-
 	<div id="canvasContainer" class=" flex    items-center 	 h-full">
 		<label
 			for="my-drawer"
@@ -70,17 +68,21 @@
 			on:dragover={allowDrop}
 			id="canvasHolder"
 			style="width:20em;height:450px"
-			class="  text-black dark:text-white cursor-move   self-center  border-8 bg-gray-100  ">
+			class="  text-black dark:text-white cursor-move   self-center  border-8 bg-gray-100  "
+		>
 			<div
 				id="canvasImgContainer"
-				class=" flex z-0 items-center justify-center relative  content-center ">
+				class=" flex z-0 items-center justify-center relative  content-center "
+			>
 				{#each files as file}
-					<img class="z-0 w-100% top-0 h-auto absolute" id="canvasImg" src={URL.createObjectURL(file)} alt="" />
+					<img
+						class="z-0 w-100% top-0 h-auto absolute"
+						id="canvasImg"
+						src={URL.createObjectURL(file)}
+						alt=""
+					/>
 				{/each}
-
 			</div>
-
-		
 
 			<Stage>
 				{#each $textStore as itemText, index}
@@ -103,7 +105,7 @@
 				<MdFullscreen />
 			</button>
 		</div>
-		<Editsidebar />
+		<EditSidebar/>
 	</div>
 </div>
 <p class="text-sm mt-2"><strong>Tip:</strong> Press the "Esc" key to exit full screen.</p>

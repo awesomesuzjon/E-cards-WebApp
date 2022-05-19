@@ -9,15 +9,9 @@ import Pagination from './pagination.svelte';
 
 
 </script>
-
-
 <EcardTemplateBtn/>
-
-
 <div class="flex  " >
-
   
-
     <img id="targetContent" class="z-50    absolute w-4/12 h-4/5 hidden   justify-center" src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/holi-design-template-44ce589f65c0ac4315a373fff00def9d_screen.jpg?ts=1600223391" alt="">
     
     

@@ -108,7 +108,7 @@
 
 				<li class="w-full py-4 hover:shadow-xl hover:bg-blue-100 dark:hover:bg-gray-700">
 					<a
-						href="/stickers"
+						href="/stickerTable"
 						class=" flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white "
 					>
 						<div class="flex items-center align-middle">
@@ -122,7 +122,7 @@
 				</li>
 				<li class="w-full py-4 hover:shadow-xl hover:bg-blue-100 dark:hover:bg-gray-700">
 					<a
-						href="/messages"
+						href="/messageTable"
 						class=" flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white "
 					>
 						<div class="flex items-center align-middle">
