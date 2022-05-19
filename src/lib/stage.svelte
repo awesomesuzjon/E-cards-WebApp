@@ -8,8 +8,8 @@
 
 	onMount(() => {
 		stage = new Konva.Stage({
-			container: container,
-			width: 580,
+			container: 'container',
+			width: 640,
 			height: 430
 		});
 	});
@@ -18,8 +18,10 @@
 	});
 </script>
 
-<div bind:this={container} id="container" class="absolute top-50 left-50">
+<div bind:this={container} id="container" class="bg-blue-500 absolute top-50 left-50">
+<!-- <div  id="container" class="bg-blue-500 absolute top-50 left-50"> -->
 	{#if container}
+	
 		<slot />
 	{/if}
 </div>

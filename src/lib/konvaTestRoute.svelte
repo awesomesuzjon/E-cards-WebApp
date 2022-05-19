@@ -38,28 +38,10 @@ import { text } from 'svelte/internal';
 		  
         });
 
-		// var con = stage.container
-
-		// con.addEventListener('dragover',function(e){
-		// 	e.preventDefault();
-		// })
-
-		// con.addEventListener('drop',function(e){
-		// 	e.preventDefault();
-		// 	stage.setPointersPositions(e);
-		// 	Konva.Image.fromURL(itemURL,function(image){
-		// 		layer.add(image);
-		// 		image.position(stage.getPointerPosition());
-		// 		image.draggable(true);
-		// 	})
-		// })
-
 		var previousTarget = null;
 
 		var transformer = new Konva.Transformer();
-		// transformer.keepRatio(true);
 		layer.add(transformer);
-		// Text.fontSize = 40;
 
 		stage.on('click tap', function (e) {
 			if (e.target === previousTarget || e.target === stage) {
@@ -70,8 +52,6 @@ import { text } from 'svelte/internal';
 				previousTarget = null;
 				return;
 			}
-			// text.fill = 'red';
-			// selected.set(e.target);
 			$selected = e.target;
 			transformer.attachTo(e.target);
 			previousTarget = e.target;
@@ -80,11 +60,6 @@ import { text } from 'svelte/internal';
 		});
 	});
 
-	export function changeTextFontSize(size) {
-		$selected.setAttrs({
-			fontSize: size
-		});
-	}
+
 </script>
 
-<div id="container" />
