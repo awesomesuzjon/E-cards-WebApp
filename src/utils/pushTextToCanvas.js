@@ -1,4 +1,4 @@
-	import { textStore } from '../stores/storeText';
+		import { textStore } from '../stores/storeText';
 	
 	export function pushTextToCanvasFunc() {
 		var textCanvas = [];

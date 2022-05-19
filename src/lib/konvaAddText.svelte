@@ -30,12 +30,6 @@
 		// $selected = text;
 		layer.add(text);
 
-		var itemURL = '';
-		var Img = document.getElementById('drag-items');
-        Img.addEventListener('dragstart', function (e) {
-          itemURL = e.target.src;
-		  
-        });
 
 		var previousTarget = null;
 
@@ -55,7 +49,6 @@
 			transformer.attachTo(e.target);
 			previousTarget = e.target;
 
-			const eventTargetId = e.target.attrs.id;
 		});
 	});
 

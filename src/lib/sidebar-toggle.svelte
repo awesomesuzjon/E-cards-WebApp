@@ -7,7 +7,8 @@
 	import Draggable from './Draggable.svelte';
 	import { cloneElementFunc } from '../utils/cloneElement';
 	import SaveTemplate from '$lib/saveTemplate.svelte';
-	import KonvaTestRoute from '$lib/konvaTestRoute.svelte';
+	import KonvaAddText from '$lib/konvaAddText.svelte';
+	import KonvaImgDragTest from '$lib/konvaImgDragTest.svelte';
 	import { allowDrop, drag, drop } from '../routes/dragdropclone.svelte';
 	import { draggableStoreSticker } from '../stores/storeStickers.js';
 	import MdFullscreen from 'svelte-icons/md/MdFullscreen.svelte';
@@ -19,9 +20,7 @@
 	import Stage from '$lib/stage.svelte';
 	import Layer from '$lib/layer.svelte';
 	import { onMount } from 'svelte';
-import Stickers from '$lib/stickers.svelte';
-import KonvaImgDragTest from '$lib/konvaImgDragTest.svelte';
-
+	import Stickers from '$lib/stickers.svelte';
 
 	let someText;
 	let arraySticker = [];
@@ -130,17 +129,9 @@ import KonvaImgDragTest from '$lib/konvaImgDragTest.svelte';
 					</div>
 				</li>
 
-				 <li class="p-4">
-
-					<Stickers/>
-				
-				
-					<button
-					class="hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white btn drawer-button btn-gray-50 center w-3/6 mt-2 text-sm p-1"
-					>Choose:</button
-				>
-				</li> 
-
+				<li class="p-4">
+					<Stickers />
+				</li>
 
 				<li class="p-4 flex ">
 					<div class="dropdown float-left ">
@@ -270,27 +261,12 @@ import KonvaImgDragTest from '$lib/konvaImgDragTest.svelte';
 				{#each $textStore as itemText, index}
 					<Layer>
 						<div class="textDivCanvas ">
-							<!-- <Circle x="30" y="50" someText={itemText}  id='container'/> -->
-							<KonvaTestRoute someText={itemText} id={someText} />
-							<KonvaImgDragTest/>
+							<KonvaImgDragTest />
+							<KonvaAddText someText={itemText} id={someText} />
 						</div>
 					</Layer>
 				{/each}
 			</Stage>
-
-			<!-- <Draggable> -->
-			<!-- <div class="textDivCanvas " id="container"> -->
-
-			<!-- <KonvaTestRoute someText={itemText} containerId={`container_${index}`} > -->
-			<!-- <div  containerId={`container_${index}`}> -->
-			<!-- </div> -->
-			<!-- </KonvaTestRoute>  -->
-			<!-- </Draggable> -->
-			<!-- {@html itemText.outerHTML} -->
-			<!-- 				
-				</Resize>	
-</Rotate> -->
-			<!-- </Konva> -->
 
 			<Draggable>
 				<div class="cloneMessageDiv" />
@@ -305,12 +281,6 @@ import KonvaImgDragTest from '$lib/konvaImgDragTest.svelte';
 			>
 				<MdFullscreen />
 			</button>
-			<!-- 
-
-    <button on:click={resetCanvasFunc} id="resetCanvasBtn" class="btn bottom-0 right-8  absolute w-8 p-0 bg-transparent border-none 
-    hover:bg-transparent hover:border-none  text-black h-2" > 
-  <MdFullscreen/>
-     </button> -->
 		</div>
 		<Editsidebar />
 	</div>
@@ -321,7 +291,6 @@ import KonvaImgDragTest from '$lib/konvaImgDragTest.svelte';
 </div>
 
 <style>
-	
 	#clonedElement {
 		position: relative;
 		z-index: 50;
@@ -330,7 +299,6 @@ import KonvaImgDragTest from '$lib/konvaImgDragTest.svelte';
 		font-size: smaller;
 		width: 100%;
 	}
-
 
 	.canvasTextInput {
 		position: absolute;
@@ -365,7 +333,7 @@ import KonvaImgDragTest from '$lib/konvaImgDragTest.svelte';
 		width: 200px;
 	}
 
-	#canvasHolder{
+	#canvasHolder {
 		height: 450px;
 	}
 </style>
