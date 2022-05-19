@@ -6,7 +6,6 @@
 	export let someText;
 
 	import { getContext, onDestroy } from 'svelte';
-import { text } from 'svelte/internal';
 
 	const { getStage } = getContext('konva');
 	const { getLayer } = getContext('konva_layer');

@@ -18,7 +18,7 @@
 	});
 </script>
 
-<div bind:this={container} id="container" class="bg-blue-500 absolute top-50 left-50">
+<div bind:this={container} id="container" class="absolute top-50 left-50">
 <!-- <div  id="container" class="bg-blue-500 absolute top-50 left-50"> -->
 	{#if container}
 	

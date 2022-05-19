@@ -1,19 +1,20 @@
 <script>
 	import Konva from 'konva';
 import { onMount } from 'svelte';
-	
-	var width = 850;
-	var height = 600;
+import { selected } from '../stores/selectedItemId';
+import { getContext, onDestroy } from 'svelte';
 
-	onMount(()=>{
+const { getStage } = getContext('konva');
+	const { getLayer } = getContext('konva_layer');
 
-	var stage = new Konva.Stage({
-		container: 'container',
-		width: width,
-		height: height
-	});
-	var layer = new Konva.Layer();
-	stage.add(layer);
+
+		onMount(() => {
+		const stage = getStage();
+
+		const layer = getLayer();
+ 
+
+
 
 	// what is url of dragging element?
 	var itemURL = '';
@@ -40,11 +41,29 @@ import { onMount } from 'svelte';
 			image.position(stage.getPointerPosition());
 			image.draggable(true);
 		});
+
+		var previousTarget = null;
+
+var transformer = new Konva.Transformer();
+layer.add(transformer);
+
+stage.on('click tap', function (e) {
+	if (e.target === previousTarget || e.target === stage) {
+		transformer.destroy();
+		transformer = new Konva.Transformer();
+		layer.add(transformer);
+		$selected = null;
+		previousTarget = null;
+		return;
+	}
+	$selected = e.target;
+	transformer.attachTo(e.target);
+	previousTarget = e.target;
+
+	const eventTargetId = e.target.attrs.id;
+});
+});
+
 	});
-})
 
 </script>
-<div id="drag-items" class="m-2 p-4 " >
-	<img class="w-24" src="https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&w=1000&q=80" draggable="true" />
-  </div>
-  <div id="container" class="bg-gray-600 p-4 m-6"> </div>
