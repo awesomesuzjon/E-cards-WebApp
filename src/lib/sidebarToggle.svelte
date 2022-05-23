@@ -1,7 +1,7 @@
 <script>
 	import SaveTemplate from '$lib/saveTemplate.svelte';
 	import KonvaAddText from '$lib/konvaAddText.svelte';
-	import KonvaImgDragTest from '$lib/konvaImgDragTest.svelte';
+	import KonvaImgDrag from '$lib/konvaImgDrag.svelte';
 	import { allowDrop, drag, drop } from '../routes/dragdropclone.svelte';
 	import MdFullscreen from 'svelte-icons/md/MdFullscreen.svelte';
 	import { openFullScreenFunc } from '../utils/openFullScreen';
@@ -12,7 +12,7 @@
 	import Layer from '$lib/layer.svelte';
 	import Stickers from '$lib/stickers.svelte';
 	import ElementPushToCanvas from '$lib/elementPushToCanvas.svelte';
-import EditSidebar from './editSidebar.svelte';
+	import EditSidebar from './editSidebar.svelte';
 
 	let someText;
 	let files = [];
@@ -76,7 +76,8 @@ import EditSidebar from './editSidebar.svelte';
 			>
 				{#each files as file}
 					<img
-						class="z-0 w-100% top-0 h-auto absolute"
+						style="width:20em;height:435px"
+						class="z-0  top-0  absolute"
 						id="canvasImg"
 						src={URL.createObjectURL(file)}
 						alt=""
@@ -85,16 +86,17 @@ import EditSidebar from './editSidebar.svelte';
 			</div>
 
 			<Stage>
-				{#each $textStore as itemText, index}
-					<Layer>
-						<div class="textDivCanvas ">
-							<KonvaImgDragTest />
-							<KonvaAddText someText={itemText} id={someText} />
-						</div>
-					</Layer>
-				{/each}
+				<Layer>
+					<!-- {#each $textStore as itemText, index} -->
+					<div class="textDivCanvas ">
+						<KonvaImgDrag />
+						<KonvaAddText />
+					</div>
+					<!-- {/each} -->
+				</Layer>
 			</Stage>
 
+			<!-- 
 			<button
 				id="fullScreenBtn"
 				on:click={openFullScreenFunc}
@@ -103,12 +105,15 @@ import EditSidebar from './editSidebar.svelte';
      border-none hover:bg-transparent hover:border-none  text-black h-2"
 			>
 				<MdFullscreen />
-			</button>
+			</button> -->
 		</div>
-		<EditSidebar/>
+		<EditSidebar />
 	</div>
 </div>
 <p class="text-sm mt-2"><strong>Tip:</strong> Press the "Esc" key to exit full screen.</p>
 <div>
+	<button id="saveAsPdf" class="btn">Save as PDF</button>
+	<button id="saveAsImg" class="btn">Save as Img</button>
+
 	<SaveTemplate />
 </div>

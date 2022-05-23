@@ -46,6 +46,7 @@
     "daisyui": "^2.11.1",
     "firebase": "^9.6.11",
     "interactjs": "^1.10.11",
+    "jspdf": "^2.5.1",
     "kinetic": "^5.2.0",
     "konva": "^8.3.8",
     "rxfire": "^6.0.3",

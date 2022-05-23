@@ -4,11 +4,14 @@
     import { getContext, setContext } from 'svelte';
     const { getStage } = getContext("konva");
     setContext("konva_layer", {
-        getLayer: () => layer
+        getLayer: () => layer,
+        
     });
     const stage = getStage();
     var layer = new Konva.Layer();
     stage.add(layer);
+		console.log('layer created');
+
 </script>
 
 

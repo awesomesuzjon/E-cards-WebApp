@@ -9,9 +9,14 @@
 	onMount(() => {
 		stage = new Konva.Stage({
 			container: 'container',
-			width: 640,
-			height: 430
+			width: 580,
+			height: 434,
+			fill:'red',
+			stroke:'blue',
+			backgroundColor:"black",
+			
 		});
+		console.log('stage created');
 	});
 	setContext('konva', {
 		getStage: () => stage
