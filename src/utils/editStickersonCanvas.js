@@ -2,19 +2,21 @@
 	import { selected } from '../stores/selectedItemId';
 	let subscribe = false;
 
-	export function editFontSize() {
+	export function editStickerSize() {
 		subscribe = true;
 		const unSubscribe = selected.subscribe((data) => {
 			// console.log(data);
 			if (!subscribe) {
 				return;
 			}
-			const input = document.getElementById('input').value;
+			const stickerWidth = document.getElementById('stickerWidth').value;
+			const stickerHeight = document.getElementById('stickerHeight').value;
 			if (data == null) {
 				return;
 			}
 			data.setAttrs({
-				fontSize: parseInt(input)
+				width: parseInt(stickerWidth),
+				height: parseInt(stickerHeight)
 		
 			});
 			subscribe = false;
@@ -22,51 +24,15 @@
 		});
 	}
 
-	export function editTextColor() {
-		subscribe = true;
-		const unSubscribe = selected.subscribe((data) => {
-			// console.log(data);
-			if (!subscribe) {
-				return;
-			}
-			const colorInput = document.getElementById('colorInput').value;
-			if (data == null) {
-				return;
-			}
-			data.setAttrs({
-					fill : colorInput
-			});
-			subscribe = false;
-			unSubscribe();
-		});
-	}
 
-	export function editTextOpacity() {
-		subscribe = true;
-		const unSubscribe = selected.subscribe((data) => {
-			// console.log(data);
-			if (!subscribe) {
-				return;
-			}
-			const opacityValue = document.getElementById('opacityInput').value;
-			if (data == null) {
-				return;
-			}
-			data.setAttrs({
-					opacity : opacityValue
-			});
-			subscribe = false;
-			unSubscribe();
-		});
-	}
 
-	export function editRotateText() {
+	export function editRotateSticker() {
 		subscribe = true;
 		const unSubscribe = selected.subscribe((data) => {
 			if (!subscribe) {
 				return;
 			}
-			const rotationInput = document.getElementById('inputRotateDegree').value;
+			const rotationInput = document.getElementById('inputRotateSticker').value;
 			if (data == null) {
 				return;
 			}
@@ -79,15 +45,15 @@
 		});
 	}
 
-	export function editElementPosition() {
+	export function editStickerPosition() {
 		subscribe = true;
 		const unSubscribe = selected.subscribe((data) => {
 			// console.log(data);
 			if (!subscribe) {
 				return;
 			}
-			const positionXInput = document.getElementById('positionX').value;
-			const positionYInput = document.getElementById('positionY').value;
+			const positionXInput = document.getElementById('stickerPositionX').value;
+			const positionYInput = document.getElementById('stickerPositionY').value;
 			if (data == null) {
 				return;
 			}
@@ -100,7 +66,23 @@
 			unSubscribe();
 		});
 	}
-	
 
 
-
+	export function editStickerOpacity() {
+		subscribe = true;
+		const unSubscribe = selected.subscribe((data) => {
+			// console.log(data);
+			if (!subscribe) {
+				return;
+			}
+			const opacityStickerValue = document.getElementById('opacityStickerInput').value;
+			if (data == null) {
+				return;
+			}
+			data.setAttrs({
+					opacity : opacityStickerValue
+			});
+			subscribe = false;
+			unSubscribe();
+		});
+	}

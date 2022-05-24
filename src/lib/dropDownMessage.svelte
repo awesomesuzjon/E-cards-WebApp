@@ -2,10 +2,6 @@
 	import FaAlignLeft from 'svelte-icons/fa/FaAlignLeft.svelte';
 	import FaAlignCenter from 'svelte-icons/fa/FaAlignCenter.svelte';
 	import FaAlignRight from 'svelte-icons/fa/FaAlignRight.svelte';
-	import  {
-		
-		getCoordinatesByElementId,
-	} from '../utils/editTextonCanvas';
 	import {
 		textLeftAlignFunction,
 		textCenterAlignFunction,
@@ -45,11 +41,7 @@
 			</div>
 			<div class="flex flex-col mt-2">
 				<button
-					on:click={() =>
-						getCoordinatesByElementId('box', (x, y) => {
-							xaxis = x;
-							yaxis = y;
-						})}
+					
 					class="hover:text-gray-800 hover:no-underline 
 hover:border-gray-800 hover:bg-white btn btn-gray-50 flex mt-2 w-full text-sm p-1">Enter</button
 				>
