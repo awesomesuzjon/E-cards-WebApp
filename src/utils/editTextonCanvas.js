@@ -1,6 +1,5 @@
-
-	import { selected } from '../stores/selectedItemId';
-	let subscribe = false;
+import { selected } from '../stores/selectedItemId';
+let subscribe = false;
 
 	export function editFontSize() {
 		subscribe = true;
@@ -94,13 +93,8 @@
 			data.setAttrs({
 				X: positionXInput,
 				Y: positionYInput
-
 			});
 			subscribe = false;
 			unSubscribe();
 		});
 	}
-	
-
-
-
