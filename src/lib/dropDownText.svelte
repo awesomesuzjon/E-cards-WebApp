@@ -144,12 +144,11 @@
 					class="text-sm font-bold left flex items-center justify-center self-center truncate"
 					draggable="true"
 				>
-				Opacity(Between 0 and 1)
+					Opacity(Between 0 and 1)
 				</h1>
 
 				<input
 					type="text"
-					
 					id="opacityInput"
 					class=" mx-2 border-2 text-black border-gray-500 w-full h-auto  text-sm font-bold dark:text-gray-800"
 				/>
@@ -203,7 +202,5 @@
 				<button class="btn w-full" on:click={editRotateText}>rotate</button>
 			</div>
 		</li>
-
-	
 	</div>
 </div>

@@ -3,17 +3,17 @@
 	import { onMount } from 'svelte';
 	import { selected } from '../stores/selectedItemId';
 	import { v4 as uuid } from 'uuid';
-	// import { canvasBgStore } from '../stores/canvasColor.js';
-	// console.log(JSON.stringify(canvasBgStore))
 	import { textStore } from '../stores/storeText';
-	// export let someText;
-
 	import { getContext } from 'svelte';
+	import { canvasBgStore } from '../stores/canvasColor';
 
 	const { getStage } = getContext('konva');
 	const { getLayer } = getContext('konva_layer');
 	const stage = getStage();
 	const layer = getLayer();
+
+	let emptyArray = [];
+	emptyArray.push(canvasBgStore);
 	onMount(() => {
 		textStore.subscribe((data) => {
 			var text = new Konva.Text({
@@ -26,23 +26,37 @@
 				id: uuid(),
 				fontFamily: 'arial'
 			});
-
 			layer.add(text);
 		});
-		// 	var background = new Konva.Rect({
-		//     x: 0,
-		//     y: 0,
-		//     width: stage.width(),
-		//     height: stage.height(),
-		// 	// fill:canvasBgStore,
-		// 	fill:'cyan',
-		// 	listening:false,
-		// })
-		// layer.add(background);
-		// console.log(canvasBgStore,'konva color value');
 
+		//rectangle element over the stage
+		document.getElementById('colorBgBtn').addEventListener('click', () => {
+			var backgroundRect = new Konva.Rect({
+				x: 0,
+				y: 0,
+				width: stage.width(),
+				height: stage.height(),
+				// fill:canvasBgStore,
+				fill: { canvasBgStore },
+				listening: false
+			});
+			layer.add(backgroundRect);
+			console.log(canvasBgStore, 'konva store canvas bg value');
+		});
+
+		//konva add image as background
+		Konva.Image.fromURL(`ktm.jpg`, function (bgImage) {
+			bgImage.setAttrs({
+				x: 0,
+				y: 0,
+				width: stage.width(),
+				height: stage.height()
+			});
+			// layer.add(bgImage);
+		});
+
+		//transformer for each clicked element on canvas
 		var previousTarget = null;
-
 		var transformer = new Konva.Transformer();
 		layer.add(transformer);
 
@@ -68,15 +82,6 @@
 			link.click();
 			document.body.removeChild(link);
 		}
-
-		//   function konvaColorChange(){
-		// 	  var colorBgBtnUpdated = document.getElementById('colorBgBtn').addEventListener(onclick,()=>{
-
-		// 		  var canvasBgValueUpdated = document.getElementById(colorBginput).value
-		// 		  console.log(canvasBgValueUpdated,'updated value');
-		// 	  })
-		//   }
-		//   konvaColorChange()
 
 		document.getElementById('saveAsImg').addEventListener(
 			'click',

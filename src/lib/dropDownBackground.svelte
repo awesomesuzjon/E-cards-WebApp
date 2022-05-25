@@ -2,7 +2,9 @@
   import {changeCanvasBgColorFunc,revertCanvasBgColorFunc } from '../utils/colorpicker.js';
   import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte'
   import { canvasBgStore } from '../stores/canvasColor.js';
+import { loop_guard } from 'svelte/internal';
 
+let canvasBgArray = []
 </script>
 
 <div tabindex="0" class="collapse">
@@ -20,14 +22,20 @@
          <input type="color" id='colorBginput' value="#e66465"  class=" mx-2 border-2 text-black  border-gray-500 w-10 h-6  text-sm font-bold dark:text-gray-800">
        </div>
 
+       
+
        <button 
+       id="colorBgBtn"
        on:click= {
        ()=>{
     var canvasBgValue = document.getElementById('colorBginput').value;
+    canvasBgArray.push(canvasBgValue)
     canvasBgStore.subscribe(canvasBgStore =>{
       canvasBgStore= canvasBgValue
-      // canvasBgStore = canvasBgValue
-      console.log(canvasBgStore)
+      
+      console.log(canvasBgStore,'color store value');
+      
+    
       })
     
   }
