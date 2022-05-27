@@ -14,7 +14,7 @@
 		let dragElement = document.getElementById(data);
 		if (dragElement != null) {
 			let storeArray = [];
-			let storeArrayText;
+			console.log(storeArray);
 			var dragElementCopy = dragElement.cloneNode(true);
 
 			// for draggable Sticker
@@ -23,17 +23,6 @@
 				storeArray = store;
 			});
 			draggableStoreSticker.set([...storeArray, dragElementCopy]);
-
-			// for draggable text
-
-			// draggableStoreText.subscribe(storeText=>{
-			//     storeArrayText = storeText;
-			// });
-			// draggableStoreText.set([...storeArrayText, dragElementCopy]);
-
-			// let element = document.createElement("div").setAttribute("class","cloneDestinationDivClass");
-			// document.getElementById("test").appendChild(element);
-			//  ev.target.appendChild(nodeCopy);
 			ev.stopPropagation();
 		}
 		ev.preventDefault();

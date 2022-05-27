@@ -31,13 +31,14 @@
 
 		//rectangle element over the stage
 		document.getElementById('colorBgBtn').addEventListener('click', () => {
-			var backgroundRect = new Konva.Rect({
+			var backgroundRect = new Konva.	Rect({
 				x: 0,
 				y: 0,
 				width: stage.width(),
 				height: stage.height(),
-				// fill:canvasBgStore,
-				fill: { canvasBgStore },
+				// fill:'red',
+				stroke:'blue',
+				fill: canvasBgStore ,
 				listening: false
 			});
 			layer.add(backgroundRect);
@@ -57,7 +58,9 @@
 
 		//transformer for each clicked element on canvas
 		var previousTarget = null;
-		var transformer = new Konva.Transformer();
+		var transformer = new Konva.Transformer(
+			
+		);
 		layer.add(transformer);
 
 		stage.on('click tap', function (e) {
@@ -67,9 +70,11 @@
 				layer.add(transformer);
 				$selected = null;
 				previousTarget = null;
+				
 				return;
 			}
 			$selected = e.target;
+			
 			transformer.attachTo(e.target);
 			previousTarget = e.target;
 		});

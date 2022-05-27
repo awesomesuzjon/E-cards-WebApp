@@ -1,13 +1,16 @@
 <script>
 	import Konva from 'konva';
 	import { onMount } from 'svelte';
-	import { selected, selectedItemsArray } from '../stores/selectedItemId';
+	import { selected } from '../stores/selectedItemId';
 	import { getContext, onDestroy } from 'svelte';
 	import jsPDF  from "jspdf";
+import { object_without_properties } from 'svelte/internal';
 
 
 	const { getStage } = getContext('konva');
 	const { getLayer } = getContext('konva_layer');
+
+	let clickedElementArray = []
 
 
 	onMount(() => {
@@ -17,6 +20,8 @@
 		var itemURL = '';
 		document.getElementById('drag-items').addEventListener('dragstart', function (e) {
 			itemURL = e.target.src;
+
+
 			// e.target.moveToTop();
 		});
 
@@ -27,9 +32,8 @@
 
 		con.addEventListener('drop', function (e) {
 			e.preventDefault();
-
+		
 			stage.setPointersPositions(e);
-
 			Konva.Image.fromURL(itemURL, function (image) {
 				layer.add(image);
 
@@ -50,23 +54,27 @@
 					transformer.destroy();
 					transformer = new Konva.Transformer();
 					layer.add(transformer);
+					e.target.moveToBottom();
+					e.target.setZIndex(3);
 					$selected = null;
 					previousTarget = null;
-
-					// selectedItemsArray.push()
-					// console.log(selectedItemsArray)
 					return;
 				}
 
 				$selected = e.target;
 				transformer.attachTo(e.target);
+				e.target.moveToTop();
+
 				previousTarget = e.target;
-
-				// selectedItemsArray.unshift()
-				// 	console.log(selectedItemsArray)
-
-				const eventTargetId = e.target.attrs.id;
-			});
+				// console.log(typeof `$selected`);
+				console.log($selected);
+		// let elementArray = Object.entries($selected)
+	// let elementRemovedArray =	elementArray.unshift();
+	// console.log(elementArray,'selected Element ');
+	// console.log(elementRemovedArray,'removeddddddddddd');
+	// console.log(elementArray,'latest');
+				
+});
 
 			
 		function downloadURI(uri, name) {

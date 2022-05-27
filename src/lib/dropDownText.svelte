@@ -90,23 +90,22 @@
 			</div>
 		</li>
 
-		<li class="p-2">
-			<div class="flex  items-start justify-start  ">
-				<h1 class="text-sm font-bold " draggable="true">Text-Color:</h1>
+		<li class="p-4">
+			<div >
+				<h1 class="text-sm font-bold flex flex-row  items-start justify-center mb-1 " draggable="true">Text-Color:</h1>
 				<input
 					type="color"
 					id="colorInput"
 					value="#e66465"
-					class=" mx-2 border-2 text-black  border-gray-500 w-10 h-6  text-sm font-bold dark:text-gray-800"
+					class="  border-2 text-black  border-gray-500 w-10 h-6  text-sm font-bold dark:text-gray-800"
 				/>
-			</div>
-
-			<button
+				
+				<button
 				on:click={editTextColor}
-				class=" hover:text-gray-800 hover:no-underline 
-       hover:border-gray-800 hover:bg-white btn btn-gray-50 flex items-center 
-       self-center mt-2 w-full text-sm p-1">Enter</button
-			>
+				class="text-sm font-bold flex  justify-center cursor-pointer hover:text-gray-800 bg-gray-700 p-2 hover:no-underline w-32 hover:border-gray-800 hover:bg-white   btn-gray-50  rounded-lg  mt-2 "
+				>Enter</button
+				>
+			</div>
 		</li>
 
 		<li class="p-3">
@@ -122,14 +121,13 @@
 					type="text"
 					value="50"
 					id="input"
-					class=" mx-2 border-2 text-black border-gray-500 w-full h-auto  text-sm font-bold dark:text-gray-800"
+					class=" mx-2 border-2 text-black border-gray-500 w-10 h-auto  text-sm font-bold dark:text-gray-800"
 				/>
 			</div>
 			<button
 				on:click={editFontSize}
-				class=" hover:text-gray-800 hover:no-underline 
-       hover:border-gray-800 hover:bg-white btn btn-gray-50 flex items-center 
-       self-center mt-2 w-full text-sm p-1">Enter</button
+				class="justify-center cursor-pointer hover:text-gray-800 bg-gray-700 p-2 hover:no-underline w-32 hover:border-gray-800 hover:bg-white   btn-gray-50 center rounded-lg  mt-2 text-sm  items-center  flex "
+				>Enter</button
 			>
 		</li>
 
@@ -139,7 +137,7 @@
 		</li>
 
 		<li class="p-3">
-			<div class="flex flex-col ">
+			<div class="flex flex-col justify-center">
 				<h1
 					class="text-sm font-bold left flex items-center justify-center self-center truncate"
 					draggable="true"
@@ -150,20 +148,19 @@
 				<input
 					type="text"
 					id="opacityInput"
-					class=" mx-2 border-2 text-black border-gray-500 w-full h-auto  text-sm font-bold dark:text-gray-800"
+					class="flex justify-center border-2 text-black border-gray-500 w-10 h-auto  text-sm font-bold dark:text-gray-800"
 				/>
 			</div>
 			<button
 				on:click={editTextOpacity}
-				class=" hover:text-gray-800 hover:no-underline 
-       hover:border-gray-800 hover:bg-white btn btn-gray-50 flex items-center 
-       self-center mt-2 w-full text-sm p-1">Enter</button
+				class="justify-center cursor-pointer hover:text-gray-800 bg-gray-700 p-2 hover:no-underline w-32 hover:border-gray-800 hover:bg-white   btn-gray-50 center rounded-lg  mt-2 text-sm  items-center  flex "
+				>Enter</button
 			>
 		</li>
 
 		<li class="p-4">
 			<div class="flex   ">
-				<h1 class="text-sm font-bold justify-center mr-1">Position</h1>
+				<h1 class="text-sm font-bold justify-center  flex">Position</h1>
 				<h2 class="text-sm font-bold ">X:</h2>
 
 				<input
@@ -184,7 +181,7 @@
 			<div class="flex flex-col mt-2">
 				<button
 					on:click={editElementPosition}
-					class="hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white btn btn-gray-50 flex mt-2 w-full text-sm p-1"
+					class="justify-center cursor-pointer hover:text-gray-800 bg-gray-700 p-2 hover:no-underline w-32 hover:border-gray-800 hover:bg-white   btn-gray-50 center rounded-lg  mt-2 text-sm  items-center  flex "
 					>Enter</button
 				>
 
@@ -197,9 +194,10 @@
 				<input
 					type="input"
 					id="inputRotateDegree"
-					class="mb-2  border-2 text-black border-gray-500 w-full h-auto  text-sm font-bold dark:text-gray-800"
+					class="mb-2  border-2 text-black border-gray-500 w-10 h-auto  text-sm font-bold dark:text-gray-800"
 				/>
-				<button class="btn w-full" on:click={editRotateText}>rotate</button>
+				<button 				class="justify-center cursor-pointer hover:text-gray-800 bg-gray-700 p-2 hover:no-underline w-32 hover:border-gray-800 hover:bg-white   btn-gray-50 center rounded-lg  mt-2 text-sm  items-center  flex "
+				 on:click={editRotateText}>rotate</button>
 			</div>
 		</li>
 	</div>
