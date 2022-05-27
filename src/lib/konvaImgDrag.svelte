@@ -60,19 +60,16 @@ import { object_without_properties } from 'svelte/internal';
 					previousTarget = null;
 					return;
 				}
-
 				$selected = e.target;
 				transformer.attachTo(e.target);
 				e.target.moveToTop();
-
 				previousTarget = e.target;
-				// console.log(typeof `$selected`);
 				console.log($selected);
+					
+
+			
 		// let elementArray = Object.entries($selected)
-	// let elementRemovedArray =	elementArray.unshift();
-	// console.log(elementArray,'selected Element ');
-	// console.log(elementRemovedArray,'removeddddddddddd');
-	// console.log(elementArray,'latest');
+
 				
 });
 

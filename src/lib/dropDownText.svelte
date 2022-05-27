@@ -6,7 +6,8 @@
 		editElementPosition,
 		editTextColor,
 		editRotateText,
-		editTextOpacity
+		editTextOpacity,
+		StrokeWidth
 	} from '../utils/editTextonCanvas';
 	import {
 		editFontUndeline,
@@ -91,19 +92,24 @@
 		</li>
 
 		<li class="p-4">
-			<div >
-				<h1 class="text-sm font-bold flex flex-row  items-start justify-center mb-1 " draggable="true">Text-Color:</h1>
+			<div>
+				<h1
+					class="text-sm font-bold flex flex-row  items-start justify-center mb-1 "
+					draggable="true"
+				>
+					Text-Color:
+				</h1>
 				<input
 					type="color"
 					id="colorInput"
 					value="#e66465"
 					class="  border-2 text-black  border-gray-500 w-10 h-6  text-sm font-bold dark:text-gray-800"
 				/>
-				
+
 				<button
-				on:click={editTextColor}
-				class="text-sm font-bold flex  justify-center cursor-pointer hover:text-gray-800 bg-gray-700 p-2 hover:no-underline w-32 hover:border-gray-800 hover:bg-white   btn-gray-50  rounded-lg  mt-2 "
-				>Enter</button
+					on:click={editTextColor}
+					class="text-sm font-bold flex  justify-center cursor-pointer hover:text-gray-800 bg-gray-700 p-2 hover:no-underline w-32 hover:border-gray-800 hover:bg-white   btn-gray-50  rounded-lg  mt-2 "
+					>Enter</button
 				>
 			</div>
 		</li>
@@ -126,6 +132,29 @@
 			</div>
 			<button
 				on:click={editFontSize}
+				class="justify-center cursor-pointer hover:text-gray-800 bg-gray-700 p-2 hover:no-underline w-32 hover:border-gray-800 hover:bg-white   btn-gray-50 center rounded-lg  mt-2 text-sm  items-center  flex "
+				>Enter</button
+			>
+		</li>
+
+		<li class="p-3">
+			<div class="flex flex-col ">
+				<h1
+					class="text-sm font-bold left flex items-center justify-center self-center truncate"
+					draggable="true"
+				>
+					Stroke Width:
+				</h1>
+
+				<input
+					type="text"
+					value="2"
+					id="strokeWidthInput"
+					class=" mx-2 border-2 text-black border-gray-500 w-10 h-auto  text-sm font-bold dark:text-gray-800"
+				/>
+			</div>
+			<button
+				on:click={StrokeWidth}
 				class="justify-center cursor-pointer hover:text-gray-800 bg-gray-700 p-2 hover:no-underline w-32 hover:border-gray-800 hover:bg-white   btn-gray-50 center rounded-lg  mt-2 text-sm  items-center  flex "
 				>Enter</button
 			>
@@ -196,8 +225,10 @@
 					id="inputRotateDegree"
 					class="mb-2  border-2 text-black border-gray-500 w-10 h-auto  text-sm font-bold dark:text-gray-800"
 				/>
-				<button 				class="justify-center cursor-pointer hover:text-gray-800 bg-gray-700 p-2 hover:no-underline w-32 hover:border-gray-800 hover:bg-white   btn-gray-50 center rounded-lg  mt-2 text-sm  items-center  flex "
-				 on:click={editRotateText}>rotate</button>
+				<button
+					class="justify-center cursor-pointer hover:text-gray-800 bg-gray-700 p-2 hover:no-underline w-32 hover:border-gray-800 hover:bg-white   btn-gray-50 center rounded-lg  mt-2 text-sm  items-center  flex "
+					on:click={editRotateText}>rotate</button
+				>
 			</div>
 		</li>
 	</div>

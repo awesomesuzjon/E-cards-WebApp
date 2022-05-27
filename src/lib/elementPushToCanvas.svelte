@@ -1,10 +1,22 @@
 <script>
+import { onMount } from 'svelte';
+
 	import { pushTextToCanvasFunc } from '../utils/pushTextToCanvas';
+
+	onMount(()=>{
+
+		document.getElementById('addNew').addEventListener('keypress', function (e) {
+			if (e.key === 'Enter') {
+				pushTextToCanvasFunc()	
+			}
+		})
+});
 </script>
 
 <div class="flex flex-col items-start justify-center  ">
 	<h1 class="text-sm font-bold  truncate  ">Enter text here:</h1>
-	<input type="text" id="addNew" name="addNewList" class="text-black" />
+	<input type="text" id="addNew" name="addNewList" class="text-black"  on:enterkeyhint={pushTextToCanvasFunc}/>
+	
 
 	<btn
     on:click={pushTextToCanvasFunc}

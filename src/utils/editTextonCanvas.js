@@ -1,6 +1,26 @@
 import { selected } from '../stores/selectedItemId';
 let subscribe = false;
 
+export function StrokeWidth() {
+	subscribe = true;
+	const unSubscribe = selected.subscribe((data) => {
+		// console.log(data);
+		if (!subscribe) {
+			return;
+		}
+		const strokeInputValue = document.getElementById('strokeWidthInput').value;
+		if (data == null) {
+			return;
+		}
+		data.setAttrs({
+			StrokeWidth: strokeInputValue
+	
+		});
+		subscribe = false;
+		unSubscribe();
+	});
+}
+
 	export function editFontSize() {
 		subscribe = true;
 		const unSubscribe = selected.subscribe((data) => {

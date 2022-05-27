@@ -11,9 +11,6 @@
 	const { getLayer } = getContext('konva_layer');
 	const stage = getStage();
 	const layer = getLayer();
-
-	let emptyArray = [];
-	emptyArray.push(canvasBgStore);
 	onMount(() => {
 		textStore.subscribe((data) => {
 			var text = new Konva.Text({
@@ -25,25 +22,37 @@
 				draggable: true,
 				id: uuid(),
 				fontFamily: 'arial'
+				// 		stroke: 'red',
+				// strokeWidth: 2,
+				// shadowColor: 'black',
+				// shadowBlur: 0,
+				// shadowOffset: { x: 5, y: 5 },
+				// shadowOpacity: 0.5
 			});
 			layer.add(text);
 		});
 
 		//rectangle element over the stage
 		document.getElementById('colorBgBtn').addEventListener('click', () => {
-			var backgroundRect = new Konva.	Rect({
+			(canvasBgStore) => canvasBgStore.update();
+			var backgroundRect = new Konva.Rect({
 				x: 0,
 				y: 0,
 				width: stage.width(),
 				height: stage.height(),
-				// fill:'red',
-				stroke:'blue',
-				fill: canvasBgStore ,
+				fill: 'red',
+				// fill: canvasBgStore ,
 				listening: false
 			});
+
 			layer.add(backgroundRect);
-			console.log(canvasBgStore, 'konva store canvas bg value');
 		});
+		let canvasBgStoreArray = Object.entries(canvasBgStore);
+		for (var i = 0; i < canvasBgStoreArray.length; i++) {
+			console.log(canvasBgStoreArray[i]);
+		}
+		console.log(canvasBgStoreArray);
+		console.log(typeof canvasBgStoreArray);
 
 		//konva add image as background
 		Konva.Image.fromURL(`ktm.jpg`, function (bgImage) {
@@ -58,9 +67,7 @@
 
 		//transformer for each clicked element on canvas
 		var previousTarget = null;
-		var transformer = new Konva.Transformer(
-			
-		);
+		var transformer = new Konva.Transformer();
 		layer.add(transformer);
 
 		stage.on('click tap', function (e) {
@@ -70,14 +77,24 @@
 				layer.add(transformer);
 				$selected = null;
 				previousTarget = null;
-				
+
 				return;
 			}
 			$selected = e.target;
-			
+
 			transformer.attachTo(e.target);
 			previousTarget = e.target;
+
+			//delete double clicked element on canvas
+			$selected.on('wheel', () => {
+				$selected.destroy();
+				transformer.destroy();
+
+				log('deleted');
+			});
 		});
+
+		//save as jpg image
 
 		function downloadURI(uri, name) {
 			var link = document.createElement('a');
