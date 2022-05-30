@@ -21,13 +21,13 @@
 				text: !data.length ? '' : data[data.length - 1],
 				draggable: true,
 				id: uuid(),
-				fontFamily: 'arial'
-				// 		stroke: 'red',
-				// strokeWidth: 2,
-				// shadowColor: 'black',
-				// shadowBlur: 0,
-				// shadowOffset: { x: 5, y: 5 },
-				// shadowOpacity: 0.5
+				fontFamily: 'arial',
+				stroke: 'red',
+				strokeWidth: 2,
+				shadowColor: 'black',
+				shadowBlur: 0,
+				shadowOffset: { x: 10, y: 15 },
+				shadowOpacity: 0.5
 			});
 			layer.add(text);
 		});
@@ -40,7 +40,7 @@
 				y: 0,
 				width: stage.width(),
 				height: stage.height(),
-				fill: 'red',
+				fill: 'yellow',
 				// fill: canvasBgStore ,
 				listening: false
 			});
