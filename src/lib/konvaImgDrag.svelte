@@ -20,6 +20,8 @@ import { object_without_properties } from 'svelte/internal';
 		var itemURL = '';
 		document.getElementById('drag-items').addEventListener('dragstart', function (e) {
 			itemURL = e.target.src;
+			e.target.moveToBottom();
+					e.target.setZIndex(3);
 
 
 			// e.target.moveToTop();
@@ -35,6 +37,7 @@ import { object_without_properties } from 'svelte/internal';
 		
 			stage.setPointersPositions(e);
 			Konva.Image.fromURL(itemURL, function (image) {
+				
 				layer.add(image);
 
 				image.position(stage.getPointerPosition());
@@ -64,7 +67,6 @@ import { object_without_properties } from 'svelte/internal';
 				transformer.attachTo(e.target);
 				e.target.moveToTop();
 				previousTarget = e.target;
-				console.log($selected);
 					
 
 			

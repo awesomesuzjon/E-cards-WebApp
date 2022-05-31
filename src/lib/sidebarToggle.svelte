@@ -14,8 +14,7 @@
 	import ElementPushToCanvas from '$lib/elementPushToCanvas.svelte';
 	import EditSidebar from './editSidebar.svelte';
 
-	let someText;
-	let files = [];
+	
 </script>
 
 <div class="flex justify-between items-center">
@@ -28,22 +27,6 @@
 		>
 			<label for="my-drawer" class="drawer-overlay" />
 			<ul class=" divide-y-2 w-full bg-F6F0F0  text-sm text-white">
-				<li class="p-4 divide-y-2">
-					<div class="flex flex-col  items-start justify-center mt-2">
-						<h1 class="text-sm font-bold  truncate mb-2   ">Select background template</h1>
-
-						<input
-							type="file"
-							bind:files
-							id="ImgFileUploadinCanvas"
-							class="text-sm  z-10"
-							accept="image/*"
-							multiple
-						/>
-					</div>
-					<button class="btn flex mt-2  " on:click={removeImgFunc}>Remove Bg Image</button>
-				</li>
-
 				<li class="p-4">
 					<ElementPushToCanvas />
 				</li>
@@ -51,18 +34,23 @@
 				<li class="p-4">
 					<Stickers />
 				</li>
+
+			
+
 			</ul>
 		</div>
 	</div>
 
-	<div id="canvasContainer" class=" flex    items-center 	 h-full">
-		<label
-			for="my-drawer"
-			class=" btn p-0 w-10 h-8 drawer-button   justify-left  hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white"
-		>
-			<h6 class="text-sm w-6  h-auto p-1"><FaAngleRight /></h6>
-		</label>
+	<label
+	for="my-drawer"
+	class=" btn p-2 w-10 h-8 drawer-button    justify-left "
+>
+	<h6 class="text-sm w-6  h-auto p-1 focus:bg-red-500"><FaAngleRight /></h6>
+</label>
 
+
+	<div id="canvasContainer" class=" flex    items-center 	 h-full">
+		
 		<div
 			on:drop={drop}
 			on:dragover={allowDrop}
@@ -72,32 +60,28 @@
 		>
 			<div
 				id="canvasImgContainer"
-				class=" flex z-0 items-center justify-center relative  content-center "
-			>
-				{#each files as file}
-					<img
-						style="width:20em;height:435px"
-						class="z-0  top-0  absolute"
-						id="canvasImg"
-						src={URL.createObjectURL(file)}
-						alt=""
-					/>
-				{/each}
+				class=" flex z-0 items-center justify-center relative  content-center ">
+
+			
 			</div>
 
 			<Stage>
+				
 				<Layer>
 					<!-- {#each $textStore as itemText, index} -->
 					<div class="textDivCanvas ">
 						<KonvaImgDrag />
 						<KonvaAddText />
+						
 					</div>
+
 					<!-- {/each} -->
+				
 				</Layer>
+				
 			</Stage>
 
-			<!-- 
-			<button
+			<!-- <button
 				id="fullScreenBtn"
 				on:click={openFullScreenFunc}
 				class="btn bottom-0 right-0  absolute
@@ -106,7 +90,9 @@
 			>
 				<MdFullscreen />
 			</button> -->
+			
 		</div>
+		
 		<EditSidebar />
 	</div>
 </div>

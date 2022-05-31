@@ -6,53 +6,56 @@
 	import { textStore } from '../stores/storeText';
 	import { getContext } from 'svelte';
 	import { canvasBgStore } from '../stores/canvasColor';
+import { AcroFormRadioButton } from 'jspdf';
 
 	const { getStage } = getContext('konva');
 	const { getLayer } = getContext('konva_layer');
 	const stage = getStage();
 	const layer = getLayer();
+	var color='pink'
+var image='admin.jpg'
 	onMount(() => {
+		canvasBgStore.subscribe((color) => {
+			var backgroundRect = new Konva.Rect({
+				x: 0,
+				y: 0,
+				zIndex:0,
+				fillPatternImage: {image}.src,
+				width: stage.width(),
+				height: stage.height(),
+				fill: color,
+				opacity:0.5,
+				listening: false,
+				// 		fillLinearGradientStartPoint: { x: -50, y: -50 },
+				//   fillLinearGradientEndPoint: { x: 50, y: 50 },
+				//   fillLinearGradientColorStops: [0, 'red', 1, 'yellow'],
+			});
+			// image.src='admin.jpg';
+			 layer.add(backgroundRect)
+
+		});
 		textStore.subscribe((data) => {
 			var text = new Konva.Text({
 				x: 50,
 				y: 50,
+				zIndex:3,
 				fontSize: 18,
 				fill: 'black',
 				text: !data.length ? '' : data[data.length - 1],
 				draggable: true,
 				id: uuid(),
-				fontFamily: 'arial',
-				stroke: 'red',
-				strokeWidth: 2,
-				shadowColor: 'black',
-				shadowBlur: 0,
-				shadowOffset: { x: 10, y: 15 },
-				shadowOpacity: 0.5
+				// fontFamily: 'arial',
+				// // stroke: 'red',
+				// // strokeWidth: 2,
+				// // shadowColor: 'black',
+				// // shadowBlur: 0,
+				// // shadowOffset: { x: 10, y: 15 },
+				// // shadowOpacity: 0.5
 			});
+			text.moveToTop();
+			text.setZIndex(3)
 			layer.add(text);
 		});
-
-		//rectangle element over the stage
-		document.getElementById('colorBgBtn').addEventListener('click', () => {
-			(canvasBgStore) => canvasBgStore.update();
-			var backgroundRect = new Konva.Rect({
-				x: 0,
-				y: 0,
-				width: stage.width(),
-				height: stage.height(),
-				fill: 'yellow',
-				// fill: canvasBgStore ,
-				listening: false
-			});
-
-			layer.add(backgroundRect);
-		});
-		let canvasBgStoreArray = Object.entries(canvasBgStore);
-		for (var i = 0; i < canvasBgStoreArray.length; i++) {
-			console.log(canvasBgStoreArray[i]);
-		}
-		console.log(canvasBgStoreArray);
-		console.log(typeof canvasBgStoreArray);
 
 		//konva add image as background
 		Konva.Image.fromURL(`ktm.jpg`, function (bgImage) {

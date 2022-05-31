@@ -175,9 +175,10 @@
 				</h1>
 
 				<input
-					type="text"
+					type="input"
+					
 					id="opacityInput"
-					class="flex justify-center border-2 text-black border-gray-500 w-10 h-auto  text-sm font-bold dark:text-gray-800"
+					class="flex justify-center border-2 text-black border-gray-500  w-40 h-auto  text-sm font-bold dark:text-gray-800"
 				/>
 			</div>
 			<button

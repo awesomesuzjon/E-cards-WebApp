@@ -1,4 +1,4 @@
-import { readable } from "svelte/store"
-export const canvasBgStore = readable();
+import { writable } from "svelte/store"
+export const canvasBgStore = writable();
 
 
