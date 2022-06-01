@@ -15,12 +15,14 @@ import { AcroFormRadioButton } from 'jspdf';
 	var color='pink'
 var image='admin.jpg'
 	onMount(() => {
+
+		
 		canvasBgStore.subscribe((color) => {
 			var backgroundRect = new Konva.Rect({
 				x: 0,
 				y: 0,
 				zIndex:0,
-				fillPatternImage: {image}.src,
+				// fillPatternImage: images.bgImage,
 				width: stage.width(),
 				height: stage.height(),
 				fill: color,
@@ -57,6 +59,8 @@ var image='admin.jpg'
 			layer.add(text);
 		});
 
+		
+
 		//konva add image as background
 		Konva.Image.fromURL(`ktm.jpg`, function (bgImage) {
 			bgImage.setAttrs({
@@ -84,19 +88,14 @@ var image='admin.jpg'
 				return;
 			}
 			$selected = e.target;
-
 			transformer.attachTo(e.target);
 			previousTarget = e.target;
 
-			//delete double clicked element on canvas
-			$selected.on('wheel', () => {
-				$selected.destroy();
-				transformer.destroy();
+			
+	
+		})
 
-				log('deleted');
-			});
-		});
-
+	
 		//save as jpg image
 
 		function downloadURI(uri, name) {
@@ -135,5 +134,7 @@ var image='admin.jpg'
 
 			pdf.save('canvas.pdf');
 		});
+
+
 	});
 </script>

@@ -134,8 +134,8 @@ export function StrokeWidth() {
 			data.setAttrs({
 				visible : false,
 				
+				
 			});
-			tr.destroy();
 
 			subscribe = false;
 			unSubscribe();
