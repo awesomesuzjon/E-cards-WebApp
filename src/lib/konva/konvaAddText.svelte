@@ -1,11 +1,11 @@
 <script>
 	import Konva from 'konva';
 	import { onMount } from 'svelte';
-	import { selected } from '../stores/selectedItemId';
+	import { selected } from '../../stores/selectedItemId';
 	import { v4 as uuid } from 'uuid';
-	import { textStore } from '../stores/storeText';
+	import { textStore } from '../../stores/storeText';
 	import { getContext } from 'svelte';
-	import { canvasBgStore } from '../stores/canvasColor';
+	import { canvasBgStore } from '../../stores/canvasColor';
 import { AcroFormRadioButton } from 'jspdf';
 
 	const { getStage } = getContext('konva');

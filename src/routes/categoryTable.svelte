@@ -1,5 +1,5 @@
 <script>
-import Pagination from "$lib/pagination.svelte";
+import Pagination from "../lib/reusable/pagination.svelte";
 
   
     

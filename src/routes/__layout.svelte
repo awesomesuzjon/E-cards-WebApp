@@ -1,7 +1,7 @@
         <script lang="ts">
         import '../app.css'
-        import Nav from '$lib/nav.svelte'
-        import Sidebar from '$lib/sidebar.svelte'
+        import Nav from '../lib/reusable/nav.svelte'
+        import Sidebar from '../lib/reusable/sidebar.svelte'
         import {onMount} from 'svelte'
         
 

@@ -1,6 +1,6 @@
 <script>
-	import Editsidebar from '$lib/editSidebar.svelte';
-	import SidebarToggle from '$lib/sidebarToggle.svelte';
+	import Editsidebar from '$lib/dropDownEditbar/editsidebar.svelte';
+	import SidebarToggle from '../lib/addToCanvas/sidebarToggle.svelte';
 
 	let canvasUploadedText = [];
 	$: CanvasText = `${canvasUploadedText}`;

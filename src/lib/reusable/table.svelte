@@ -1,15 +1,12 @@
 <script>
-import FaEye from 'svelte-icons/fa/FaEye.svelte'
-import FaPlus from 'svelte-icons/fa/FaPlus.svelte'
-import { onMount } from "svelte";
-import EcardTemplateBtn from './ecardTemplateBtn.svelte';
-import { previewtbl,previewImgFunc } from '../utils/previewImgntbl';
-import Pagination from './pagination.svelte';
-
-
-
+import { previewtbl,previewImgFunc } from '../../utils/previewImgntbl';
+import Pagination from '../reusable/pagination.svelte';
 </script>
-<EcardTemplateBtn/>
+
+<div class="flex self-end justify-end ">
+  <div class=" text-sm mr-5 mt-2 btn underline-offset-8 underline hover:text-gray-800 
+  hover:no-underline hover:border-gray-800 hover:bg-white" ><a href="/createnewtemplate">  Create new E-card Template +</a></div>
+  </div>
 <div class="flex  " >
   
     <img id="targetContent" class="z-50    absolute w-4/12 h-4/5 hidden   justify-center" src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/holi-design-template-44ce589f65c0ac4315a373fff00def9d_screen.jpg?ts=1600223391" alt="">

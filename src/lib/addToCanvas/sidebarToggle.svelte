@@ -1,18 +1,18 @@
 <script>
-	import SaveTemplate from '$lib/saveTemplate.svelte';
-	import KonvaAddText from '$lib/konvaAddText.svelte';
-	import KonvaImgDrag from '$lib/konvaImgDrag.svelte';
-	import { allowDrop, drag, drop } from '../routes/dragdropclone.svelte';
+	import SaveTemplate from '../addToCanvas/saveTemplate.svelte';
+	import KonvaAddText from '$lib/konva/konvaAddText.svelte';
+	import KonvaImgDrag from '$lib/konva/konvaImgDrag.svelte';
+	import { allowDrop, drag, drop } from '../../routes/dragdropclone.svelte';
 	import MdFullscreen from 'svelte-icons/md/MdFullscreen.svelte';
-	import { openFullScreenFunc } from '../utils/openFullScreen';
-	import { removeImgFunc } from '../utils/removeImg';
+	import { openFullScreenFunc } from '../../utils/openFullScreen';
+	import { removeImgFunc } from '../../utils/removeImg';
 	import FaAngleRight from 'svelte-icons/fa/FaAngleRight.svelte';
-	import { textStore } from '../stores/storeText';
-	import Stage from '$lib/stage.svelte';
-	import Layer from '$lib/layer.svelte';
-	import Stickers from '$lib/stickers.svelte';
-	import ElementPushToCanvas from '$lib/elementPushToCanvas.svelte';
-	import EditSidebar from './editSidebar.svelte';
+	import { textStore } from '../../stores/storeText';
+	import Stage from '../../lib/konva/stage.svelte';
+	import Layer from '../../lib/konva/layer.svelte';
+	import Stickers from '../addToCanvas/stickers.svelte';
+	import ElementPushToCanvas from '../addToCanvas/elementPushToCanvas.svelte';
+	import EditSidebar from '../dropDownEditbar/editsidebar.svelte';
 
 	
 </script>
@@ -31,9 +31,16 @@
 					<ElementPushToCanvas />
 				</li>
 
+				
+				
 				<li class="p-4">
 					<Stickers />
+
+
 				</li>
+
+				
+
 
 			
 
@@ -41,12 +48,14 @@
 		</div>
 	</div>
 
+	
 	<label
 	for="my-drawer"
 	class=" btn p-2 w-10 h-8 drawer-button    justify-left "
 >
-	<h6 class="text-sm w-6  h-auto p-1 focus:bg-red-500"><FaAngleRight /></h6>
+	<h6 class="text-sm w-6  h-auto p-1"><FaAngleRight /></h6>
 </label>
+
 
 
 	<div id="canvasContainer" class=" flex    items-center 	 h-full">

@@ -1,9 +1,9 @@
 <script>
-import DashboardTemplateElement from '$lib/dashboardTemplateElement.svelte';
-import DashboardChartElement from '$lib/dashboardChartElement.svelte';
-import DashboardCategoryElement from '../lib/dashboardCategoryElement.svelte';
-import DashboardMessageElement from '$lib/dashboardMessageElement.svelte';
-import DashboardStickerElement from '../lib/dashboardStickerElement.svelte';
+import DashboardTemplateElement from '$lib/dashboard/dashboardTemplateElement.svelte';
+import DashboardChartElement from '$lib/dashboard/dashboardChartElement.svelte';
+import DashboardCategoryElement from '../lib/dashboard/dashboardCategoryElement.svelte';
+import DashboardMessageElement from '$lib/dashboard/dashboardMessageElement.svelte';
+import DashboardStickerElement from '../lib/dashboard/dashboardStickerElement.svelte';
 </script>
 
 <svelte:head>

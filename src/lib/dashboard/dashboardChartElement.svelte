@@ -1,5 +1,5 @@
 <script>
-import Chart from '$lib/chart.svelte';
+import Chart from '../reusable/chart.svelte';
 
 </script>
 

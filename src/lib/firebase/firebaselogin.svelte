@@ -9,7 +9,7 @@ import {authState} from "rxfire/auth"
 import "firebase/auth"
 import "firebase/firestore"
 import { getFirestore } from "firebase/firestore";
-import Dashboard from '../routes/dashboard.svelte';
+import Dashboard from '../../routes/dashboard.svelte';
 import { afterNavigate } from '$app/navigation';
 
 

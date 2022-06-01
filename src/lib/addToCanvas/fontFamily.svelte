@@ -1,5 +1,5 @@
 <script>
-    import {  selected } from '../stores/selectedItemId';
+    import {  selected } from '../../stores/selectedItemId';
 
     let subscribe = false;
     export function fontFamilyChangeFunc() {

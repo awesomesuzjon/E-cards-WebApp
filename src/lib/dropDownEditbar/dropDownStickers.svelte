@@ -1,6 +1,6 @@
 <script>
 	import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte';
-	import {editRotateSticker,editStickerSize,editStickerPosition,editStickerOpacity} from '../utils/editStickersonCanvas';
+	import {editRotateSticker,editStickerSize,editStickerPosition,editStickerOpacity} from '../../utils/editStickersonCanvas';
 	
 
 

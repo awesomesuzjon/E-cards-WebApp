@@ -1,8 +1,8 @@
 <script>
-import DropDownText from './dropDownText.svelte'
-import DropDownStickers from './dropDownStickers.svelte';
-import DropDownBackground from './dropDownBackground.svelte';
-import DropDownMessage from './dropDownMessage.svelte';
+import DropDownText from '$lib/dropDownEditbar/dropDownText.svelte'
+import DropDownStickers from '$lib/dropDownEditbar/dropDownStickers.svelte';
+import DropDownBackground from '$lib/dropDownEditbar/dropDownBackground.svelte';
+import DropDownMessage from '$lib/dropDownEditbar/dropDownMessage.svelte';
   </script>  
   
   <div class="drawer drawer-end w-1/3">

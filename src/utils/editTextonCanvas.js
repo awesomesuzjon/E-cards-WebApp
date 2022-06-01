@@ -118,3 +118,26 @@ export function StrokeWidth() {
 			unSubscribe();
 		});
 	}
+
+
+	export function deleteTarget() {
+		subscribe = true;
+		const unSubscribe = selected.subscribe((data) => {
+			// console.log(data);
+			if (!subscribe) {
+				return;
+			}
+
+			if (data == null) {
+				return;
+			}
+			data.setAttrs({
+				visible : false,
+				
+			});
+			tr.destroy();
+
+			subscribe = false;
+			unSubscribe();
+		});
+	}

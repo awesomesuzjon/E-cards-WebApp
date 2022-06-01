@@ -1,25 +1,29 @@
 <script>
-	import FontFamily from './fontFamily.svelte';
+	import FontFamily from '../addToCanvas/fontFamily.svelte';
 	import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte';
+	import MdDelete from 'svelte-icons/md/MdDelete.svelte';
 	import {
 		editFontSize,
 		editElementPosition,
 		editTextColor,
 		editRotateText,
 		editTextOpacity,
-		StrokeWidth
-	} from '../utils/editTextonCanvas';
+		StrokeWidth,
+		deleteTarget
+	} from '../../utils/editTextonCanvas';
+
+	
 	import {
 		editFontUndeline,
 		editFontNoUnderline,
 		editFontLineThrough
-	} from '../utils/editTextDecoration';
+	} from '../../utils/editTextDecoration';
 	import {
 		editFontStyleBold,
 		editFontStyleItalic,
 		editFontStyleNormal,
 		editFontStyleItalicBold
-	} from '../utils/editFontStyle';
+	} from '../../utils/editFontStyle';
 </script>
 
 <div tabindex="0" class="collapse">
@@ -31,6 +35,12 @@
 		</button>
 	</div>
 	<div class="collapse-content">
+		<li class="p-4">
+			<button class=" btn w-16   border-4 border-black " title="Delete" on:click={deleteTarget}>
+				<MdDelete />
+			</button>
+		</li>
+
 		<li class="p-4">
 			<div>
 				<h1
@@ -176,7 +186,6 @@
 
 				<input
 					type="input"
-					
 					id="opacityInput"
 					class="flex justify-center border-2 text-black border-gray-500  w-40 h-auto  text-sm font-bold dark:text-gray-800"
 				/>

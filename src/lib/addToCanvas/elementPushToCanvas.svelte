@@ -1,7 +1,7 @@
 <script>
 import { onMount } from 'svelte';
 
-	import { pushTextToCanvasFunc } from '../utils/pushTextToCanvas';
+	import { pushTextToCanvasFunc } from '../../utils/pushTextToCanvas';
 
 	onMount(()=>{
 

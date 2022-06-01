@@ -1,5 +1,5 @@
 <script>
-import Table from "$lib/table.svelte";
+import Table from "../lib/reusable/table.svelte";
 
 </script>
 <svelte:head>

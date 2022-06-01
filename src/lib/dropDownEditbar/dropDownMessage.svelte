@@ -6,9 +6,9 @@
 		textLeftAlignFunction,
 		textCenterAlignFunction,
 		textRightAlignFunction
-	} from '../utils/alignText';
+	} from '../../utils/alignText';
 	import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte';
-	import FontFamily from './fontFamily.svelte';
+	import FontFamily from '../addToCanvas/fontFamily.svelte';
 
 	let xaxis;
 	let yaxis;
@@ -41,7 +41,6 @@
 			</div>
 			<div class="flex flex-col mt-2">
 				<button
-					
 					class="hover:text-gray-800 hover:no-underline 
 hover:border-gray-800 hover:bg-white btn btn-gray-50 flex mt-2 w-full text-sm p-1">Enter</button
 				>
@@ -57,7 +56,7 @@ hover:border-gray-800 hover:bg-white btn btn-gray-50 flex mt-2 w-full text-sm p-
 					id="inputRotate"
 					class="mb-2  border-2 text-black border-gray-500 w-full h-auto  text-sm font-bold dark:text-gray-800"
 				/>
-				<button class="btn w-full" >rotate</button>
+				<button class="btn w-full">rotate</button>
 			</div>
 		</li>
 
@@ -77,7 +76,6 @@ hover:border-gray-800 hover:bg-white btn btn-gray-50 flex mt-2 w-full text-sm p-
 				/>
 			</div>
 			<button
-				
 				class=" hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white btn btn-gray-50 flex items-center self-center mt-2 w-full text-sm p-1"
 				>Enter</button
 			>

@@ -1,8 +1,7 @@
 <script>
 	import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte';
-	import { canvasBgStore } from '../stores/canvasColor.js';
+	import { canvasBgStore } from '../../stores/canvasColor';
 
-	let canvasBgArray = [];
 </script>
 
 <div tabindex="0" class="collapse">

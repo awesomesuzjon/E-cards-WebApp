@@ -1,7 +1,6 @@
 <script>
 	import Konva from 'konva';
 	import { onMount, setContext } from 'svelte';
-	import layer from '$lib/layer.svelte';
 
 	let container;
 	let stage;
