@@ -53,6 +53,7 @@
     "rxjs": "^7.5.5",
     "svelte-agnostic-draggable": "^0.1.11",
     "svelte-awesome": "^2.4.6",
+    "svelte-carousel": "^1.0.19",
     "svelte-drag-and-drop-actions": "^1.0.0",
     "svelte-fa": "^2.4.0",
     "svelte-icons": "^2.1.0",
