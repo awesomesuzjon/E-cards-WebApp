@@ -9,7 +9,8 @@
 	import Stickers from '../addToCanvas/stickers.svelte';
 	import ElementPushToCanvas from '../addToCanvas/elementPushToCanvas.svelte';
 	import EditSidebar from '../dropDownEditbar/editsidebar.svelte';
-</script>
+	import Button from '../reusable/button.svelte'
+	</script>
 
 <div class="flex justify-between items-center">
 	<div class="drawer  z-50 " style="width:10em;">
@@ -26,6 +27,8 @@
 				</li>
 				<li class="p-4">
 					<Stickers />
+					<!-- <Stickers /> -->
+
 				</li>
 			</ul>
 		</div>
@@ -63,8 +66,8 @@
 </div>
 <p class="text-sm mt-2"><strong>Tip:</strong> Press the "Esc" key to exit full screen.</p>
 <div>
-	<button id="saveAsPdf" class="btn">Save as PDF</button>
-	<button id="saveAsImg" class="btn">Save as Img</button>
+	<Button id="saveAsPdf" >Save as PDF</Button>
+	<Button id="saveAsImg">Save as Img</Button>
 
 	<SaveTemplate />
 </div>

@@ -33,8 +33,8 @@
     
     <div class="flex  mt-8   justify-center self-center items-center">
     
-    <button  class="mr-10 hover:text-gray-800 w-1/6 hover:no-underline hover:border-gray-800 hover:bg-white btn btn-gray-50 flex items-center self-center mt-2  text-sm p-1">Save</button>    
-    <button  class=" hover:text-gray-800 w-1/6 hover:no-underline hover:border-gray-800 hover:bg-white btn btn-gray-50 flex items-center self-center mt-2  text-sm p-1">Discard</button>    
+    <Button  >Save</Button>    
+    <Button  >Discard</Button>    
     
     </div>
 

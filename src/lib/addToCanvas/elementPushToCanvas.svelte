@@ -1,33 +1,37 @@
 <script>
-import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
+	import Button from '$lib/reusable/button.svelte';
 
 	import { pushTextToCanvasFunc } from '../../utils/pushTextToCanvas';
 
-	onMount(()=>{
-
+	onMount(() => {
 		document.getElementById('addNew').addEventListener('keypress', function (e) {
 			if (e.key === 'Enter') {
-				pushTextToCanvasFunc()	
+				pushTextToCanvasFunc();
 			}
-		})
-});
+		});
+	});
 </script>
 
 <div class="flex flex-col items-start justify-center  ">
 	<h1 class="text-sm font-bold  truncate  ">Enter text here:</h1>
-	<input type="text" id="addNew" name="addNewList" class="text-black"  on:enterkeyhint={pushTextToCanvasFunc}/>
+	<input
+		type="text"
+		id="addNew"
+		name="addNewList"
+		class="text-black"
+		on:enterkeyhint={pushTextToCanvasFunc}
+	/>
+
 	
 
-	<btn
-    on:click={pushTextToCanvasFunc}
-		class="cursor-pointer hover:text-gray-800 bg-gray-700 p-2 hover:no-underline w-24 hover:border-gray-800 hover:bg-white   btn-gray-50 center rounded-lg  mt-2 text-sm  items-center justify-left flex "
-		>Add text</btn
-	>
+	<!-- svelte-ignore a11y-missing-attribute -->
+	<a on:click={pushTextToCanvasFunc} class="my-4"><Button >Add text</Button></a>	
 
-	<label for="my-drawer-4" class="drawer-button">
-		<btn
-			class="cursor-pointer hover:text-gray-800 bg-gray-700 p-2 hover:no-underline w-24 hover:border-gray-800 hover:bg-white   btn-gray-50 center rounded-lg  mt-2 text-sm  items-center justify-left flex "
-			>Open Editbar</btn
-		>
+	<label for="my-drawer-4" class="drawer-button ">
+	
+
+		<!-- svelte-ignore a11y-missing-attribute -->
+	<btn class="btn"> Open Editbar </btn>
 	</label>
 </div>

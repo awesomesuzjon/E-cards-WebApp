@@ -1,6 +1,7 @@
 <script>
 	import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte';
 	import { canvasBgStore } from '../../stores/canvasColor';
+	import Button from '$lib/reusable/button.svelte';
 
 </script>
 
@@ -27,16 +28,12 @@
 				/>
 			</div>
 
-			<button
-				on:click={() => {
-					var canvasBgValue = '#F3F4F6';
-					console.log(canvasBgStore);
-					canvasBgStore.set(canvasBgValue);
-				}}
-				class=" hover:text-gray-800 hover:no-underline 
-       hover:border-gray-800 hover:bg-white btn btn-gray-50 flex items-center self-center mt-2
-        w-full text-sm p-1">Revert</button
-			>
+		
+<a class="mt-4" on:click={() => {
+	var canvasBgValue = '#F3F4F6';
+	canvasBgStore.set(canvasBgValue)}}><Button >Revert </Button></a>
+
+			
 				</li>
 	</div>
 </div>

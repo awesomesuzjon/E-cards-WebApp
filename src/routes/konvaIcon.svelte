@@ -76,16 +76,15 @@
 			if (selector == 'top-right') {
 				shape.listening(false);
 				icon.on('click', () => {
-                    circle.destroy()
+					circle.destroy();
 					console.log('delete');
 				});
+			} else if (selector == 'top-left') {
+				shape.listening(false);
+				icon.on('click', () => {
+					circle.clone();
+				});
 			}
-            else if(selector=='top-left'){
-                shape.listening(false);
-                icon.on('click',()=>{
-                    circle.clone()
-                })
-            }
 		}
 		circle.on('transform', function () {
 			transformer.update();
@@ -94,8 +93,8 @@
 				var shape = transformer.findOne('.' + selector);
 				var icon = transformer.findOne('.' + selector + '-icon');
 				icon.position(shape.position());
-				icon.x(icon.x() );
-				icon.y(icon.y() );
+				icon.x(icon.x());
+				icon.y(icon.y());
 				layer.batchDraw();
 			}
 		});

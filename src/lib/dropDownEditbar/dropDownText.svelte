@@ -2,6 +2,7 @@
 	import FontFamily from '../addToCanvas/fontFamily.svelte';
 	import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte';
 	import MdDelete from 'svelte-icons/md/MdDelete.svelte';
+	import Button from '$lib/reusable/button.svelte';
 	import {
 		editFontSize,
 		editElementPosition,
@@ -12,7 +13,6 @@
 		deleteTarget
 	} from '../../utils/editTextonCanvas';
 
-	
 	import {
 		editFontUndeline,
 		editFontNoUnderline,
@@ -49,29 +49,14 @@
 				>
 					Font-Style:
 				</h1>
-				<button
-					on:click={editFontStyleBold}
-					class="w-8 font-extrabold mr-2 border-4 border-black bg-white text-black hover:border-white hover:bg-gray-800 hover:text-white"
-					title="Bold">B</button
-				>
-				<button
-					on:click={editFontStyleItalic}
-					class="w-8 	italic mr-2 border-4 border-black bg-white text-black hover:border-white hover:bg-gray-800 hover:text-white"
-					title="Italic"
-					>i
-				</button>
-				<button
-					on:click={editFontStyleItalicBold}
-					class="w-8 font-bold	italic mr-2 border-4 border-black bg-white text-black hover:border-white hover:bg-gray-800 hover:text-white"
-					title="Italic Bold"
-					>I
-				</button>
-				<button
-					on:click={editFontStyleNormal}
-					class="w-8  border-4 border-black bg-white text-black hover:border-white hover:bg-gray-800 hover:text-white"
-					title="Normal"
-					>N
-				</button>
+				<!-- svelte-ignore a11y-missing-attribute -->
+				<a on:click={editFontStyleBold} title="Bold"><Button >B</Button></a>
+				<!-- svelte-ignore a11y-missing-attribute -->
+				<a  on:click={editFontStyleItalic} title="Italic"><Button >i</Button></a>
+				<!-- svelte-ignore a11y-missing-attribute -->
+				<a  on:click={editFontStyleItalicBold} title="Italic Bold"><Button >I</Button></a>
+				<!-- svelte-ignore a11y-missing-attribute -->
+				<a  on:click={editFontStyleNormal} title="Normal"><Button>D</Button></a>
 			</div>
 		</li>
 
@@ -83,21 +68,13 @@
 				>
 					Text-Decoration:
 				</h1>
-				<button
-					on:click={editFontUndeline}
-					class="w-8 underline  mr-2 border-4 border-black bg-white text-black hover:border-white hover:bg-gray-800 hover:text-white"
-					title="Underline">ABC</button
-				>
-				<button
-					on:click={editFontLineThrough}
-					class="w-8 line-through  mr-2 border-4 border-black bg-white text-black hover:border-white hover:bg-gray-800 hover:text-white"
-					title="Line-through">ABC</button
-				>
-				<button
-					on:click={editFontNoUnderline}
-					class="w-8 no-underline  mr-2 border-4 border-black bg-white text-black hover:border-white hover:bg-gray-800 hover:text-white"
-					title="Default">ABC</button
-				>
+				<!-- svelte-ignore a11y-missing-attribute -->
+				<a on:click={editFontUndeline} title="underline" ><Button>ABC</Button></a>
+				<!-- svelte-ignore a11y-missing-attribute -->
+				<a on:click={editFontLineThrough} title="line-through" class="line-through"><Button >ABC</Button></a>
+				<!-- svelte-ignore a11y-missing-attribute -->
+				<a on:click={editFontNoUnderline} title="Default"><Button >ABC</Button></a>			
+
 			</div>
 		</li>
 
@@ -116,11 +93,8 @@
 					class="  border-2 text-black  border-gray-500 w-10 h-6  text-sm font-bold dark:text-gray-800"
 				/>
 
-				<button
-					on:click={editTextColor}
-					class="text-sm font-bold flex  justify-center cursor-pointer hover:text-gray-800 bg-gray-700 p-2 hover:no-underline w-32 hover:border-gray-800 hover:bg-white   btn-gray-50  rounded-lg  mt-2 "
-					>Enter</button
-				>
+				<!-- svelte-ignore a11y-missing-attribute -->
+				<a on:click={editTextColor} ><Button >Entering</Button></a>	
 			</div>
 		</li>
 
@@ -140,11 +114,9 @@
 					class=" mx-2 border-2 text-black border-gray-500 w-10 h-auto  text-sm font-bold dark:text-gray-800"
 				/>
 			</div>
-			<button
-				on:click={editFontSize}
-				class="justify-center cursor-pointer hover:text-gray-800 bg-gray-700 p-2 hover:no-underline w-32 hover:border-gray-800 hover:bg-white   btn-gray-50 center rounded-lg  mt-2 text-sm  items-center  flex "
-				>Enter</button
-			>
+			
+				<!-- svelte-ignore a11y-missing-attribute -->
+				<a on:click={editFontSize} ><Button >Enter</Button></a>	
 		</li>
 
 		<li class="p-3">
@@ -163,11 +135,8 @@
 					class=" mx-2 border-2 text-black border-gray-500 w-10 h-auto  text-sm font-bold dark:text-gray-800"
 				/>
 			</div>
-			<button
-				on:click={StrokeWidth}
-				class="justify-center cursor-pointer hover:text-gray-800 bg-gray-700 p-2 hover:no-underline w-32 hover:border-gray-800 hover:bg-white   btn-gray-50 center rounded-lg  mt-2 text-sm  items-center  flex "
-				>Enter</button
-			>
+			<!-- svelte-ignore a11y-missing-attribute -->
+			<a on:click={StrokeWidth} ><Button >Enter</Button></a>	
 		</li>
 
 		<li class="p-3">
@@ -190,11 +159,8 @@
 					class="flex justify-center border-2 text-black border-gray-500  w-40 h-auto  text-sm font-bold dark:text-gray-800"
 				/>
 			</div>
-			<button
-				on:click={editTextOpacity}
-				class="justify-center cursor-pointer hover:text-gray-800 bg-gray-700 p-2 hover:no-underline w-32 hover:border-gray-800 hover:bg-white   btn-gray-50 center rounded-lg  mt-2 text-sm  items-center  flex "
-				>Enter</button
-			>
+			<!-- svelte-ignore a11y-missing-attribute -->
+			<a on:click={editTextOpacity} ><Button >Enter</Button></a>	
 		</li>
 
 		<li class="p-4">
@@ -218,11 +184,8 @@
 				/>
 			</div>
 			<div class="flex flex-col mt-2">
-				<button
-					on:click={editElementPosition}
-					class="justify-center cursor-pointer hover:text-gray-800 bg-gray-700 p-2 hover:no-underline w-32 hover:border-gray-800 hover:bg-white   btn-gray-50 center rounded-lg  mt-2 text-sm  items-center  flex "
-					>Enter</button
-				>
+				<!-- svelte-ignore a11y-missing-attribute -->
+			<a on:click={editElementPosition} ><Button >Enter</Button></a>	
 
 				<h1
 					class="text-sm font-bold left flex items-center justify-center self-center truncate"
@@ -235,10 +198,8 @@
 					id="inputRotateDegree"
 					class="mb-2  border-2 text-black border-gray-500 w-10 h-auto  text-sm font-bold dark:text-gray-800"
 				/>
-				<button
-					class="justify-center cursor-pointer hover:text-gray-800 bg-gray-700 p-2 hover:no-underline w-32 hover:border-gray-800 hover:bg-white   btn-gray-50 center rounded-lg  mt-2 text-sm  items-center  flex "
-					on:click={editRotateText}>rotate</button
-				>
+				<!-- svelte-ignore a11y-missing-attribute -->
+			<a on:click={editRotateText} ><Button >Rotate</Button></a>	
 			</div>
 		</li>
 	</div>

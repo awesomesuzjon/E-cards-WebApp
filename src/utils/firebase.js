@@ -1,5 +1,5 @@
 import firebase from "firebase/app"
-import "firenase/auth"
+import "firebase/auth"
 import "firebase/firestore"
 
 
@@ -18,6 +18,7 @@ const firebaseConfig = {
   export const auth = firebase.auth()
 export const googleProvider = new firebase.auth.GoogleAuthProvider()
 export const db = firebase.firestore();
+db.settings({timestampsInSnapshots:true});
 
 
 

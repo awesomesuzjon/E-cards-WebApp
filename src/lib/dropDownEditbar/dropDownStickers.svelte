@@ -1,8 +1,13 @@
 <script>
 	import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte';
-	import {editRotateSticker,editStickerSize,editStickerPosition,editStickerOpacity} from '../../utils/editStickersonCanvas';
-	
+	import {
+		editRotateSticker,
+		editStickerSize,
+		editStickerPosition,
+		editStickerOpacity
+	} from '../../utils/editStickersonCanvas';
 
+	import Button from '../reusable/button.svelte';
 
 	let xaxis;
 	let yaxis;
@@ -13,7 +18,7 @@
 
 	<div class="collapse-title flex justify-center text-xl font-medium">
 		Stickers
-		<button class="w-8 h-auto truncate ">
+		<button class="w-8">
 			<MdKeyboardArrowDown />
 		</button>
 	</div>
@@ -37,11 +42,8 @@
 				/>
 			</div>
 			<div class="flex flex-col mt-2">
-				<button
-					on:click={editStickerPosition}
-					class="hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white btn btn-gray-50 flex mt-2 w-full text-sm p-1"
-					>Enter</button
-				>
+				<!-- svelte-ignore a11y-missing-attribute -->
+			<a on:click={editStickerPosition} ><Button >Enter</Button></a>
 
 				<h1
 					class="text-sm font-bold left flex items-start justify-start self-start"
@@ -55,7 +57,8 @@
 					id="inputRotateSticker"
 					class="mb-2  border-2 text-black border-gray-500 w-full h-auto  text-sm font-bold dark:text-gray-800"
 				/>
-				<button class="btn w-full" on:click={editRotateSticker}>Rotate Stickers</button>
+				<!-- svelte-ignore a11y-missing-attribute -->
+			<a on:click={editRotateSticker} ><Button >Rotate Stickers</Button></a>
 			</div>
 		</li>
 
@@ -66,7 +69,6 @@
 				<input
 					type="text"
 					value="150"
-
 					id="stickerHeight"
 					class=" mx-1 border-2 text-black border-gray-500 w-full h-auto  text-sm font-bold dark:text-gray-800"
 				/>
@@ -79,12 +81,8 @@
 					class=" mx-1 border-2 text-black border-gray-500 w-full h-auto  text-sm font-bold dark:text-gray-800"
 				/>
 			</div>
-			<button
-			on:click={editStickerSize}
-				class=" hover:text-gray-800 hover:no-underline 
-           hover:border-gray-800 hover:bg-white btn btn-gray-50 flex items-center self-center mt-2
-           w-full text-sm p-1">Enter Size</button
-			>
+			<!-- svelte-ignore a11y-missing-attribute -->
+			<a on:click={editStickerSize} ><Button >Enter Size</Button></a>
 		</li>
 
 		<li class="p-3">
@@ -93,22 +91,17 @@
 					class="text-sm font-bold left flex items-center justify-center self-center truncate"
 					draggable="true"
 				>
-				Opacity(Between 0 and 1)
+					Opacity(Between 0 and 1)
 				</h1>
 
 				<input
 					type="text"
-					
 					id="opacityStickerInput"
 					class=" mx-2 border-2 text-black border-gray-500 w-full h-auto  text-sm font-bold dark:text-gray-800"
 				/>
 			</div>
-			<button
-				on:click={editStickerOpacity}
-				class=" hover:text-gray-800 hover:no-underline 
-       hover:border-gray-800 hover:bg-white btn btn-gray-50 flex items-center 
-       self-center mt-2 w-full text-sm p-1">Enter</button
-			>
+			<!-- svelte-ignore a11y-missing-attribute -->
+			<a on:click={editStickerOpacity} ><Button >Enter </Button></a>
 		</li>
 	</div>
 </div>

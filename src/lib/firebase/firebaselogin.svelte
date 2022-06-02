@@ -1,60 +1,56 @@
 <script lang="ts">
-   import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-// import {auth,googleProvider} from "./firebase"
-import {authState} from "rxfire/auth"
-// import authStore from '../stores/authStore';
+	import firebase from 'firebase/compat/app';
+	import 'firebase/compat/auth';
+	// import {auth,googleProvider} from "./firebase"
+	import { authState } from 'rxfire/auth';
+	// import authStore from '../stores/authStore';
 
-// import firebase from "firebase/app"
-import "firebase/auth"
-import "firebase/firestore"
-import { getFirestore } from "firebase/firestore";
-import Dashboard from '../../routes/dashboard.svelte';
-import { afterNavigate } from '$app/navigation';
+	// import firebase from "firebase/app"
+	import 'firebase/auth';
+	import 'firebase/firestore';
+	import { getFirestore } from 'firebase/firestore';
+	import Button from '$lib/reusable/button.svelte';
 
+	const firebaseConfig = {
+		apiKey: 'AIzaSyDlU6xFnGxWJICj7pvyrfju-5y4rSSBZiU',
+		authDomain: 'ecards-6bb1e.firebaseapp.com',
+		projectId: 'ecards-6bb1e',
+		storageBucket: 'ecards-6bb1e.appspot.com',
+		messagingSenderId: '658024761124',
+		appId: '1:658024761124:web:e926eaa7fb3811383395b1',
+		measurementId: 'G-09NY2M1FT6'
+	};
 
+	firebase.initializeApp(firebaseConfig);
 
-const firebaseConfig = {
-    apiKey: "AIzaSyDlU6xFnGxWJICj7pvyrfju-5y4rSSBZiU",
-    authDomain: "ecards-6bb1e.firebaseapp.com",
-    projectId: "ecards-6bb1e",
-    storageBucket: "ecards-6bb1e.appspot.com",
-    messagingSenderId: "658024761124",
-    appId: "1:658024761124:web:e926eaa7fb3811383395b1",
-    measurementId: "G-09NY2M1FT6"
-  };
-  
-  firebase.initializeApp(firebaseConfig);
+	const auth = firebase.auth();
+	const googleProvider = new firebase.auth.GoogleAuthProvider();
+	//  const db = firebase.firestore();
+	const db = getFirestore();
 
-   const auth = firebase.auth()
- const googleProvider = new firebase.auth.GoogleAuthProvider()
-//  const db = firebase.firestore();
- const db = getFirestore();
- 
-    let user 
+	let user;
 
-    const unsubscribe = authState(auth).subscribe(usr=>user=usr)
+	const unsubscribe = authState(auth).subscribe((usr) => (user = usr));
 
-    async function login(){
-        let userCredential = await auth.signInWithPopup(googleProvider)
-        let token = await userCredential.user.getIdToken(true) 
-        console.log('logged in ' + token)
-    }
+	async function login() {
+		let userCredential = await auth.signInWithPopup(googleProvider);
+		let token = await userCredential.user.getIdToken(true);
+		console.log('logged in ' + token);
+	}
 
-    function logout(){
-        auth.signOut()
-    }
-
-    </script>
-        
+	function logout() {
+		auth.signOut();
+	}
+</script>
 
 <div>
-    <h1 class="mt-5 text-lg">Login With Google</h1>
+	<h1 class="mt-5 text-lg">Login With Google</h1>
 </div>
 
 {#if user}
-    <!-- Successfully Logged in as {user.uid} -->
-    <button class="btn" on:click={logout}>logOut</button>
-    {:else }
-    <button class="btn" on:click={login}>login</button>  
-    {/if}
+	<!-- Successfully Logged in as {user.uid} -->
+	<a on:click={logout}><Button >logOut</Button></a>
+{:else}
+<a on:click={login}><Button >logIn</Button></a>
+
+{/if}

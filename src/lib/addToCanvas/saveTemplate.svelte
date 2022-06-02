@@ -1,3 +1,7 @@
+<script>
+  import Button from "$lib/reusable/button.svelte";
+</script>
+
 <!-- The button to open modal -->
 <label for="my-modal" class="btn modal-button hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white  btn-gray-50 center  text-sm p-2">Save</label>
 
@@ -71,10 +75,8 @@
     
     <div class="flex  mt-8   justify-center self-center items-center">
     
-    <button on:click={()=>{
-      alert('Template Saved !!')
-    }} class="mr-10 hover:text-gray-800 w-1/6 hover:no-underline hover:border-gray-800 hover:bg-white btn btn-gray-50 flex items-center self-center mt-2  text-sm p-1">Submit</button>    
-    <button  class=" hover:text-gray-800 w-1/6 hover:no-underline hover:border-gray-800 hover:bg-white btn btn-gray-50 flex items-center self-center mt-2  text-sm p-1">Discard</button>    
+    <Button> Submit</Button>    
+    <Button> Discard</Button>    
     
     </div>
 

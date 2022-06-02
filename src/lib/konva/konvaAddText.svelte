@@ -6,17 +6,11 @@
 	import { textStore } from '../../stores/storeText';
 	import { getContext } from 'svelte';
 	import { canvasBgStore } from '../../stores/canvasColor';
-import { AcroFormRadioButton } from 'jspdf';
-
 	const { getStage } = getContext('konva');
 	const { getLayer } = getContext('konva_layer');
 	const stage = getStage();
 	const layer = getLayer();
-	var color='pink'
-var image='admin.jpg'
 	onMount(() => {
-
-		
 		canvasBgStore.subscribe((color) => {
 			var backgroundRect = new Konva.Rect({
 				x: 0,
@@ -46,6 +40,7 @@ var image='admin.jpg'
 				text: !data.length ? '' : data[data.length - 1],
 				draggable: true,
 				id: uuid(),
+				
 				// fontFamily: 'arial',
 				// // stroke: 'red',
 				// // strokeWidth: 2,
@@ -90,11 +85,8 @@ var image='admin.jpg'
 			$selected = e.target;
 			transformer.attachTo(e.target);
 			previousTarget = e.target;
-
-			
 	
 		})
-
 	
 		//save as jpg image
 
