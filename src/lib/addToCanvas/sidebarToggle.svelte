@@ -10,6 +10,7 @@
 	import ElementPushToCanvas from '../addToCanvas/elementPushToCanvas.svelte';
 	import EditSidebar from '../dropDownEditbar/editsidebar.svelte';
 	import Button from '../reusable/button.svelte'
+import Form from '$lib/reusable/form.svelte';
 	</script>
 
 <div class="flex justify-between items-center">
@@ -65,9 +66,13 @@
 	</div>
 </div>
 <p class="text-sm mt-2"><strong>Tip:</strong> Press the "Esc" key to exit full screen.</p>
+
+
 <div>
+	
 	<Button id="saveAsPdf" >Save as PDF</Button>
 	<Button id="saveAsImg">Save as Img</Button>
-
+	
 	<SaveTemplate />
+	<!-- <Form/> -->
 </div>
