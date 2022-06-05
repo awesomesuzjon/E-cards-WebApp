@@ -9,9 +9,9 @@
 	import Stickers from '../addToCanvas/stickers.svelte';
 	import ElementPushToCanvas from '../addToCanvas/elementPushToCanvas.svelte';
 	import EditSidebar from '../dropDownEditbar/editsidebar.svelte';
-	import Button from '../reusable/button.svelte'
-import Form from '$lib/reusable/form.svelte';
-	</script>
+	import Button from '../reusable/button.svelte';
+	import Form from '$lib/reusable/form.svelte';
+</script>
 
 <div class="flex justify-between items-center">
 	<div class="drawer  z-50 " style="width:10em;">
@@ -29,7 +29,6 @@ import Form from '$lib/reusable/form.svelte';
 				<li class="p-4">
 					<Stickers />
 					<!-- <Stickers /> -->
-
 				</li>
 			</ul>
 		</div>
@@ -67,12 +66,32 @@ import Form from '$lib/reusable/form.svelte';
 </div>
 <p class="text-sm mt-2"><strong>Tip:</strong> Press the "Esc" key to exit full screen.</p>
 
-
 <div>
-	
-	<Button id="saveAsPdf" >Save as PDF</Button>
-	<Button id="saveAsImg">Save as Img</Button>
-	
+	<button class="btn" id="saveAsPdf">Save as PDF</button>
+	<button class="btn" id="saveAsImg">Save as Img</button>
+
 	<SaveTemplate />
+
 	<!-- <Form/> -->
+
+	<div class="flex   mt-8">
+		<div class="bg-gray-300 ">
+			<h1 class="text-lg text-blue mr-4"> Preview Image</h1>
+			<img id="imgPreview" src="" class="w-32 h-auto" alt=""/>
+		</div>
+		<ul id="ecardUlId" class="bg-pink-300 p-4 border-2  text-lg">
+			<span class="text-bold text-3xl mb-4 border-bottom">Id</span>
+		</ul>
+		<ul id="ecardUlTitle" class="bg-pink-300 p-4 border-2 text-lg">
+			<span class="text-bold text-3xl ">Title</span>
+		</ul>
+
+		<ul id="ecardUlTags" class="bg-pink-300 p-4 border-2 text-lg">
+			<span class="text-bold text-3xl ">Tags</span>
+		</ul>
+
+		<ul id="ecardUlPriority" class="bg-pink-300 p-4 border-2 text-lg">
+			<span class="text-bold text-3xl ">Priority</span>
+		</ul>
+	</div>
 </div>

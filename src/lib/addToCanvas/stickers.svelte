@@ -1,13 +1,7 @@
-
-
 <div id="controls-carousel" class="relative" data-carousel="static">
-	<div class="font-bold dark:text-gray-100  truncate text-black text-2xl">
-		Stickers
-	</div>
+	<div class="font-bold dark:text-gray-100  truncate text-black text-2xl">Stickers</div>
 
-	<div class="font-bold dark:text-gray-100  mt-4  truncate text-gray text-xl">
-		Holi Stickers	
-	</div>
+	<div class="font-bold dark:text-gray-100  mt-4  truncate text-gray text-xl">Holi Stickers</div>
 	<div id="drag-items">
 		<div class="overflow-hidden relative h-48 rounded-lg sm:h-64 xl:h-80 2xl:h-64">
 			<div

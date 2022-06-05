@@ -24,7 +24,7 @@
 	<table
 		class="shadow-lg text-sm w-full mx-5   bg-white    mt-10  dark:bg-gray-800 dark:text-gray-100  "
 	>
-		<tr class="">
+		<tr id="templatesTableRow" class="">
 			<th class="bg-gray-100 border  px-8 py-4 text-center dark:bg-gray-800 dark:text-gray-100"
 				>Id</th
 			>
