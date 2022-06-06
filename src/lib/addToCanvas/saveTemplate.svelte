@@ -109,16 +109,6 @@
 				li10.appendChild(p4);
 			});
 
-			// let ecardTags = Ecards.Tags;
-			// console.log(ecardTags);
-
-			// console.log(Ecards[1]);
-			// let values = Object.values(Ecards[1]);
-			// console.log(keys);
-			// document.getElementById('EcardsDivH1').innerHTML = JSON.stringify(values);
-			// console.log(values);
-			//making table
-
 			// to display ecards data in table
 			document.getElementById('EcardsDiv').innerHTML = JSON.stringify(Ecards);
 		});

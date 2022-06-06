@@ -1,7 +1,7 @@
 <script>
 	import { previewtbl, previewImgFunc } from '../../utils/previewImgntbl';
 	import Pagination from '../reusable/pagination.svelte';
-	import Button from '../reusable/button.svelte'
+	import Button from '../reusable/button.svelte';
 </script>
 
 <div class="flex self-end justify-end ">
@@ -28,7 +28,7 @@
 			<th class="bg-gray-100 border  px-8 py-4 text-center dark:bg-gray-800 dark:text-gray-100"
 				>Id</th
 			>
-			<th class="bg-gray-100 border px-8 py-4 dark:bg-gray-800 dark:text-gray-100 ">Name</th>
+			<th class="bg-gray-100 border px-8 py-4 dark:bg-gray-800 dark:text-gray-100 ">Title</th>
 			<th class="bg-gray-100 border t px-8 py-4 dark:bg-gray-800 dark:text-gray-100"> Preview</th>
 			<th class="bg-gray-100 border t px-8 py-4 dark:bg-gray-800 dark:text-gray-100"> Tags</th>
 			<th class="bg-gray-100 border t px-8 py-4 dark:bg-gray-800 dark:text-gray-100">Publish</th>
@@ -37,8 +37,8 @@
 		<tr>
 			<td class="border px-8 py-4">1</td>
 			<td class="border px-8 py-4">Holi Templates</td>
-			<td class="border px-8 py-4 " id="toggleimgbtn"
-				><span><button on:click={previewImgFunc}>👁</button></span>
+			<td class="border px-8 py-4 " id="toggleimgbtn">
+				<span><button on:click={previewImgFunc}>👁</button></span>
 			</td>
 
 			<td class="border px-8 py-4">Tag1</td>
@@ -46,8 +46,8 @@
 			<td class="border px-8 py-4">No</td>
 			<td class="border px-8 py-4">
 				<!-- svelte-ignore a11y-missing-attribute -->
-				<a  on:click={previewtbl}><Button>::</Button></a> 
-				</td>
+				<button class="btn" on:click={previewtbl}>:</button>
+			</td>
 
 			<div class="  justify-center relative z-10  hidden " id="toggleContent">
 				<ul class="w-50  h-auto absolute top-0 -ml-28 mt-16 center border-gray-500 border">
@@ -76,7 +76,7 @@
 			<td class="border px-8 py-4">Tag2</td>
 
 			<td class="border px-8 py-4">No</td>
-			<td class="border px-8 py-4"><a  on:click={previewtbl}><Button>::</Button></a> </td>
+			<td class="border px-8 py-4"><a on:click={previewtbl}><Button>::</Button></a> </td>
 		</tr>
 
 		<tr>

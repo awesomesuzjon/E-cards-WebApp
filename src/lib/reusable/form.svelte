@@ -26,7 +26,12 @@
 									<option value="10">Other...</option>
 								</select>
 							<br/>
-								<button class="btn my-2 ">Add</button>
+							<input type= "checkbox" class=" flex-col" id="trending"/>
+								Mark as Trending
+							
+							<button class="btn my-2 flex-col flex">Add</button>
+							
+							
 							</form>
 		<form class="delete text-lg ">
 			<label for="id">Document id:</label>
