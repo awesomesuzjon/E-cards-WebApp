@@ -1,7 +1,6 @@
 <div id="controls-carousel" class="relative" data-carousel="static">
-	<div class="font-bold dark:text-gray-100  truncate text-black text-2xl">Stickers</div>
-
-	<div class="font-bold dark:text-gray-100  mt-4  truncate text-gray text-xl">Holi Stickers</div>
+	<h1 class="font-bold dark:text-gray-100  truncate text-black text-2xl">Stickers</h1>
+	<h2 class="font-bold dark:text-gray-100  mt-4  truncate text-gray text-xl">Holi Stickers</h2>
 	<div id="drag-items">
 		<div class="overflow-hidden relative h-48 rounded-lg sm:h-64 xl:h-80 2xl:h-64">
 			<div
@@ -19,11 +18,6 @@
 					class="rounded-full w-16 block absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
-				<img
-					src="admin.png"
-					class="rounded-full w-16 block absolute top-1/4 left-3/4 -translate-x-1/2 -translate-y-1/2"
-					alt="..."
-				/>
 			</div>
 
 			<div
@@ -31,18 +25,12 @@
 				data-carousel-item="active"
 			>
 				<img
-					src="maChhuni.jpg"
-					class="rounded-full w-16 block absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2"
-					alt="..."
-				/>
-
-				<img
 					src="newyear.jpg"
 					class="rounded-full w-16 block absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
 				<img
-					src="swadesh.png"
+					src="swadesh.jpg"
 					class="rounded-full w-16 block absolute top-1/4 left-3/4 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
@@ -59,13 +47,13 @@
 				/>
 
 				<img
-					src="hug.jpg"
-					class="rounded-full w-16 block absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2"
+					src="namaste.jpg"
+					class="rounded-full w-16 block absolute top-1/4 left-3/4 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
 				<img
-					src="namaste.png"
-					class="rounded-full w-16 block absolute top-1/4 left-3/4 -translate-x-1/2 -translate-y-1/2"
+					src="ktm.jpg"
+					class="rounded-full w-16 block absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
 			</div>
@@ -75,19 +63,13 @@
 				data-carousel-item="active"
 			>
 				<img
-					src="ktm.jpg"
-					class="rounded-full w-16 block absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2"
-					alt="..."
-				/>
-
-				<img
-					src="hand.jpg"
+					src="hug.jpg"
 					class="rounded-full w-16 block absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
 				<img
-					src="maChhuni.jpg"
-					class="rounded-full w-16 block absolute top-1/4 left-3/4 -translate-x-1/2 -translate-y-1/2"
+					src="namaste.jpg"
+					class="rounded-full w-16 block absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
 			</div>

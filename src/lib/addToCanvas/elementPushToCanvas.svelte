@@ -22,16 +22,11 @@
 		class="text-black"
 		on:enterkeyhint={pushTextToCanvasFunc}
 	/>
-
-	
-
 	<!-- svelte-ignore a11y-missing-attribute -->
-	<a on:click={pushTextToCanvasFunc} class="my-4"><Button >Add text</Button></a>	
+	<a on:click={pushTextToCanvasFunc} class="my-4"><Button>Add text</Button></a>
 
 	<label for="my-drawer-4" class="drawer-button ">
-	
-
 		<!-- svelte-ignore a11y-missing-attribute -->
-	<btn class="btn"> Open Editbar </btn>
+		<btn class="btn"> Open Editbar </btn>
 	</label>
 </div>

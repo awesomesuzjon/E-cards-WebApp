@@ -69,7 +69,6 @@
 				ulTags.appendChild(li1);
 				ulTags.appendChild(li2);
 				ulTags.appendChild(li3);
-				
 
 				ulTitle.appendChild(li4);
 				ulTitle.appendChild(li5);
@@ -91,7 +90,6 @@
 
 				let p3 = document.createElement('p');
 				let pTextPriority = document.createTextNode(Ecards.Priority);
-
 
 				let p4 = document.createElement('p');
 				let pTextId = document.createTextNode(Ecards.Id);
@@ -141,30 +139,21 @@
 	});
 </script>
 
-<!-- The button to open modal -->
 <label
-	for="my-modal"
+	for="my-modal-5"
 	class="btn modal-button hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white  btn-gray-50 center  text-sm p-2"
 	>Save</label
 >
 
 <!-- Put this part before </body> tag -->
-<input type="checkbox" id="my-modal" class="modal-toggle" />
-<div class="modal">
-	<div class="modal-box">
+<input type="checkbox" id="my-modal-5" class="modal-toggle" />
+<label for="my-modal-5" class="modal cursor-pointer">
+	<label class="modal-box relative" for="">
 		Helllo There
 		<Form />
 
 		<div id="table" />
 		<div id="EcardsDiv" />
 		<div id="heading1" />
-
-		<div class="modal-action">
-			<label
-				for="my-modal"
-				class=" hover:text-gray-800 w-1/6 hover:no-underline hover:border-gray-800 hover:bg-white btn btn-gray-50 flex items-center self-center mt-2  text-sm p-1"
-				>Close</label
-			>
-		</div>
-	</div>
-</div>
+	</label>
+</label>

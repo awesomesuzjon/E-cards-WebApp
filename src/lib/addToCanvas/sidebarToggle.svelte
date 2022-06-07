@@ -9,8 +9,8 @@
 	import Stickers from '../addToCanvas/stickers.svelte';
 	import ElementPushToCanvas from '../addToCanvas/elementPushToCanvas.svelte';
 	import EditSidebar from '../dropDownEditbar/editsidebar.svelte';
-	import Button from '../reusable/button.svelte';
-	import Form from '$lib/reusable/form.svelte';
+	import FirestoreFormTest from './firestoreFormTest.svelte';
+	import AddMessage from './message/addMessage.svelte';
 </script>
 
 <div class="flex justify-between items-center">
@@ -27,8 +27,10 @@
 					<ElementPushToCanvas />
 				</li>
 				<li class="p-4">
+					<AddMessage/>
+				</li>
+				<li class="p-4">
 					<Stickers />
-					<!-- <Stickers /> -->
 				</li>
 			</ul>
 		</div>
@@ -71,27 +73,6 @@
 	<button class="btn" id="saveAsImg">Save as Img</button>
 
 	<SaveTemplate />
-
-	<!-- <Form/> -->
-
-	<div class="flex   mt-8">
-		<div class="bg-gray-300 ">
-			<h1 class="text-lg text-blue mr-4"> Preview Image</h1>
-			<img id="imgPreview" src="" class="w-32 h-auto" alt=""/>
-		</div>
-		<ul id="ecardUlId" class="bg-pink-300 p-4 border-2  text-lg">
-			<span class="text-bold text-3xl mb-4 border-bottom">Id</span>
-		</ul>
-		<ul id="ecardUlTitle" class="bg-pink-300 p-4 border-2 text-lg">
-			<span class="text-bold text-3xl ">Title</span>
-		</ul>
-
-		<ul id="ecardUlTags" class="bg-pink-300 p-4 border-2 text-lg">
-			<span class="text-bold text-3xl ">Tags</span>
-		</ul>
-
-		<ul id="ecardUlPriority" class="bg-pink-300 p-4 border-2 text-lg">
-			<span class="text-bold text-3xl ">Priority</span>
-		</ul>
-	</div>
+	<!-- test form table of firestore on canvas page -->
+	<FirestoreFormTest />
 </div>
