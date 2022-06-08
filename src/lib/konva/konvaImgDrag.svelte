@@ -4,7 +4,6 @@
 	import { selected } from '../../stores/selectedItemId';
 	import { getContext, onDestroy } from 'svelte';
 	import jsPDF from 'jspdf';
-	import { object_without_properties } from 'svelte/internal';
 
 	const { getStage } = getContext('konva');
 	const { getLayer } = getContext('konva_layer');

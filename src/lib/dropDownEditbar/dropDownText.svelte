@@ -24,17 +24,23 @@
 		editFontStyleNormal,
 		editFontStyleItalicBold
 	} from '../../utils/editFontStyle';
+
+	// function textDropDownFunc() {
+	// 	document.getElementById('editTextPanelId').addEventListener('click', () => {
+	// 		document.getElementById('collapse-contentId').setAttribute('class', 'collapse-content');
+	// 	});
+	// }
 </script>
 
 <div tabindex="0" class="collapse">
-	<input type="checkbox" />
 	<div class="collapse-title flex justify-center text-xl font-medium">
-		Text
-		<button class="w-8 h-auto truncate ">
+		<button class=" h-12 truncate btn w-24" id="editTextPanelId">
+			Texts
 			<MdKeyboardArrowDown />
 		</button>
 	</div>
-	<div class="collapse-content">
+	<!-- text toggle code by class name collapse-content -->
+	<div id="collapse-contentId">
 		<li class="p-4">
 			<button class=" btn w-16   border-4 border-black " title="Delete" on:click={deleteTarget}>
 				<MdDelete />
@@ -50,13 +56,25 @@
 					Font-Style:
 				</h1>
 				<!-- svelte-ignore a11y-missing-attribute -->
-				<a on:click={editFontStyleBold} title="Bold"><Button >B</Button></a>
+				<a on:click={editFontStyleBold} title="Bold"
+					><Button>
+						<span class="font-bold "> B</span>
+					</Button></a
+				>
 				<!-- svelte-ignore a11y-missing-attribute -->
-				<a  on:click={editFontStyleItalic} title="Italic"><Button >i</Button></a>
+				<a on:click={editFontStyleItalic} title="Italic"
+					><Button>
+						<span class=" italic"> ABC</span>
+					</Button></a
+				>
 				<!-- svelte-ignore a11y-missing-attribute -->
-				<a  on:click={editFontStyleItalicBold} title="Italic Bold"><Button >I</Button></a>
+				<a on:click={editFontStyleItalicBold} title="Italic Bold"
+					><Button>
+						<span class="font-bold italic"> ABC</span>
+					</Button></a
+				>
 				<!-- svelte-ignore a11y-missing-attribute -->
-				<a  on:click={editFontStyleNormal} title="Normal"><Button>D</Button></a>
+				<a on:click={editFontStyleNormal} title="Normal"><Button>N</Button></a>
 			</div>
 		</li>
 
@@ -69,12 +87,23 @@
 					Text-Decoration:
 				</h1>
 				<!-- svelte-ignore a11y-missing-attribute -->
-				<a on:click={editFontUndeline} title="underline" ><Button>ABC</Button></a>
+				<a on:click={editFontUndeline} title="underline"
+					><Button>
+						<span class="underline "> ABC</span>
+					</Button></a
+				>
 				<!-- svelte-ignore a11y-missing-attribute -->
-				<a on:click={editFontLineThrough} title="line-through" class="line-through"><Button >ABC</Button></a>
+				<a on:click={editFontLineThrough} title="line-through" class="line-through"
+					><Button>
+						<span class="line-through "> ABC</span>
+					</Button></a
+				>
 				<!-- svelte-ignore a11y-missing-attribute -->
-				<a on:click={editFontNoUnderline} title="Default"><Button >ABC</Button></a>			
-
+				<a on:click={editFontNoUnderline} title="Default"
+					><Button>
+						<span> ABC</span>
+					</Button></a
+				>
 			</div>
 		</li>
 
@@ -94,7 +123,7 @@
 				/>
 
 				<!-- svelte-ignore a11y-missing-attribute -->
-				<a on:click={editTextColor} ><Button >Entering</Button></a>	
+				<a on:click={editTextColor}><Button>Entering</Button></a>
 			</div>
 		</li>
 
@@ -114,9 +143,9 @@
 					class=" mx-2 border-2 text-black border-gray-500 w-10 h-auto  text-sm font-bold dark:text-gray-800"
 				/>
 			</div>
-			
-				<!-- svelte-ignore a11y-missing-attribute -->
-				<a on:click={editFontSize} ><Button >Enter</Button></a>	
+
+			<!-- svelte-ignore a11y-missing-attribute -->
+			<a on:click={editFontSize}><Button>Enter</Button></a>
 		</li>
 
 		<li class="p-3">
@@ -136,7 +165,7 @@
 				/>
 			</div>
 			<!-- svelte-ignore a11y-missing-attribute -->
-			<a on:click={StrokeWidth} ><Button >Enter</Button></a>	
+			<a on:click={StrokeWidth}><Button>Enter</Button></a>
 		</li>
 
 		<li class="p-3">
@@ -160,7 +189,7 @@
 				/>
 			</div>
 			<!-- svelte-ignore a11y-missing-attribute -->
-			<a on:click={editTextOpacity} ><Button >Enter</Button></a>	
+			<a on:click={editTextOpacity}><Button>Enter</Button></a>
 		</li>
 
 		<li class="p-4">
@@ -185,7 +214,7 @@
 			</div>
 			<div class="flex flex-col mt-2">
 				<!-- svelte-ignore a11y-missing-attribute -->
-			<a on:click={editElementPosition} ><Button >Enter</Button></a>	
+				<a on:click={editElementPosition}><Button>Enter</Button></a>
 
 				<h1
 					class="text-sm font-bold left flex items-center justify-center self-center truncate"
@@ -199,7 +228,7 @@
 					class="mb-2  border-2 text-black border-gray-500 w-10 h-auto  text-sm font-bold dark:text-gray-800"
 				/>
 				<!-- svelte-ignore a11y-missing-attribute -->
-			<a on:click={editRotateText} ><Button >Rotate</Button></a>	
+				<a on:click={editRotateText}><Button>Rotate</Button></a>
 			</div>
 		</li>
 	</div>

@@ -25,8 +25,22 @@
 	<!-- svelte-ignore a11y-missing-attribute -->
 	<a on:click={pushTextToCanvasFunc} class="my-4"><Button>Add text</Button></a>
 
-	<label for="my-drawer-4" class="drawer-button ">
-		<!-- svelte-ignore a11y-missing-attribute -->
-		<btn class="btn"> Open Editbar </btn>
-	</label>
+	<!-- <button
+		on:click={() => {
+			let toggle = false;
+			const editPanel = document.getElementById('editPanelDiv');
+			if (toggle == false) {
+				toggle = true;
+				editPanel.style.visibility === 'hidden';
+				console.log('if clicked');
+			} else {
+				editPanel.style.display === 'block';
+				console.log('else clicked');
+			}
+		}}
+		class="btn"
+	>
+		Open editbarr
+
+	</button> -->
 </div>

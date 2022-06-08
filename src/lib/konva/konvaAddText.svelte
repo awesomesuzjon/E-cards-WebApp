@@ -10,6 +10,9 @@
 	const { getLayer } = getContext('konva_layer');
 	const stage = getStage();
 	const layer = getLayer();
+	import { setLabelonClickedElement } from '../../utils/editTextonCanvas';
+	import { documentId } from 'firebase/firestore';
+	import { each } from 'svelte/internal';
 
 	var imgSavedArray = [];
 
@@ -41,7 +44,8 @@
 				fill: 'black',
 				text: !data.length ? '' : data[data.length - 1],
 				draggable: true,
-				id: uuid()
+				id: 'textElementId',
+				listening: true
 
 				// fontFamily: 'arial',
 				// // stroke: 'red',
@@ -52,6 +56,7 @@
 				// // shadowOpacity: 0.5
 			});
 			text.moveToTop();
+
 			text.setZIndex(3);
 			layer.add(text);
 		});
@@ -79,12 +84,28 @@
 				layer.add(transformer);
 				$selected = null;
 				previousTarget = null;
+				console.log('clicked on konva canvas element');
 
 				return;
 			}
+
 			$selected = e.target;
+			var IdonCanvas = e.target.attrs.id;
+
 			transformer.attachTo(e.target);
 			previousTarget = e.target;
+
+			// if ($selected.attrs.id === IdonCanvas);
+			if (3 == 1);
+			console.log(IdonCanvas, 'is the elements id on canvas');
+			{
+				var editPanel = document.getElementById('editPanelDiv');
+				if ((editPanel.style.visibility = 'invisible')) {
+					editPanel.style.visibility = 'visible';
+				} else if ((editPanel.style.visibility = 'visible')) {
+					editPanel.style.visibility = 'invisible';
+				}
+			}
 		});
 
 		//save img url on localstorage
@@ -136,3 +157,15 @@
 		pdf.save('canvas.pdf');
 	});
 </script>
+
+<!-- if (3 == 1);
+			console.log(IdonCanvas, 'is the elements id on canvas');
+			{
+				var editPanel = document.getElementById('editPanelDiv');
+				if ((editPanel.style.visibility = 'invisible')) {
+					editPanel.style.visibility = 'visible';
+				} else if ((editPanel.style.visibility = 'visible')) {
+					editPanel.style.visibility = 'invisible';
+				}
+			}
+		}); -->
