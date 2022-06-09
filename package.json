@@ -14,13 +14,12 @@
   },
   "devDependencies": {
     "@iconify/svelte": "^2.2.0",
+    "@rgossiaux/svelte-headlessui": "^1.0.2",
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
     "@types/autoprefixer": "^10.2.0",
     "@types/postcss-load-config": "^3.0.1",
     "@types/tailwindcss": "^3.0.9",
-    "@typescript-eslint/eslint-plugin": "^5.10.1",
-    "@typescript-eslint/parser": "^5.10.1",
     "autoprefixer": "^10.4.4",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
@@ -29,12 +28,12 @@
     "prettier": "^2.5.1",
     "prettier-plugin-svelte": "^2.5.0",
     "svelte": "^3.44.0",
+    "svelte-carousel": "^1.0.19",
     "svelte-check": "^2.2.6",
     "svelte-dnd-action": "^0.9.18",
     "svelte-preprocess": "^4.10.1",
     "tailwindcss": "^3.0.23",
-    "tslib": "^2.3.1",
-    "typescript": "~4.6.2"
+    "tslib": "^2.3.1"
   },
   "type": "module",
   "dependencies": {
@@ -53,7 +52,6 @@
     "rxjs": "^7.5.5",
     "svelte-agnostic-draggable": "^0.1.11",
     "svelte-awesome": "^2.4.6",
-    "svelte-carousel": "^1.0.19",
     "svelte-drag-and-drop-actions": "^1.0.0",
     "svelte-fa": "^2.4.0",
     "svelte-icons": "^2.1.0",

@@ -84,27 +84,46 @@
 				layer.add(transformer);
 				$selected = null;
 				previousTarget = null;
-				console.log('clicked on konva canvas element');
 
 				return;
 			}
 
 			$selected = e.target;
-			var IdonCanvas = e.target.attrs.id;
 
 			transformer.attachTo(e.target);
 			previousTarget = e.target;
+		});
 
-			// if ($selected.attrs.id === IdonCanvas);
-			if (3 == 1);
-			console.log(IdonCanvas, 'is the elements id on canvas');
-			{
-				var editPanel = document.getElementById('editPanelDiv');
-				if ((editPanel.style.visibility = 'invisible')) {
-					editPanel.style.visibility = 'visible';
-				} else if ((editPanel.style.visibility = 'visible')) {
-					editPanel.style.visibility = 'invisible';
-				}
+		//on click of text open text editbar
+
+		layer.on('click', function (e) {
+			//on click of sticker	 open sticker editbar
+
+			var textEditContainer = document.getElementById('textEditContainerId');
+			var stickerEditContainer = document.getElementById('stickerEditContainerId');
+
+			if (e.target.attrs.id == undefined && (stickerEditContainer.style.visibility = 'invisible')) {
+				stickerEditContainer.style.visibility = 'visible';
+				textEditContainer.style.display = 'none	';
+				stickerEditContainer.style.display = 'block';
+				console.log(e.target.attrs.id, 'is the stickers id on canvas');
+			} else {
+				stickerEditContainer.style.visibility = 'invisible';
+			}
+
+			//on click of text open text editbar
+
+			if (
+				e.target.attrs.id == 'textElementId' &&
+				(textEditContainer.style.visibility = 'invisible')
+			) {
+				textEditContainer.style.visibility = 'visible';
+				textEditContainer.style.display = 'block	';
+				stickerEditContainer.style.display = 'none';
+				console.log(e.target.attrs.id, 'is the elements id on canvas');
+			} else {
+				textEditContainer.style.visibility = 'invisible';
+				//
 			}
 		});
 
@@ -128,7 +147,6 @@
 				//saving img data url on localStorage
 				// for (i = 0; i < imgSavedArray[i].length; i++) {
 				// localStorage.setItem('recentImage', imgSavedArray[i]);
-
 				localStorage.setItem('recentImage', dataURL);
 				const recentImageDataUrl = localStorage.getItem('recentImage');
 				document.querySelector('#imgPreview').setAttribute('src', recentImageDataUrl);
@@ -157,15 +175,3 @@
 		pdf.save('canvas.pdf');
 	});
 </script>
-
-<!-- if (3 == 1);
-			console.log(IdonCanvas, 'is the elements id on canvas');
-			{
-				var editPanel = document.getElementById('editPanelDiv');
-				if ((editPanel.style.visibility = 'invisible')) {
-					editPanel.style.visibility = 'visible';
-				} else if ((editPanel.style.visibility = 'visible')) {
-					editPanel.style.visibility = 'invisible';
-				}
-			}
-		}); -->

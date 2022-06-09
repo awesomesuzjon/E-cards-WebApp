@@ -11,6 +11,7 @@
 	import EditSidebar from '../dropDownEditbar/editsidebar.svelte';
 	import FirestoreFormTest from './firestoreFormTest.svelte';
 	import AddMessage from './message/addMessage.svelte';
+	import Carousel from '../reusable/carousel.svelte';
 </script>
 
 <div class="flex justify-between items-center">
@@ -27,7 +28,11 @@
 					<ElementPushToCanvas />
 				</li>
 				<li class="p-4">
-					<AddMessage/>
+					<AddMessage />
+				</li>
+
+				<li class="p-4">
+					<Carousel />
 				</li>
 				<li class="p-4">
 					<Stickers />
@@ -40,7 +45,7 @@
 		<h6 class="text-sm w-6  h-auto p-1"><FaAngleRight /></h6>
 	</label>
 
-	<div id="canvasContainer" class=" flex    items-center 	 h-full">
+	<div id="canvasContainer" class=" flex    items-center ">
 		<div
 			on:drop={drop}
 			on:dragover={allowDrop}
@@ -62,9 +67,9 @@
 				</Layer>
 			</Stage>
 		</div>
-
-		<EditSidebar />
 	</div>
+	<EditSidebar />
+
 </div>
 <p class="text-sm mt-2"><strong>Tip:</strong> Press the "Esc" key to exit full screen.</p>
 
