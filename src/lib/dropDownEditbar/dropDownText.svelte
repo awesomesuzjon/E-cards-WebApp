@@ -58,23 +58,27 @@
 				<!-- svelte-ignore a11y-missing-attribute -->
 				<a on:click={editFontStyleBold} title="Bold"
 					><Button>
-						<span class="font-bold "> B</span>
+						<span class="font-bold text-lg"> B</span>
 					</Button></a
 				>
 				<!-- svelte-ignore a11y-missing-attribute -->
 				<a on:click={editFontStyleItalic} title="Italic"
 					><Button>
-						<span class=" italic"> ABC</span>
+						<span class=" italic text-lg"> i</span>
 					</Button></a
 				>
 				<!-- svelte-ignore a11y-missing-attribute -->
 				<a on:click={editFontStyleItalicBold} title="Italic Bold"
 					><Button>
-						<span class="font-bold italic"> ABC</span>
+						<span class="font-bold italic text-lg"> I</span>
 					</Button></a
 				>
 				<!-- svelte-ignore a11y-missing-attribute -->
-				<a on:click={editFontStyleNormal} title="Normal"><Button>N</Button></a>
+				<a on:click={editFontStyleNormal} title="Normal"
+					><Button class="hover:bg-blue-700">
+						<span class="text-lg "> N </span>
+					</Button></a
+				>
 			</div>
 		</li>
 

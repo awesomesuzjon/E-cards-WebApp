@@ -11,6 +11,7 @@
 	import EditSidebar from '../dropDownEditbar/editsidebar.svelte';
 	import FirestoreFormTest from './firestoreFormTest.svelte';
 	import AddMessage from './message/addMessage.svelte';
+	import Carousel from '../reusable/carousel.svelte';
 </script>
 
 <div class="flex justify-between items-center">
@@ -27,7 +28,11 @@
 					<ElementPushToCanvas />
 				</li>
 				<li class="p-4">
-					<AddMessage/>
+					<AddMessage />
+				</li>
+
+				<li class="p-4">
+					<Carousel />
 				</li>
 				<li class="p-4">
 					<Stickers />

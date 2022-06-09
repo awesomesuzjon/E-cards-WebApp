@@ -3,12 +3,12 @@
 	export let flat = false;
 	export let inverse = false;
 
-    function newFunction(){
-        console.log('i m new functon clicked')
-    }
+	function newFunction() {
+		console.log('i m new functon clicked');
+	}
 </script>
 
-<button class={type} >
+<button class={type}>
 	<slot />
 </button>
 
@@ -18,18 +18,28 @@
 		cursor: pointer;
 		padding: 8px 12px;
 		box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
-        font-weight: bold;
-        border-radius: 6px;
-}
+		font-weight: bold;
+		border-radius: 6px;
+	}
 
-.primary{
-    background-color: #d91b42;
-    color:white;
+	button:active {
+		background: olive;
+	}
 
-}
+	button:hover {
+		background-color: orange;
+	}
+	button:focus {
+		background: olive;
+	}
 
-.secondary{
-    background:#45c496;
-    color:white;
-}
+	.primary {
+		background-color: #d91b42;
+		color: white;
+	}
+
+	.secondary {
+		background: #45c496;
+		color: white;
+	}
 </style>

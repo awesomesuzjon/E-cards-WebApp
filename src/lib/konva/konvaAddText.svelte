@@ -84,27 +84,28 @@
 				layer.add(transformer);
 				$selected = null;
 				previousTarget = null;
-				console.log('clicked on konva canvas element');
 
 				return;
 			}
 
 			$selected = e.target;
-			var IdonCanvas = e.target.attrs.id;
 
 			transformer.attachTo(e.target);
 			previousTarget = e.target;
+		});
 
-			// if ($selected.attrs.id === IdonCanvas);
-			if (3 == 1);
-			console.log(IdonCanvas, 'is the elements id on canvas');
-			{
-				var editPanel = document.getElementById('editPanelDiv');
-				if ((editPanel.style.visibility = 'invisible')) {
-					editPanel.style.visibility = 'visible';
-				} else if ((editPanel.style.visibility = 'visible')) {
-					editPanel.style.visibility = 'invisible';
-				}
+		// if ($selected.attrs.id === IdonCanvas);
+		stage.on('click', function (e) {
+			var IdonCanvas = e.target.attrs.id;
+
+			var editPanel = document.getElementById('editPanelDiv');
+			if (IdonCanvas == 'textElementId' && (editPanel.style.visibility = 'invisible')) {
+				console.log(IdonCanvas, 'is the elements id on canvas');
+
+				editPanel.style.visibility = 'visible';
+			} else {
+				editPanel.style.visibility = 'invisible';
+				console.log('open stickers');
 			}
 		});
 
