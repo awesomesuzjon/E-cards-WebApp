@@ -45,24 +45,37 @@
 <div class="rounded border w-full mx-auto mt-4">
 	<!-- Tabs -->
 	<ul id="tabs" class="inline-flex pt-2 px-1 w-full border-b">
-		
-			<a id="default-tab" href="#first"> <li
-                class="bg-white px-4 text-gray-800 font-semibold py-2 rounded-t border-t border-r border-l -mb-px"
-            >Dashain Message
-		</li>
-    </a>
+		<a id="default-tab" href="#first">
+			<li
+				class=" text-sm bg-white px-4 text-gray-800 font-semibold py-2 rounded-t border-t border-r border-l -mb-px"
+			>
+				Dashain Message
+			</li>
+		</a>
 
+		<a href="#second"
+			><li class="px-4 text-gray-800 font-semibold py-2 rounded-t text-sm">Tihar Message</li>
+		</a>
 
-		<a href="#second"><li class="px-4 text-gray-800 font-semibold py-2 rounded-t">
-            
-            Tihar Message
-		</li>
-    </a>
+		<a href="#third"
+			><li class="px-4 text-gray-800 font-semibold py-2 rounded-t text-sm">Holi Message</li>
+		</a>
 	</ul>
 
 	<!-- Tab Contents -->
-	<div id="tab-contents">
-		<div id="first" class="p-4 text-black">Happy Dashain</div>
-		<div id="second" class="hidden p-4 text-black">Happy Tihar</div>
+	<div id="tab-contents" class="list-none">
+		<div id="first" class="p-4 text-black text-sm ">
+			<li class=" ">Happy Dashain</li>
+			<li>Happy Tika</li>
+			<li>Long Holiday</li>
+		</div>
+		<div id="second" class="hidden p-4 text-black text-sm">
+			<li>Happy Tihar</li>
+			<li>Happy Laxmi Pooja</li>
+		</div>
+		<div id="third" class="hidden p-4 text-black text-sm">
+			<li>Happy Holi</li>
+			<li>Festival of Colors</li>
+		</div>
 	</div>
 </div>

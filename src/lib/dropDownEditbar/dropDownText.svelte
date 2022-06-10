@@ -1,6 +1,5 @@
 <script>
 	import FontFamily from '../addToCanvas/fontFamily.svelte';
-	import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte';
 	import MdDelete from 'svelte-icons/md/MdDelete.svelte';
 	import Button from '$lib/reusable/button.svelte';
 	import {
@@ -9,7 +8,6 @@
 		editTextColor,
 		editRotateText,
 		editTextOpacity,
-		StrokeWidth,
 		deleteTarget
 	} from '../../utils/editTextonCanvas';
 
@@ -24,25 +22,16 @@
 		editFontStyleNormal,
 		editFontStyleItalicBold
 	} from '../../utils/editFontStyle';
-
-	// function textDropDownFunc() {
-	// 	document.getElementById('editTextPanelId').addEventListener('click', () => {
-	// 		document.getElementById('collapse-contentId').setAttribute('class', 'collapse-content');
-	// 	});
-	// }
 </script>
 
-<div class="absolute top-0 right-0  bg-gray-700 invisible" id="textEditContainerId">
+<div class="absolute top-0 right-0  bg-gray-700 text-md invisible w-72 " id="textEditContainerId">
 	<div tabindex="0" class="collapse">
 		<div class="collapse-title flex justify-center text-xl font-medium">
-			<button class=" h-12 truncate btn w-24" id="editTextPanelId">
-				Texts
-				<MdKeyboardArrowDown />
-			</button>
+			<button class=" h-12 truncate btn w-24" id="editTextPanelId"> Texts </button>
 		</div>
 		<!-- text toggle code by class name collapse-content -->
 		<div id="collapse-contentId">
-			<li class="p-4">
+			<li class="p-0 list-none">
 				<button class=" btn w-16   border-4 border-black " title="Delete" on:click={deleteTarget}>
 					<MdDelete />
 				</button>
@@ -57,27 +46,27 @@
 						Font-Style:
 					</h1>
 					<!-- svelte-ignore a11y-missing-attribute -->
-					<a on:click={editFontStyleBold} title="Bold"
+					<a on:click={editFontStyleBold} class="p-0 text-sm" title="Bold"
 						><Button>
-							<span class="font-bold text-lg"> B</span>
+							<span class="font-bold "> B</span>
 						</Button></a
 					>
 					<!-- svelte-ignore a11y-missing-attribute -->
-					<a on:click={editFontStyleItalic} title="Italic"
+					<a on:click={editFontStyleItalic} class="p-0 text-sm" title="Italic"
 						><Button>
-							<span class=" italic text-lg"> i</span>
+							<span class=" italic "> i</span>
 						</Button></a
 					>
 					<!-- svelte-ignore a11y-missing-attribute -->
-					<a on:click={editFontStyleItalicBold} title="Italic Bold"
+					<a on:click={editFontStyleItalicBold} class="p-0 text-sm" title="Italic Bold"
 						><Button>
-							<span class="font-bold italic text-lg"> I</span>
+							<span class="font-bold italic"> I</span>
 						</Button></a
 					>
 					<!-- svelte-ignore a11y-missing-attribute -->
-					<a on:click={editFontStyleNormal} title="Normal"
+					<a on:click={editFontStyleNormal} class="p-0 text-sm" title="Normal"
 						><Button class="hover:bg-blue-700">
-							<span class="text-lg "> N </span>
+							<span> N </span>
 						</Button></a
 					>
 				</div>
@@ -92,19 +81,19 @@
 						Text-Decoration:
 					</h1>
 					<!-- svelte-ignore a11y-missing-attribute -->
-					<a on:click={editFontUndeline} title="underline"
+					<a on:click={editFontUndeline} class="p-0 text-sm" title="underline"
 						><Button>
 							<span class="underline "> ABC</span>
 						</Button></a
 					>
 					<!-- svelte-ignore a11y-missing-attribute -->
-					<a on:click={editFontLineThrough} title="line-through" class="line-through"
+					<a on:click={editFontLineThrough} class="p-0 text-sm" title="line-through"
 						><Button>
 							<span class="line-through "> ABC</span>
 						</Button></a
 					>
 					<!-- svelte-ignore a11y-missing-attribute -->
-					<a on:click={editFontNoUnderline} title="Default"
+					<a on:click={editFontNoUnderline} class="p-0 text-sm" title="Default"
 						><Button>
 							<span> ABC</span>
 						</Button></a
@@ -113,29 +102,29 @@
 			</li>
 
 			<li class="p-4">
-				<div>
+				<div class="flex flex-col">
 					<h1
-						class="text-sm font-bold flex flex-row  items-start justify-center mb-1 "
+						class="text-sm font-bold  flex items-center justify-center self-center truncate"
 						draggable="true"
 					>
-						Text-Color:
+						Font-Color
 					</h1>
 					<input
 						type="color"
 						id="colorInput"
 						value="#e66465"
-						class="  border-2 text-black  border-gray-500 w-10 h-6  text-sm font-bold dark:text-gray-800"
+						class="my-4 flex items-center justify-center self-center mx-2 border-2 text-black border-gray-500 w-16 dark:text-gray-800"
 					/>
 
 					<!-- svelte-ignore a11y-missing-attribute -->
-					<a on:click={editTextColor}><Button>Entering</Button></a>
+					<a class="p-0 text-sm truncate" on:click={editTextColor}> <Button>Enter</Button></a>
 				</div>
 			</li>
 
 			<li class="p-3">
 				<div class="flex flex-col ">
 					<h1
-						class="text-sm font-bold left flex items-center justify-center self-center truncate"
+						class="text-sm font-bold  flex items-center justify-center self-center truncate"
 						draggable="true"
 					>
 						Font-Size:
@@ -145,32 +134,12 @@
 						type="text"
 						value="50"
 						id="input"
-						class=" mx-2 border-2 text-black border-gray-500 w-10 h-auto  text-sm font-bold dark:text-gray-800"
+						class=" flex items-center justify-center self-center mx-2 border-2 text-black border-gray-500 w-16 h-auto  text-sm font-bold dark:text-gray-800"
 					/>
 				</div>
 
 				<!-- svelte-ignore a11y-missing-attribute -->
-				<a on:click={editFontSize}><Button>Enter</Button></a>
-			</li>
-
-			<li class="p-3">
-				<div class="flex flex-col ">
-					<h1
-						class="text-sm font-bold left flex items-center justify-center self-center truncate"
-						draggable="true"
-					>
-						Stroke Width:
-					</h1>
-
-					<input
-						type="text"
-						value="2"
-						id="strokeWidthInput"
-						class=" mx-2 border-2 text-black border-gray-500 w-10 h-auto  text-sm font-bold dark:text-gray-800"
-					/>
-				</div>
-				<!-- svelte-ignore a11y-missing-attribute -->
-				<a on:click={StrokeWidth}><Button>Enter</Button></a>
+				<a on:click={editFontSize} class="p-0 text-sm"><Button>Enter</Button></a>
 			</li>
 
 			<li class="p-3">
@@ -190,11 +159,11 @@
 					<input
 						type="input"
 						id="opacityInput"
-						class="flex justify-center border-2 text-black border-gray-500  w-40 h-auto  text-sm font-bold dark:text-gray-800"
+						class=" flex items-center justify-center self-center border-2 text-black border-gray-500  w-40 h-auto  text-sm font-bold dark:text-gray-800"
 					/>
 				</div>
 				<!-- svelte-ignore a11y-missing-attribute -->
-				<a on:click={editTextOpacity}><Button>Enter</Button></a>
+				<a on:click={editTextOpacity} class="p-0 text-sm"><Button>Enter</Button></a>
 			</li>
 
 			<li class="p-4">
@@ -219,7 +188,7 @@
 				</div>
 				<div class="flex flex-col mt-2">
 					<!-- svelte-ignore a11y-missing-attribute -->
-					<a on:click={editElementPosition}><Button>Enter</Button></a>
+					<a on:click={editElementPosition} class="p-0 text-sm"><Button>Enter</Button></a>
 
 					<h1
 						class="text-sm font-bold left flex items-center justify-center self-center truncate"
@@ -230,10 +199,10 @@
 					<input
 						type="input"
 						id="inputRotateDegree"
-						class="mb-2  border-2 text-black border-gray-500 w-10 h-auto  text-sm font-bold dark:text-gray-800"
+						class=" flex items-center justify-center self-center mb-2  border-2 text-black border-gray-500 w-16 h-auto  text-sm font-bold dark:text-gray-800"
 					/>
 					<!-- svelte-ignore a11y-missing-attribute -->
-					<a on:click={editRotateText}><Button>Rotate</Button></a>
+					<a on:click={editRotateText} class="p-0 text-sm"><Button>Rotate</Button></a>
 				</div>
 			</li>
 		</div>

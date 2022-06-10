@@ -16,7 +16,7 @@
 	button {
 		border: 0;
 		cursor: pointer;
-		padding: 8px 12px;
+		padding: 8px 8px;
 		box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
 		font-weight: bold;
 		border-radius: 6px;

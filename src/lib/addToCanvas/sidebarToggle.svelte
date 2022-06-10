@@ -12,9 +12,10 @@
 	import FirestoreFormTest from './firestoreFormTest.svelte';
 	import AddMessage from './message/addMessage.svelte';
 	import Carousel from '../reusable/carousel.svelte';
+	import MessageTabs from '../addToCanvas/message/messageTabs.svelte';
 </script>
 
-<div class="flex justify-between items-center">
+<div class="flex justify-between items-center ">
 	<div class="drawer  z-50 " style="width:10em;">
 		<input id="my-drawer" type="checkbox" class="drawer-toggle" />
 
@@ -24,17 +25,14 @@
 		>
 			<label for="my-drawer" class="drawer-overlay" />
 			<ul class=" divide-y-2 w-full bg-F6F0F0  text-sm text-white">
-				<li class="p-4">
+				<li class="p-2 ">
 					<ElementPushToCanvas />
 				</li>
-				<li class="p-4">
+				<li class="p-2 ">
 					<AddMessage />
 				</li>
 
-				<li class="p-4">
-					<Carousel />
-				</li>
-				<li class="p-4">
+				<li class="p-2">
 					<Stickers />
 				</li>
 			</ul>
@@ -50,7 +48,7 @@
 			on:drop={drop}
 			on:dragover={allowDrop}
 			id="canvasHolder"
-			style="width:20em;height:450px"
+			style="width:15em;height:450px"
 			class="  text-black dark:text-white cursor-move   self-center  border-8 bg-gray-100  "
 		>
 			<div
@@ -67,9 +65,15 @@
 				</Layer>
 			</Stage>
 		</div>
+
+		<input type="checkbox" id="my-modal-4" class="modal-toggle" />
+		<label for="my-modal-4" class="modal cursor-pointer">
+			<label class="modal-box  relative" for="">
+				<MessageTabs />
+			</label>
+		</label>
 	</div>
 	<EditSidebar />
-
 </div>
 <p class="text-sm mt-2"><strong>Tip:</strong> Press the "Esc" key to exit full screen.</p>
 

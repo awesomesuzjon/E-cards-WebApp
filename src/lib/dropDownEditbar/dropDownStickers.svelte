@@ -1,30 +1,29 @@
 <script>
-	import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte';
+	import MdDelete from 'svelte-icons/md/MdDelete.svelte';
+
 	import {
 		editRotateSticker,
 		editStickerSize,
 		editStickerPosition,
 		editStickerOpacity
 	} from '../../utils/editStickersonCanvas';
-
+	import {deleteTarget} from '../../utils/editTextonCanvas';
 	import Button from '../reusable/button.svelte';
-
-	let xaxis;
-	let yaxis;
 </script>
 
-<div class="absolute top-0 right-0 bg-gray-700 invisible" id="stickerEditContainerId">
+<div class="absolute top-0 right-0 bg-gray-700 invisible w-72 h-screen" id="stickerEditContainerId">
 	<div tabindex="0" class="collapse">
 		<input type="checkbox" />
 
-		<div class="collapse-title flex justify-center text-xl font-medium">
-			Stickers
-			<button class="w-8">
-				<MdKeyboardArrowDown />
-			</button>
-		</div>
+		<div class="collapse-title flex justify-center text-xl font-medium">Stickers</div>
 		<!-- add class="collapse-content" to make it collapsable-->
 		<div id="collapse-contentIdStickers">
+			<li class="p-0 list-none">
+				<button class=" btn w-16   border-4 border-black " title="Delete" on:click={deleteTarget}>
+					<MdDelete />
+				</button>
+			</li>
+
 			<li class="p-4">
 				<div class="flex  items-start justify-start  ">
 					<h1 class="text-sm font-bold ">Position X:</h1>
@@ -32,7 +31,7 @@
 						type="input"
 						value="100"
 						id="stickerPositionX"
-						class="w-6 mr-2 border-2 text-black border-gray-500  h-auto text-sm font-bold dark:text-gray-800"
+						class="w-16 mr-2 border-2 text-black border-gray-500  h-auto text-sm font-bold dark:text-gray-800"
 					/>
 
 					<span class="text-sm font-bold ">Y:</span>
@@ -40,15 +39,17 @@
 						type="input"
 						value="100"
 						id="stickerPositionY"
-						class=" mr-2 border-2 text-black border-gray-500 w-6 h-auto x text-sm font-bold dark:text-gray-800"
+						class=" mr-2 border-2 text-black border-gray-500 w-16 h-auto x text-sm font-bold dark:text-gray-800"
 					/>
 				</div>
 				<div class="flex flex-col mt-2">
 					<!-- svelte-ignore a11y-missing-attribute -->
-					<a on:click={editStickerPosition}><Button>Enter</Button></a>
+					<a class="p-0 text-sm my-4" on:click={editStickerPosition}
+						><Button><span> Enter </span></Button></a
+					>
 
 					<h1
-						class="text-sm font-bold left flex items-start justify-start self-start"
+						class="text-sm font-bold left flex items-center justify-center self-center"
 						draggable="true"
 					>
 						Rotate:
@@ -57,22 +58,24 @@
 						type="input"
 						value="0"
 						id="inputRotateSticker"
-						class="mb-2  border-2 text-black border-gray-500 w-6 h-auto  text-sm font-bold dark:text-gray-800"
+						class="flex items-center justify-center self-center mb-2  border-2 text-black border-gray-500 w-16 h-auto  text-sm font-bold dark:text-gray-800"
 					/>
 					<!-- svelte-ignore a11y-missing-attribute -->
-					<a on:click={editRotateSticker}><Button>Rotate Stickers</Button></a>
+					<a class="p-0 text-sm my-4" on:click={editRotateSticker}
+						><Button><span> Rotate Stickers </span></Button></a
+					>
 				</div>
 			</li>
 
 			<li class="p-3">
-				<div class="flex  items-start justify-start  ">
+				<div class="flex  items-start truncate justify-start  ">
 					<h1 class="text-sm font-bold " draggable="true">Height</h1>
 
 					<input
 						type="text"
 						value="150"
 						id="stickerHeight"
-						class=" mx-1 border-2 text-black border-gray-500 w-6
+						class="truncate mx-1 border-2 text-black border-gray-500 w-16
 						 h-auto  text-sm font-bold dark:text-gray-800"
 					/>
 					<h1 class="text-sm font-bold " draggable="true">Width</h1>
@@ -81,11 +84,11 @@
 						type="text"
 						value="150"
 						id="stickerWidth"
-						class=" mx-1 border-2 text-black border-gray-500 w-6 h-auto  text-sm font-bold dark:text-gray-800"
+						class=" mx-1 border-2 text-black border-gray-500 w-16 h-auto  text-sm font-bold dark:text-gray-800"
 					/>
 				</div>
 				<!-- svelte-ignore a11y-missing-attribute -->
-				<a on:click={editStickerSize}><Button>Enter Size</Button></a>
+				<a on:click={editStickerSize} class="p-0 text-sm my-4"><Button>Enter Size</Button></a>
 			</li>
 
 			<li class="p-3">
@@ -100,11 +103,11 @@
 					<input
 						type="text"
 						id="opacityStickerInput"
-						class=" mx-2 border-2 text-black border-gray-500 w-6 h-auto  text-sm font-bold dark:text-gray-800"
+						class="flex items-center justify-center self-center  mx-2 border-2 text-black border-gray-500 w-16 h-auto  text-sm font-bold dark:text-gray-800"
 					/>
 				</div>
 				<!-- svelte-ignore a11y-missing-attribute -->
-				<a on:click={editStickerOpacity}><Button>Enter</Button></a>
+				<a on:click={editStickerOpacity} class="p-0 text-sm"><Button>Enter</Button></a>
 			</li>
 		</div>
 	</div>

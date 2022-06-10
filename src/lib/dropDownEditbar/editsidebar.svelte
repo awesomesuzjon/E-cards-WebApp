@@ -8,9 +8,9 @@
 <div class="  bg-purple-600  w-1/3" id="editPanelDiv">
 	<!-- Sidebar content here -->
 	<div class="bg-black text-white">
-	<DropDownText />
-	<DropDownStickers />
-	<!--<DropDownMessage />
+		<DropDownText />
+		<DropDownStickers />
+		<!--<DropDownMessage />
 			<DropDownBackground /> -->
-		</div>
+	</div>
 </div>

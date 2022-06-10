@@ -8,12 +8,11 @@
 	onMount(() => {
 		stage = new Konva.Stage({
 			container: 'container',
-			width: 665,
+			width: 525,
 			height: 434,
 
-			stroke:'blue',
-			backgroundColor:"black",
-			
+			stroke: 'blue',
+			backgroundColor: 'black'
 		});
 		console.log('stage created');
 	});
@@ -24,7 +23,6 @@
 
 <div bind:this={container} id="container" class="absolute top-50 left-50">
 	{#if container}
-	
 		<slot />
 	{/if}
 </div>

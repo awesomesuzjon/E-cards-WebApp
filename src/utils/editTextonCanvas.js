@@ -41,19 +41,6 @@ export function StrokeWidth() {
 		});
 	}
 
-	//new function to open editbar on click of element on the canvas
-	export function setLabelonClickedElement(){
-		var newLabel = document.createElement('label');
-		newLabel.htmlFor = 'my-drawer-4';
-		selected.wrap('<label  for ="my-drawer-4"></label')
-		// newLabel.appendChild(selected);
-
-		// newLabel.setAttribute('for', "my-drawer-4");
-		//to be done for="my-drawer-4" above or try innerhtml
-		console.log(newLabel);
-
-		// selected.InnerHTML = `Next  <label for="my-drawer-4"></label>`
-	}
 
 
 	export function editTextColor() {

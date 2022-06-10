@@ -1,6 +1,6 @@
 <div id="controls-carousel" class="relative" data-carousel="static">
-	<h1 class="font-bold dark:text-gray-100  truncate text-black text-2xl">Stickers</h1>
-	<h2 class="font-bold dark:text-gray-100  mt-4  truncate text-gray text-xl">Holi Stickers</h2>
+	<h1 class="font-bold dark:text-gray-100  truncate text-black text-sm">Stickers</h1>
+	<h2 class="font-bold dark:text-gray-100  mt-4  truncate text-gray text-sm">Holi Stickers</h2>
 	<div id="drag-items">
 		<div class="overflow-hidden relative h-48 rounded-lg sm:h-64 xl:h-80 2xl:h-64">
 			<div
@@ -9,13 +9,13 @@
 			>
 				<img
 					src="hand.jpg"
-					class="rounded-full w-16 block absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2"
+					class="rounded-full w-12 block absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
 
 				<img
 					src="ktm.jpg"
-					class="rounded-full w-16 block absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2"
+					class="rounded-full w-12 block absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
 			</div>
@@ -26,12 +26,12 @@
 			>
 				<img
 					src="newyear.jpg"
-					class="rounded-full w-16 block absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2"
+					class="rounded-full w-12 block absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
 				<img
 					src="swadesh.jpg"
-					class="rounded-full w-16 block absolute top-1/4 left-3/4 -translate-x-1/2 -translate-y-1/2"
+					class="rounded-full w-12 block absolute top-1/4 left-3/4 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
 			</div>
@@ -42,18 +42,18 @@
 			>
 				<img
 					src="dimag.jpg"
-					class="rounded-full w-16 block absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2"
+					class="rounded-full w-12 block absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
 
 				<img
 					src="namaste.jpg"
-					class="rounded-full w-16 block absolute top-1/4 left-3/4 -translate-x-1/2 -translate-y-1/2"
+					class="rounded-full w-12 block absolute top-1/4 left-3/4 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
 				<img
 					src="ktm.jpg"
-					class="rounded-full w-16 block absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2"
+					class="rounded-full w-12 block absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
 			</div>
@@ -64,12 +64,12 @@
 			>
 				<img
 					src="hug.jpg"
-					class="rounded-full w-16 block absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2"
+					class="rounded-full w-12 block absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
 				<img
 					src="namaste.jpg"
-					class="rounded-full w-16 block absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2"
+					class="rounded-full w-12 block absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
 			</div>

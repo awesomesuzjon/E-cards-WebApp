@@ -10,7 +10,6 @@
 	const { getLayer } = getContext('konva_layer');
 	const stage = getStage();
 	const layer = getLayer();
-	import { setLabelonClickedElement } from '../../utils/editTextonCanvas';
 	import { documentId } from 'firebase/firestore';
 	import { each } from 'svelte/internal';
 
@@ -28,11 +27,8 @@
 				fill: color,
 				opacity: 0.5,
 				listening: false
-				// 		fillLinearGradientStartPoint: { x: -50, y: -50 },
-				//   fillLinearGradientEndPoint: { x: 50, y: 50 },
-				//   fillLinearGradientColorStops: [0, 'red', 1, 'yellow'],
+				
 			});
-			// image.src='admin.jpg';
 			layer.add(backgroundRect);
 		});
 		textStore.subscribe((data) => {
@@ -46,14 +42,6 @@
 				draggable: true,
 				id: 'textElementId',
 				listening: true
-
-				// fontFamily: 'arial',
-				// // stroke: 'red',
-				// // strokeWidth: 2,
-				// // shadowColor: 'black',
-				// // shadowBlur: 0,
-				// // shadowOffset: { x: 10, y: 15 },
-				// // shadowOpacity: 0.5
 			});
 			text.moveToTop();
 
