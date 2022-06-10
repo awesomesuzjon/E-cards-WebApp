@@ -82,6 +82,7 @@
 			previousTarget = e.target;
 		});
 
+<<<<<<< HEAD
 		//on click of text open text editbar
 
 		layer.on('click', function (e) {
@@ -112,6 +113,20 @@
 			} else {
 				textEditContainer.style.visibility = 'invisible';
 				//
+=======
+		// if ($selected.attrs.id === IdonCanvas);
+		stage.on('click', function (e) {
+			var IdonCanvas = e.target.attrs.id;
+
+			var editPanel = document.getElementById('editPanelDiv');
+			if (IdonCanvas == 'textElementId' && (editPanel.style.visibility = 'invisible')) {
+				console.log(IdonCanvas, 'is the elements id on canvas');
+
+				editPanel.style.visibility = 'visible';
+			} else {
+				editPanel.style.visibility = 'invisible';
+				console.log('open stickers');
+>>>>>>> 1e7bc43bb9b70f1fa8a3aa2e611fa7824a1da83d
 			}
 		});
 
