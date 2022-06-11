@@ -23,14 +23,17 @@
 	}
 
 	button:active {
-		background: olive;
+		background-color: pink;
 	}
 
 	button:hover {
-		background-color: orange;
+		background-color: transparent;
+		outline: 1px solid #d91b42;
+		color: #d91b42;
 	}
 	button:focus {
-		background: olive;
+		background: pink;
+		color: #d91b42;;
 	}
 
 	.primary {

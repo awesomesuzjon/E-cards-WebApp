@@ -24,7 +24,10 @@
 	} from '../../utils/editFontStyle';
 </script>
 
-<div class="absolute top-0 right-0  bg-gray-700 text-md invisible w-72 " id="textEditContainerId">
+<div
+	class="absolute top-0 right-0  bg-gray-700 text-md text-white invisible w-72 "
+	id="textEditContainerId"
+>
 	<div tabindex="0" class="collapse">
 		<div class="collapse-title flex justify-center text-xl font-medium">
 			<button class=" h-12 truncate btn w-24" id="editTextPanelId"> Texts </button>
@@ -37,7 +40,6 @@
 				</button>
 			</li>
 
-<<<<<<< HEAD
 			<li class="p-4">
 				<div>
 					<h1
@@ -72,42 +74,6 @@
 					>
 				</div>
 			</li>
-=======
-		<li class="p-4">
-			<div>
-				<h1
-					class="mb-3 text-sm font-bold truncate  flex items-center justify-center self-center"
-					draggable="true"
-				>
-					Font-Style:
-				</h1>
-				<!-- svelte-ignore a11y-missing-attribute -->
-				<a on:click={editFontStyleBold} title="Bold"
-					><Button>
-						<span class="font-bold text-lg"> B</span>
-					</Button></a
-				>
-				<!-- svelte-ignore a11y-missing-attribute -->
-				<a on:click={editFontStyleItalic} title="Italic"
-					><Button>
-						<span class=" italic text-lg"> i</span>
-					</Button></a
-				>
-				<!-- svelte-ignore a11y-missing-attribute -->
-				<a on:click={editFontStyleItalicBold} title="Italic Bold"
-					><Button>
-						<span class="font-bold italic text-lg"> I</span>
-					</Button></a
-				>
-				<!-- svelte-ignore a11y-missing-attribute -->
-				<a on:click={editFontStyleNormal} title="Normal"
-					><Button class="hover:bg-blue-700">
-						<span class="text-lg "> N </span>
-					</Button></a
-				>
-			</div>
-		</li>
->>>>>>> 1e7bc43bb9b70f1fa8a3aa2e611fa7824a1da83d
 
 			<li class="p-4">
 				<div>

@@ -12,10 +12,8 @@
 	import FirestoreFormTest from './firestoreFormTest.svelte';
 	import AddMessage from './message/addMessage.svelte';
 	import Carousel from '../reusable/carousel.svelte';
-<<<<<<< HEAD
+
 	import MessageTabs from '../addToCanvas/message/messageTabs.svelte';
-=======
->>>>>>> 1e7bc43bb9b70f1fa8a3aa2e611fa7824a1da83d
 </script>
 
 <div class="flex justify-between items-center ">
@@ -31,19 +29,9 @@
 				<li class="p-2 ">
 					<ElementPushToCanvas />
 				</li>
-<<<<<<< HEAD
 				<li class="p-2 ">
 					<AddMessage />
-=======
-				<li class="p-4">
-					<AddMessage />
 				</li>
-
-				<li class="p-4">
-					<Carousel />
->>>>>>> 1e7bc43bb9b70f1fa8a3aa2e611fa7824a1da83d
-				</li>
-
 				<li class="p-2">
 					<Stickers />
 				</li>

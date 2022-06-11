@@ -1,4 +1,6 @@
 <script>
+	import IoIosAddCircle from 'svelte-icons/io/IoIosAddCircle.svelte';
+	import Button from '../../reusable/button.svelte';
 	import { onMount } from 'svelte';
 
 	onMount(() => {
@@ -78,4 +80,6 @@
 			<li>Festival of Colors</li>
 		</div>
 	</div>
+	
 </div>
+<Button class="p-0"><span class="w-4 p-0 flex justify-end"> <IoIosAddCircle /> </span></Button>

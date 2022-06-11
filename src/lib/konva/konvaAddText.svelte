@@ -27,7 +27,6 @@
 				fill: color,
 				opacity: 0.5,
 				listening: false
-				
 			});
 			layer.add(backgroundRect);
 		});
@@ -82,7 +81,6 @@
 			previousTarget = e.target;
 		});
 
-<<<<<<< HEAD
 		//on click of text open text editbar
 
 		layer.on('click', function (e) {
@@ -113,68 +111,68 @@
 			} else {
 				textEditContainer.style.visibility = 'invisible';
 				//
-=======
-		// if ($selected.attrs.id === IdonCanvas);
-		stage.on('click', function (e) {
-			var IdonCanvas = e.target.attrs.id;
-
-			var editPanel = document.getElementById('editPanelDiv');
-			if (IdonCanvas == 'textElementId' && (editPanel.style.visibility = 'invisible')) {
-				console.log(IdonCanvas, 'is the elements id on canvas');
-
-				editPanel.style.visibility = 'visible';
-			} else {
-				editPanel.style.visibility = 'invisible';
-				console.log('open stickers');
->>>>>>> 1e7bc43bb9b70f1fa8a3aa2e611fa7824a1da83d
 			}
-		});
+			// if ($selected.attrs.id === IdonCanvas);
+			stage.on('click', function (e) {
+				var IdonCanvas = e.target.attrs.id;
 
-		//save img url on localstorage
+				var editPanel = document.getElementById('editPanelDiv');
+				if (IdonCanvas == 'textElementId' && (editPanel.style.visibility = 'invisible')) {
+					console.log(IdonCanvas, 'is the elements id on canvas');
 
-		function downloadURI(uri, name) {
-			var link = document.createElement('a');
-			link.download = name;
-			link.href = uri;
-			document.body.appendChild(link);
-			link.click();
-			document.body.removeChild(link);
-		}
-
-		document.getElementById('saveAsImg').addEventListener(
-			'click',
-			function () {
-				var dataURL = stage.toDataURL({ pixelRatio: 3 });
-				// imgSavedArray.push(dataURL);
-				downloadURI(dataURL, 'MyNewCanvas.png');
-				//saving img data url on localStorage
-				// for (i = 0; i < imgSavedArray[i].length; i++) {
-				// localStorage.setItem('recentImage', imgSavedArray[i]);
-				localStorage.setItem('recentImage', dataURL);
-				const recentImageDataUrl = localStorage.getItem('recentImage');
-				document.querySelector('#imgPreview').setAttribute('src', recentImageDataUrl);
-			},
-			false
-		);
-	});
-
-	//save canvas into pdf format
-	document.getElementById('saveAsPdf').addEventListener('click', function () {
-		var pdf = new jsPDF('l', 'px', [stage.width(), stage.height()]);
-		pdf.setTextColor('#000000');
-		// first add texts
-		stage.find('Text').forEach((text) => {
-			const size = text.fontSize() / 0.75; // convert pixels to points
-			pdf.setFontSize(size);
-			pdf.text(text.text(), text.x(), text.y(), {
-				baseline: 'top',
-				angle: -text.getAbsoluteRotation()
+					editPanel.style.visibility = 'visible';
+				} else {
+					editPanel.style.visibility = 'invisible';
+					console.log('open stickers');
+				}
 			});
+
+			//save img url on localstorage
+
+			function downloadURI(uri, name) {
+				var link = document.createElement('a');
+				link.download = name;
+				link.href = uri;
+				document.body.appendChild(link);
+				link.click();
+				document.body.removeChild(link);
+			}
+
+			document.getElementById('saveAsImg').addEventListener(
+				'click',
+				function () {
+					var dataURL = stage.toDataURL({ pixelRatio: 3 });
+					// imgSavedArray.push(dataURL);
+					downloadURI(dataURL, 'MyNewCanvas.png');
+					//saving img data url on localStorage
+					// for (i = 0; i < imgSavedArray[i].length; i++) {
+					// localStorage.setItem('recentImage', imgSavedArray[i]);
+					localStorage.setItem('recentImage', dataURL);
+					const recentImageDataUrl = localStorage.getItem('recentImage');
+					document.querySelector('#imgPreview').setAttribute('src', recentImageDataUrl);
+				},
+				false
+			);
 		});
 
-		// then put image on top of texts (so texts are not visible)
-		pdf.addImage(stage.toDataURL({ pixelRatio: 2 }), 0, 0, stage.width(), stage.height());
+		//save canvas into pdf format
+		document.getElementById('saveAsPdf').addEventListener('click', function () {
+			var pdf = new jsPDF('l', 'px', [stage.width(), stage.height()]);
+			pdf.setTextColor('#000000');
+			// first add texts
+			stage.find('Text').forEach((text) => {
+				const size = text.fontSize() / 0.75; // convert pixels to points
+				pdf.setFontSize(size);
+				pdf.text(text.text(), text.x(), text.y(), {
+					baseline: 'top',
+					angle: -text.getAbsoluteRotation()
+				});
+			});
 
-		pdf.save('canvas.pdf');
+			// then put image on top of texts (so texts are not visible)
+			pdf.addImage(stage.toDataURL({ pixelRatio: 2 }), 0, 0, stage.width(), stage.height());
+
+			pdf.save('canvas.pdf');
+		});
 	});
 </script>
