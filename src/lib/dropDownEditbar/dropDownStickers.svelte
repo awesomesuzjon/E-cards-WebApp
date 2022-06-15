@@ -12,24 +12,28 @@
 </script>
 
 <div
-	class="absolute top-0 right-0 bg-gray-700 text-white text-sm invisible w-72 h-screen"
+	class="absolute top-0 right-0 bg-red-300 text-white text-sm invisible w-72 h-screen"
 	id="stickerEditContainerId"
 >
 	<div tabindex="0" class="collapse">
 		<input type="checkbox" />
 
-		<div class="collapse-title flex justify-center text-xl font-medium">Stickers</div>
+		<div class="ml-4 collapse-title flex justify-center text-xl font-medium">Stickers</div>
 		<!-- add class="collapse-content" to make it collapsable-->
 		<div id="collapse-contentIdStickers">
 			<li class="p-0 list-none">
-				<button class=" btn w-16   border-4 border-black " title="Delete" on:click={deleteTarget}>
+				<button
+					class=" btn bg-white border-red-700 text-red-700 hover:border-1 hover:bg-transparent w-16   "
+					title="Delete"
+					on:click={deleteTarget}
+				>
 					<MdDelete />
 				</button>
 			</li>
 
 			<li class="p-4">
 				<div class="flex  items-start justify-start  ">
-					<h1 class="text-sm font-bold ">Position X:</h1>
+					<h1 class="text-sm font-bold mr-2">Position X:</h1>
 					<input
 						type="input"
 						value="100"
@@ -37,7 +41,7 @@
 						class="w-16 mr-2 border-2 text-black border-gray-500  h-auto text-sm font-bold dark:text-gray-800"
 					/>
 
-					<span class="text-sm font-bold ">Y:</span>
+					<span class="text-sm font-bold mr-2">Y:</span>
 					<input
 						type="input"
 						value="100"
@@ -52,7 +56,7 @@
 					>
 
 					<h1
-						class="text-sm font-bold left flex items-center justify-center self-center"
+						class="mb-2 text-sm font-bold left flex items-center justify-center self-center"
 						draggable="true"
 					>
 						Rotate:
@@ -64,15 +68,15 @@
 						class="flex items-center justify-center self-center mb-2  border-2 text-black border-gray-500 w-16 h-auto  text-sm font-bold dark:text-gray-800"
 					/>
 					<!-- svelte-ignore a11y-missing-attribute -->
-					<a class="p-0 text-sm my-4" on:click={editRotateSticker}
+					<a class="p-0 text-sm my-2" on:click={editRotateSticker}
 						><Button><span> Rotate Stickers </span></Button></a
 					>
 				</div>
 			</li>
 
 			<li class="p-3">
-				<div class="flex  items-start truncate justify-start  ">
-					<h1 class="text-sm font-bold " draggable="true">Height</h1>
+				<div class="flex  items-start truncate justify-start  mb-4">
+					<h1 class="text-sm font-bold mr-2" draggable="true">Height</h1>
 
 					<input
 						type="text"
@@ -81,7 +85,7 @@
 						class="truncate mx-1 border-2 text-black border-gray-500 w-16
 						 h-auto  text-sm font-bold dark:text-gray-800"
 					/>
-					<h1 class="text-sm font-bold " draggable="true">Width</h1>
+					<h1 class="text-sm font-bold mr-2" draggable="true">Width</h1>
 
 					<input
 						type="text"
@@ -91,13 +95,13 @@
 					/>
 				</div>
 				<!-- svelte-ignore a11y-missing-attribute -->
-				<a on:click={editStickerSize} class="p-0 text-sm my-4"><Button>Enter Size</Button></a>
+				<a on:click={editStickerSize} class="p-0 text-sm mt-4"><Button>Enter Size</Button></a>
 			</li>
 
 			<li class="p-3">
-				<div class="flex flex-col ">
+				<div class="flex flex-col mb-4">
 					<h1
-						class="text-sm font-bold left flex items-center justify-center self-center truncate"
+						class="mb-2 text-sm font-bold left flex items-center justify-center self-center truncate"
 						draggable="true"
 					>
 						Opacity(Between 0 and 1)

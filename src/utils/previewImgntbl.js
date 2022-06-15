@@ -1,31 +1,29 @@
    export  function previewImgFunc() {
 
 const targetDiv = document.getElementById("targetContent");
-      const btn = document.getElementById("toggleimgbtn");
-      btn.onclick = function () {
-          if (targetDiv.style.display !== "none") {
+      const btn = document.getElementById("toggleImgBtn");
+      btn.addEventListener("click",()=>{
+        targetDiv.style.display == "block"
+          if (targetDiv.style.display == "block") {
               targetDiv.style.display = "none";
-          } else {
-              targetDiv.style.display = "block";
-          }
-}
-
-}
+            } else {
+                targetDiv.style.display = "block";
+            }
+        })
+        }
+        
 
 
 
 export function previewtbl(){
 const targetDiv = document.getElementById("toggleContent");
-let btn = document.getElementsByClassName("toggletbl");
-    for (var i = 0; i < btn.length; i++) {
-        btn[i].addEventListener("click", function () {
-            console.log('hello its me');
-          if (targetDiv.style.display == "none") {
-              targetDiv.style.display = "block";
-          } else {
-      targetDiv.style.display = "none";
+const btn = document.getElementById("toggleTblBtn");
+btn.onclick = function () {
+    if (targetDiv.style.display == "none") {
+        targetDiv.style.display = "block";
+    } else {
+        targetDiv.style.display = "none";
+    
     }
-  }
-
-        )}
-}
+        }
+    }

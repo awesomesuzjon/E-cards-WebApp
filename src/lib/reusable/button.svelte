@@ -1,14 +1,13 @@
 <script>
 	export let type = 'primary';
-	export let flat = false;
-	export let inverse = false;
+
 
 	function newFunction() {
 		console.log('i m new functon clicked');
 	}
 </script>
 
-<button class={type}>
+<button class={type} >
 	<slot />
 </button>
 
@@ -28,16 +27,16 @@
 
 	button:hover {
 		background-color: transparent;
-		outline: 1px solid #d91b42;
-		color: #d91b42;
+		outline: 1px solid #b91c1c;
+		color: #b91c1c;
 	}
 	button:focus {
 		background: pink;
-		color: #d91b42;;
+		color: #b91c1c;
 	}
 
 	.primary {
-		background-color: #d91b42;
+		background-color: #b91c1c;
 		color: white;
 	}
 

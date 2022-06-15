@@ -1,4 +1,4 @@
-<div class="flex   mt-8">
+<div class="flex  text-sm mt-8">
 	<div class="bg-gray-300 ">
 		<h1 class="text-lg text-blue mr-4">Preview Image</h1>
 		<img id="imgPreview" src="" class="w-32 h-auto" alt="" />

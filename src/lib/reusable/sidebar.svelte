@@ -20,25 +20,34 @@
 	function toggle() {
 		window.document.body.classList.toggle('dark');
 	}
+
+	function toggleTemplateDropDown() {
+		var TemplateDropDownBtn = document.getElementById('templateDropDownBtn');
+		var dropDownDiv = document.getElementById('dropdown-example');
+		TemplateDropDownBtn.addEventListener('click', () => {
+			if (dropDownDiv.style.display == 'hidden') {
+				console.log('function triggred');
+				dropDownDiv.style.display == 'block';
+			} else {
+				dropDownDiv.style.display == 'hidden';
+			}
+		});
+	}
 </script>
 
 <div
-	class="bg-customColorPink rounded   dark:bg-gray-800 h-screen  text-center relative min-h-screen  flex  sidebar"
+	class="bg-red-700 rounded   dark:bg-customColorGray h-screen  text-center relative min-h-screen  flex  sidebar"
 >
 	<!-- toggle Sidebar code -->
 
-	<ul class="space-y-0    w-full mt-4		 ">
-		<button
-			class=" dark:btn-black-100  justify-right dark:text-gray-100 w-8 h-16"
-			on:click={toggle}
-		>
-			<FaCloudMoon /></button
-		>
+	<ul class="space-y-0    w-full mt-4	 ">
+		<div class="flex flex-col justify-around items-center">
+			<button class=" text-white dark:text-blue-200 w-8 h-16" on:click={toggle}>
+				<FaCloudMoon /></button
+			>
 
-		<ul class="space-y-0   	 w-full  ">
 			<div class="form-control">
 				<label class="label cursor-pointer">
-					<span class="label-text  text-black p-2 dark:text-gray-300">Show Sidebar</span>
 					<input
 						type="checkbox"
 						id="toggleSidebarBtn"
@@ -48,191 +57,189 @@
 					/>
 				</label>
 			</div>
-			<div id="sidebarToggleDiv">
-				<li class="w-full py-4 hover:shadow-xl  hover:bg-blue-100 dark:hover:bg-gray-700">
-					<a
-						href="/dashboard"
-						class="w-full   flex items-center  p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white "
-					>
-						<div class="flex items-center align-middle">
-							<span class="mt-3 ml-3 w-6 h-6 flex  "> <FaHome /></span>
-							<span class="whitespace-nowrap mt-3 ml-4 center flex dark:text-gray-300">
-								Dashboard</span
-							>
-						</div>
-					</a>
-				</li>
-				<li class="w-full py-4 hover:shadow-xl hover:bg-blue-100 dark:hover:bg-gray-700">
-					<button
-						type="button"
-						class=" flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group  dark:text-white "
-						data-collapse-toggle="dropdown-example"
-						aria-expanded="false"
-					>
-						<div class="flex items-center align-middle">
-							<span class="mt-3 ml-3 w-6 h-6 flex  "> <FaImages /></span>
-							<span class="whitespace-nowrap mt-3 ml-4 center flex dark:text-gray-300">
-								Templates</span
-							>
+		</div>
 
-							<svg class="animate-bounce w-6 h-6 flex mt-4 ml-2 ">
-								<FaAngleDown />
-							</svg>
-						</div>
-					</button>
+		<div id="sidebarToggleDiv">
+			<li
+				class="w-full py-4 hover:shadow-xl text-white  hover:bg-white hover:text-red-700  dark:hover:text-customColorGray   "
+			>
+				<a
+					href="/dashboard"
+					class="w-full   flex items-center  p-2 text-base font-normal rounded-lg  "
+				>
+					<div class="flex items-center align-middle ">
+						<span class="mt-3 ml-3 w-6 h-6 flex  "> <FaHome /></span>
+						<span class="whitespace-nowrap mt-3 ml-4 center flex  "> Dashboard</span>
+					</div>
+				</a>
+			</li>
+			<li
+				class=" w-full py-4 hover:shadow-xl text-white hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
+			>
+				<button
+					id="templateDropDownBtn"
+					on:click={toggleTemplateDropDown}
+					type="button"
+					class=" flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group   "
+					data-collapse-toggle="dropdown-example"
+					aria-expanded="false"
+				>
+					<div class="flex items-center align-middle ">
+						<span class="mt-3 ml-3 w-6 h-6 flex  "> <FaImages /></span>
+						<span class="whitespace-nowrap mt-3 ml-4 center flex "> Templates</span>
 
-					<ul id="dropdown-example" class="hidden py-2 space-y-2">
-						<li>
-							<a
-								href="/trendingtemplates"
-								class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-blue-300 dark:text-white dark:hover:bg-gray-700 "
-								>Trending E-cards</a
-							>
-						</li>
-						<li>
-							<a
-								href="/mostdownloadedtemplates"
-								class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-blue-300 dark:text-white dark:hover:bg-gray-700 "
-								>Most Downloaded
-							</a>
-						</li>
-						<li>
-							<a
-								href="/communitytemplates"
-								class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-blue-300 dark:text-white dark:hover:bg-gray-700 "
-								>Community E-cards</a
-							>
-						</li>
-					</ul>
-				</li>
+						<!-- <svg class="animate-bounce w-6 h-6 flex mt-4 ml-2 "> -->
+						<svg class=" w-6 h-6 flex mt-4 ml-2 ">
+							<FaAngleDown />
+						</svg>
+					</div>
+				</button>
 
-				<li class="w-full py-4 hover:shadow-xl hover:bg-blue-100 dark:hover:bg-gray-700">
-					<a
-						href="/stickerTable"
-						class=" flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white "
-					>
-						<div class="flex items-center align-middle">
-							<span class="mt-3 ml-3 w-6 h-6 flex  "> <FaRegGrimace /></span><span
-								class="dark:text-gray-300 whitespace-nowrap mt-3 ml-4 center flex"
-							>
-								Stickers</span
-							>
-						</div>
-					</a>
-				</li>
-				<li class="w-full py-4 hover:shadow-xl hover:bg-blue-100 dark:hover:bg-gray-700">
-					<a
-						href="/messageTable"
-						class=" flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white "
-					>
-						<div class="flex items-center align-middle">
-							<span class="mt-3 ml-3 w-6 h-6 flex  "> <IoMdText /></span><span
-								class="whitespace-nowrap mt-3 ml-4 center flex dark:text-gray-300"
-							>
-								Messages</span
-							>
-						</div>
-					</a>
-				</li>
+				<ul id="dropdown-example" class="hidden py-2 space-y-2">
+					<li>
+						<a
+							href="/trendingtemplates"
+							class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group hover:bg-white hover:text-red-700 "
+							>Trending E-cards</a
+						>
+					</li>
+					<li>
+						<a
+							href="/mostdownloadedtemplates"
+							class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal transition duration-75 rounded-lg group "
+							>Most Downloaded
+						</a>
+					</li>
+					<li>
+						<a
+							href="/communitytemplates"
+							class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group "
+							>Community E-cards</a
+						>
+					</li>
+				</ul>
+			</li>
 
-				<li class="w-full py-4 hover:shadow-xl hover:bg-blue-100 dark:hover:bg-gray-700">
-					<a
-						href="/category"
-						class=" flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white "
-					>
-						<div class="flex items-center align-middle">
-							<span class="mt-3 ml-3 w-6 h-6 flex  "> <FaSearch /></span><span
-								class="dark:text-gray-300 whitespace-nowrap mt-3 ml-4 center flex">Categories</span
-							>
-						</div>
-					</a>
-				</li>
-			</div>
+			<li
+				class="w-full py-4 hover:shadow-xl  text-white hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
+			>
+				<a href="/stickerTable" class=" flex items-center p-2 text-base font-normal  rounded-lg  ">
+					<div class="flex items-center align-middle">
+						<span class="mt-3 ml-3 w-6 h-6 flex  "> <FaRegGrimace /></span><span
+							class=" whitespace-nowrap mt-3 ml-4 center flex"
+						>
+							Stickers</span
+						>
+					</div>
+				</a>
+			</li>
+			<li
+				class="w-full py-4 hover:shadow-xl  text-white hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
+			>
+				<a href="/messageTable" class=" flex items-center p-2 text-base font-normal  rounded-lg  ">
+					<div class="flex items-center align-middle">
+						<span class="mt-3 ml-3 w-6 h-6 flex  "> <IoMdText /></span><span
+							class="whitespace-nowrap mt-3 ml-4 center flex "
+						>
+							Messages</span
+						>
+					</div>
+				</a>
+			</li>
 
-			<div id="iconsSidebarToggle" class="hidden">
-				<li class="w-full py-4 hover:shadow-xl  hover:bg-blue-100 dark:hover:bg-gray-700">
-					<a
-						href="/dashboard"
-						class="w-full   flex items-center  p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white "
-					>
-						<div class="flex items-center align-middle ">
-							<span class="mt-3 ml-3 w-6 h-6 flex  "> <FaHome /></span>
-						</div>
-					</a>
-				</li>
-				<li class="w-full py-4 hover:shadow-xl hover:bg-blue-100 dark:hover:bg-gray-700">
-					<button
-						type="button"
-						class=" flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group  dark:text-white "
-						data-collapse-toggle="dropdown-example"
-						aria-expanded="false"
-					>
-						<div class="flex items-center align-middle">
-							<span class="mt-3 ml-3 w-6 h-6 flex  mr-4"> <FaImages /></span>
+			<li
+				class="w-full py-4 hover:shadow-xl text-white hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
+			>
+				<a href="/category" class=" flex items-center p-2 text-base font-normal  rounded-lg  ">
+					<div class="flex items-center align-middle">
+						<span class="mt-3 ml-3 w-6 h-6 flex  "> <FaSearch /></span><span
+							class=" whitespace-nowrap mt-3 ml-4 center flex">Categories</span
+						>
+					</div>
+				</a>
+			</li>
+		</div>
 
-							<svg class="animate-bounce w-6 h-6 flex mt-4 ml-2 ">
-								<FaAngleDown />
-							</svg>
-						</div>
-					</button>
+		<!-- sidebar icon div -->
 
-					<ul id="dropdown-example" class="hidden py-2 space-y-2">
-						<li>
-							<a
-								href="/trendingtemplates"
-								class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-blue-300 dark:text-white dark:hover:bg-gray-700 "
-								>Trending E-cards</a
-							>
-						</li>
-						<li>
-							<a
-								href="/mostdownloadedtemplates"
-								class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-blue-300 dark:text-white dark:hover:bg-gray-700 "
-								>Most Downloaded
-							</a>
-						</li>
-						<li>
-							<a
-								href="/communitytemplates"
-								class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-blue-300 dark:text-white dark:hover:bg-gray-700 "
-								>Community E-cards</a
-							>
-						</li>
-					</ul>
-				</li>
+		<div id="iconsSidebarToggle" class="hidden">
+			<li class="w-full py-4 hover:shadow-xl   ">
+				<a
+					href="/dashboard"
+					class="w-full   flex items-center  p-2 text-base font-normal rounded-lg  text-white dark:text-white "
+				>
+					<div class="flex items-center align-middle ">
+						<span class="mt-3 ml-3 w-6 h-6 flex  "> <FaHome /></span>
+					</div>
+				</a>
+			</li>
+			<li class="w-full py-4 hover:shadow-xl  ">
+				<button
+					type="button"
+					class=" flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group   "
+					data-collapse-toggle="dropdown-example"
+					aria-expanded="false"
+				>
+					<div class="flex items-center align-middle">
+						<span class="mt-3 ml-3 w-6 h-6 flex  mr-4 text-white dark:text-white">
+							<FaImages /></span
+						>
 
-				<li class="w-full py-4 hover:shadow-xl hover:bg-blue-100 dark:hover:bg-gray-700">
-					<a
-						href="/stickers"
-						class=" flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white "
-					>
-						<div class="flex items-center align-middle">
-							<span class="mt-3 ml-3 w-6 h-6 flex  "> <FaRegGrimace /></span>
-						</div>
-					</a>
-				</li>
-				<li class="w-full py-4 hover:shadow-xl hover:bg-blue-100 dark:hover:bg-gray-700">
-					<a
-						href="/messages"
-						class=" flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white "
-					>
-						<div class="flex items-center align-middle">
-							<span class="mt-3 ml-3 w-6 h-6 flex  "> <IoMdText /></span>
-						</div>
-					</a>
-				</li>
+						<svg class=" w-6 h-6 flex mt-4 ml-2 text-white dark:text-white">
+							<FaAngleDown />
+						</svg>
+					</div>
+				</button>
 
-				<li class="w-full py-4 hover:shadow-xl hover:bg-blue-100 dark:hover:bg-gray-700">
-					<a
-						href="/category"
-						class=" flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white "
-					>
-						<div class="flex items-center align-middle">
-							<span class="mt-3 ml-3 w-6 h-6 flex  "> <FaSearch /></span>
-						</div>
-					</a>
-				</li>
-			</div>
-		</ul>
+				<ul id="dropdown-example" class="hidden py-2 space-y-2">
+					<li>
+						<a
+							href="/trendingtemplates"
+							class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group hover:bg-blue-300 dark:  "
+							>Trending E-cards</a
+						>
+					</li>
+					<li>
+						<a
+							href="/mostdownloadedtemplates"
+							class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group hover:bg-blue-300 dark:  "
+							>Most Downloaded
+						</a>
+					</li>
+					<li>
+						<a
+							href="/communitytemplates"
+							class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group hover:bg-blue-300 dark:  "
+							>Community E-cards</a
+						>
+					</li>
+				</ul>
+			</li>
+
+			<li class="w-full py-4 hover:shadow-xl  ">
+				<a href="/stickers" class=" flex items-center p-2 text-base font-normal  rounded-lg dark: ">
+					<div class="flex items-center align-middle">
+						<span class="mt-3 ml-3 w-6 h-6 flex text-white dark:text-white ">
+							<FaRegGrimace /></span
+						>
+					</div>
+				</a>
+			</li>
+			<li class="w-full py-4 hover:shadow-xl  ">
+				<a href="/messages" class=" flex items-center p-2 text-base font-normal  rounded-lg dark: ">
+					<div class="flex items-center align-middle">
+						<span class="mt-3 ml-3 w-6 h-6 flex  text-white dark:text-white"> <IoMdText /></span>
+					</div>
+				</a>
+			</li>
+
+			<li class="w-full py-4 hover:shadow-xl  ">
+				<a href="/category" class=" flex items-center p-2 text-base font-normal  rounded-lg dark: ">
+					<div class="flex items-center align-middle">
+						<span class="mt-3 ml-3 w-6 h-6 flex text-white dark:text-white "> <FaSearch /></span>
+					</div>
+				</a>
+			</li>
+		</div>
 	</ul>
 </div>

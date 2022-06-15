@@ -4,16 +4,13 @@
 	import { selected } from '../../stores/selectedItemId';
 	import { v4 as uuid } from 'uuid';
 	import { textStore } from '../../stores/storeText';
+	import { msgStore } from '../../stores/storeText';
 	import { getContext } from 'svelte';
 	import { canvasBgStore } from '../../stores/canvasColor';
 	const { getStage } = getContext('konva');
 	const { getLayer } = getContext('konva_layer');
 	const stage = getStage();
 	const layer = getLayer();
-	import { documentId } from 'firebase/firestore';
-	import { each } from 'svelte/internal';
-
-	var imgSavedArray = [];
 
 	onMount(() => {
 		canvasBgStore.subscribe((color) => {
@@ -46,6 +43,23 @@
 
 			text.setZIndex(3);
 			layer.add(text);
+		});
+
+		msgStore.subscribe((data) => {
+			var message = new Konva.Text({
+				x: 50,
+				y: 50,
+				zIndex: 3,
+				fontSize: 18,
+				fill: 'black',
+				text: !data.length ? '' : data[data.length - 1],
+				draggable: true,
+				id: 'msgElementId',
+				listening: true
+			});
+			message.moveToTop();
+			message.setZIndex(2);
+			layer.add(message);
 		});
 
 		//konva add image as background
@@ -88,6 +102,23 @@
 
 			var textEditContainer = document.getElementById('textEditContainerId');
 			var stickerEditContainer = document.getElementById('stickerEditContainerId');
+			// var messageEditContainer = document.getElementById('messageEditContainerId');
+
+			//on click of message open message editbar
+
+			if (
+				e.target.attrs.id == 'msgElementId' &&
+				(textEditContainer.style.visibility = 'invisible')
+			) {
+				textEditContainer.style.visibility = 'visible';
+				textEditContainer.style.display = 'block	';
+				stickerEditContainer.style.display = 'none';
+				console.log(e.target.attrs.id, 'is the elements id on canvas');
+			} else {
+				textEditContainer.style.visibility = 'invisible';
+			}
+
+			//on click of stickers open sticker editbar
 
 			if (e.target.attrs.id == undefined && (stickerEditContainer.style.visibility = 'invisible')) {
 				stickerEditContainer.style.visibility = 'visible';
@@ -110,22 +141,7 @@
 				console.log(e.target.attrs.id, 'is the elements id on canvas');
 			} else {
 				textEditContainer.style.visibility = 'invisible';
-				//
-			}
-			// if ($selected.attrs.id === IdonCanvas);
-			stage.on('click', function (e) {
-				var IdonCanvas = e.target.attrs.id;
-
-				var editPanel = document.getElementById('editPanelDiv');
-				if (IdonCanvas == 'textElementId' && (editPanel.style.visibility = 'invisible')) {
-					console.log(IdonCanvas, 'is the elements id on canvas');
-
-					editPanel.style.visibility = 'visible';
-				} else {
-					editPanel.style.visibility = 'invisible';
-					console.log('open stickers');
-				}
-			});
+			} // if (
 
 			//save img url on localstorage
 

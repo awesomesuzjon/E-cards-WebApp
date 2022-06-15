@@ -1,4 +1,4 @@
-    export   function toggleSidebarFunc() {
+export   function toggleSidebarFunc() {
   var toggleSidebar = document.getElementById("sidebarToggleDiv");
   var iconSidebar = document.getElementById("iconsSidebarToggle");
 

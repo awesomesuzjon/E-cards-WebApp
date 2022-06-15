@@ -25,17 +25,21 @@
 </script>
 
 <div
-	class="absolute top-0 right-0  bg-gray-700 text-md text-white invisible w-72 "
+	class="absolute top-0 right-0  bg-red-300 text-md text-white invisible w-72 "
 	id="textEditContainerId"
 >
 	<div tabindex="0" class="collapse">
 		<div class="collapse-title flex justify-center text-xl font-medium">
-			<button class=" h-12 truncate btn w-24" id="editTextPanelId"> Texts </button>
+			<button class=" h-12 truncate 	flex justify-center ml-8 w-24" id="editTextPanelId"> Texts </button>
 		</div>
 		<!-- text toggle code by class name collapse-content -->
 		<div id="collapse-contentId">
 			<li class="p-0 list-none">
-				<button class=" btn w-16   border-4 border-black " title="Delete" on:click={deleteTarget}>
+				<button
+					class=" btn bg-white border-red-700 text-red-700 hover:border-1 hover:bg-transparent w-16   "
+					title="Delete"
+					on:click={deleteTarget}
+				>
 					<MdDelete />
 				</button>
 			</li>
