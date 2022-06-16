@@ -4,7 +4,6 @@
 	import { selected } from '../../stores/selectedItemId';
 	import { getContext, onDestroy } from 'svelte';
 	import jsPDF from 'jspdf';
-	import { object_without_properties } from 'svelte/internal';
 
 	const { getStage } = getContext('konva');
 	const { getLayer } = getContext('konva_layer');
@@ -60,23 +59,7 @@
 				// let elementArray = Object.entries($selected)
 			});
 
-			function downloadURI(uri, name) {
-				var link = document.createElement('a');
-				link.download = name;
-				link.href = uri;
-				document.body.appendChild(link);
-				link.click();
-				document.body.removeChild(link);
-			}
-
-			document.getElementById('saveAsImg').addEventListener(
-				'click',
-				function () {
-					var dataURL = stage.toDataURL({ pixelRatio: 3 });
-					downloadURI(dataURL, 'stage.png');
-				},
-				false
-			);
+			//download image as jpg
 
 			//save canvas into pdf format
 			document.getElementById('saveAsPdf').addEventListener('click', function () {

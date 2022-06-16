@@ -2,17 +2,19 @@
 	import SaveTemplate from '../addToCanvas/saveTemplate.svelte';
 	import KonvaAddText from '$lib/konva/konvaAddText.svelte';
 	import KonvaImgDrag from '$lib/konva/konvaImgDrag.svelte';
-	import { allowDrop, drag, drop } from '../../routes/dragdropclone.svelte';
 	import FaAngleRight from 'svelte-icons/fa/FaAngleRight.svelte';
 	import Stage from '../../lib/konva/stage.svelte';
 	import Layer from '../../lib/konva/layer.svelte';
 	import Stickers from '../addToCanvas/stickers.svelte';
 	import ElementPushToCanvas from '../addToCanvas/elementPushToCanvas.svelte';
 	import EditSidebar from '../dropDownEditbar/editsidebar.svelte';
-	import Button from '../reusable/button.svelte'
-	</script>
+	import FirestoreFormTest from './firestoreFormTest.svelte';
+	import AddMessage from './message/addMessage.svelte';
 
-<div class="flex justify-between items-center">
+	import MessageTabs from '../addToCanvas/message/messageTabs.svelte';
+</script>
+
+<div class="flex justify-between items-center ">
 	<div class="drawer  z-50 " style="width:10em;">
 		<input id="my-drawer" type="checkbox" class="drawer-toggle" />
 
@@ -21,14 +23,15 @@
 		  "
 		>
 			<label for="my-drawer" class="drawer-overlay" />
-			<ul class=" divide-y-2 w-full bg-F6F0F0  text-sm text-white">
-				<li class="p-4">
+			<ul class=" divide-y-2 w-full bg-red-300  text-sm text-white">
+				<li class="p-2 ">
 					<ElementPushToCanvas />
 				</li>
-				<li class="p-4">
+				<li class="p-2 ">
+					<AddMessage />
+				</li>
+				<li class="p-2">
 					<Stickers />
-					<!-- <Stickers /> -->
-
 				</li>
 			</ul>
 		</div>
@@ -38,12 +41,11 @@
 		<h6 class="text-sm w-6  h-auto p-1"><FaAngleRight /></h6>
 	</label>
 
-	<div id="canvasContainer" class=" flex    items-center 	 h-full">
+	<div id="canvasContainer" class=" flex    items-center ">
 		<div
-			on:drop={drop}
-			on:dragover={allowDrop}
+			
 			id="canvasHolder"
-			style="width:20em;height:450px"
+			style="width:15em;height:450px"
 			class="  text-black dark:text-white cursor-move   self-center  border-8 bg-gray-100  "
 		>
 			<div
@@ -61,13 +63,28 @@
 			</Stage>
 		</div>
 
-		<EditSidebar />
+		<input type="checkbox" id="my-modal-4" class="modal-toggle" />
+		<label for="my-modal-4" class="modal cursor-pointer">
+			<label
+				class="modal-box  relative
+			 bg-gray-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-70 text-white border border-gray-100
+			"
+				for=""
+				id="msgModalContainer"
+			>
+				<MessageTabs />
+			</label>
+		</label>
 	</div>
+	<EditSidebar />
 </div>
 <p class="text-sm mt-2"><strong>Tip:</strong> Press the "Esc" key to exit full screen.</p>
+
 <div>
-	<Button id="saveAsPdf" >Save as PDF</Button>
-	<Button id="saveAsImg">Save as Img</Button>
+	<button class="btn" id="saveAsPdf">Save as PDF</button>
+	<button class="btn" id="saveAsImg">Save as Img</button>
 
 	<SaveTemplate />
+	<!-- test form table of firestore on canvas page -->
+	<FirestoreFormTest />
 </div>

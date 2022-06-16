@@ -1,18 +1,16 @@
 <script>
-import CategoryTable from "./categoryTable.svelte";
-
-
+	import CategoryTable from '../lib/reusable/categoryTable.svelte';
+	import Button from '../lib/reusable/button.svelte';
 </script>
+
 <svelte:head>
-    <title>Category </title>
-  </svelte:head>
+	<title>Category</title>
+</svelte:head>
 
+<a href="/addCategory" class="p-0 text-sm flex self-end justify-end mr-5 my-4" title="Bold"
+	><Button>
+		<span class="font-bold "> Add a new Category +</span>
+	</Button></a
+>
 
-  
-<div class="flex self-end justify-end ">
-  <div class=" text-sm mr-5 mt-2 btn underline-offset-8 underline hover:text-gray-800 
-  hover:no-underline hover:border-gray-800 hover:bg-white" ><a href="/addCategory">  Add a new Category +</a></div>
-  </div>
-
-  
-  <CategoryTable/>
+<CategoryTable />

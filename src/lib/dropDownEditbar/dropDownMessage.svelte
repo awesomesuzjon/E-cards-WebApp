@@ -9,13 +9,16 @@
 	} from '../../utils/alignText';
 	import MdKeyboardArrowDown from 'svelte-icons/md/MdKeyboardArrowDown.svelte';
 	import FontFamily from '../addToCanvas/fontFamily.svelte';
-	import Button from '../reusable/button.svelte'
+	import Button from '../reusable/button.svelte';
 
 	let xaxis;
 	let yaxis;
 </script>
 
-<div tabindex="0" class="collapse">
+<div
+	id="messageEditContainerId"
+	class="absolute top-0 right-0 bg-red-300 text-white text-sm invisible w-72 h-screen"
+>
 	<input type="checkbox" />
 	<div class="collapse-title flex justify-center text-xl font-medium">
 		Messages
@@ -41,9 +44,7 @@
 				/>
 			</div>
 			<div class="flex flex-col mt-2">
-				<Button
-	>Enter</Button
-				>
+				<Button>Enter</Button>
 
 				<h1
 					class="text-sm font-bold left flex items-start justify-start self-start"
@@ -75,9 +76,7 @@
 					class=" mx-2 border-2 text-black border-gray-500 w-full h-auto  text-sm font-bold dark:text-gray-800"
 				/>
 			</div>
-			<Button
-				>Enter</Button
-			>
+			<Button>Enter</Button>
 		</li>
 
 		<li class="p-3">

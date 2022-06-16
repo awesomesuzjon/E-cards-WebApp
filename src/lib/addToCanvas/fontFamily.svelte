@@ -1,8 +1,8 @@
 <script>
-    import {  selected } from '../../stores/selectedItemId';
+	import { selected } from '../../stores/selectedItemId';
 
-    let subscribe = false;
-    export function fontFamilyChangeFunc() {
+	let subscribe = false;
+	export function fontFamilyChangeFunc() {
 		subscribe = true;
 		const unSubscribe = selected.subscribe((data) => {
 			// console.log(data);
@@ -14,25 +14,26 @@
 				return;
 			}
 			data.setAttrs({
-				fontFamily: (fontInput)
+				fontFamily: fontInput
 			});
 			subscribe = false;
 			unSubscribe();
 		});
 	}
-  </script>
+</script>
 
-
-  
-  <select name="selectFontFamily" id="fontInput" on:change={fontFamilyChangeFunc} class="text-black p-2">
-    <option> Serif </option>
-    <option> Brush Script MT </option>
-    <option> Cursive </option>                               
-    <option> Lucida Handwriting </option>                               
-    <option> Sans-Serif </option>                                  
-    <option> Garamond </option>
-    <option> Verdana </option>
-    <option> Courier New </option>                               
-  </select>
- 
-
+<select
+	name="selectFontFamily"
+	id="fontInput"
+	on:change={fontFamilyChangeFunc}
+	class="text-black w-24 h-8	 text-sm p-2"
+>
+	<option> Serif </option>
+	<option> Brush Script MT </option>
+	<option> Cursive </option>
+	<option> Lucida Handwriting </option>
+	<option> Sans-Serif </option>
+	<option> Garamond </option>
+	<option> Verdana </option>
+	<option> Courier New </option>
+</select>

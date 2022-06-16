@@ -41,6 +41,8 @@ export function StrokeWidth() {
 		});
 	}
 
+
+
 	export function editTextColor() {
 		subscribe = true;
 		const unSubscribe = selected.subscribe((data) => {

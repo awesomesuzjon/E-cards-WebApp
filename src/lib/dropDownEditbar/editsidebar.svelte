@@ -1,24 +1,10 @@
 <script>
-import DropDownText from '$lib/dropDownEditbar/dropDownText.svelte'
-import DropDownStickers from '$lib/dropDownEditbar/dropDownStickers.svelte';
-import DropDownBackground from '$lib/dropDownEditbar/dropDownBackground.svelte';
-import DropDownMessage from '$lib/dropDownEditbar/dropDownMessage.svelte';
-  </script>  
-  
-  <div class="drawer drawer-end w-1/3">
-      <input id="my-drawer-4" type="checkbox" class="drawer-toggle">
-  
-      <div class="drawer-side w-full h-screen overflow-hidden">
-        <label for="my-drawer-4" class="drawer-overlay"></label>
-        <ul class="divide-y-2  bg-F6F0F0  text-sm text-white">
-  
-          <!-- Sidebar content here -->   
-            <DropDownText/>
-            <DropDownStickers/>
-            <DropDownMessage/>
-            <DropDownBackground/>
-    </ul>
-      </div>
-    </div>
-  
-  
+	import DropDownText from '$lib/dropDownEditbar/dropDownText.svelte';
+	import DropDownStickers from '$lib/dropDownEditbar/dropDownStickers.svelte';
+</script>
+
+<div class="drawer invisible  drawer-end w-1/3" id="editPanelDiv">
+	<!-- Sidebar content here -->
+	<DropDownText />
+	<DropDownStickers />
+</div>

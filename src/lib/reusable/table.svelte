@@ -1,17 +1,10 @@
 <script>
 	import { previewtbl, previewImgFunc } from '../../utils/previewImgntbl';
 	import Pagination from '../reusable/pagination.svelte';
-	import Button from '../reusable/button.svelte'
+	import Button from '../reusable/button.svelte';
 </script>
 
-<div class="flex self-end justify-end ">
-	<div
-		class=" text-sm mr-5 mt-2 btn underline-offset-8 underline hover:text-gray-800 
-  hover:no-underline hover:border-gray-800 hover:bg-white"
-	>
-		<a href="/createnewtemplate"> Create new E-card Template +</a>
-	</div>
-</div>
+<!-- </div> -->
 <div class="flex  ">
 	<img
 		id="targetContent"
@@ -22,23 +15,21 @@
 
 	<!-- <div class="relative"> -->
 	<table
-		class="shadow-lg text-sm w-full mx-5   bg-white    mt-10  dark:bg-gray-800 dark:text-gray-100  "
+		class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-gray-100  "
 	>
-		<tr class="">
-			<th class="bg-gray-100 border  px-8 py-4 text-center dark:bg-gray-800 dark:text-gray-100"
-				>Id</th
-			>
-			<th class="bg-gray-100 border px-8 py-4 dark:bg-gray-800 dark:text-gray-100 ">Name</th>
-			<th class="bg-gray-100 border t px-8 py-4 dark:bg-gray-800 dark:text-gray-100"> Preview</th>
-			<th class="bg-gray-100 border t px-8 py-4 dark:bg-gray-800 dark:text-gray-100"> Tags</th>
-			<th class="bg-gray-100 border t px-8 py-4 dark:bg-gray-800 dark:text-gray-100">Publish</th>
-			<th class="bg-gray-100 border t px-8 py-4 dark:bg-gray-800 dark:text-gray-100 ">Action</th>
+		<tr id="templatesTableRow" class="">
+			<th class="bg-red-700 border text-white  px-8 py-4 text-center dark:bg-gray-800 ">Id</th>
+			<th class="bg-red-700 border text-white px-8 py-4 dark:bg-gray-800  ">Title</th>
+			<th class="bg-red-700 border text-white px-8 py-4 dark:bg-gray-800 "> Preview</th>
+			<th class="bg-red-700 border text-white px-8 py-4 dark:bg-gray-800 "> Tags</th>
+			<th class="bg-red-700 border text-white px-8 py-4 dark:bg-gray-800 ">Publish</th>
+			<th class="bg-red-700 border text-white px-8 py-4 dark:bg-gray-800 ">Action</th>
 		</tr>
 		<tr>
 			<td class="border px-8 py-4">1</td>
 			<td class="border px-8 py-4">Holi Templates</td>
-			<td class="border px-8 py-4 " id="toggleimgbtn"
-				><span><button on:click={previewImgFunc}>👁</button></span>
+			<td class="border px-8 py-4 " id="toggleImgBtn">
+				<span><button on:click={previewImgFunc}>👁</button></span>
 			</td>
 
 			<td class="border px-8 py-4">Tag1</td>
@@ -46,8 +37,15 @@
 			<td class="border px-8 py-4">No</td>
 			<td class="border px-8 py-4">
 				<!-- svelte-ignore a11y-missing-attribute -->
-				<a  on:click={previewtbl}><Button>::</Button></a> 
-				</td>
+				<!-- <button class="btn" on:click={previewtbl}>:</button> -->
+				<a on:click={previewtbl} id="toggleTblBtn" class="p-0 text-sm" title="Bold"
+					><Button>
+						<span class="font-bold "> :</span>
+					</Button></a
+				>
+			</td>
+
+			<!-- dropwdown action button -->
 
 			<div class="  justify-center relative z-10  hidden " id="toggleContent">
 				<ul class="w-50  h-auto absolute top-0 -ml-28 mt-16 center border-gray-500 border">
@@ -76,7 +74,7 @@
 			<td class="border px-8 py-4">Tag2</td>
 
 			<td class="border px-8 py-4">No</td>
-			<td class="border px-8 py-4"><a  on:click={previewtbl}><Button>::</Button></a> </td>
+			<td class="border px-8 py-4"><a on:click={previewtbl}><Button>::</Button></a> </td>
 		</tr>
 
 		<tr>
