@@ -1,7 +1,5 @@
 <script>
-import Firebaselogin from "../lib/firebase/firebaselogin.svelte";
+	import Firebaselogin from '../lib/firebase/firebaselogin.svelte';
 </script>
 
-<Firebaselogin/>
-
-
+<Firebaselogin />

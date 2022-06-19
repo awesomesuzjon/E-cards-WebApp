@@ -25,12 +25,17 @@
 </script>
 
 <div
-	class="absolute top-0 right-0  bg-red-300 text-md text-white invisible w-72 "
+	class="absolute top-0 right-0  bg-red-300 text-md text-white invisible  w-72 "
 	id="textEditContainerId"
 >
+	<!-- <div class=" flex justify-end items-center text-sm mt-4  ">
+		<button id="closeEditbarBtn" class="btn">close button here </button>
+	</div> -->
 	<div tabindex="0" class="collapse">
 		<div class="collapse-title flex justify-center text-xl font-medium">
-			<button class=" h-12 truncate 	flex justify-center ml-8 w-24" id="editTextPanelId"> Texts </button>
+			<button class=" h-12 truncate 	flex justify-center ml-8 w-24" id="editTextPanelId">
+				Texts
+			</button>
 		</div>
 		<!-- text toggle code by class name collapse-content -->
 		<div id="collapse-contentId">

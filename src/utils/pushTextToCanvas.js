@@ -30,7 +30,6 @@ export function pushMsgToCanvasFunc() {
 	msgStore.set([...storeArrayMsg, inputMsg]);
 	inputMsg = document.getElementById('addNewMsg').value = '';
 	storeArrayText = [];
-	 selected=''
 
 	
 }

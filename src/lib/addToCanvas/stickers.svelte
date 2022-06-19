@@ -1,14 +1,14 @@
 <div id="controls-carousel" class="relative" data-carousel="static">
 	<h1 class="font-bold dark:text-gray-100  truncate text-black text-sm">Stickers</h1>
-	<h2 class="font-bold dark:text-gray-100  mt-4  truncate text-gray text-sm">Holi Stickers</h2>
+	<h2 class="font-bold dark:text-gray-100  my-2  truncate text-gray text-sm">Holi Stickers</h2>
 	<div id="drag-items">
-		<div class="overflow-hidden relative h-48 rounded-lg sm:h-64 xl:h-80 2xl:h-64">
+		<div class="overflow-hidden relative h-24 rounded-lg ">
 			<div
 				class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0 z-20"
 				data-carousel-item="active"
 			>
 				<img
-					src="hand.jpg"
+					src="ayoholi.jpg"
 					class="rounded-full w-12 block absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
@@ -25,12 +25,12 @@
 				data-carousel-item="active"
 			>
 				<img
-					src="newyear.jpg"
+					src="ayoholi.jpg"
 					class="rounded-full w-12 block absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
 				<img
-					src="swadesh.jpg"
+					src="ayoholi.jpg"
 					class="rounded-full w-12 block absolute top-1/4 left-3/4 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
@@ -52,7 +52,7 @@
 					alt="..."
 				/>
 				<img
-					src="ktm.jpg"
+					src="baloon.jpg"
 					class="rounded-full w-12 block absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
@@ -63,12 +63,12 @@
 				data-carousel-item="active"
 			>
 				<img
-					src="hug.jpg"
+					src="cake.png"
 					class="rounded-full w-12 block absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
 				<img
-					src="namaste.jpg"
+					src="ballon.jpg"
 					class="rounded-full w-12 block absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2"
 					alt="..."
 				/>
@@ -77,7 +77,7 @@
 
 		<button
 			type="button"
-			class="flex absolute top-0 left-0 z-30 justify-center items-center px-1 h-72 cursor-pointer group focus:outline-none"
+			class="flex absolute top-0 left-0 z-30 justify-center items-center px-1 h-40 cursor-pointer group focus:outline-none"
 			data-carousel-prev=""
 		>
 			<span
@@ -101,7 +101,7 @@
 		</button>
 		<button
 			type="button"
-			class="flex absolute top-0 right-0 z-30 justify-center items-center px-1 h-72  cursor-pointer group focus:outline-none"
+			class="flex absolute top-0 right-0 z-30 justify-center items-center px-1 h-40  cursor-pointer group focus:outline-none"
 			data-carousel-next=""
 		>
 			<span

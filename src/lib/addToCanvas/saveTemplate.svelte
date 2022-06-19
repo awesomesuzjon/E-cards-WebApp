@@ -18,7 +18,6 @@
 
 	onMount(() => {
 		//init firebase app
-		const firebaseApp = initializeApp(firebaseConfig);
 
 		//init database services
 		const db = getFirestore();
@@ -105,6 +104,8 @@
 
 				p4.appendChild(pTextId);
 				li10.appendChild(p4);
+				console.log(index);
+				console.log('this is one');
 			});
 
 			// to display ecards data in table

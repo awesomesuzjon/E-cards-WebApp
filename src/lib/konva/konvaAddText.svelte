@@ -2,7 +2,6 @@
 	import Konva from 'konva';
 	import { onMount } from 'svelte';
 	import { selected } from '../../stores/selectedItemId';
-	import { v4 as uuid } from 'uuid';
 	import { textStore } from '../../stores/storeText';
 	import { msgStore } from '../../stores/storeText';
 	import { getContext } from 'svelte';
@@ -11,22 +10,34 @@
 	const { getLayer } = getContext('konva_layer');
 	const stage = getStage();
 	const layer = getLayer();
+	var imgSrcStore = 'gajab.png';
 
 	onMount(() => {
-		canvasBgStore.subscribe((color) => {
-			var backgroundRect = new Konva.Rect({
-				x: 0,
-				y: 0,
-				zIndex: 0,
-				// fillPatternImage: images.bgImage,
-				width: stage.width(),
-				height: stage.height(),
-				fill: color,
-				opacity: 0.5,
-				listening: false
-			});
-			layer.add(backgroundRect);
-		});
+		// add background image
+		document.getElementById('canvasFileInput').onchange = function (e) {
+			var url = URL.createObjectURL(e.target.files[0]);
+			var img = new Image();
+			img.src = url;
+
+			img.onload = function () {
+				// now load the Konva image
+				var canvasBgImg = new Konva.Image({
+					image: img,
+					x: 0,
+					y: 0,
+					width: 523,
+					height: 500,
+					id: 'bgImg',
+					listening: false
+				});
+				canvasBgImg.setZIndex(0);
+				canvasBgImg.moveToBottom();
+				layer.add(canvasBgImg);
+				layer.draw();
+			};
+		};
+
+		//add text to canvas
 		textStore.subscribe((data) => {
 			var text = new Konva.Text({
 				x: 50,
@@ -44,6 +55,8 @@
 			text.setZIndex(3);
 			layer.add(text);
 		});
+		////////
+		//add message to canvas
 
 		msgStore.subscribe((data) => {
 			var message = new Konva.Text({
@@ -102,7 +115,6 @@
 
 			var textEditContainer = document.getElementById('textEditContainerId');
 			var stickerEditContainer = document.getElementById('stickerEditContainerId');
-			// var messageEditContainer = document.getElementById('messageEditContainerId');
 
 			//on click of message open message editbar
 
@@ -141,7 +153,7 @@
 				console.log(e.target.attrs.id, 'is the elements id on canvas');
 			} else {
 				textEditContainer.style.visibility = 'invisible';
-			} // if (
+			}
 
 			//save img url on localstorage
 

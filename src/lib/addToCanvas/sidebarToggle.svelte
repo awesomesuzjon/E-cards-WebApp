@@ -12,6 +12,7 @@
 	import AddMessage from './message/addMessage.svelte';
 
 	import MessageTabs from '../addToCanvas/message/messageTabs.svelte';
+	import CanvasBackgroundImg from './canvasBackgroundImg.svelte';
 </script>
 
 <div class="flex justify-between items-center ">
@@ -33,6 +34,9 @@
 				<li class="p-2">
 					<Stickers />
 				</li>
+				<li class="p-2">
+					<CanvasBackgroundImg />
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -43,7 +47,6 @@
 
 	<div id="canvasContainer" class=" flex    items-center ">
 		<div
-			
 			id="canvasHolder"
 			style="width:15em;height:450px"
 			class="  text-black dark:text-white cursor-move   self-center  border-8 bg-gray-100  "
@@ -86,5 +89,5 @@
 
 	<SaveTemplate />
 	<!-- test form table of firestore on canvas page -->
-	<FirestoreFormTest />
+	<!-- <FirestoreFormTest /> -->
 </div>

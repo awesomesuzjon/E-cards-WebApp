@@ -1,7 +1,7 @@
-<div class="flex flex-row items-center justify-around  shadow-customBoxShadow  col-span-2 row-start-4 row-end-5 col-start-2 row-span-2  dark:bg-gray-800 dark:text-gray-300  rounded-box box-border  text-base font-normal " >
+<div class="flex flex-row items-center justify-around hover:shadow-customHoverBoxShadow shadow-customBoxShadow  col-span-2 row-start-4 row-end-5 col-start-2 row-span-2  dark:bg-gray-800 dark:text-gray-300  rounded-box box-border  text-base font-normal " >
     <div class=" flex ">
       <a href="/stickerTable">
-      <h6 class="text-black text-2xl  font-extrabold dark:text-gray-100">Stickers</h6>
+      <h6 class="text-black text-2xl  font-extrabold dark:text-gray-100 dark:hover:text-gray-400 hover:text-red-700">Stickers</h6>
       </a>
     </div>
     <div class="gap-2">

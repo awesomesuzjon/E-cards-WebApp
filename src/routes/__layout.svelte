@@ -1,8 +1,11 @@
 <script lang="ts">
 	import '../app.css';
+	import { initializeApp } from 'firebase/app';
 	import Nav from '../lib/reusable/nav.svelte';
 	import Sidebar from '../lib/reusable/sidebar.svelte';
 	import { onMount } from 'svelte';
+	import { firebaseConfig } from '../utils/firebaseConfig';
+	const firebaseApp = initializeApp(firebaseConfig);
 </script>
 
 <Nav />
