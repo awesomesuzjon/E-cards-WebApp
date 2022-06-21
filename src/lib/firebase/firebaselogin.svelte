@@ -6,7 +6,7 @@
 	// import authStore from '../stores/authStore';
 
 	// import firebase from "firebase/app"
-	import 'firebase/auth';
+	import { getAuth, getIdToken } from 'firebase/auth';
 	import 'firebase/firestore';
 	import { getFirestore } from 'firebase/firestore';
 	import Button from '$lib/reusable/button.svelte';
@@ -29,18 +29,26 @@
 	const db = getFirestore();
 
 	let user;
+	let expired;
 
 	const unsubscribe = authState(auth).subscribe((usr) => (user = usr));
 
 	async function login() {
 		let userCredential = await auth.signInWithPopup(googleProvider);
 		let token = await userCredential.user.getIdToken(true);
-		console.log('logged in ' + token);
+		let user = getAuth().currentUser;
+		let { isExpired, refreshToken, accessToken, refresh, getToken, expirationTime } =
+			user.stsTokenManager;
+		expired = isExpired;
+
+		// console.log(isExpired, refreshToken, accessToken, refresh, getToken, expirationTime);
+		if (isExpired) token = getIdToken(userCredential.user, true);
 	}
 
 	function logout() {
 		auth.signOut();
 	}
+	console.log(expired);
 </script>
 
 <div>
@@ -48,6 +56,7 @@
 </div>
 
 {#if user}
+	{{ expired }}
 	<!-- Successfully Logged in as {user.uid} -->
 	<a on:click={logout}><Button>logOut</Button></a>
 {:else}

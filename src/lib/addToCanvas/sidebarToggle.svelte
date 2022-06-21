@@ -8,7 +8,6 @@
 	import Stickers from '../addToCanvas/stickers.svelte';
 	import ElementPushToCanvas from '../addToCanvas/elementPushToCanvas.svelte';
 	import EditSidebar from '../dropDownEditbar/editsidebar.svelte';
-	import FirestoreFormTest from './firestoreFormTest.svelte';
 	import AddMessage from './message/addMessage.svelte';
 
 	import MessageTabs from '../addToCanvas/message/messageTabs.svelte';
@@ -88,6 +87,4 @@
 	<button class="btn" id="saveAsImg">Save as Img</button>
 
 	<SaveTemplate />
-	<!-- test form table of firestore on canvas page -->
-	<!-- <FirestoreFormTest /> -->
 </div>

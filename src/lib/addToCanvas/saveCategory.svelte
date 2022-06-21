@@ -1,7 +1,4 @@
 <script>
-	import CategoryTable from '../lib/reusable/categoryTable.svelte';
-	import Button from '../lib/reusable/button.svelte';
-
 	//fireStore used from here to save form inputs on firebase Database
 	import { initializeApp } from 'firebase/app';
 	import {
@@ -15,7 +12,7 @@
 		onSnapshot
 	} from 'firebase/firestore';
 	import { onMount } from 'svelte';
-	import AddCategory from '../lib/reusable/addCategory.svelte';
+	import AddCategory from '../reusable/addCategory.svelte';
 
 	onMount(() => {
 		//init database services
@@ -59,18 +56,9 @@
 	});
 </script>
 
-
-<svelte:head>
-	<title>Category</title>
-</svelte:head>
-
-<a href="/addCategory" class="p-0 text-sm flex self-end justify-end mr-5 my-4" title="Bold"
-	><Button>
-		<span class="font-bold "> Add a new Category +</span>
-	</Button></a
+<label
+	for="my-modal-5"
+	class="btn modal-button hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white  btn-gray-50 center  text-sm p-2"
+	>Save</label
 >
-
-<CategoryTable />
-
-
- <AddCategory />
+hi <AddCategory/>

@@ -1,7 +1,7 @@
 <h2>Firebase Firestore</h2>
 <div class="flex flex-col justify-center items-center text-sm ">
 	<div class=" w-80">
-		<form class="add text-lg">
+		<form class="addTemplateForm text-lg">
 			<label for="title">Title:</label>
 			<input
 				type="text"
@@ -30,24 +30,24 @@
 				for="CategoryId"><h1>Add Category</h1></label
 			>
 			<span class="mx-5">:</span>
-			<select id="CategoryId" name="CategoryId" class="my-2">
+			<select id="CategoryId" name="category" class="my-2" required>
 				<option value="">Select a category</option>
-				<option value="2">Birthday</option>
-				<option value="3">Love</option>
-				<option value="4">Friendship</option>
-				<option value="5">Thank You</option>
-				<option value="6">Anniversary</option>
-				<option value="7">Get Well</option>
-				<option value="8">Congratulations</option>
-				<option value="9">Festival</option>
-				<option value="1">Everyday</option>
-				<option value="10">Other...</option>
+				<option value="Birthday">Birthday</option>
+				<option value="Love">Love</option>
+				<option value="Friendship">Friendship</option>
+				<option value="Thank You">Thank You</option>
+				<option value="Anniversary">Anniversary</option>
+				<option value="Get Well">Get Well</option>
+				<option value="Congratulations">Congratulations</option>
+				<option value="Festival">Festival</option>
+				<option value="Everyday">Everyday</option>
+				<option value="Other">Other...</option>
 			</select>
 			<br />
-			<input type="checkbox" class=" flex-col" id="trending" />
-			Mark as Trending
+			<input type="checkbox" name="publish" class=" flex-col" />
+			Publish
 
-			<button class="btn my-2 flex-col flex">Add</button>
+			<button class="btn my-2 flex-col flex">Add Template</button>
 		</form>
 		<form class="delete text-lg ">
 			<label for="id">Document id:</label>
