@@ -1,5 +1,5 @@
 <script>
-	import Table from '../lib/reusable/table.svelte';
+	import TemplateTable from '../lib/tables/templateTable.svelte';
 	import CreateTemplateBtn from '../lib/reusable/createTemplateBtn.svelte';
 </script>
 
@@ -9,4 +9,4 @@
 
 <CreateTemplateBtn />
 
-<Table />
+<TemplateTable />
