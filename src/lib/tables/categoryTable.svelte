@@ -1,6 +1,4 @@
 <script>
-	import { previewtbl, previewImgFunc } from '../../utils/previewImgntbl';
-	import Pagination from '../reusable/pagination.svelte';
 	import Button from '../reusable/button.svelte';
 	import {
 		getFirestore,
@@ -15,8 +13,10 @@
 
 	let Category = [];
 
+	//init database services
 	const db = getFirestore();
 
+	//collection ref
 	const colRef = collection(db, 'Category');
 
 	onMount(() => {
@@ -27,9 +27,10 @@
 					{
 						...doc.data(),
 						Id: doc.id,
-						name: doc.name,
+						title: doc.title,
 						priority: doc.priority,
-						publish: doc.publish
+						publish: doc.publish,
+						preview: doc.preview
 					}
 				];
 			});
@@ -46,10 +47,11 @@
 				</label>
 			</th>
 			<th class="bg-red-700  text-white  px-8 py-2 text-center dark:bg-gray-800 ">Id</th>
-			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Title</th>
+			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Category Name</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Priority</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Publish</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
+			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Preview</th>
 		</tr>
 
 		{#each Category as card}
@@ -64,8 +66,9 @@
 
 				<td class=" px-8 py-2">{card.Priority}</td>
 				<td class=" px-8 py-2">{card.Publish}</td>
+				<td class=" px-8 py-2">:</td>
+				<td class=" px-8 py-2"><img class="w-8 h-auto" src={card.Preview} alt="" /></td>
 			</tr>
 		{/each}
 	</table>
 </div>
-

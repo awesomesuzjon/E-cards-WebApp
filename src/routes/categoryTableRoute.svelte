@@ -1,22 +1,26 @@
 <script>
-	import StickerTable from '../lib/tables/stickerTable.svelte';
+	import AddCategoryForm from '../lib/forms/addCategoryForm.svelte';
 	import Button from '../lib/reusable/button.svelte';
-	import AddStickersForm from '../lib/forms/addStickersForm.svelte';
+import CategoryTable from '../lib/tables/categoryTable.svelte';
 </script>
 
-<!-- The button to open modal -->
+<svelte:head>
+	<title>Category</title>
+</svelte:head>
+
 <div class="flex justify-end  mt-4 mr-5">
 	<Button>
 		<label for="my-modal-4" class=" modal-button">
-			<span class="font-bold "> Add new Sticker +</span>
+			<span class="font-bold "> Add a new Category +</span>
 		</label>
 	</Button>
 </div>
+<!-- Put this part before </body> tag -->
 <input type="checkbox" id="my-modal-4" class="modal-toggle" />
 <label for="my-modal-4" class="modal cursor-pointer">
 	<label class="modal-box relative" for="">
-		<AddStickersForm />
+		<AddCategoryForm />
 	</label>
 </label>
 
-<StickerTable />
+<CategoryTable/>

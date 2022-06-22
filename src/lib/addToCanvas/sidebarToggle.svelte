@@ -15,14 +15,14 @@
 </script>
 
 <div class="flex justify-between items-center ">
-	<div class="drawer  z-50 " style="width:10em;">
+	<div class="drawer  z-50 ">
 		<input id="my-drawer" type="checkbox" class="drawer-toggle" />
 
 		<div
 			class="imgcontainer drawer-side   
 		  "
 		>
-			<label for="my-drawer" class="drawer-overlay" />
+			<!-- <label for="my-drawer" class="drawer-overlay" /> -->
 			<ul class=" divide-y-2 w-full bg-red-300  text-sm text-white">
 				<li class="p-2 ">
 					<ElementPushToCanvas />
@@ -36,18 +36,19 @@
 				<li class="p-2">
 					<CanvasBackgroundImg />
 				</li>
+				<!-- <div class="float-right ">
+					<label for="my-drawer" class=" btn p-2 w-10 h-8 drawer-button    justify-left ">
+						<h6 class="text-sm w-6  h-auto p-1"><FaAngleRight /></h6>
+					</label>
+				</div> -->
 			</ul>
 		</div>
 	</div>
 
-	<label for="my-drawer" class=" btn p-2 w-10 h-8 drawer-button    justify-left ">
-		<h6 class="text-sm w-6  h-auto p-1"><FaAngleRight /></h6>
-	</label>
-
 	<div id="canvasContainer" class=" flex    items-center ">
 		<div
 			id="canvasHolder"
-			style="width:15em;height:450px"
+			style="width:20em;height:450px"
 			class="  text-black dark:text-white cursor-move   self-center  border-8 bg-gray-100  "
 		>
 			<div

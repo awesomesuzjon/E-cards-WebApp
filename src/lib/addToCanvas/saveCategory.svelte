@@ -1,16 +1,7 @@
-<script>
+<!-- <script>
 	//fireStore used from here to save form inputs on firebase Database
 	import { initializeApp } from 'firebase/app';
-	import {
-		getFirestore,
-		addDoc,
-		getDocs,
-		deleteDoc,
-		doc,
-		collection,
-		where,
-		onSnapshot
-	} from 'firebase/firestore';
+	import { getFirestore, addDoc, deleteDoc, doc, collection, onSnapshot } from 'firebase/firestore';
 	import { onMount } from 'svelte';
 	import AddCategory from '../reusable/addCategory.svelte';
 
@@ -31,26 +22,38 @@
 					Id: doc.id,
 					name: doc.name,
 					priority: doc.priority,
-					publish: doc.publish
+					publish: doc.publish,
+					preview: doc.preview
 				});
 			});
 
 			// to display ecards data in table
-			document.getElementById('jsonDiv').innerHTML = JSON.stringify(Category);
+			// document.getElementById('jsonDiv').innerHTML = JSON.stringify(Category);
 		});
 
 		//adding Ecards to fireStore
 		const addCategoryForm = document.querySelector('.addCategoryForm');
 		addCategoryForm.addEventListener('submit', (e) => {
+			// e.preventDefault();
+			console.log('the preview image is ', addCategoryForm.preview.value);
+			//look at ecard collection and fill data here
+			// addDoc(colRef, {
+			// 	Name: addCategoryForm.name.value,
+			// 	Priority: addCategoryForm.priority.value,
+			// 	Publish: addCategoryForm.publish.value,
+			// 	Preview: addCategoryForm.preview.value
+			// }).then(() => {
+			// 	addCategoryForm.reset();
+			// });
+		});
+		//deleting document
+		const deleteCategoryForm = document.querySelector('.deleteCategory');
+		deleteCategoryForm.addEventListener('submit', (e) => {
 			e.preventDefault();
 
-			//look at ecard collection and fill data here
-			addDoc(colRef, {
-				Name: addCategoryForm.name.value,
-				Priority: addCategoryForm.priority.value,
-				Publish: addCategoryForm.publish.value
-			}).then(() => {
-				addCategoryForm.reset();
+			const docRef = doc(db, 'Category', deleteCategoryForm.id.value);
+			deleteDoc(docRef).then(() => {
+				deleteCategoryForm.reset();
 			});
 		});
 	});
@@ -61,4 +64,4 @@
 	class="btn modal-button hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white  btn-gray-50 center  text-sm p-2"
 	>Save</label
 >
-hi <AddCategory/>
+hi <AddCategory /> -->

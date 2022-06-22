@@ -10,7 +10,7 @@
 	const { getLayer } = getContext('konva_layer');
 	const stage = getStage();
 	const layer = getLayer();
-	var imgSrcStore = 'gajab.png';
+	let textArr = [];
 
 	onMount(() => {
 		// add background image
@@ -34,6 +34,14 @@
 				canvasBgImg.moveToBottom();
 				layer.add(canvasBgImg);
 				layer.draw();
+
+				var removeBtn = document.getElementById('removeBgImg');
+				removeBtn.addEventListener('click', () => {
+					canvasBgImg.hide();
+					layer.draw();
+
+					console.log('img removed');
+				});
 			};
 		};
 
@@ -55,6 +63,7 @@
 			text.setZIndex(3);
 			layer.add(text);
 		});
+
 		////////
 		//add message to canvas
 

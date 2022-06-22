@@ -1,5 +1,4 @@
 <script>
-	import Form from '$lib/reusable/form.svelte';
 
 	//fireStore used from here to save form inputs on firebase Database
 	import { initializeApp } from 'firebase/app';
@@ -14,6 +13,7 @@
 		onSnapshot
 	} from 'firebase/firestore';
 	import { onMount } from 'svelte';
+import AddtemplateForm from '../forms/addTemplateForm.svelte';
 
 	onMount(() => {
 		//init database services
@@ -37,9 +37,6 @@
 					publish: doc.publish
 				});
 			});
-
-			// to display ecards data in table
-			document.getElementById('EcardsDiv').innerHTML = JSON.stringify(Ecards);
 		});
 
 		//adding Ecards to fireStore
@@ -82,9 +79,7 @@
 <input type="checkbox" id="my-modal-5" class="modal-toggle" />
 <label for="my-modal-5" class="modal cursor-pointer">
 	<label class="modal-box  text-sm relative" for="">
-		Helllo There
-		<Form />
-
+<AddtemplateForm/>
 		<div id="table" />
 		<div id="EcardsDiv" />
 		<div id="heading1" />

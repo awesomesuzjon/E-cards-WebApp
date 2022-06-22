@@ -123,7 +123,10 @@
 			<li
 				class="w-full py-4 hover:shadow-xl  text-white hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
 			>
-				<a href="/stickerTable" class=" flex items-center p-2 text-base font-normal  rounded-lg  ">
+				<a
+					href="/stickerTableRoute"
+					class=" flex items-center p-2 text-base font-normal  rounded-lg  "
+				>
 					<div class="flex items-center align-middle">
 						<span class="mt-3 ml-3 w-6 h-6 flex  "> <FaSmileWink /></span><span
 							class=" whitespace-nowrap mt-3 ml-4 center flex"
@@ -136,7 +139,10 @@
 			<li
 				class="w-full py-4 hover:shadow-xl  text-white hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
 			>
-				<a href="/messageTable" class=" flex items-center p-2 text-base font-normal  rounded-lg  ">
+				<a
+					href="/messageTableRoute"
+					class=" flex items-center p-2 text-base font-normal  rounded-lg  "
+				>
 					<div class="flex items-center align-middle">
 						<span class="mt-3 ml-3 w-6 h-6 flex  "> <IoMdText /></span><span
 							class="whitespace-nowrap mt-3 ml-4 center flex "
@@ -150,7 +156,10 @@
 			<li
 				class="w-full py-4 hover:shadow-xl text-white hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
 			>
-				<a href="/category" class=" flex items-center p-2 text-base font-normal  rounded-lg  ">
+				<a
+					href="/categoryTableRoute"
+					class=" flex items-center p-2 text-base font-normal  rounded-lg  "
+				>
 					<div class="flex items-center align-middle">
 						<span class="mt-3 ml-3 w-6 h-6 flex  "> <FaSearch /></span><span
 							class=" whitespace-nowrap mt-3 ml-4 center flex">Categories</span
@@ -224,7 +233,7 @@
 				class="w-full py-4 hover:shadow-xl text-white  hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
 			>
 				<a
-					href="/stickerTable"
+					href="/stickerTableRoute"
 					class=" flex items-center p-2 text-base font-normal  rounded-lg dark: "
 				>
 					<div class="flex items-center align-middle">

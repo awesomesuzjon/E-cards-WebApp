@@ -1,12 +1,10 @@
 <script>
-	export let type = 'primary';
-
 	function newFunction() {
 		console.log('i m new functon clicked');
 	}
 </script>
 
-<button class={type}>
+<button class="dark:bg-gray-400  dark:text-white text-sm bg-customHamroPatroColor text-white">
 	<slot />
 </button>
 
@@ -34,14 +32,10 @@
 		background: pink;
 		color: #b91c1c;
 	}
-
+	/*
 	.primary {
 		background-color: #b91c1c;
 		color: white;
 	}
-
-	.secondary {
-		background: #45c496;
-		color: white;
-	}
+  */
 </style>
