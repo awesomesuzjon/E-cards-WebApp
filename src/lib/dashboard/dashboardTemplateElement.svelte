@@ -9,7 +9,7 @@
   text-base font-normal  "
 	href="/templates1"
 >
-	<a href="/templatesTable">
+	<a href="/trendingTemplatesTableRoute">
 		<h6
 			class="text-black text-2xl  font-extrabold dark:text-gray-100 dark:hover:text-gray-400 hover:text-red-700"
 		>

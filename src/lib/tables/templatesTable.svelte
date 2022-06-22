@@ -1,7 +1,12 @@
 <script>
-	import { previewtbl, previewImgFunc } from '../../utils/previewImgntbl';
 	import Pagination from '../reusable/pagination.svelte';
 	import Button from '../reusable/button.svelte';
+	import FaEdit from 'svelte-icons/fa/FaEdit.svelte';
+	import MdDelete from 'svelte-icons/md/MdDelete.svelte';
+	import MdContentCopy from 'svelte-icons/md/MdContentCopy.svelte';
+	import DiMarkdown from 'svelte-icons/di/DiMarkdown.svelte';
+	import { previewImgFunc } from '../../utils/previewImgntbl';
+
 	import {
 		getFirestore,
 		addDoc,
@@ -86,36 +91,39 @@
 				<td class=" px-8 py-2">{card.Priority}</td>
 				<td class=" px-8 py-2">{card.Publish}</td>
 
-				<td class=" px-8 py-2">
-					<!-- svelte-ignore a11y-missing-attribute -->
-					<a on:click={previewtbl} id="toggleTblBtn" class="p-0 text-sm" title="Bold"
-						><Button>
-							<span class="font-bold "> :</span>
-						</Button></a
-					>
+				<td>
+					<div class="collapse">
+						<input type="checkbox" class="peer" />
+						<div class="collapse-title ">
+							<Button>:</Button>
+						</div>
+						<div class="collapse-content  ">
+							<div class="  justify-center relative   " id="toggleContent">
+								<ul class="  h-auto  ">
+									<div class="flex justify-around items-center mb-2">
+										<li class="   text-sm w-8">
+											<a href="/" title="Edit">
+												<span><FaEdit /></span>
+											</a>
+										</li>
+										<li class=" text-sm  w-8">
+											<a href="/" title="Delete"> <MdDelete /></a>
+										</li>
+										<!-- <div class="flex justify-around items-center"> -->
+											<li class="  text-sm  w-8 ">
+											<a href="/" title="Clone"> <MdContentCopy /> </a>
+										</li>
+										<li class="  text-sm   w-8">
+											<a href="/" title="Mark as Trending"> <DiMarkdown /> </a>
+										</li>
+									<!-- </div> -->
+								</div>
+								</ul>
+							</div>
+						</div>
+					</div>
 				</td>
 
-				<!-- dropwdown action button -->
-
-				<div class="  justify-center relative z-10  hidden " id="toggleContent">
-					<ul class="w-50  h-auto absolute top-0 -ml-28 mt-16 center -gray-500 ">
-						<li class=" bg-gray-200  text-sm  -b-gray-500 ">
-							<a href="/">Publish/Unpublish</a>
-						</li>
-						<li class=" bg-gray-200  text-sm   -b-gray-500">
-							<a href="/">Edit</a>
-						</li>
-						<li class=" bg-gray-200 text-sm   -b-gray-500">
-							<a href="/">Delete</a>
-						</li>
-						<li class=" bg-gray-200  text-sm  -b-gray-500 ">
-							<a href="/">Mark as Trending</a>
-						</li>
-						<li class=" bg-gray-200  text-sm   ">
-							<a href="/">Clone</a>
-						</li>
-					</ul>
-				</div>
 			</tr>
 		{/each}
 	</table>

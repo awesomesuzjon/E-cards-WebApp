@@ -1,5 +1,4 @@
 <script>
-	import Table from '../tables/table.svelte';
 	import Button from '../reusable/button.svelte';
 	import AddMessagesForm from '../forms/AddMessagesForm.svelte';
 </script>
@@ -22,4 +21,3 @@
 		<AddMessagesForm/>
 	</label>
 </label>
-<Table />

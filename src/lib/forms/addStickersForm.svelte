@@ -91,9 +91,9 @@
 			>
 			<select id="CategoryId" name="category" class=" text-sm h-8 mx-2" required>
 				<option value="">Select a category</option>
-				<option value="Birthday">Birthday</option>
-				<option value="Love">Love</option>
-				<option value="Friendship">Friendship</option>
+				<option value="Birthday">Dashain</option>
+				<option value="Love">Tihar</option>
+				<option value="Friendship">Birthday</option>
 				<option value="Thank You">Thank You</option>
 				<option value="Get Well">Get Well</option>
 				<option value="Congratulations">Congratulations</option>

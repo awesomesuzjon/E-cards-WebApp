@@ -98,23 +98,23 @@
 				<ul id="dropdown-example" class="hidden py-2 space-y-2">
 					<li>
 						<a
-							href="/trendingtemplates"
+							href="/trendingTemplatesTableRoute"
 							class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group hover:bg-white hover:text-red-700 "
 							>Trending E-cards</a
 						>
 					</li>
 					<li>
 						<a
-							href="/mostdownloadedtemplates"
+							href="/downloadTemplatesTableRoute"
 							class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal transition duration-75 rounded-lg group "
 							>Most Downloaded
 						</a>
 					</li>
 					<li>
 						<a
-							href="/communitytemplates"
+							href="/allTemplatesTableRoute"
 							class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group "
-							>Community E-cards</a
+							>All E-cards</a
 						>
 					</li>
 				</ul>
