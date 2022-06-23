@@ -30,11 +30,7 @@
 					...Category,
 					{
 						...doc.data(),
-						Id: doc.id,
-						title: doc.title,
-						priority: doc.priority,
-						publish: doc.publish,
-						preview: doc.preview
+						Id: doc.id
 					}
 				];
 			});
@@ -45,7 +41,7 @@
 <div class="flex mt-4 ">
 	<table class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-gray-100  ">
 		<tr id="templatesTableRow" class="">
-			<th class="bg-red-700">
+			<th class="bg-red-700 dark:bg-gray-800">
 				<label>
 					<input type="checkbox" class="checkbox" />
 				</label>
@@ -71,7 +67,7 @@
 				<td class=" px-8 py-2">{card.Priority}</td>
 				<td class=" px-8 py-2">{card.Publish}</td>
 
-				<td class=" px-8 py-2"><img class="w-8 h-auto" src={card.Preview} alt="" /></td>
+				<td class=" px-8 py-2"><img class="w-4 h-auto" src={card.Preview} alt="" /></td>
 				<td>
 					<div class="collapse">
 						<input type="checkbox" class="peer" />
@@ -82,23 +78,35 @@
 							<div class="  justify-center relative   " id="toggleContent">
 								<ul class="  h-auto  ">
 									<div class="flex justify-around items-center mb-2">
-										<li class="   text-sm w-8">
+										<li class="   text-sm w-4">
 											<a href="/" title="Edit">
 												<span><FaEdit /></span>
 											</a>
 										</li>
-										<li class=" text-sm  w-8">
-											<a href="/" title="Delete"> <MdDelete /></a>
+										<li class=" text-sm  w-4 hover:bg-gray-300 p-0 cursor:move ">
+											<!-- svelte-ignore a11y-missing-attribute -->
+											<a
+												title="Delete"
+												on:click={//delete row on table through delete button
+												(e) => {
+													e.stopPropagation();
+
+													const docRef = doc(db, 'Category', card.Id);
+													deleteDoc(docRef);
+												}}
+											>
+												<MdDelete /></a
+											>
 										</li>
 										<!-- <div class="flex justify-around items-center"> -->
-											<li class="  text-sm  w-8 ">
+										<li class="  text-sm  w-4 ">
 											<a href="/" title="Clone"> <MdContentCopy /> </a>
 										</li>
-										<li class="  text-sm   w-8">
+										<li class="  text-sm   w-4">
 											<a href="/" title="Mark as Trending"> <DiMarkdown /> </a>
 										</li>
-									<!-- </div> -->
-								</div>
+										<!-- </div> -->
+									</div>
 								</ul>
 							</div>
 						</div>

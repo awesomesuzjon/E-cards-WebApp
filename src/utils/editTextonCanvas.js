@@ -17,7 +17,7 @@ export function StrokeWidth() {
 	
 		});
 		subscribe = false;
-		unSubscribe();
+		// unSubscribe();
 	});
 }
 
@@ -37,7 +37,7 @@ export function StrokeWidth() {
 		
 			});
 			subscribe = false;
-			unSubscribe();
+			// unSubscribe();
 		});
 	}
 
@@ -58,7 +58,6 @@ export function StrokeWidth() {
 					fill : colorInput
 			});
 			subscribe = false;
-			unSubscribe();
 		});
 	}
 
@@ -77,7 +76,7 @@ export function StrokeWidth() {
 					opacity : opacityValue
 			});
 			subscribe = false;
-			unSubscribe();
+			// unSubscribe();
 		});
 	}
 
@@ -96,7 +95,7 @@ export function StrokeWidth() {
 				rotationDeg: rotationInput,
 			});
 			subscribe = false;
-			unSubscribe();
+			// unSubscribe();
 		});
 	}
 
@@ -117,7 +116,7 @@ export function StrokeWidth() {
 				Y: positionYInput
 			});
 			subscribe = false;
-			unSubscribe();
+			// unSubscribe();
 		});
 	}
 
@@ -140,6 +139,6 @@ export function StrokeWidth() {
 			});
 
 			subscribe = false;
-			unSubscribe();
+			// unSubscribe();
 		});
 	}

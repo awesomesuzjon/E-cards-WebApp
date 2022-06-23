@@ -12,6 +12,8 @@
 	const layer = getLayer();
 	let textArr = [];
 
+	colorInput = document.getElementById('colorInput').value;
+
 	onMount(() => {
 		// add background image
 		document.getElementById('canvasFileInput').onchange = function (e) {
@@ -50,21 +52,21 @@
 			var text = new Konva.Text({
 				x: 50,
 				y: 50,
-				zIndex: 3,
 				fontSize: 18,
-				fill: 'black',
+				fill: colorInput,
 				text: !data.length ? '' : data[data.length - 1],
+				// text: 'hello',
 				draggable: true,
 				id: 'textElementId',
 				listening: true
 			});
 			text.moveToTop();
-
 			text.setZIndex(3);
 			layer.add(text);
+			console.log(text.attrs, 'is text element`s data attributes');
+			console.log(layer.attrs);
 		});
 
-		////////
 		//add message to canvas
 
 		msgStore.subscribe((data) => {
@@ -145,7 +147,7 @@
 				stickerEditContainer.style.visibility = 'visible';
 				textEditContainer.style.display = 'none	';
 				stickerEditContainer.style.display = 'block';
-				console.log(e.target.attrs.id, 'is the stickers id on canvas');
+				// console.log(e.target.attrs.id, 'is the stickers id on canvas');
 			} else {
 				stickerEditContainer.style.visibility = 'invisible';
 			}
@@ -159,7 +161,7 @@
 				textEditContainer.style.visibility = 'visible';
 				textEditContainer.style.display = 'block	';
 				stickerEditContainer.style.display = 'none';
-				console.log(e.target.attrs.id, 'is the elements id on canvas');
+				// console.log(e.target.attrs.id, 'is the elements id on canvas');
 			} else {
 				textEditContainer.style.visibility = 'invisible';
 			}

@@ -33,12 +33,7 @@
 					...Ecards,
 					{
 						...doc.data(),
-						Id: doc.id,
-						title: doc.title,
-						tags: doc.tags,
-						category: doc.category,
-						priority: doc.priority,
-						publish: doc.publish
+						Id: doc.id
 					}
 				];
 			});
@@ -101,29 +96,41 @@
 							<div class="  justify-center relative   " id="toggleContent">
 								<ul class="  h-auto  ">
 									<div class="flex justify-around items-center mb-2">
-										<li class="   text-sm w-8">
+										<li class="   text-sm w-4">
 											<a href="/" title="Edit">
 												<span><FaEdit /></span>
 											</a>
 										</li>
-										<li class=" text-sm  w-8">
-											<a href="/" title="Delete"> <MdDelete /></a>
+										<li class=" text-sm  w-4 hover:bg-gray-300 p-0 cursor:move ">
+											<!-- svelte-ignore a11y-missing-attribute -->
+											<a
+												title="Delete"
+												on:click={//delete row on table through delete button
+												(e) => {
+													e.stopPropagation();
+
+													const docRef = doc(db, 'Stickers', card.Id);
+													console.log(card.Id, 'card item id');
+													deleteDoc(docRef);
+												}}
+											>
+												<MdDelete /></a
+											>
 										</li>
 										<!-- <div class="flex justify-around items-center"> -->
-											<li class="  text-sm  w-8 ">
+										<li class="  text-sm  w-4 ">
 											<a href="/" title="Clone"> <MdContentCopy /> </a>
 										</li>
-										<li class="  text-sm   w-8">
+										<li class="  text-sm   w-4">
 											<a href="/" title="Mark as Trending"> <DiMarkdown /> </a>
 										</li>
-									<!-- </div> -->
-								</div>
+										<!-- </div> -->
+									</div>
 								</ul>
 							</div>
 						</div>
 					</div>
 				</td>
-
 			</tr>
 		{/each}
 	</table>

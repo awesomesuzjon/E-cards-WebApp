@@ -24,4 +24,5 @@
 	/>
 	<!-- svelte-ignore a11y-missing-attribute -->
 	<a on:click={pushTextToCanvasFunc} class="my-2"><Button>Add text</Button></a>
+	<!-- svelte-ignore a11y-missing-attribute -->
 </div>

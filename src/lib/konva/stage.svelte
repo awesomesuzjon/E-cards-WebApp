@@ -4,7 +4,7 @@
 
 	let container;
 	let stage;
-
+	// let layersArr = [];
 	onMount(() => {
 		stage = new Konva.Stage({
 			container: 'container',
@@ -14,8 +14,17 @@
 			stroke: 'blue',
 			backgroundColor: 'black'
 		});
-		console.log('stage created');
+		//get layers attrs
+		let layerData = stage.getLayers();
+		console.log(layerData);
+		// layersArr = layersArr.push(stage.getLayers());
+		// console.log(layersArr, 'is layers data');
+		// let layer = layersArr[0];
+		// let children = layer.getChildren();
+		// let text = children[0];
+		// console.log(text.getAttr), 'is the konva text element attribute';
 	});
+
 	setContext('konva', {
 		getStage: () => stage
 	});

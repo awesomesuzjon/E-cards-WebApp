@@ -124,7 +124,7 @@
 					<input
 						type="color"
 						id="colorInput"
-						value="#e66465"
+						value="colorInput"
 						class="my-4 flex items-center justify-center self-center mx-2 border-2 text-black border-gray-500 w-16 dark:text-gray-800"
 					/>
 

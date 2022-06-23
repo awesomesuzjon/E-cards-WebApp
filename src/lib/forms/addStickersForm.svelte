@@ -17,8 +17,6 @@
 			Preview: uploadValue
 		})
 			.then((e) => {
-				console.log('the value of e ', e);
-
 				addStickerForm.reset();
 			})
 			.catch((err) => {
@@ -26,12 +24,12 @@
 			});
 	};
 
-	const deleteValues = () => {
+	export const deleteValues = () => {
 		const deleteStickerForm = document.querySelector('.deleteStickerForm');
 
 		deleteStickerForm.addEventListener('submit', (e) => {
 			e.preventDefault();
-
+			//delete row on table through input id value
 			const docRef = doc(db, 'Stickers', deleteStickerForm.id.value);
 			deleteDoc(docRef).then(() => {
 				deleteStickerForm.reset();
@@ -69,6 +67,9 @@
 				bind:files
 				on:change={(e) => {
 					{
+						///file reader code to convert upload img url with base64
+					
+						////
 						uploadValue = e?.target?.files[0]?.name?.toString();
 					}
 				}}
