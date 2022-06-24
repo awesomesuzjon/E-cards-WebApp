@@ -4,6 +4,15 @@
 	let files;
 	let uploadValue;
 
+	function addFile(e) {
+		let image = e.target.files[0];
+		let reader = new FileReader();
+		reader.readAsDataURL(image);
+		reader.onload = (e) => {
+			uploadValue = e.target.result;
+		};
+	}
+
 	const db = getFirestore();
 
 	const colRef = collection(db, 'Stickers');
@@ -65,14 +74,7 @@
 				accept="image/*"
 				name="preview"
 				bind:files
-				on:change={(e) => {
-					{
-						///file reader code to convert upload img url with base64
-					
-						////
-						uploadValue = e?.target?.files[0]?.name?.toString();
-					}
-				}}
+				on:change={addFile}
 			/>
 		</div>
 		<div class="my-4">

@@ -4,6 +4,8 @@
 	import MdDelete from 'svelte-icons/md/MdDelete.svelte';
 	import MdContentCopy from 'svelte-icons/md/MdContentCopy.svelte';
 	import DiMarkdown from 'svelte-icons/di/DiMarkdown.svelte';
+	import Pagination from '../reusable/pagination.svelte';
+
 	import {
 		getFirestore,
 		addDoc,
@@ -13,6 +15,7 @@
 		collection,
 		onSnapshot
 	} from 'firebase/firestore';
+
 	import { onMount } from 'svelte';
 
 	let Category = [];
@@ -36,6 +39,10 @@
 			});
 		});
 	});
+
+	///pagination code
+	let paginatedItems = [];
+	$: paginatedItems;
 </script>
 
 <div class="flex mt-4 ">
@@ -54,20 +61,20 @@
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
 		</tr>
 
-		{#each Category as card}
+		{#each paginatedItems as item}
 			<tr>
 				<th>
 					<label>
 						<input type="checkbox" class="checkbox" />
 					</label>
 				</th>
-				<td class=" px-8 py-2">{card.Id}</td>
-				<td class=" px-8 py-2">{card.Name}</td>
+				<td class=" px-8 py-2">{item.Id}</td>
+				<td class=" px-8 py-2">{item.Name}</td>
 
-				<td class=" px-8 py-2">{card.Priority}</td>
-				<td class=" px-8 py-2">{card.Publish}</td>
+				<td class=" px-8 py-2">{item.Priority}</td>
+				<td class=" px-8 py-2">{item.Publish}</td>
 
-				<td class=" px-8 py-2"><img class="w-4 h-auto" src={card.Preview} alt="" /></td>
+				<td class=" px-8 py-2"><img class="w-4 h-auto" src={item.Preview} alt="" /></td>
 				<td>
 					<div class="collapse">
 						<input type="checkbox" class="peer" />
@@ -91,7 +98,7 @@
 												(e) => {
 													e.stopPropagation();
 
-													const docRef = doc(db, 'Category', card.Id);
+													const docRef = doc(db, 'Category', item.Id);
 													deleteDoc(docRef);
 												}}
 											>
@@ -115,4 +122,8 @@
 			</tr>
 		{/each}
 	</table>
+</div>
+
+<div class="mx-5">
+	<Pagination items={Category} bind:paginatedItems />
 </div>

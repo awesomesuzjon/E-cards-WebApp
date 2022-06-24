@@ -28,6 +28,7 @@
 	setContext('konva', {
 		getStage: () => stage
 	});
+	console.log(stage);
 </script>
 
 <div bind:this={container} id="container" class="absolute top-50 left-50">

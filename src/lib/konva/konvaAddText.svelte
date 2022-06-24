@@ -64,7 +64,7 @@
 			text.setZIndex(3);
 			layer.add(text);
 			console.log(text.attrs, 'is text element`s data attributes');
-			console.log(layer.attrs);
+			// console.log(layer.attrs);
 		});
 
 		//add message to canvas

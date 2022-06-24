@@ -1,11 +1,11 @@
 <script>
-	import { paginate, LightPaginationNav } from 'svelte-paginate';
 	import Button from '../reusable/button.svelte';
 	import FaEdit from 'svelte-icons/fa/FaEdit.svelte';
 	import MdDelete from 'svelte-icons/md/MdDelete.svelte';
 	import MdContentCopy from 'svelte-icons/md/MdContentCopy.svelte';
 	import DiMarkdown from 'svelte-icons/di/DiMarkdown.svelte';
 	import { getFirestore, addDoc, deleteDoc, doc, collection, onSnapshot } from 'firebase/firestore';
+	import Pagination from '../reusable/pagination.svelte';
 	import { onMount } from 'svelte';
 
 	onMount(() => {
@@ -23,7 +23,8 @@
 	});
 
 	//initialiaze an array to store stickers from firestore
-	let Stickers = [];
+	var Stickers = [];
+	// $: Stickers = [];
 
 	//init database services
 	const db = getFirestore();
@@ -31,11 +32,9 @@
 	//collection ref
 	const colRef = collection(db, 'Stickers');
 
-	//pagination code
-	let currentPage = 1;
-	let items = [];
-	let pageSize = 3;
-	$: paginatedItems = paginate({ items, pageSize, currentPage });
+	// pagination code
+	let paginatedItems = [];
+	$: paginatedItems;
 </script>
 
 <div class="flex mt-4 ">
@@ -54,19 +53,19 @@
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
 		</tr>
 
-		{#each Stickers as card}
+		{#each paginatedItems as item}
 			<tr>
 				<th>
 					<label>
 						<input type="checkbox" class="checkbox" />
 					</label>
 				</th>
-				<td class=" px-8 py-2">{card.Id}</td>
-				<td class=" px-8 py-2">{card.Name}</td>
-				<td class=" px-8 py-2">{card.Priority}</td>
-				<td class=" px-8 py-2">{card.Category}</td>
+				<td class=" px-8 py-2">{item.Id}</td>
+				<td class=" px-8 py-2">{item.Name}</td>
+				<td class=" px-8 py-2">{item.Priority}</td>
+				<td class=" px-8 py-2">{item.Category}</td>
 				<td class=" px-8 py-2"
-					><img class="w-4 h-auto flex justify-center items-center" src={card.Preview} alt="" /></td
+					><img class="w-4 h-auto flex justify-center items-center" src={item.Preview} alt="" /></td
 				>
 				<td>
 					<div class="collapse">
@@ -92,8 +91,8 @@
 												(e) => {
 													e.stopPropagation();
 
-													const docRef = doc(db, 'Stickers', card.Id);
-													console.log(card.Id, 'card item id');
+													const docRef = doc(db, 'Stickers', item.Id);
+													console.log(item.Id, 'item item id');
 													deleteDoc(docRef);
 												}}
 											>
@@ -118,14 +117,6 @@
 		{/each}
 	</table>
 </div>
-
-<section>
-	<LightPaginationNav
-		totalItems={Stickers.length}
-		{currentPage}
-		limit={3}
-		{pageSize}
-		showStepOptions={true}
-		on:setPage={(e) => (currentPage = e.detail.page)}
-	/>
-</section>
+<div class="mx-5">
+	<Pagination items={Stickers} bind:paginatedItems />
+</div>

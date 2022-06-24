@@ -1,8 +1,19 @@
 <script>
 	import { getFirestore, addDoc, deleteDoc, doc, collection, onSnapshot } from 'firebase/firestore';
 	import Button from '../reusable/button.svelte';
+
 	let files;
 	let uploadValue;
+
+
+	function addFile(e) {
+		let image = e.target.files[0];
+		let reader = new FileReader();
+		reader.readAsDataURL(image);
+		reader.onload = (e) => {
+			uploadValue = e.target.result;
+		};
+	}
 
 	const db = getFirestore();
 
@@ -80,11 +91,7 @@
 				accept="image/*"
 				name="preview"
 				bind:files
-				on:change={(e) => {
-					{
-						uploadValue = e?.target?.files[0]?.name?.toString();
-					}
-				}}
+				on:change={addFile}
 			/>
 		</div>
 		<!-- svelte-ignore a11y-missing-attribute -->

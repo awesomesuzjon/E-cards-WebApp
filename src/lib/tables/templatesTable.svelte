@@ -20,6 +20,10 @@
 
 	let Ecards = [];
 
+	///pagination code
+	let paginatedItems = [];
+	$: paginatedItems;
+
 	//init database services
 	const db = getFirestore();
 
@@ -68,23 +72,23 @@
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
 		</tr>
 
-		{#each Ecards as card}
+		{#each paginatedItems as item}
 			<tr>
 				<th>
 					<label>
 						<input type="checkbox" class="checkbox" />
 					</label>
 				</th>
-				<td class=" px-8 py-2">{card.Id}</td>
-				<td class=" px-8 py-2">{card.Title}</td>
+				<td class=" px-8 py-2">{item.Id}</td>
+				<td class=" px-8 py-2">{item.Title}</td>
 				<td class=" px-8 py-2 " id="toggleImgBtn">
 					<span><button on:click={previewImgFunc}>👁</button></span>
 				</td>
 
-				<td class=" px-8 py-2">{card.Tags}</td>
-				<td class=" px-8 py-2">{card.Category}</td>
-				<td class=" px-8 py-2">{card.Priority}</td>
-				<td class=" px-8 py-2">{card.Publish}</td>
+				<td class=" px-8 py-2">{item.Tags}</td>
+				<td class=" px-8 py-2">{item.Category}</td>
+				<td class=" px-8 py-2">{item.Priority}</td>
+				<td class=" px-8 py-2">{item.Publish}</td>
 
 				<td>
 					<div class="collapse">
@@ -137,4 +141,6 @@
 </div>
 <!-- </div>   -->
 
-<Pagination />
+<div class="mx-5">
+	<Pagination items={Ecards} bind:paginatedItems />
+</div>
