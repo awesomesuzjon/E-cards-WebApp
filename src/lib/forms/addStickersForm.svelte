@@ -47,9 +47,9 @@
 	};
 </script>
 
-<div class="flex flex-col justify-center items-center text-sm my-4">
+<div class="flex flex-col justify-center items-center text-sm my-4  p-2">
 	<form
-		class="addStickerForm text-lg"
+		class="addStickerForm "
 		on:submit={(e) => {
 			e.preventDefault();
 			storeNewStickerValues();
@@ -109,7 +109,7 @@
 	</form>
 
 	<form
-		class="deleteStickerForm text-lg mt-2  flex flex-col "
+		class="deleteStickerForm text-sm mt-2  flex flex-col "
 		on:submit={(e) => {
 			deleteValues();
 			e.preventDefault();

@@ -76,15 +76,15 @@
 
 				<td class=" px-8 py-2"><img class="w-4 h-auto" src={item.Preview} alt="" /></td>
 				<td>
-					<div class="collapse">
+					<!-- <div class="collapse">
 						<input type="checkbox" class="peer" />
 						<div class="collapse-title ">
 							<Button>:</Button>
 						</div>
 						<div class="collapse-content  ">
 							<div class="  justify-center relative   " id="toggleContent">
-								<ul class="  h-auto  ">
-									<div class="flex justify-around items-center mb-2">
+								<ul class="  h-auto  "> -->
+									<div class="flex justify-around items-center mb-2 list-none">
 										<li class="   text-sm w-4">
 											<a href="/" title="Edit">
 												<span><FaEdit /></span>
@@ -114,10 +114,10 @@
 										</li>
 										<!-- </div> -->
 									</div>
-								</ul>
+								<!-- </ul>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</td>
 			</tr>
 		{/each}

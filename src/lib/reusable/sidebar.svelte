@@ -20,39 +20,26 @@
 	function toggle() {
 		window.document.body.classList.toggle('dark');
 	}
-
-	function toggleTemplateDropDown() {
-		var TemplateDropDownBtn = document.getElementById('templateDropDownBtn');
-		var dropDownDiv = document.getElementById('dropdown-example');
-		TemplateDropDownBtn.addEventListener('click', () => {
-			if (dropDownDiv.style.display == 'hidden') {
-				console.log('function triggred');
-				dropDownDiv.style.display == 'block';
-			} else {
-				dropDownDiv.style.display == 'hidden';
-			}
-		});
-	}
 </script>
 
 <div
-	class="bg-red-700    dark:bg-customColorGray h-screen  text-center relative min-h-screen  flex  sidebar"
+	class="bg-red-700    dark:bg-customColorGray h-screen  text-center relative min-h-screen   sidebar"
 >
 	<!-- toggle Sidebar code -->
 
-	<ul class="space-y-0    w-full mt-4	 ">
-		<div class="flex flex-col justify-around items-center">
+	<ul class="   w-full mt-4	 ">
+		<div class="flex  items-center justify-around ml-3 " id="toggleDarkBtn">
 			<button class=" text-white dark:text-blue-200 w-8 h-16" on:click={toggle}>
 				<FaCloudMoon /></button
 			>
 
 			<div class="form-control">
-				<label class="label cursor-pointer">
+				<label class="label cursor-pointer ">
 					<input
 						type="checkbox"
 						id="toggleSidebarBtn"
 						on:click={toggleSidebarFunc}
-						class="toggle bg-white text-red-700"
+						class="toggle bg-white text-red-700 active:bg-gray-200  border-none "
 						checked
 					/>
 				</label>
@@ -61,7 +48,7 @@
 
 		<div id="sidebarToggleDiv">
 			<li
-				class="w-full py-4 hover:shadow-xl text-white  hover:bg-white hover:text-red-700  dark:hover:text-customColorGray   "
+				class="w-full py-4  text-white  hover:bg-white hover:text-red-700  dark:hover:text-customColorGray   "
 			>
 				<a
 					href="/dashboard"
@@ -73,52 +60,54 @@
 					</div>
 				</a>
 			</li>
-			<li
-				class=" w-full py-4 hover:shadow-xl text-white hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
-			>
-				<button
-					id="templateDropDownBtn"
-					on:click={toggleTemplateDropDown}
-					type="button"
-					class=" flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group   "
-					data-collapse-toggle="dropdown-example"
-					aria-expanded="false"
-				>
-					<div class="flex items-center align-middle ">
-						<span class="mt-3 ml-3 w-6 h-6 flex  "> <FaImages /></span>
-						<span class="whitespace-nowrap mt-3 ml-4 center flex "> Templates</span>
 
-						<!-- <svg class="animate-bounce w-6 h-6 flex mt-4 ml-2 "> -->
-						<svg class=" w-6 h-6 flex mt-4 ml-2 ">
-							<FaAngleDown />
-						</svg>
+			<!-- ///////////////////////////////////////////////////////////////////// -->
+			<td>
+				<div class="collapse  py-2 ">
+					<input type="checkbox" class="peer" />
+					<li class="collapse-title truncate flex text-white   dark:hover:text-customColorGray  ">
+						<div class="flex items-center align-middle ">
+							<span class="mt-3 ml-2 w-6 h-6 flex  "> <FaImages /></span>
+							<span class="whitespace-nowrap mt-3 ml-4 center flex  hover:text-red-700 ">
+								Templates</span
+							>
+						</div>
+					</li>
+					<div class="collapse-content hover:bg-gray-300 ">
+						<div class="  justify-center relative   " id="toggleContent">
+							<li
+								class=" w-full py-4 hover:shadow-xl text-white   hover:text-red-700 dark:hover:text-customColorGray "
+							>
+								<ul id="dropdown-example" class=" py-2 space-y-2">
+									<li>
+										<a
+											href="/trendingTemplatesTableRoute"
+											class="hover:shadow-xl hover:bg-white truncate flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group hover:text-red-700 "
+											>Trending E-cards</a
+										>
+									</li>
+									<li>
+										<a
+											href="/downloadTemplatesTableRoute"
+											class="hover:shadow-xl truncate flex items-center hover:bg-white w-full p-2 text-base font-normal transition duration-75 rounded-lg group "
+											>Most Downloaded
+										</a>
+									</li>
+									<li>
+										<a
+											href="/allTemplatesTableRoute"
+											class="hover:shadow-xl flex items-center w-full hover:bg-white p-2 text-base font-normal  transition duration-75 rounded-lg group "
+											>All E-cards</a
+										>
+									</li>
+								</ul>
+							</li>
+						</div>
 					</div>
-				</button>
+				</div>
+			</td>
 
-				<ul id="dropdown-example" class="hidden py-2 space-y-2">
-					<li>
-						<a
-							href="/trendingTemplatesTableRoute"
-							class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group hover:bg-white hover:text-red-700 "
-							>Trending E-cards</a
-						>
-					</li>
-					<li>
-						<a
-							href="/downloadTemplatesTableRoute"
-							class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal transition duration-75 rounded-lg group "
-							>Most Downloaded
-						</a>
-					</li>
-					<li>
-						<a
-							href="/allTemplatesTableRoute"
-							class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group "
-							>All E-cards</a
-						>
-					</li>
-				</ul>
-			</li>
+			<!-- ///////////////////////////////////////////////////////////////////// -->
 
 			<li
 				class="w-full py-4 hover:shadow-xl  text-white hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
@@ -184,50 +173,47 @@
 					</div>
 				</a>
 			</li>
-			<li
-				class="w-full py-4 hover:shadow-xl text-white  hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
-			>
-				<button
-					type="button"
-					class=" flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group   "
-					data-collapse-toggle="dropdown-example"
-					aria-expanded="false"
-				>
-					<a href="/templatesTable">
-						<div class="flex items-center align-middle">
-							<span class="mt-3 ml-3 w-6 h-6 flex  mr-4 "> <FaImages /></span>
 
-							<svg class=" w-6 h-6 flex mt-4 ml-2 text-white dark:text-white">
-								<FaAngleDown />
-							</svg>
-						</div>
-					</a>
-				</button>
-
-				<ul id="dropdown-example" class="hidden py-2 space-y-2">
-					<li>
-						<a
-							href="/trendingtemplates"
-							class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group hover:bg-blue-300 dark:  "
-							>Trending E-cards</a
+			<div class="collapse  py-2 ">
+				<input type="checkbox" class="peer" />
+				<li class="collapse-title truncate flex text-white   dark:hover:text-customColorGray  ">
+					<div class="flex items-center align-middle ">
+						<span class="mt-3 ml-2 w-6 h-6 flex  "> <FaImages /></span>
+						<span class="whitespace-nowrap mt-3 ml-4 center flex  hover:text-red-700 " />
+					</div>
+				</li>
+				<div class="collapse-content hover:bg-gray-300 ">
+					<div class="  justify-center relative   " id="toggleContent">
+						<li
+							class=" w-full py-4 hover:shadow-xl text-white   hover:text-red-700 dark:hover:text-customColorGray "
 						>
-					</li>
-					<li>
-						<a
-							href="/mostdownloadedtemplates"
-							class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group hover:bg-blue-300 dark:  "
-							>Most Downloaded
-						</a>
-					</li>
-					<li>
-						<a
-							href="/communitytemplates"
-							class="hover:shadow-xl flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group hover:bg-blue-300 dark:  "
-							>Community E-cards</a
-						>
-					</li>
-				</ul>
-			</li>
+							<ul id="dropdown-example" class=" py-2 space-y-2">
+								<li>
+									<a
+										href="/allTemplatesTableRoute"
+										class="hover:shadow-xl flex items-center w-full hover:bg-white p-2 text-base font-normal  transition duration-75 rounded-lg group "
+										>A</a
+									>
+								</li>
+								<li>
+									<a
+										href="/trendingTemplatesTableRoute"
+										class="hover:shadow-xl hover:bg-white truncate flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group hover:text-red-700 "
+										>T</a
+									>
+								</li>
+								<li>
+									<a
+										href="/downloadTemplatesTableRoute"
+										class="hover:shadow-xl truncate flex items-center hover:bg-white w-full p-2 text-base font-normal transition duration-75 rounded-lg group "
+										>M
+									</a>
+								</li>
+							</ul>
+						</li>
+					</div>
+				</div>
+			</div>
 
 			<li
 				class="w-full py-4 hover:shadow-xl text-white  hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
@@ -247,7 +233,7 @@
 				class="w-full py-4 hover:shadow-xl text-white  hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
 			>
 				<a
-					href="/messageTable"
+					href="/messageTableRoute"
 					class=" flex items-center p-2 text-base font-normal  rounded-lg dark: "
 				>
 					<div class="flex items-center align-middle">
@@ -259,7 +245,10 @@
 			<li
 				class="w-full py-4 hover:shadow-xl text-white  hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
 			>
-				<a href="/category" class=" flex items-center p-2 text-base font-normal  rounded-lg dark: ">
+				<a
+					href="/categoryTableRoute"
+					class=" flex items-center p-2 text-base font-normal  rounded-lg dark: "
+				>
 					<div class="flex items-center align-middle">
 						<span class="mt-3 ml-3 w-6 h-6 flex  "> <FaSearch /></span>
 					</div>

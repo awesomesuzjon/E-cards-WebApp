@@ -35,6 +35,11 @@
 	// pagination code
 	let paginatedItems = [];
 	$: paginatedItems;
+
+	//image src
+	// function getImgSrc(e) {
+	// 	console.log(target.Id);
+	// }
 </script>
 
 <div class="flex mt-4 ">
@@ -64,19 +69,39 @@
 				<td class=" px-8 py-2">{item.Name}</td>
 				<td class=" px-8 py-2">{item.Priority}</td>
 				<td class=" px-8 py-2">{item.Category}</td>
-				<td class=" px-8 py-2"
-					><img class="w-4 h-auto flex justify-center items-center" src={item.Preview} alt="" /></td
-				>
+				<td class=" px-8 py-2">
+					<!-- aa -->
+					<div class="flex justify-end  mt-4 mr-5">
+						<label for="my-modal" class=" modal-button">
+							<img class="w-4 h-auto flex justify-center items-center" src={item.Preview} alt="" />
+						</label>
+					</div>
+
+					<input type="checkbox" id="my-modal" class="modal-toggle " />
+					<label
+						for="my-modal"
+						class="modal cursor-pointer bg-gray-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-4xl bg-opacity-50  border border-gray-100"
+					>
+						<label class="modal-box relative" for="">
+							<img
+								class="w-full h-auto flex justify-center items-center"
+								alt=""
+								src={item.Preview}
+							/>
+						</label>
+					</label>
+					<!-- bb -->
+				</td>
 				<td>
-					<div class="collapse">
+					<!-- <div class="collapse">
 						<input type="checkbox" class="peer" />
 						<div class="collapse-title ">
 							<Button>:</Button>
 						</div>
 						<div class="collapse-content  ">
 							<div class="  justify-center relative   " id="toggleContent">
-								<ul class="  h-auto  ">
-									<div class="flex justify-around items-center mb-2">
+								<ul class="  h-auto  "> -->
+									<div class="flex justify-around items-center mb-2 list-none">
 										<li class="   text-sm w-4">
 											<!-- svelte-ignore a11y-missing-attribute -->
 											<a title="Edit">
@@ -92,7 +117,6 @@
 													e.stopPropagation();
 
 													const docRef = doc(db, 'Stickers', item.Id);
-													console.log(item.Id, 'item item id');
 													deleteDoc(docRef);
 												}}
 											>
@@ -108,10 +132,10 @@
 										</li>
 										<!-- </div> -->
 									</div>
-								</ul>
+								<!-- </ul>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</td>
 			</tr>
 		{/each}

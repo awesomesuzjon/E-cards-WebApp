@@ -52,13 +52,13 @@
 
 <div class="flex flex-col justify-center items-center text-sm ">
 	<form
-		class="addCategoryForm text-lg"
+		class="addCategoryForm text-sm"
 		on:submit={(e) => {
 			e.preventDefault();
 			storeNewValues();
 		}}
 	>
-		<div class="my-2">
+		<div class="my-2 text-sm">
 			<label for="name">Name :</label>
 			<input
 				type="text"
@@ -77,11 +77,7 @@
 			/>
 		</div>
 
-		<div class=" my-2">
-			<input type="checkbox" name="publish" class="mx-2" />
-			<span> Publish </span>
-		</div>
-
+	
 		<div class="flex justify-center my-4">
 			<label for="preview">Upload Image : </label>
 			<input
@@ -94,17 +90,22 @@
 				on:change={addFile}
 			/>
 		</div>
+		<div class=" my-2">
+			<input type="checkbox" name="publish"  />
+			<span> Publish </span>
+		</div>
+
 		<!-- svelte-ignore a11y-missing-attribute -->
 		<Button>Add Category</Button>
 	</form>
 	<form
-		class="deleteCategory text-lg mt-2  flex flex-col "
+		class="deleteCategory text-sm mt-2  flex flex-col "
 		on:submit={(e) => {
 			deleteValuesFromStore();
 			e.preventDefault();
 		}}
 	>
-		<label for="id">Document id:</label>
+		<label for="id" >Document id:</label>
 		<input
 			type="text"
 			name="id"

@@ -3,25 +3,22 @@
 	export let paginatedItems;
 	export let items;
 	//pagination code
-	let currentPage = 2;
+	let currentPage = 1;
 
 	// var items = [];
 	// items = items.push(Stickers);
 	// console.log(items, 'is the item arr data');
 
-	let pageSize = 2;
+	let pageSize = 4;
 
 	$: paginatedItems = paginate({ items, pageSize, currentPage });
-	console.log(paginatedItems, 'is the pagination data');
-	// console.log();
 </script>
-
 
 <section class="text-sm">
 	<LightPaginationNav
 		totalItems={items.length}
 		currentPage="currentPage"
-		limit={2}
+		limit={4}
 		{pageSize}
 		showStepOptions={true}
 		on:setPage={(e) => (currentPage = e.detail.page)}

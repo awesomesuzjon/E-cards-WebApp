@@ -8,8 +8,8 @@
 	onMount(() => {
 		stage = new Konva.Stage({
 			container: 'container',
-			width: 525,
-			height: 434,
+			width: 678,
+			height: 450,
 
 			stroke: 'blue',
 			backgroundColor: 'black'
