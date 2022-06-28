@@ -28,20 +28,15 @@
 	class="absolute top-0 right-0  bg-red-300 text-md text-white invisible  w-72 "
 	id="textEditContainerId"
 >
-	<!-- <div class=" flex justify-end items-center text-sm mt-4  ">
+	<!-- <div class=" flex justify-end items-center text-sm  ">
 		<button id="closeEditbarBtn" class="btn">close button here </button>
 	</div> -->
 	<div tabindex="0" class="collapse">
-		<div class="collapse-title flex justify-center text-xl font-medium">
-			<button class=" h-12 truncate 	flex justify-center ml-8 w-24" id="editTextPanelId">
-				Texts
-			</button>
-		</div>
 		<!-- text toggle code by class name collapse-content -->
-		<div id="collapse-contentId">
-			<li class="p-0 list-none">
+		<div id="collapse-contentId" class=" p-0">
+			<li class="p-0 list-none justify-center ">
 				<button
-					class=" btn bg-white border-red-700 text-red-700 hover:border-1 hover:bg-transparent w-16   "
+					class=" btn bg-transparent border-none text-red-700 hover:border-1 hover:bg-transparent w-6 p-0   "
 					title="Delete"
 					on:click={deleteTarget}
 				>
@@ -49,10 +44,10 @@
 				</button>
 			</li>
 
-			<li class="p-4">
+			<li>
 				<div>
 					<h1
-						class="mb-3 text-sm font-bold truncate  flex items-center justify-center self-center"
+						class=" text-sm font-bold truncate  flex items-center justify-center self-center"
 						draggable="true"
 					>
 						Font-Style:
@@ -84,10 +79,10 @@
 				</div>
 			</li>
 
-			<li class="p-4">
+			<li>
 				<div>
 					<h1
-						class="mb-3 text-sm font-bold truncate  flex items-center justify-center self-center"
+						class="text-sm font-bold truncate  flex items-center justify-center self-center"
 						draggable="true"
 					>
 						Text-Decoration:
@@ -113,7 +108,7 @@
 				</div>
 			</li>
 
-			<li class="p-4">
+			<li>
 				<div class="flex flex-col">
 					<h1
 						class="text-sm font-bold  flex items-center justify-center self-center truncate"
@@ -125,7 +120,7 @@
 						type="color"
 						id="colorInput"
 						value="colorInput"
-						class="my-4 flex items-center justify-center self-center mx-2 border-2 text-black border-gray-500 w-16 dark:text-gray-800"
+						class="my-4 flex items-center justify-center self-center mx-2 border-2 text-black border-gray-500 w-8 dark:text-gray-800"
 					/>
 
 					<!-- svelte-ignore a11y-missing-attribute -->
@@ -133,7 +128,7 @@
 				</div>
 			</li>
 
-			<li class="p-3">
+			<li>
 				<div class="flex flex-col ">
 					<h1
 						class="text-sm font-bold  flex items-center justify-center self-center truncate"
@@ -146,7 +141,7 @@
 						type="text"
 						value="50"
 						id="input"
-						class=" flex items-center justify-center self-center mx-2 border-2 text-black border-gray-500 w-16 h-auto  text-sm font-bold dark:text-gray-800"
+						class=" flex items-center justify-center self-center mx-2 border-2 text-black border-gray-500 w-16 h-6 mb-2 text-sm font-bold dark:text-gray-800"
 					/>
 				</div>
 
@@ -154,12 +149,12 @@
 				<a on:click={editFontSize} class="p-0 text-sm"><Button>Enter</Button></a>
 			</li>
 
-			<li class="p-3">
+			<li>
 				<h1 class="text-sm font-bold truncate " draggable="true">Font-Family:</h1>
 				<FontFamily />
 			</li>
 
-			<li class="p-3">
+			<li>
 				<div class="flex flex-col justify-center">
 					<h1
 						class="text-sm font-bold left flex items-center justify-center self-center truncate"
@@ -171,14 +166,14 @@
 					<input
 						type="input"
 						id="opacityInput"
-						class=" flex items-center justify-center self-center border-2 text-black border-gray-500  w-40 h-auto  text-sm font-bold dark:text-gray-800"
+						class="mb-2 flex items-center justify-center self-center border-2 text-black border-gray-500  w-40 h-auto  text-sm font-bold dark:text-gray-800"
 					/>
 				</div>
 				<!-- svelte-ignore a11y-missing-attribute -->
 				<a on:click={editTextOpacity} class="p-0 text-sm"><Button>Enter</Button></a>
 			</li>
 
-			<li class="p-4">
+			<li class="p-2">
 				<div class="flex   ">
 					<h1 class="text-sm font-bold justify-center  flex">Position</h1>
 					<h2 class="text-sm font-bold ">X:</h2>
@@ -202,16 +197,10 @@
 					<!-- svelte-ignore a11y-missing-attribute -->
 					<a on:click={editElementPosition} class="p-0 text-sm"><Button>Enter</Button></a>
 
-					<h1
-						class="text-sm font-bold left flex items-center justify-center self-center truncate"
-						draggable="true"
-					>
-						Rotate:
-					</h1>
 					<input
 						type="input"
 						id="inputRotateDegree"
-						class=" flex items-center justify-center self-center mb-2  border-2 text-black border-gray-500 w-16 h-auto  text-sm font-bold dark:text-gray-800"
+						class=" flex items-center justify-center self-center my-2  border-2 text-black border-gray-500 w-16 h-auto  text-sm font-bold dark:text-gray-800"
 					/>
 					<!-- svelte-ignore a11y-missing-attribute -->
 					<a on:click={editRotateText} class="p-0 text-sm"><Button>Rotate</Button></a>

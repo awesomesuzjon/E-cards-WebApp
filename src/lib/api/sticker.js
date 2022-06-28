@@ -1,5 +1,5 @@
 export const stickers = {
-	data: [
+	"stickerData": [
 		{
 			id: 1,
 			name: 'skull',

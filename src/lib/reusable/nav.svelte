@@ -15,7 +15,7 @@
 	class="bg-red-700  dark:bg-customColorGray    text-white justify-between	 flex   h-16  items-center "
 >
 	<div>
-		<a href="/"><img src="logo.png" alt="HamroPatro Logo" class="w-16 mt-6 ml-3 " /></a>
+		<a href="/"><img src="logo.png" alt="HamroPatro Logo" class="w-12 mt-2 ml-6 " /></a>
 	</div>
 
 	<div class="flex justify-start text-sm ">
