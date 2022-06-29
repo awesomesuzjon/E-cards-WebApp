@@ -6,11 +6,14 @@
 	import { msgStore } from '../../stores/storeText';
 	import { getContext } from 'svelte';
 	import { canvasBgStore } from '../../stores/canvasColor';
+	import { v4 as uuidv4 } from 'uuid';
 	const { getStage } = getContext('konva');
 	const { getLayer } = getContext('konva_layer');
 	const stage = getStage();
 	const layer = getLayer();
 	let textArr = [];
+
+	let textNames = [];
 
 	colorInput = document.getElementById('colorInput').value;
 
@@ -41,14 +44,14 @@
 				removeBtn.addEventListener('click', () => {
 					canvasBgImg.hide();
 					layer.draw();
-
-					console.log('img removed');
 				});
 			};
 		};
 
 		//add text to canvas
 		textStore.subscribe((data) => {
+			var uuid = uuidv4();
+			textNames.push(uuid);
 			var text = new Konva.Text({
 				x: 50,
 				y: 50,
@@ -58,13 +61,13 @@
 				// text: 'hello',
 				draggable: true,
 				id: 'textElementId',
+				name: uuid,
 				listening: true
 			});
 			text.moveToTop();
 			text.setZIndex(3);
 			layer.add(text);
 			console.log(text.attrs, 'is text element`s data attributes');
-			// console.log(layer.attrs);
 		});
 
 		//add message to canvas
@@ -84,17 +87,6 @@
 			message.moveToTop();
 			message.setZIndex(2);
 			layer.add(message);
-		});
-
-		//konva add image as background
-		Konva.Image.fromURL(`ktm.jpg`, function (bgImage) {
-			bgImage.setAttrs({
-				x: 0,
-				y: 0,
-				width: stage.width(),
-				height: stage.height()
-			});
-			// layer.add(bgImage);
 		});
 
 		//transformer for each clicked element on canvas
@@ -136,7 +128,6 @@
 				textEditContainer.style.visibility = 'visible';
 				textEditContainer.style.display = 'block	';
 				stickerEditContainer.style.display = 'none';
-				console.log(e.target.attrs.id, 'is the elements id on canvas');
 			} else {
 				textEditContainer.style.visibility = 'invisible';
 			}
@@ -147,7 +138,6 @@
 				stickerEditContainer.style.visibility = 'visible';
 				textEditContainer.style.display = 'none	';
 				stickerEditContainer.style.display = 'block';
-				// console.log(e.target.attrs.id, 'is the stickers id on canvas');
 			} else {
 				stickerEditContainer.style.visibility = 'invisible';
 			}
@@ -161,7 +151,6 @@
 				textEditContainer.style.visibility = 'visible';
 				textEditContainer.style.display = 'block	';
 				stickerEditContainer.style.display = 'none';
-				// console.log(e.target.attrs.id, 'is the elements id on canvas');
 			} else {
 				textEditContainer.style.visibility = 'invisible';
 			}
@@ -181,14 +170,30 @@
 				'click',
 				function () {
 					var dataURL = stage.toDataURL({ pixelRatio: 3 });
+					var printingText = '';
+					textNames.forEach((data) => {
+						var textNode = stage.findOne('.' + data);
+						printingText += JSON.stringify(textNode.attrs);
+					});
+					console.log('pa1: ', printingText);
 					// imgSavedArray.push(dataURL);
 					downloadURI(dataURL, 'MyNewCanvas.png');
+					// console.log(stage.attrs);
+
+					// var stageData = JSON.parse(stage);
+
+					// var stageData = JSON.stringify(stage);
+					// console.log(stageData);
+
+					// //to import/create node with above stagedata to another konva stage
+					// var stage = Konva.Node.create(stageData,'container'
+					// )
 					//saving img data url on localStorage
 					// for (i = 0; i < imgSavedArray[i].length; i++) {
 					// localStorage.setItem('recentImage', imgSavedArray[i]);
 					localStorage.setItem('recentImage', dataURL);
 					const recentImageDataUrl = localStorage.getItem('recentImage');
-					document.querySelector('#imgPreview').setAttribute('src', recentImageDataUrl);
+					// document.querySelector('#imgPreview').setAttribute('src', recentImageDataUrl);
 				},
 				false
 			);

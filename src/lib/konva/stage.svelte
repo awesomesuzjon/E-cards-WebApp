@@ -17,18 +17,11 @@
 		//get layers attrs
 		let layerData = stage.getLayers();
 		console.log(layerData);
-		// layersArr = layersArr.push(stage.getLayers());
-		// console.log(layersArr, 'is layers data');
-		// let layer = layersArr[0];
-		// let children = layer.getChildren();
-		// let text = children[0];
-		// console.log(text.getAttr), 'is the konva text element attribute';
 	});
 
 	setContext('konva', {
 		getStage: () => stage
 	});
-	console.log(stage);
 </script>
 
 <div bind:this={container} id="container" class="absolute top-50 left-50">

@@ -6,7 +6,7 @@
 	import CanvasBackgroundImg from './canvasBackgroundImg.svelte';
 </script>
 
-<div class="flex justify-between items-center ">
+<div class="flex justify-between items-center  ">
 	<div class="drawer  z-50 ">
 		<input id="my-drawer" type="checkbox" class="drawer-toggle" />
 
@@ -15,7 +15,7 @@
 		  "
 		>
 			<!-- <label for="my-drawer" class="drawer-overlay" /> -->
-			<ul class=" divide-y-2 w-full bg-red-300  text-sm text-white">
+			<ul class=" divide-y-2 w-full h-screen  bg-red-300  text-sm text-white">
 				<li class="p-2 ">
 					<ElementPushToCanvas />
 				</li>

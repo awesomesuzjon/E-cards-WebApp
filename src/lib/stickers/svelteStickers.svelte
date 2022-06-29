@@ -2,8 +2,7 @@
 	import { stickers } from '../api/sticker';
 	import Carousel from 'svelte-carousel';
 	import Button from '../reusable/button.svelte';
-	// import DashainStickers from './dashainStickers';
-
+	import DashainStickers from './dashainStickers.svelte';
 	let stickerArray = [];
 	stickerArray = [...stickers.stickerData];
 </script>
@@ -33,19 +32,17 @@
 <!-- The button to open modal -->
 <div class="flex justify-end  mt-4 mr-5">
 	<Button>
-		<label for="my-modal-4" class=" modal-button">
+		<label for="my-modal-sticker" class=" modal-button">
 			<span class="font-bold "> Show All..</span>
 		</label>
 	</Button>
 </div>
-<input type="checkbox" id="my-modal-4" class="modal-toggle " />
+<input type="checkbox" id="my-modal-sticker" class="modal-toggle " />
 <label
-	for="my-modal-4"
+	for="my-modal-sticker"
 	class="modal cursor-pointer bg-gray-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-4xl bg-opacity-50  border border-gray-100"
 >
-	<label class="modal-box relative" for="">
-		<!-- <DashainStickers /> -->
-	</label>
+	<label class="modal-box relative" for=""> <DashainStickers /> </label>
 </label>
 
 <!-- 

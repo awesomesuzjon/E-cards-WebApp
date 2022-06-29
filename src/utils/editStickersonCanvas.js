@@ -20,7 +20,6 @@
 		
 			});
 			subscribe = false;
-			unSubscribe();
 		});
 	}
 
@@ -41,7 +40,6 @@
 				rotationDeg: rotationInput,
 			});
 			subscribe = false;
-			unSubscribe();
 		});
 	}
 
@@ -63,7 +61,6 @@
 
 			});
 			subscribe = false;
-			unSubscribe();
 		});
 	}
 
@@ -83,6 +80,6 @@
 					opacity : opacityStickerValue
 			});
 			subscribe = false;
-			unSubscribe();
+			// unSubscribe();
 		});
 	}

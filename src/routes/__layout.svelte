@@ -9,7 +9,7 @@
 </script>
 
 <Nav />
-<div class="relative h-screen flex ">
+<div class="relative h-screen flex overflow-hidden">
 	<Sidebar />
 
 	<div class="w-full  text-center text-bold text-sm h-screen " id="main-container">

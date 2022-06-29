@@ -44,7 +44,7 @@
 				</button>
 			</li>
 
-			<li>
+			<li class="py-1">
 				<div>
 					<h1
 						class=" text-sm font-bold truncate  flex items-center justify-center self-center"
@@ -79,7 +79,7 @@
 				</div>
 			</li>
 
-			<li>
+			<li class="py-1">
 				<div>
 					<h1
 						class="text-sm font-bold truncate  flex items-center justify-center self-center"
@@ -108,7 +108,7 @@
 				</div>
 			</li>
 
-			<li>
+			<li class="py-1">
 				<div class="flex flex-col">
 					<h1
 						class="text-sm font-bold  flex items-center justify-center self-center truncate"
@@ -128,7 +128,7 @@
 				</div>
 			</li>
 
-			<li>
+			<li class="py-1">
 				<div class="flex flex-col ">
 					<h1
 						class="text-sm font-bold  flex items-center justify-center self-center truncate"
@@ -149,12 +149,12 @@
 				<a on:click={editFontSize} class="p-0 text-sm"><Button>Enter</Button></a>
 			</li>
 
-			<li>
+			<li class="py-1">
 				<h1 class="text-sm font-bold truncate " draggable="true">Font-Family:</h1>
 				<FontFamily />
 			</li>
 
-			<li>
+			<li class="py-1">
 				<div class="flex flex-col justify-center">
 					<h1
 						class="text-sm font-bold left flex items-center justify-center self-center truncate"
@@ -173,7 +173,7 @@
 				<a on:click={editTextOpacity} class="p-0 text-sm"><Button>Enter</Button></a>
 			</li>
 
-			<li class="p-2">
+			<li class="p-1">
 				<div class="flex   ">
 					<h1 class="text-sm font-bold justify-center  flex">Position</h1>
 					<h2 class="text-sm font-bold ">X:</h2>
