@@ -1,25 +1,33 @@
-<!-- <script>
+<script>
 	import Konva from 'konva';
 	import { onMount } from 'svelte';
+	import { selected } from '../../stores/selectedItemId';
+	import { v4 as uuid } from 'uuid';
+	import { textStore } from '../../stores/storeText';
+	import { msgStore } from '../../stores/storeText';
+	import { getContext } from 'svelte';
+	import { canvasBgStore } from '../../stores/canvasColor';
 	const { getStage } = getContext('konva');
 	const { getLayer } = getContext('konva_layer');
 	const stage = getStage();
 	const layer = getLayer();
-	import { getContext } from 'svelte';
-	import { v4 as uuidv4 } from 'uuid';
-
-	import { selected } from '../../stores/selectedItemId';
-	import { textStore } from '../../stores/storeText';
-	import { msgStore } from '../../stores/storeText';
-	import { canvasBgStore } from '../../stores/canvasColor';
-
-	let textArr = [];
-
-	let textNames = [];
-
-	colorInput = document.getElementById('colorInput').value;
 
 	onMount(() => {
+		canvasBgStore.subscribe((color) => {
+			var backgroundRect = new Konva.Rect({
+				x: 0,
+				y: 0,
+				zIndex: 0,
+				// fillPatternImage: images.bgImage,
+				width: stage.width(),
+				height: stage.height(),
+				fill: color,
+				opacity: 0.5,
+				listening: false
+			});
+			layer.add(backgroundRect);
+		});
+
 		// add background image
 		document.getElementById('canvasFileInput').onchange = function (e) {
 			var url = URL.createObjectURL(e.target.files[0]);
@@ -32,7 +40,7 @@
 					image: img,
 					x: 0,
 					y: 0,
-					width: 523,
+					width: 710,
 					height: 500,
 					id: 'bgImg',
 					listening: false
@@ -41,6 +49,7 @@
 				canvasBgImg.moveToBottom();
 				layer.add(canvasBgImg);
 				layer.draw();
+				
 
 				var removeBtn = document.getElementById('removeBgImg');
 				removeBtn.addEventListener('click', () => {
@@ -49,30 +58,23 @@
 				});
 			};
 		};
-
-		// add text to canvas
 		textStore.subscribe((data) => {
-			var uuid = uuidv4();
-			textNames.push(uuid);
 			var text = new Konva.Text({
 				x: 50,
 				y: 50,
+				zIndex: 3,
 				fontSize: 18,
-				fill: colorInput,
+				fill: 'black',
 				text: !data.length ? '' : data[data.length - 1],
-				// text: 'hello',
 				draggable: true,
 				id: 'textElementId',
-				name: uuid,
 				listening: true
 			});
 			text.moveToTop();
+
 			text.setZIndex(3);
 			layer.add(text);
-			console.log(text.attrs, 'is text element`s data attributes');
 		});
-
-		//add message to canvas
 
 		msgStore.subscribe((data) => {
 			var message = new Konva.Text({
@@ -90,7 +92,17 @@
 			message.setZIndex(2);
 			layer.add(message);
 		});
-		
+
+		//konva add image as background
+		Konva.Image.fromURL(`ktm.jpg`, function (bgImage) {
+			bgImage.setAttrs({
+				x: 0,
+				y: 0,
+				width: stage.width(),
+				height: stage.height()
+			});
+			// layer.add(bgImage);
+		});
 
 		//transformer for each clicked element on canvas
 		var previousTarget = null;
@@ -121,6 +133,7 @@
 
 			var textEditContainer = document.getElementById('textEditContainerId');
 			var stickerEditContainer = document.getElementById('stickerEditContainerId');
+			// var messageEditContainer = document.getElementById('messageEditContainerId');
 
 			//on click of message open message editbar
 
@@ -156,7 +169,7 @@
 				stickerEditContainer.style.display = 'none';
 			} else {
 				textEditContainer.style.visibility = 'invisible';
-			}
+			} // if (
 
 			//save img url on localstorage
 
@@ -173,35 +186,14 @@
 				'click',
 				function () {
 					var dataURL = stage.toDataURL({ pixelRatio: 3 });
-					var printingText = '';
-					textNames.forEach((data) => {
-						var textNode = stage.findOne('.' + data);
-						printingText += JSON.stringify(textNode.attrs);
-					});
-
-					var stageJson = stage.toJSON();
-					console.log(stageJson, 'is the json data of stage');
-
-					// console.log('data of canvas: ', printingText);
-
 					// imgSavedArray.push(dataURL);
 					downloadURI(dataURL, 'MyNewCanvas.png');
-					// console.log(stage.attrs);
-
-					// var stageData = JSON.parse(stage);
-
-					// var stageData = JSON.stringify(stage);
-					// console.log(stageData);
-
-					// //to import/create node with above stagedata to another konva stage
-					// var stage = Konva.Node.create(stageData,'container'
-					// )
 					//saving img data url on localStorage
 					// for (i = 0; i < imgSavedArray[i].length; i++) {
 					// localStorage.setItem('recentImage', imgSavedArray[i]);
 					localStorage.setItem('recentImage', dataURL);
 					const recentImageDataUrl = localStorage.getItem('recentImage');
-					// document.querySelector('#imgPreview').setAttribute('src', recentImageDataUrl);
+					document.querySelector('#imgPreview').setAttribute('src', recentImageDataUrl);
 				},
 				false
 			);
@@ -227,26 +219,21 @@
 			pdf.save('canvas.pdf');
 		});
 	});
-</script>  -->
-<script>
+</script>
+
+<!-- <script>
 	import Konva from 'konva';
 	import { onMount } from 'svelte';
+	const { getStage } = getContext('konva');
 	const { getLayer } = getContext('konva_layer');
-	const layer = getLayer();
+	var stage = getStage();
+	var layer = getLayer();
 	import { getContext } from 'svelte';
-	import { v4 as uuidv4 } from 'uuid';
 
 	import { selected } from '../../stores/selectedItemId';
 	import { textStore } from '../../stores/storeText';
 	import { msgStore } from '../../stores/storeText';
 	import { canvasBgStore } from '../../stores/canvasColor';
-
-	let textArr = [];
-
-	let textNames = [];
-
-	colorInput = document.getElementById('colorInput').value;
-
 	var JsonData = {
 		attrs: { width: 678, height: 450, stroke: 'blue', backgroundColor: 'black' },
 		className: 'Stage',
@@ -263,7 +250,7 @@
 							fill: '#000000',
 							draggable: true,
 							id: 'textElementId',
-							name: 'ced26111-c3f6-44aa-86c3-79fd02055448'
+							name: 'd96f41e7-0854-427a-a6cf-e584ddc1fcf2'
 						},
 						className: 'Text'
 					},
@@ -280,32 +267,19 @@
 					},
 					{
 						attrs: {
-							x: 141,
-							y: 108,
-							fontSize: 50,
-							fill: 'brown',
-							text: 'mmmmmmm',
+							x: 100,
+							y: 150,
+							fontSize: 3,
+							fill: 'green',
+							text: 'Testingg',
 							draggable: true,
 							id: 'textElementId',
-							name: '94eaa4a4-f189-4354-be3a-80ec246117b7',
-							textDecoration: 'line-through',
-							fontFamily: ' Brush Script MT '
-						},
-						className: 'Text'
-					},
-					{
-						attrs: {
-							x: 119,
-							y: 182,
-							fontSize: 80,
-							fill: '#ff0000',
-							text: 'sujan',
-							draggable: true,
-							id: 'textElementId',
-							name: 'a142b59f-344e-48c3-ad95-6514ee5c4c31',
-							fontStyle: 'bold',
-							textDecoration: 'underline',
-							fontFamily: ' Cursive '
+							name: '3aa232b1-cb56-4cd5-b573-a9b1dbcf64a7',
+							rotation: 90,
+							scaleX: 7.367831652107676,
+							scaleY: 7.367831652107679,
+							skewX: -2.6178262080447686e-16,
+							textDecoration: 'underline'
 						},
 						className: 'Text'
 					},
@@ -314,70 +288,24 @@
 			}
 		]
 	};
+	stage = Konva.Node.create(JsonData, 'container');
+	// stage.destroy();
 
-	var stage = Konva.Node.create(JsonData, 'container');
+	// //transformer for each clicked element on canvas
+	// var previousTarget = null;
+	// var transformer = new Konva.Transformer();
+	// layer.add(transformer);
 
-	//transformer for each clicked element on canvas
-	var previousTarget = null;
-	var transformer = new Konva.Transformer();
-	layer.add(transformer);
+	// stage.on('click tap', function (e) {
+	// 	transformer.destroy();
+	// 	transformer = new Konva.Transformer();
+	// 	layer.add(transformer);
+	// 	$selected = null;
+	// 	previousTarget = null;
 
-	stage.on('click tap', function (e) {
-		if (e.target === previousTarget || e.target === stage) {
-			transformer.destroy();
-			transformer = new Konva.Transformer();
-			layer.add(transformer);
-			$selected = null;
-			previousTarget = null;
+	// 	$selected = e.target;
 
-			return;
-		}
-
-		$selected = e.target;
-
-		transformer.attachTo(e.target);
-		previousTarget = e.target;
-	});
-
-	//on click of text open text editbar
-
-	layer.on('click', function (e) {
-		//on click of sticker	 open sticker editbar
-
-		var textEditContainer = document.getElementById('textEditContainerId');
-		var stickerEditContainer = document.getElementById('stickerEditContainerId');
-
-		//on click of message open message editbar
-
-		if (e.target.attrs.id == 'msgElementId' && (textEditContainer.style.visibility = 'invisible')) {
-			textEditContainer.style.visibility = 'visible';
-			textEditContainer.style.display = 'block	';
-			stickerEditContainer.style.display = 'none';
-		} else {
-			textEditContainer.style.visibility = 'invisible';
-		}
-
-		//on click of stickers open sticker editbar
-
-		if (e.target.attrs.id == undefined && (stickerEditContainer.style.visibility = 'invisible')) {
-			stickerEditContainer.style.visibility = 'visible';
-			textEditContainer.style.display = 'none	';
-			stickerEditContainer.style.display = 'block';
-		} else {
-			stickerEditContainer.style.visibility = 'invisible';
-		}
-
-		//on click of text open text editbar
-
-		if (
-			e.target.attrs.id == 'textElementId' &&
-			(textEditContainer.style.visibility = 'invisible')
-		) {
-			textEditContainer.style.visibility = 'visible';
-			textEditContainer.style.display = 'block	';
-			stickerEditContainer.style.display = 'none';
-		} else {
-			textEditContainer.style.visibility = 'invisible';
-		}
-	});
-</script>
+	// 	transformer.attachTo(e.target);
+	// 	previousTarget = e.target;
+	// });
+</script> -->

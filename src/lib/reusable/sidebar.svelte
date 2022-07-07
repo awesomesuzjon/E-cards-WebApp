@@ -23,7 +23,7 @@
 </script>
 
 <div
-	class="bg-red-700    dark:bg-customColorGray h-screen  text-center relative min-h-screen   sidebar"
+	class="bg-red-700    dark:bg-customColorGray  text-center relative h-screen   sidebar"
 >
 	<!-- toggle Sidebar code -->
 
@@ -31,7 +31,7 @@
 		<div class="flex  items-center justify-around ml-3 " id="toggleDarkBtn">
 			<button class=" text-white dark:text-blue-200 w-8 h-16" on:click={toggle}>
 				<FaCloudMoon /></button
-			>	
+			>
 
 			<div class="form-control">
 				<label class="label cursor-pointer ">

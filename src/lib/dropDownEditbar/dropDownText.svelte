@@ -2,6 +2,7 @@
 	import FontFamily from '../addToCanvas/fontFamily.svelte';
 	import MdDelete from 'svelte-icons/md/MdDelete.svelte';
 	import Button from '$lib/reusable/button.svelte';
+	import { onMount } from 'svelte/internal';
 	import {
 		editFontSize,
 		editElementPosition,
@@ -22,6 +23,33 @@
 		editFontStyleNormal,
 		editFontStyleItalicBold
 	} from '../../utils/editFontStyle';
+	onMount(() => {
+		document.getElementById('input').addEventListener('keypress', function (e) {
+			if (e.key === 'Enter') {
+				editFontSize();
+			}
+		});
+		document.getElementById('positionX').addEventListener('keypress', function (e) {
+			if (e.key === 'Enter') {
+				editElementPosition();
+			}
+		});
+		document.getElementById('positionY').addEventListener('keypress', function (e) {
+			if (e.key === 'Enter') {
+				editElementPosition();
+			}
+		});
+		document.getElementById('inputRotateDegree').addEventListener('keypress', function (e) {
+			if (e.key === 'Enter') {
+				editRotateText();
+			}
+		});
+		document.getElementById('opacityInput').addEventListener('keypress', function (e) {
+			if (e.key === 'Enter') {
+				editTextOpacity();
+			}
+		});
+	});
 </script>
 
 <div
@@ -141,6 +169,7 @@
 						type="text"
 						value="50"
 						id="input"
+						on:enterkeyhint={editFontSize}
 						class=" flex items-center justify-center self-center mx-2 border-2 text-black border-gray-500 w-16 h-6 mb-2 text-sm font-bold dark:text-gray-800"
 					/>
 				</div>
@@ -166,6 +195,7 @@
 					<input
 						type="input"
 						id="opacityInput"
+						on:enterkeyhint={editTextOpacity}
 						class="mb-2 flex items-center justify-center self-center border-2 text-black border-gray-500  w-40 h-auto  text-sm font-bold dark:text-gray-800"
 					/>
 				</div>
@@ -182,6 +212,7 @@
 						type="input"
 						value="100"
 						id="positionX"
+						on:enterkeyhint={editElementPosition}
 						class=" mr-1 border-2 text-black border-gray-500 w-12 h-auto text-sm font-bold dark:text-gray-800"
 					/>
 
@@ -190,6 +221,7 @@
 						type="input"
 						value="100"
 						id="positionY"
+						on:enterkeyhint={editElementPosition}
 						class=" mr-1 border-2 text-black border-gray-500 w-12 h-auto x text-sm font-bold dark:text-gray-800"
 					/>
 				</div>
@@ -200,6 +232,7 @@
 					<input
 						type="input"
 						id="inputRotateDegree"
+						on:enterkeyhint={editRotateText}
 						class=" flex items-center justify-center self-center my-2  border-2 text-black border-gray-500 w-16 h-auto  text-sm font-bold dark:text-gray-800"
 					/>
 					<!-- svelte-ignore a11y-missing-attribute -->

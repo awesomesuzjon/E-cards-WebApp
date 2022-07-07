@@ -58,72 +58,8 @@
 
 				// let elementArray = Object.entries($selected)
 			});
-			//transformer for each clicked element on canvas
-			var previousTarget = null;
-			var transformer = new Konva.Transformer();
-			layer.add(transformer);
-
-			stage.on('click tap', function (e) {
-				if (e.target === previousTarget || e.target === stage) {
-					transformer.destroy();
-					transformer = new Konva.Transformer();
-					layer.add(transformer);
-					$selected = null;
-					previousTarget = null;
-
-					return;
-				}
-
-				$selected = e.target;
-
-				transformer.attachTo(e.target);
-				previousTarget = e.target;
-			});
-
-			//on click of stickers open sticker editbar
-
-			if (e.target.attrs.id == undefined && (stickerEditContainer.style.visibility = 'invisible')) {
-				stickerEditContainer.style.visibility = 'visible';
-				textEditContainer.style.display = 'none	';
-				stickerEditContainer.style.display = 'block';
-			} else {
-				stickerEditContainer.style.visibility = 'invisible';
-			}
-
-			//on click of text open text editbar
-
-			if (
-				e.target.attrs.id == 'textElementId' &&
-				(textEditContainer.style.visibility = 'invisible')
-			) {
-				textEditContainer.style.visibility = 'visible';
-				textEditContainer.style.display = 'block	';
-				stickerEditContainer.style.display = 'none';
-			} else {
-				textEditContainer.style.visibility = 'invisible';
-			}
 
 			//download image as jpg
-
-			function downloadURI(uri, name) {
-				var link = document.createElement('a');
-				link.download = name;
-				link.href = uri;
-				document.body.appendChild(link);
-				link.click();
-				document.body.removeChild(link);
-			}
-
-			document.getElementById('saveAsImg').addEventListener('click', function () {
-				var dataURL = stage.toDataURL({ pixelRatio: 3 });
-				var printingText = '';
-				textNames.forEach((data) => {
-					var textNode = stage.findOne('.' + data);
-					printingText += JSON.stringify(textNode.attrs);
-				});
-			});
-			// var stageJsonSticker = stage.toJSON();
-			// console.log(stageJsonSticker, 'is the json data of stage');
 
 			//save canvas into pdf format
 			document.getElementById('saveAsPdf').addEventListener('click', function () {

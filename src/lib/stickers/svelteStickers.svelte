@@ -3,8 +3,7 @@
 	import Carousel from 'svelte-carousel';
 	import Button from '../reusable/button.svelte';
 	import DashainStickers from './dashainStickers.svelte';
-	let stickerArray = [];
-	stickerArray = [...stickers.stickerData];
+	// stickerArray = [...stickers.stickerData];
 </script>
 
 <div

@@ -41,44 +41,57 @@
 			</ul>
 		</div>
 	</div>
-	<div class="flex-row flex items-center justify-end p-2">
-		<button id="dropdownDefault" data-dropdown-toggle="dropdown" type="button">
-			<img src="admin.png" class="w-8 ml-1   rounded-full " alt="Admin Image" />
-		</button>
-		<!-- Dropdown menu -->
-		<div
-			id="dropdown"
-			class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700"
-		>
-			<ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
-				<li class="flex flex-row items-center ">
-					<h2 class="w-5   ml-1"><IoIosPerson /></h2>
-					<a
-						href="#"
-						class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-					>
-						Profile</a
-					>
-				</li>
-				<li class="flex flex-row items-center ">
-					<h2 class="w-5  ml-1 "><IoIosSettings /></h2>
-					<a
-						href="#"
-						class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-					>
-						Setting</a
-					>
-				</li>
-				<li class="flex flex-row items-center ">
-					<h2 class="w-5 ml-1 "><IoIosLogOut /></h2>
-					<a
-						href="#"
-						class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-					>
-						Log out</a
-					>
-				</li>
-			</ul>
+
+	<div class="collapse">
+		<input type="checkbox" />
+		<div class="collapse-title text-xl font-medium">
+			<button id="dropdownDefault" data-dropdown-toggle="dropdown" type="button">
+				<!-- svelte-ignore a11y-img-redundant-alt -->
+				<img src="admin.png" class="w-8 ml-1   rounded-full " alt="Admin Image" />
+			</button>
+		</div>
+		<div class="collapse-content">
+			<div
+				id="dropdown"
+				class="z-10 mt-40 absolute hidden  bg-white divide-y divide-gray-100 rounded shadow w-40 dark:bg-gray-700"
+			>
+				<ul
+					class="py-1  text-sm text-gray-700 dark:text-gray-200"
+					aria-labelledby="dropdownDefault"
+				>
+					<li class="flex flex-row items-center ">
+						<h2 class="w-5   ml-1"><IoIosPerson /></h2>
+						<!-- svelte-ignore a11y-invalid-attribute -->
+
+						<a
+							href="#"
+							class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+						>
+							Profile</a
+						>
+					</li>
+					<li class="flex flex-row items-center ">
+						<h2 class="w-5  ml-1 "><IoIosSettings /></h2>
+						<!-- svelte-ignore a11y-invalid-attribute -->
+						<a
+							href="#"
+							class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+						>
+							Setting</a
+						>
+					</li>
+					<li class="flex flex-row items-center ">
+						<h2 class="w-5 ml-1 "><IoIosLogOut /></h2>
+						<!-- svelte-ignore a11y-invalid-attribute -->
+						<a
+							href="#"
+							class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+						>
+							Log out</a
+						>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>

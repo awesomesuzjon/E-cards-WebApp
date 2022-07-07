@@ -8,7 +8,7 @@
 	onMount(() => {
 		stage = new Konva.Stage({
 			container: 'container',
-			width: 678,
+			width: 710,
 			height: 450,
 
 			stroke: 'blue',
@@ -16,7 +16,6 @@
 		});
 		//get layers attrs
 		let layerData = stage.getLayers();
-		console.log(layerData);
 	});
 
 	setContext('konva', {

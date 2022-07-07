@@ -6,7 +6,7 @@
 	import CanvasBackgroundImg from './canvasBackgroundImg.svelte';
 </script>
 
-<div class="flex justify-between items-center  ">
+<div class="flex justify-between items-center h-screen ">
 	<div class="drawer  z-50 ">
 		<input id="my-drawer" type="checkbox" class="drawer-toggle" />
 

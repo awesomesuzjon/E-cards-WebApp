@@ -1,6 +1,6 @@
 <script>
 	import MdDelete from 'svelte-icons/md/MdDelete.svelte';
-
+	import { onMount } from 'svelte/internal';
 	import {
 		editRotateSticker,
 		editStickerSize,
@@ -9,6 +9,39 @@
 	} from '../../utils/editStickersonCanvas';
 	import { deleteTarget } from '../../utils/editTextonCanvas';
 	import Button from '../reusable/button.svelte';
+
+	onMount(() => {
+		document.getElementById('stickerPositionX').addEventListener('keypress', function (e) {
+			if (e.key === 'Enter') {
+				editStickerPosition();
+			}
+		});
+		document.getElementById('stickerPositionY').addEventListener('keypress', function (e) {
+			if (e.key === 'Enter') {
+				editStickerPosition();
+			}
+		});
+		document.getElementById('inputRotateSticker').addEventListener('keypress', function (e) {
+			if (e.key === 'Enter') {
+				editRotateSticker();
+			}
+		});
+		document.getElementById('stickerHeight').addEventListener('keypress', function (e) {
+			if (e.key === 'Enter') {
+				editStickerSize();
+			}
+		});
+		document.getElementById('stickerWidth').addEventListener('keypress', function (e) {
+			if (e.key === 'Enter') {
+				editStickerSize();
+			}
+		});
+		document.getElementById('opacityStickerInput').addEventListener('keypress', function (e) {
+			if (e.key === 'Enter') {
+				editStickerOpacity();
+			}
+		});
+	});
 </script>
 
 <div
@@ -37,6 +70,7 @@
 					<input
 						type="input"
 						value="100"
+						on:enterkeyhint={editStickerPosition}
 						id="stickerPositionX"
 						class="w-16 mr-2 border-2 text-black border-gray-500  h-auto text-sm font-bold dark:text-gray-800"
 					/>
@@ -45,6 +79,7 @@
 					<input
 						type="input"
 						value="100"
+						on:enterkeyhint={editStickerPosition}
 						id="stickerPositionY"
 						class=" mr-2 border-2 text-black border-gray-500 w-16 h-auto x text-sm font-bold dark:text-gray-800"
 					/>
@@ -65,6 +100,7 @@
 						type="input"
 						value="0"
 						id="inputRotateSticker"
+						on:enterkeyhint={editRotateSticker}
 						class="flex items-center justify-center self-center mb-2  border-2 text-black border-gray-500 w-16 h-auto  text-sm font-bold dark:text-gray-800"
 					/>
 					<!-- svelte-ignore a11y-missing-attribute -->
@@ -82,6 +118,7 @@
 						type="text"
 						value="150"
 						id="stickerHeight"
+						on:enterkeyhint={editStickerSize}
 						class="truncate mx-1 border-2 text-black border-gray-500 w-16
 						 h-auto  text-sm font-bold dark:text-gray-800"
 					/>
@@ -90,6 +127,7 @@
 					<input
 						type="text"
 						value="150"
+						on:enterkeyhint={editStickerSize}
 						id="stickerWidth"
 						class=" mx-1 border-2 text-black border-gray-500 w-16 h-auto  text-sm font-bold dark:text-gray-800"
 					/>
@@ -110,6 +148,7 @@
 					<input
 						type="text"
 						id="opacityStickerInput"
+						on:enterkeyhint={editStickerOpacity}
 						class="flex items-center justify-center self-center  mx-2 border-2 text-black border-gray-500 w-16 h-auto  text-sm font-bold dark:text-gray-800"
 					/>
 				</div>
