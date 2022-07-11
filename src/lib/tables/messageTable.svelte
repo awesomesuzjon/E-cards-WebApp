@@ -7,7 +7,7 @@
 	import DiMarkdown from 'svelte-icons/di/DiMarkdown.svelte';
 
 	import { onMount } from 'svelte';
-	let url = 'http://192.168.86.55:8090/get/messages';
+	let url = 'http://192.168.86.107:8090/get/messages';
 	// let url = 'https://jsonplaceholder.typicode.com/todos/';
 	export var messageArr = [];
 	onMount(() => {

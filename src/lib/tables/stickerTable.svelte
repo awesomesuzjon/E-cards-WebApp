@@ -11,7 +11,7 @@
 
 	onMount(() => {
 		//grpc backend data
-		let url = 'http://192.168.86.55:8090/get/stickers';
+		let url = 'http://192.168.86.107:8090/get/stickers';
 		fetch(url).then((res) => {
 			res.json().then((data) => {
 				stickerArr = data?.allStickerList ?? [];

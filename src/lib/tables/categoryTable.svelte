@@ -39,7 +39,7 @@
 
 	//from backend grpc
 	import { onMount } from 'svelte';
-	let url = 'http://192.168.86.55:8090/get/catagory';
+	let url = 'http://192.168.86.107:8090/get/catagory';
 	// let url = 'https://jsonplaceholder.typicode.com/todos/';
 	export var categoryArr = [];
 	onMount(() => {
@@ -47,7 +47,6 @@
 			res.json().then((data) => {
 				categoryArr = data?.categories ?? [];
 				// categoryArr = data;
-				console.log(categoryArr, 'this is category array ');
 			});
 		});
 	});
@@ -92,11 +91,6 @@
 				<td class=" px-8 py-2"><img class="w-4 h-auto" src={item.Preview} alt="" /></td>
 				<td>
 					<div class="flex justify-around items-center mb-2 list-none">
-						<li class="   text-sm w-4">
-							<a href="/" title="Edit">
-								<span><FaEdit /></span>
-							</a>
-						</li>
 						<li class=" text-sm  w-4 hover:bg-gray-300 p-0 cursor:move ">
 							<!-- svelte-ignore a11y-missing-attribute -->
 							<!-- <a
@@ -112,10 +106,10 @@
 								<MdDelete /></a -->
 							<MdDelete />
 						</li>
-
+						<!-- 
 						<li class="  text-sm  w-4 ">
 							<a href="/" title="Clone"> <MdContentCopy /> </a>
-						</li>
+						</li> -->
 						<li class="  text-sm   w-4">
 							<a href="/" title="Mark as Trending"> <DiMarkdown /> </a>
 						</li>

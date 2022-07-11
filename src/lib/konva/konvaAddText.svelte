@@ -93,16 +93,6 @@
 			layer.add(message);
 		});
 
-		//konva add image as background
-		Konva.Image.fromURL(`ktm.jpg`, function (bgImage) {
-			bgImage.setAttrs({
-				x: 0,
-				y: 0,
-				width: stage.width(),
-				height: stage.height()
-			});
-			// layer.add(bgImage);
-		});
 
 		//transformer for each clicked element on canvas
 		var previousTarget = null;

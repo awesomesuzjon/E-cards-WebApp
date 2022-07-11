@@ -44,15 +44,15 @@
 	// 	});
 	// });
 
-	let url = 'http://192.168.86.107:8090/show/templates';
+	let url = 'http://192.168.86.107:8090/show/mostDownloaded';
 	// let url = 'https://jsonplaceholder.typicode.com/todos/';
-	export var allTemplatesArr = [];
+	export var mostDownloadedTemplatesArr = [];
 	onMount(() => {
 		fetch(url).then((res) => {
 			res.json().then((data) => {
-				allTemplatesArr = data?.templates ?? [];
+				mostDownloadedTemplatesArr = data?.templates ?? [];
 				// categoryArr = data;
-				console.log(allTemplatesArr, 'this is category array ');
+				console.log(mostDownloadedTemplatesArr, 'this is category array ');
 			});
 		});
 	});
@@ -86,7 +86,7 @@
 		</tr>
 
 		<!-- {#each paginatedItems as item} -->
-		{#each allTemplatesArr as item}
+		{#each mostDownloadedTemplatesArr as item}
 			<tr>
 				<th>
 					<label>

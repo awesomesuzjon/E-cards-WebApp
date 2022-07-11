@@ -1,7 +1,7 @@
 <script>
 	import CreateTemplateBtn from '../lib/reusable/createTemplateBtn.svelte';
 
-	import TemplatesTable from '../lib/tables/templatesTable.svelte';
+	import MostDownloadedTable from '../lib/tables/mostDownloadedTable.svelte';
 </script>
 
 <svelte:head>
@@ -9,4 +9,4 @@
 </svelte:head>
 
 <CreateTemplateBtn />
-<TemplatesTable />
+<MostDownloadedTable />
