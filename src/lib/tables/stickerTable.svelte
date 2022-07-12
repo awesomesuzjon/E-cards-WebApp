@@ -35,7 +35,7 @@
 	});
 	//initialiaze an array to store stickers from firestore
 	var Stickers = [];
-	// $: Stickers = [];
+	$: Stickers = [];
 
 	//init database services
 	const db = getFirestore();
@@ -48,9 +48,9 @@
 	$: paginatedItems;
 
 	//image src
-	// function getImgSrc(e) {
-	// 	console.log(target.Id);
-	// }
+	function getImgSrc(e) {
+		console.log(target.Id);
+	}
 </script>
 
 <div class="flex mt-4 ">
