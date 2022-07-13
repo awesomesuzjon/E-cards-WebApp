@@ -67,10 +67,35 @@
 	// 	const json = await res.json();
 	// 	result = JSON.stringify(json);
 	// }
-
-	async function postArticle(data) {
+	//upload image
+	let files;
+	var uploadImageSrc;
+	function addFile(e) {
+		let image = e.target.files[0];
+		let reader = new FileReader();
+		reader.readAsDataURL(image);
+		reader.onload = (e) => {
+			var uploadImageSrc = e.target.result;
+			console.log(uploadImageSrc);
+		};
+	}
+	async function postArticle() {
+		var nameInput = document.getElementById('fname')?.value;
+		// var ImageSrc = uploadImageSrc;
+		var priorityInput = document.getElementById('priority')?.value;
+		var publishInput = document.getElementById('publish')?.checked;
+		var TrendingInput = document.getElementById('trending')?.checked;
+		console.log(publishInput, 'is input ');
+		console.log(typeof publishInput, 'is input ');
+		let data = {
+			name: nameInput,
+			// url: ImageSrc,
+			priority: Number(priorityInput),
+			publish: publishInput,
+			trending: TrendingInput
+		};
 		axios
-			.post('http://192.168.86.107:8090/save/catagory', data)
+			.post('http://192.168.86.54:8090/category/save', data)
 			.then(function (response) {
 				console.log('Successfully Posted Article', response);
 			})
@@ -78,22 +103,6 @@
 				console.log(error);
 			});
 	}
-	// var nameInput = document.getElementById('fname').value;
-	// var priorityInput = document.getElementById('priority').value;
-	// var publishInput = document.getElementById('publish').value;
-	// var isTrendingInput = document.getElementById('isTrending').value;
-
-	let data = {
-		name: 'dashain',
-		priority: 3,
-		publish: false,
-		isTrending: false
-		// name: nameInput.value,
-		// priority: priorityInput.value,
-		// publish: publishInput.value,
-		// isTrending: isTrendingInput.value
-	};
-	console.log(data);
 
 	// <!-- <button on:click={()=>postArticle(data)}>here</button> -->
 </script>
@@ -102,8 +111,9 @@
 	<form
 		class="addCategoryForm text-sm"
 		on:submit={(e) => {
-			postArticle(data);
 			e.preventDefault();
+
+			postArticle();
 		}}
 	>
 		<div class="my-2 text-sm">
@@ -126,26 +136,27 @@
 				class="border-b-2 bg-gray-100 hover:bg-gray-200  h-8 hover:no-underline"
 			/>
 		</div>
-
-		<!-- <div class="flex justify-center my-4">
-			<label for="preview">Upload Image : </label>
+		<div class="flex justify-center my-4">
+			<label for="name">Upload Sticker : </label>
 			<input
 				type="file"
-				id="imgUpload"
+				id="uploadImageSrc"
 				class="w-60 mx-2"
 				accept="image/*"
 				name="preview"
 				bind:files
 				on:change={addFile}
 			/>
-		</div> -->
+		</div>
+
+	
 		<div class=" my-2">
-			<input type="checkbox" value="false" name="publish" id="publish" />
+			<input type="checkbox" value="" name="publish" id="publish" />
 			<span> Publish </span>
 		</div>
 		<div class=" my-2">
-			<input type="checkbox" value="false" name="isTrending" id="isTrending" />
-			<span> isTrending </span>
+			<input type="checkbox" value="" name="trending" id="trending" />
+			<span> Trending </span>
 		</div>
 
 		<!-- svelte-ignore a11y-missing-attribute -->

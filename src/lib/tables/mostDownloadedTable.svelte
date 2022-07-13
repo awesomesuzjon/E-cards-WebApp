@@ -6,6 +6,7 @@
 	import MdContentCopy from 'svelte-icons/md/MdContentCopy.svelte';
 	import DiMarkdown from 'svelte-icons/di/DiMarkdown.svelte';
 	import { previewImgFunc } from '../../utils/previewImgntbl';
+	import axios from 'axios';
 
 	// import {
 	// 	getFirestore,
@@ -19,7 +20,7 @@
 	import { onMount } from 'svelte';
 
 	let Ecards = [];
-
+	let priority = 0;
 	///pagination code
 	let paginatedItems = [];
 	$: paginatedItems;
@@ -44,7 +45,7 @@
 	// 	});
 	// });
 
-	let url = 'http://192.168.86.107:8090/show/mostDownloaded';
+	let url = 'http://192.168.86.54:8090/show/mostDownloaded';
 	// let url = 'https://jsonplaceholder.typicode.com/todos/';
 	export var mostDownloadedTemplatesArr = [];
 	onMount(() => {
@@ -134,14 +135,76 @@
 											>
 												</a
 											> -->
-							<MdDelete />
+							<a
+								title="Delete"
+								on:click={() => {
+									var deleteItemId = item.id;
+									var deleteItemName = item.name;
+									console.log(deleteItemId, 'is my id');
+									async function deleteTemplate(id) {
+										// post:"/set-trending/{name}/{prev_status}",
+
+										axios
+											.delete(`http://192.168.86.54:8090/delete/catagory/${deleteItemId}`, {})
+											.then(function (response) {
+												console.log(response);
+											})
+											.catch(function (error) {
+												console.log(error);
+											});
+									}
+									deleteTemplate(deleteItemId);
+									console.log(deleteItemId, 'deleted');
+								}}
+							>
+								<MdDelete /></a
+							>
 						</li>
 						<!-- <div class="flex justify-around items-center"> -->
 						<li class="  text-sm  w-4 ">
 							<a href="/" title="Clone"> <MdContentCopy /> </a>
 						</li>
 						<li class="  text-sm   w-4">
-							<a href="/" title="Mark as Trending"> <DiMarkdown /> </a>
+							<!-- svelte-ignore a11y-missing-attribute -->
+
+							<a
+								title="Mark as Trending"
+								on:click={() => {
+									priority = 1;
+									console.log('click');
+									// fetch(trendingUrl).then((res) => {
+									// 	res.json().then((data) => {
+									// 		categoryTrendingArr = data?.templates ?? [];
+									// 		// categoryArr = data;
+									// 	});
+									// });
+									var categoryName = item.name;
+									var id = item.id;
+									var isTrending = item.is_trending;
+									console.log(categoryName);
+									console.log(isTrending);
+									console.log(id);
+
+									async function setTrendingTemplate() {
+										// post:"/set-trending/{name}/{prev_status}",
+
+										axios
+											.post(
+												`http://192.168.86.54:8090/set-trending-status/${categoryName}/${isTrending}`,
+												{}
+											)
+											.then(function (response) {
+												console.log(response);
+											})
+											.catch(function (error) {
+												console.log(error);
+											});
+									}
+									setTrendingTemplate();
+								}}
+							>
+								<DiMarkdown />
+							</a>
 						</li>
 						<!-- </div> -->
 					</div>

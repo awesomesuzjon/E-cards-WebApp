@@ -1,72 +1,72 @@
 <script>
-
-	//fireStore used from here to save form inputs on firebase Database
-	import { initializeApp } from 'firebase/app';
-	import {
-		getFirestore,
-		addDoc,
-		getDocs,
-		deleteDoc,
-		doc,
-		collection,
-		where,
-		onSnapshot
-	} from 'firebase/firestore';
-	import { onMount } from 'svelte';
 import AddtemplateForm from '../forms/addTemplateForm.svelte';
 
-	onMount(() => {
-		//init database services
-		const db = getFirestore();
+	//fireStore used from here to save form inputs on firebase Database
+// 	import { initializeApp } from 'firebase/app';
+// 	import {
+// 		getFirestore,
+// 		addDoc,
+// 		getDocs,
+// 		deleteDoc,
+// 		doc,
+// 		collection,
+// 		where,
+// 		onSnapshot
+// 	} from 'firebase/firestore';
+// 	import { onMount } from 'svelte';
 
-		//collection ref
-		const colRef = collection(db, 'Ecards');
+// 	onMount(() => {
+// 		//init database services
+// 		const db = getFirestore();
 
-		//real time get collection data
-		onSnapshot(colRef, (snapshot) => {
-			var Ecards = [];
+// 		//collection ref
+// 		const colRef = collection(db, 'Ecards');
 
-			snapshot.docs.forEach((doc) => {
-				Ecards.push({
-					...doc.data(),
-					Id: doc.id,
-					title: doc.title,
-					tags: doc.tags,
-					category: doc.category,
-					priority: doc.priority,
-					publish: doc.publish
-				});
-			});
-		});
+// 		//real time get collection data
+// 		onSnapshot(colRef, (snapshot) => {
+// 			var Ecards = [];
+
+// 			snapshot.docs.forEach((doc) => {
+// 				Ecards.push({
+// 					...doc.data(),
+// 					Id: doc.id,
+// 					title: doc.title,
+// 					tags: doc.tags,
+// 					category: doc.category,
+// 					priority: doc.priority,
+// 					publish: doc.publish
+// 				});
+// 			});
+// 		});
 
 		//adding Ecards to fireStore
-		const addEcardForm = document.querySelector('.addTemplateForm');
-		addEcardForm.addEventListener('submit', (e) => {
-			e.preventDefault();
+	// 	const addEcardForm = document.querySelector('.addTemplateForm');
+	// 	addEcardForm.addEventListener('submit', (e) => {
+	// 		e.preventDefault();
 
-			//look at ecard collection and fill data here
-			addDoc(colRef, {
-				Title: addEcardForm.title.value,
-				Tags: addEcardForm.tags.value,
-				Category: addEcardForm.category.value,
-				Priority: addEcardForm.priority.value,
-				Publish: addEcardForm.publish.value
-			}).then(() => {
-				addEcardForm.reset();
-			});
-		});
+	// 		//look at ecard collection and fill data here
+	// 		addDoc(colRef, {
+	// 			Title: addEcardForm.title.value,
+	// 			Tags: addEcardForm.tags.value,
+	// 			Category: addEcardForm.category.value,
+	// 			Priority: addEcardForm.priority.value,
+	// 			Publish: addEcardForm.publish.value
+	// 		}).then(() => {
+	// 			addEcardForm.reset();
+	// 		});
+	// 	});
 
-		//deleting document
-		const deleteEcardForm = document.querySelector('.delete');
-		deleteEcardForm.addEventListener('submit', (e) => {
-			e.preventDefault();
+	// 	//deleting document
+	// 	const deleteEcardForm = document.querySelector('.delete');
+	// 	deleteEcardForm.addEventListener('submit', (e) => {
+	// 		e.preventDefault();
 
-			const docRef = doc(db, 'Ecards', deleteEcardForm.id.value);
-			deleteDoc(docRef).then(() => {
-				deleteEcardForm.reset();
-			});
-		});
-	});
+	// 		const docRef = doc(db, 'Ecards', deleteEcardForm.id.value);
+	// 		deleteDoc(docRef).then(() => {
+	// 			deleteEcardForm.reset();
+	// 		});
+	// 	});
+	// });
 </script>
 
 <label

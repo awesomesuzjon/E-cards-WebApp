@@ -6,6 +6,7 @@
 	import MdContentCopy from 'svelte-icons/md/MdContentCopy.svelte';
 	import DiMarkdown from 'svelte-icons/di/DiMarkdown.svelte';
 	import { previewImgFunc } from '../../utils/previewImgntbl';
+	import axios from 'axios';
 
 	// import {
 	// 	getFirestore,
@@ -43,8 +44,9 @@
 	// 		});
 	// 	});
 	// });
+	let priority = 0;
 
-	let url = 'http://192.168.86.107:8090/get/trendingtemplate';
+	let url = 'http://192.168.86.54:8090/get/trendingtemplate';
 	// let url = 'https://jsonplaceholder.typicode.com/todos/';
 	export var trendingTemplatesArr = [];
 	onMount(() => {
@@ -100,9 +102,9 @@
 				</td>
 
 				<td class=" px-8 py-2">{item.tags}</td>
-				<td class=" px-8 py-2">{item.categoryName}</td>
+				<td class=" px-8 py-2">{item.category_name}</td>
 				<td class=" px-8 py-2">{item.priority}</td>
-				<td class=" px-8 py-2">{item.isTrending}</td>
+				<td class=" px-8 py-2">{item.is_trending}</td>
 
 				<td>
 					<!-- <div class="collapse">
@@ -134,14 +136,68 @@
 											>
 												</a
 											> -->
-							<MdDelete />
+							<a
+								title="Delete"
+								on:click={() => {
+									var deleteItemId = item.id;
+									var deleteItemName = item.name;
+									console.log(deleteItemId, 'is my id');
+									async function deleteTemplate(id) {
+										// post:"/set-trending/{name}/{prev_status}",
+
+										axios
+											.delete(`http://192.168.86.54:8090/delete/template/${deleteItemId}`, {})
+											.then(function (response) {
+												console.log(response);
+											})
+											.catch(function (error) {
+												console.log(error);
+											});
+									}
+									deleteTemplate(deleteItemId);
+									console.log(deleteItemId, 'deleted');
+								}}
+							>
+								<MdDelete /></a
+							>
 						</li>
 						<!-- <div class="flex justify-around items-center"> -->
 						<li class="  text-sm  w-4 ">
 							<a href="/" title="Clone"> <MdContentCopy /> </a>
 						</li>
 						<li class="  text-sm   w-4">
-							<a href="/" title="Mark as Trending"> <DiMarkdown /> </a>
+							<!-- svelte-ignore a11y-missing-attribute -->
+							<a
+								title="Mark as Trending"
+								on:click={() => {
+									priority = 1;
+
+									var templateId = item.id;
+									var id = item.id;
+									var isTrending = item.is_trending;
+									console.log(isTrending);
+									console.log(id);
+
+									async function setTrendingTemplate() {
+										// post:"/set-trending/{name}/{prev_status}",
+
+										axios
+											.post(
+												`http://192.168.86.54:8090/update/trending/${templateId}/${isTrending}`,
+												{}
+											)
+											.then(function (response) {
+												console.log(response);
+											})
+											.catch(function (error) {
+												console.log(error);
+											});
+									}
+									setTrendingTemplate();
+								}}
+							>
+								<DiMarkdown />
+							</a>
 						</li>
 						<!-- </div> -->
 					</div>

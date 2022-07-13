@@ -40,9 +40,8 @@
 
 	//from backend grpc
 	import { onMount } from 'svelte';
-	let url = 'http://192.168.86.107:8090/get/catagory';
-	let trendingUrl = 'http://192.168.86.107:8090/get/trendingtemplate';
-	// let url = 'https://jsonplaceholder.typicode.com/todos/';
+	let url = 'http://192.168.86.54:8090/category/show-all';
+	let trendingUrl = 'http://192.168.86.54:8090/get/trendingtemplate';
 	export var categoryArr = [];
 	var categoryTrendingArr = [];
 	onMount(() => {
@@ -59,7 +58,6 @@
 	$: paginatedItems;
 	let priority = 0;
 	// function markAsTrending() {
-
 	// }
 </script>
 
@@ -74,34 +72,36 @@
 			<th class="bg-red-700  text-white  px-8 py-2 text-center dark:bg-gray-800 ">Id</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Category Name</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Priority</th>
-			<!-- <th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Publish</th> -->
+			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Publish</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Mark as Trending</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Preview</th>
 
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
 		</tr>
 		<!-- {#if priority == 0} -->
-			{#each categoryArr as item}
-				<!-- {#each categoryTrendingArr as item} -->
-				<tr>
-					<th>
-						<label>
-							<input type="checkbox" class="checkbox" />
-						</label>
-					</th>
-					<td class=" px-8 py-2 text-black">{item.id}</td>
-					<td class=" px-8 py-2">{item.name}</td>
+		{#each categoryArr as item}
+			<!-- {#each paginatedItems as item} -->
+			<!-- {#each categoryTrendingArr as item} -->
 
-					<td class=" px-8 py-2">{item.priority}</td>
-					<td class=" px-8 py-2">{item.isTrending}</td>
-					<!-- <td class=" px-8 py-2">{item.publish}</td> -->
+			<tr>
+				<th>
+					<label>
+						<input type="checkbox" class="checkbox" />
+					</label>
+				</th>
+				<td class=" px-8 py-2 text-black">{item.id}</td>
+				<td class=" px-8 py-2">{item.name}</td>
+				<td class=" px-8 py-2">{item.priority}</td>
+				<td class=" px-8 py-2">{item.publish}</td>
+				<td class=" px-8 py-2">{item.trending}</td>
+				<!-- <td class=" px-8 py-2">{item.publish}</td> -->
 
-					<td class=" px-8 py-2"><img class="w-4 h-auto" src={item.Preview} alt="" /></td>
-					<td>
-						<div class="flex justify-around items-center mb-2 list-none">
-							<li class=" text-sm  w-4 hover:bg-gray-300 p-0 cursor:move " id="deleteBtn">
-								<!-- svelte-ignore a11y-missing-attribute -->
-								<!-- <a
+				<td class=" px-8 py-2"><img class="w-4 h-auto" src={item.url} alt="" /></td>
+				<td>
+					<div class="flex justify-around items-center mb-2 list-none">
+						<li class=" text-sm  w-4 hover:bg-gray-300 p-0 cursor:move " id="deleteBtn">
+							<!-- svelte-ignore a11y-missing-attribute -->
+							<!-- <a
 								title="Delete"
 							 on:click={//delete row on table through delete button
 								(e) => {
@@ -112,148 +112,87 @@
 								}} 
 							>
 								<MdDelete /></a -->
-								<a
-									title="Delete"
-									on:click={() => {
-										var deleteItemId = item.id;
-										console.log(deleteItemId, 'is my id');
-										async function deleteTemplate(id) {
-											// post:"/set-trending/{name}/{prev_status}",
+							<a
+								title="Delete"
+								on:click={() => {
+									var deleteItemId = item.id;
+									var deleteItemName = item.name;
+									console.log(deleteItemId, 'is my id');
+									async function deleteTemplate(id) {
+										// post:"/set-trending/{name}/{prev_status}",
 
-											axios
-												.delete(`http://192.168.86.107:8090/delete/catagory/${deleteItemId}`, {})
-												.then(function (response) {
-													console.log(response);
-												})
-												.catch(function (error) {
-													console.log(error);
-												});
-										}
-										deleteTemplate(deleteItemId);
-										console.log(deleteItemId, 'deleted');
-									}}
-								>
-									<MdDelete /></a
-								>
-							</li>
-							<!-- 
+										axios
+											.delete(`http://192.168.86.54:8090/category/delete/${deleteItemName}`, {})
+											.then(function (response) {
+												console.log(response);
+											})
+											.catch(function (error) {
+												console.log(error);
+											});
+									}
+									deleteTemplate(deleteItemId);
+									console.log(deleteItemId, 'deleted');
+								}}
+							>
+								<MdDelete /></a
+							>
+						</li>
+						<!-- 
 						<li class="  text-sm  w-4 ">
 							<a href="/" title="Clone"> <MdContentCopy /> </a>
 						</li> -->
-							<li class="  text-sm   w-4">
-								<!-- svelte-ignore a11y-missing-attribute -->
-								<a
-									title="Mark as Trending"
-									on:click={() => {
-										priority = 1;
-										console.log('click');
-										// fetch(trendingUrl).then((res) => {
-										// 	res.json().then((data) => {
-										// 		categoryTrendingArr = data?.templates ?? [];
-										// 		// categoryArr = data;
-										// 	});
-										// });
-										var categoryName = item.name;
-										var id = item.id;
-										var isTrending = item.isTrending;
-										console.log(categoryName);
-										console.log(isTrending);
-										console.log(id);
+						<li class="  text-sm   w-4">
+							<!-- svelte-ignore a11y-missing-attribute -->
+							<a
+								title="Mark as Trending"
+								on:click={() => {
+									priority = 1;
+									console.log('click');
+									// fetch(trendingUrl).then((res) => {
+									// 	res.json().then((data) => {
+									// 		categoryTrendingArr = data?.templates ?? [];
+									// 		// categoryArr = data;
+									// 	});
+									// });
+									var categoryName = item.name;
+									var id = item.id;
+									var isTrending = item.trending;
+									if (isTrending != true) {
+										isTrending = false;
+										// isTrending = isTrending1;
 
-										async function setTrendingTemplate() {
-											// post:"/set-trending/{name}/{prev_status}",
+										console.log(isTrending, 'status ');
+									}
+									console.log(categoryName);
+									console.log(isTrending);
+									console.log(id);
 
-											axios
-												.post(
-													`http://192.168.86.107:8090/set-trending-status/${categoryName}/${isTrending}`,
-													{}
-												)
-												.then(function (response) {
-													console.log(response);
-												})
-												.catch(function (error) {
-													console.log(error);
-												});
-										}
-										setTrendingTemplate()
-									}}
-								>
-									<DiMarkdown />
-								</a>
-							</li>
-						</div>
-					</td>
-				</tr>
-			{/each}
+									async function setTrendingTemplate() {
+										// post:"/set-trending/{name}/{prev_status}",
+
+										axios
+											.post(
+												`http://192.168.86.54:8090/category/mark-trending/${categoryName}/${isTrending}`,
+												{}
+											)
+											.then(function (response) {
+												console.log(response);
+											})
+											.catch(function (error) {
+												console.log(error);
+											});
+									}
+									setTrendingTemplate();
+								}}
+							>
+								<DiMarkdown />
+							</a>
+						</li>
+					</div>
+				</td>
+			</tr>
+		{/each}
+		<!-- {/each} -->
 		<!-- {/if} -->
-		{#if priority == 1}
-			{#each categoryTrendingArr as item}
-				<tr>
-					<th>
-						<label>
-							<input type="checkbox" class="checkbox" />
-						</label>
-					</th>
-					<td class=" px-8 py-2 text-black">{item.id}</td>
-					<td class=" px-8 py-2">{item.title}</td>
-
-					<td class=" px-8 py-2">{item.priority}</td>
-					<!-- <td class=" px-8 py-2">{item.publish}</td> -->
-					<td class=" px-8 py-2">{item.isTrending}</td>
-
-					<td class=" px-8 py-2"><img class="w-4 h-auto" src={item.Preview} alt="" /></td>
-					<td>
-						<div class="flex justify-around items-center mb-2 list-none">
-							<li class=" text-sm  w-4 hover:bg-gray-300 p-0 cursor:move ">
-								<!-- svelte-ignore a11y-missing-attribute -->
-								<!-- <a
-							title="Delete"
-						 on:click={//delete row on table through delete button
-							(e) => {
-								e.stopPropagation();
-
-								const docRef = doc(db, 'Category', item.Id);
-								deleteDoc(docRef);
-							}} 
-						>
-						
-					</a -->
-
-								<a
-									title="Delete"
-									on:click={() => {
-										var deleteItemId = item.id;
-										console.log(deleteItemId, 'is my id');
-										async function deleteTemplate(id) {
-											// post:"/set-trending/{name}/{prev_status}",
-
-											axios
-												.delete(`http://192.168.86.107:8090/delete/catagory/${deleteItemId}`, {})
-												.then(function (response) {
-													console.log(response);
-												})
-												.catch(function (error) {
-													console.log(error);
-												});
-										}
-										deleteTemplate(deleteItemId);
-										console.log(deleteItemId, 'deleted');
-									}}
-								>
-									<MdDelete /></a
-								>
-							</li>
-							<!-- 
-					<li class="  text-sm  w-4 ">
-						<a href="/" title="Clone"> <MdContentCopy /> </a>
-					</li> -->
-							<li class="  text-sm   w-4">
-								<a title="Mark as Trending" on:click={markAsTrending}> <DiMarkdown /> </a>
-							</li>
-						</div>
-					</td>
-				</tr>
-			{/each}
-		{/if}
 	</table>
 </div>

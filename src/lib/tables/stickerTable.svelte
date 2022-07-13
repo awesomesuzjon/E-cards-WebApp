@@ -7,14 +7,15 @@
 	import { getFirestore, addDoc, deleteDoc, doc, collection, onSnapshot } from 'firebase/firestore';
 	import Pagination from '../reusable/pagination.svelte';
 	import { onMount } from 'svelte';
+	import axios from 'axios';
 	var stickerArr = [];
 
 	onMount(() => {
 		//grpc backend data
-		let url = 'http://192.168.86.107:8090/get/stickers';
+		let url = 'http://192.168.86.54:8090/get/stickers';
 		fetch(url).then((res) => {
 			res.json().then((data) => {
-				stickerArr = data?.allStickerList ?? [];
+				stickerArr = data?.all_sticker_list ?? [];
 				// categoryArr = data;
 				console.log(stickerArr);
 			});
@@ -33,6 +34,7 @@
 			});
 		});
 	});
+	let priority = 0;
 	//initialiaze an array to store stickers from firestore
 	var Stickers = [];
 	$: Stickers = [];
@@ -46,7 +48,6 @@
 	// pagination code
 	let paginatedItems = [];
 	$: paginatedItems;
-
 	//image src
 	function getImgSrc(e) {
 		console.log(target.Id);
@@ -66,7 +67,7 @@
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Priority</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Category</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Mark as Trending</th>
-			
+
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Publish</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Preview</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
@@ -86,13 +87,13 @@
 				<td class=" px-8 py-2">{item.priority}</td>
 				<td class=" px-8 py-2">{item.category}</td>
 
-				<td class=" px-8 py-2">{item.isTrending}</td>
+				<td class=" px-8 py-2">{item.is_trending}</td>
 				<td class=" px-8 py-2">{item.publish}</td>
 				<td class=" px-8 py-2">
 					<!-- aa -->
 					<div class="flex justify-end  mt-4 mr-5">
 						<label for="my-modal" class=" modal-button">
-							<img class="w-4 h-auto flex justify-center items-center" src={item.preview} alt="" />
+							<img class="w-4 h-auto flex justify-center items-center" src={item.url} alt="" />
 						</label>
 					</div>
 
@@ -102,11 +103,7 @@
 						class="modal cursor-pointer bg-gray-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-4xl bg-opacity-50  border border-gray-100"
 					>
 						<label class="modal-box relative" for="">
-							<img
-								class="w-full h-auto flex justify-center items-center"
-								alt=""
-								src={item.Preview}
-							/>
+							<img class="w-full h-auto flex justify-center items-center" alt="" src={item.url} />
 						</label>
 					</label>
 					<!-- bb -->
@@ -132,15 +129,66 @@
 								}}
 							>
 								<MdDelete /></a
-							> --><MdDelete
-							/>
+							> --><a
+								title="Delete"
+								on:click={() => {
+									var stickerItemId = item.id;
+									var deleteItemName = item.name;
+									async function deleteSticker(id) {
+										// post:"/set-trending/{name}/{prev_status}",
+
+										axios
+											.delete(`http://192.168.86.54:8090/sticker/delete/${stickerItemId}`, {})
+											.then(function (response) {
+												console.log(response);
+											})
+											.catch(function (error) {
+												console.log(error);
+											});
+									}
+									deleteSticker(stickerItemId);
+								}}
+							>
+								<MdDelete /></a
+							>
 						</li>
 						<!-- <div class="flex justify-around items-center"> -->
 						<li class="  text-sm  w-4 ">
 							<a href="/" title="Clone"> <MdContentCopy /> </a>
 						</li>
 						<li class="  text-sm   w-4">
-							<a href="/" title="Mark as Trending"> <DiMarkdown /> </a>
+							<!-- svelte-ignore a11y-missing-attribute -->
+							<a
+								title="Mark as Trending"
+								on:click={() => {
+									priority = 1;
+
+									var stickerItemId = item.id;
+									var id = item.id;
+									var isTrending = item.is_trending;
+									console.log(isTrending);
+									console.log(id);
+
+									async function setTrendingSticker() {
+										// post:"/set-trending/{name}/{prev_status}",
+
+										axios
+											.post(
+												`http://192.168.86.54:8090/sticker/set-trending/${stickerItemId}/${isTrending}`,
+												{}
+											)
+											.then(function (response) {
+												console.log(response);
+											})
+											.catch(function (error) {
+												console.log(error);
+											});
+									}
+									setTrendingSticker();
+								}}
+							>
+								<DiMarkdown />
+							</a>
 						</li>
 						<!-- </div> -->
 					</div>

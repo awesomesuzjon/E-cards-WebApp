@@ -5,20 +5,21 @@
 	import MdDelete from 'svelte-icons/md/MdDelete.svelte';
 	import MdContentCopy from 'svelte-icons/md/MdContentCopy.svelte';
 	import DiMarkdown from 'svelte-icons/di/DiMarkdown.svelte';
-
+	import axios from 'axios';
 	import { onMount } from 'svelte';
-	let url = 'http://192.168.86.107:8090/get/messages';
+	let url = 'http://192.168.86.54:8090/message/show-all';
 	// let url = 'https://jsonplaceholder.typicode.com/todos/';
-	export var messageArr = [];
+	var messageArr = [];
 	onMount(() => {
 		fetch(url).then((res) => {
 			res.json().then((data) => {
-				messageArr = data?.allMessageList ?? [];
+				messageArr = data?.all_message_list ?? [];
 				// categoryArr = data;
-				console.log(messageArr);
 			});
 		});
 	});
+
+	let priority = 0;
 </script>
 
 <svelte:head>
@@ -50,10 +51,10 @@
 			</th>
 			<th class="bg-red-700  text-white  px-8 py-2 text-center dark:bg-gray-800 ">Id</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Message</th>
-			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Priority</th>
+			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Category</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Publish</th>
+			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Priority</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Mark as Trending</th>
-			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Preview</th>
 
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
 		</tr>
@@ -67,12 +68,12 @@
 				</th>
 				<td class=" px-8 py-2 text-black">{item.id}</td>
 				<td class=" px-8 py-2">{item.message}</td>
+				<td class=" px-8 py-2">{item.category}</td>
 
-				<td class=" px-8 py-2">{item.priority}</td>
-				<td class=" px-8 py-2">{item.isTrending}</td>
 				<td class=" px-8 py-2">{item.publish}</td>
+				<td class=" px-8 py-2">{item.priority}</td>
+				<td class=" px-8 py-2">{item.trending}</td>
 
-				<td class=" px-8 py-2"><img class="w-4 h-auto" src={item.Preview} alt="" /></td>
 				<td>
 					<div class="flex justify-around items-center mb-2 list-none">
 						<li class="   text-sm w-4">
@@ -93,14 +94,70 @@
 								}} 
 							>
 								<MdDelete /></a -->
-							<MdDelete />
+							<a
+								title="Delete"
+								on:click={() => {
+									var deleteItemId = item.id;
+									var deleteItemName = item.name;
+									console.log(deleteItemId, 'is my id');
+									async function deleteTemplate(id) {
+										// post:"/set-trending/{name}/{prev_status}",
+
+										axios
+											.delete(`http://192.168.86.54:8090/delete/message/${deleteItemId}`, {})
+											.then(function (response) {
+												console.log(response);
+												console.log(deleteItemId, 'this is del id');
+											})
+											.catch(function (error) {
+												console.log(error);
+											});
+									}
+									deleteTemplate(deleteItemId);
+									console.log(deleteItemId, 'deleted');
+								}}
+							>
+								<MdDelete /></a
+							>
 						</li>
 
 						<li class="  text-sm  w-4 ">
 							<a href="/" title="Clone"> <MdContentCopy /> </a>
 						</li>
 						<li class="  text-sm   w-4">
-							<a href="/" title="Mark as Trending"> <DiMarkdown /> </a>
+							<!-- svelte-ignore a11y-missing-attribute -->
+
+							<a
+								title="Mark as Trending"
+								on:click={() => {
+									priority = 1;
+
+									var messageId = item.id;
+									var id = item.id;
+									var isTrending = item.is_trending;
+									console.log(isTrending);
+									console.log(id);
+
+									async function setTrendingTemplate() {
+										// post:"/set-trending/{name}/{prev_status}",
+
+										axios
+											.post(
+												`http://192.168.86.54:8090/set-message-trending/${messageId}/${isTrending}`,
+												{}
+											)
+											.then(function (response) {
+												console.log(response);
+											})
+											.catch(function (error) {
+												console.log(error);
+											});
+									}
+									setTrendingTemplate();
+								}}
+							>
+								<DiMarkdown />
+							</a>
 						</li>
 					</div>
 				</td>

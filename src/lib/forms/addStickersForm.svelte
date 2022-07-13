@@ -1,50 +1,90 @@
 <script>
 	import { getFirestore, addDoc, deleteDoc, doc, collection, onSnapshot } from 'firebase/firestore';
 	import Button from '../reusable/button.svelte';
+	import axios from 'axios';
+	import { onMount } from 'svelte';
+
 	let files;
 	let uploadValue;
 
+	var categoryOptionArr = [];
+	let categoryOptions = 'http://192.168.86.54:8090/category/list-names';
+	onMount(() => {
+		fetch(categoryOptions).then((res) => {
+			res.json().then((data) => {
+				categoryOptionArr = data?.category_list ?? [];
+				// categoryArr = data;
+			});
+		});
+	});
+
+	// const db = getFirestore();
+
+	// const colRef = collection(db, 'Stickers');
+
+	// const storeNewStickerValues = () => {
+	// 	const addStickerForm = document.querySelector('.addStickerForm');
+	// 	addDoc(colRef, {
+	// 		Name: addStickerForm.name.value,
+	// 		Category: addStickerForm.category.value,
+	// 		Priority: addStickerForm.priority.value,
+	// 		Preview: uploadValue
+	// 	})
+	// 		.then((e) => {
+	// 			addStickerForm.reset();
+	// 		})
+	// 		.catch((err) => {
+	// 			console.log('sometihng went wrong on stickerstable while uploading to firestore');
+	// 		});
+	// };
+
+	// export const deleteValues = () => {
+	// 	const deleteStickerForm = document.querySelector('.deleteStickerForm');
+
+	// 	deleteStickerForm.addEventListener('submit', (e) => {
+	// 		e.preventDefault();
+	// 		//delete row on table through input id value
+	// 		const docRef = doc(db, 'Stickers', deleteStickerForm.id.value);
+	// 		deleteDoc(docRef).then(() => {
+	// 			deleteStickerForm.reset();
+	// 		});
+	// 	});
+	// };
+
+	var uploadImageSrc;
 	function addFile(e) {
 		let image = e.target.files[0];
 		let reader = new FileReader();
 		reader.readAsDataURL(image);
 		reader.onload = (e) => {
-			uploadValue = e.target.result;
+			var uploadImageSrc = e.target.result;
+			console.log(uploadImageSrc);
 		};
 	}
-
-	const db = getFirestore();
-
-	const colRef = collection(db, 'Stickers');
-
-	const storeNewStickerValues = () => {
-		const addStickerForm = document.querySelector('.addStickerForm');
-		addDoc(colRef, {
-			Name: addStickerForm.name.value,
-			Category: addStickerForm.category.value,
-			Priority: addStickerForm.priority.value,
-			Preview: uploadValue
-		})
-			.then((e) => {
-				addStickerForm.reset();
+	let ImageSrc = 'admin.png';
+	async function postSticker() {
+		var nameInput = document.getElementById('nameSticker')?.value;
+		// var ImageSrc = uploadImageSrc;
+		// var imgSrc = document.getElementById('imgUpload').value;
+		var priorityInput = document.getElementById('prioritySticker')?.value;
+		var categoryInput = document.getElementById('categorySticker')?.selectedOptions[0].value;
+		var publishInput = document.getElementById('publishSticker')?.checked;
+		let data = {
+			name: nameInput,
+			url: ImageSrc,
+			priority: Number(priorityInput),
+			category: categoryInput,
+			publish: publishInput
+		};
+		axios
+			.post('http://192.168.86.54:8090/save/sticker', data)
+			.then(function (response) {
+				console.log('Successfully Posted Article', response);
 			})
-			.catch((err) => {
-				console.log('sometihng went wrong on stickerstable while uploading to firestore');
+			.catch(function (error) {
+				console.log(error);
 			});
-	};
-
-	export const deleteValues = () => {
-		const deleteStickerForm = document.querySelector('.deleteStickerForm');
-
-		deleteStickerForm.addEventListener('submit', (e) => {
-			e.preventDefault();
-			//delete row on table through input id value
-			const docRef = doc(db, 'Stickers', deleteStickerForm.id.value);
-			deleteDoc(docRef).then(() => {
-				deleteStickerForm.reset();
-			});
-		});
-	};
+	}
 </script>
 
 <div class="flex flex-col justify-center items-center text-sm my-4  p-2">
@@ -52,16 +92,27 @@
 		class="addStickerForm "
 		on:submit={(e) => {
 			e.preventDefault();
-			storeNewStickerValues();
+			postSticker();
 		}}
 	>
 		<div class="my-2">
 			<label for="name">Sticker Name:</label>
 			<input
 				type="text"
-				name="name"
+				name="nameSticker"
+				id="nameSticker"
 				required
 				class="border-b-2 bg-gray-100 hover:bg-gray-200 h-8 hover:no-underline"
+			/>
+		</div>
+		<div class="my-4">
+			<label for="priority">Priority:</label>
+			<input
+				type="number"
+				name="prioritySticker"
+				id="prioritySticker"
+				required
+				class="border-b-2 bg-gray-100 hover:bg-gray-200  h-8 hover:no-underline"
 			/>
 		</div>
 
@@ -77,51 +128,24 @@
 				on:change={addFile}
 			/>
 		</div>
-		<div class="my-4">
-			<label for="priority">Priority:</label>
-			<input
-				type="number"
-				name="priority"
-				required
-				class="border-b-2 bg-gray-100 hover:bg-gray-200  h-8 hover:no-underline"
-			/>
-		</div>
-
 		<div class="flex my-4 items-center">
 			<label
 				class=" my-2 label-optional label-optional-personal label-required-public"
-				for="CategoryId"><h1>Category:</h1></label
+				for="categorySticker"><h1>Category:</h1></label
 			>
-			<select id="CategoryId" name="category" class=" text-sm h-8 mx-2" required>
+			<select id="categorySticker" name="category" class=" text-sm h-8 mx-2" required>
 				<option value="">Select a category</option>
-				<option value="Birthday">Dashain</option>
-				<option value="Love">Tihar</option>
-				<option value="Friendship">Birthday</option>
-				<option value="Thank You">Thank You</option>
-				<option value="Get Well">Get Well</option>
-				<option value="Congratulations">Congratulations</option>
-				<option value="Festival">Festival</option>
-				<option value="Other">Other...</option>
+				{#each categoryOptionArr as item}
+					<option value={item}>{item}</option>\
+				{/each}
 			</select>
 		</div>
 
-		<Button>Add Sticker</Button>
-	</form>
+		<div class=" my-2">
+			<input type="checkbox" value="" name="publishSticker" id="publishSticker" />
+			<span> Publish </span>
+		</div>
 
-	<form
-		class="deleteStickerForm text-sm mt-2  flex flex-col "
-		on:submit={(e) => {
-			deleteValues();
-			e.preventDefault();
-		}}
-	>
-		<label for="id">Document id:</label>
-		<input
-			type="text"
-			name="id"
-			class="border-b-2 bg-gray-100 hover:bg-gray-200  mb-2 h-8 hover:no-underline"
-			required
-		/>
-		<Button>Delete Sticker</Button>
+		<Button>Add Sticker</Button>
 	</form>
 </div>
