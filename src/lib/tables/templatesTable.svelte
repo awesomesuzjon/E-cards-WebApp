@@ -47,6 +47,7 @@
 	// });
 
 	let url = `${globalUrl}/template/show-all-templates`;
+	let optionsUrl = `${globalUrl}/template/show-all-templates`;
 
 	export var allTemplatesArr = [];
 	var templatesTrendingArr = [];
@@ -61,8 +62,39 @@
 			});
 		});
 	});
+
+	//form value data collection
+	var categoryOptionArr = [];
+	let ImageSrc = 'ballon.jpg';
+	async function postTemplate() {
+		var nameInput = document.getElementById('nameTemplate')?.value;
+		console.log(nameInput, 'nameInput');
+		// var ImageSrc = uploadImageSrc;
+		var priorityInput = document.getElementById('priorityTemplate')?.value;
+		console.log(priorityInput, 'priorityInput');
+
+		var tagInput = document.getElementById('tagTemplate')?.value;
+
+		var categoryInput = document.getElementById('categoryTemplate')?.selectedOptions[0].value;
+		console.log(categoryInput, 'categoryInputsssssssssssss');
+	}
 </script>
 
+<!-- this is category dropdown -->
+<div class="flex my-4 items-center">
+	<label
+		class=" my-2 label-optional label-optional-personal label-required-public"
+		for="categoryTemplate"><h1>Category:</h1></label
+	>
+	<select id="categoryTemplate" name="categoryTemplate" class=" text-sm h-8 mx-2" required>
+		<option value="">Select a category</option>
+		{#each categoryOptionArr as item}
+			<option value={item}>{item}</option>\
+		{/each}
+	</select>
+</div>
+
+<!-- ????????-->
 <!-- </div> -->
 <div class="flex mt-4 ">
 	<img
@@ -105,9 +137,9 @@
 				</td>
 
 				<td class=" px-8 py-2">{item.tags}</td>
-				<td class=" px-8 py-2">{item.category_name}</td>
+				<td class=" px-8 py-2">{item.categoryName}</td>
 				<td class=" px-8 py-2">{item.priority}</td>
-				<td class=" px-8 py-2">{item.is_trending}</td>
+				<td class=" px-8 py-2">{item.trending}</td>
 
 				<td>
 					<!-- <div class="collapse">
@@ -160,9 +192,7 @@
 							>
 						</li>
 						<!-- <div class="flex justify-around items-center"> -->
-						<li class="  text-sm  w-4 ">
-							<a href="/" title="Clone"> <MdContentCopy /> </a>
-						</li>
+
 						<li class="  text-sm   w-4">
 							<!-- svelte-ignore missing-declaration -->
 							<!-- svelte-ignore a11y-missing-attribute -->

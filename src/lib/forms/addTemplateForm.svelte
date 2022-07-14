@@ -16,40 +16,26 @@
 			});
 		});
 	});
-	//form value data collection
-	let ImageSrc = 'ballon.jpg';
-	async function postTemplate() {
-		var nameInput = document.getElementById('nameTemplate')?.value;
-		console.log(nameInput, 'nameInput');
-		// var ImageSrc = uploadImageSrc;
-		var priorityInput = document.getElementById('priorityTemplate')?.value;
-		console.log(priorityInput, 'priorityInput');
 
-		var tagInput = document.getElementById('tagTemplate')?.value;
+	// var publishInput = document.getElementById('publishTemplate')?.checked;
 
-		var categoryInput = document.getElementById('categoryTemplate')?.selectedOptions[0].value;
-		console.log(categoryInput, 'categoryInput');
+	let data = {
+		title: nameInput,
+		url: ImageSrc,
+		tags: tagInput,
+		priority: Number(priorityInput),
+		category: categoryInput
+		// publish: publishInput
+	};
 
-		// var publishInput = document.getElementById('publishTemplate')?.checked;
-
-		let data = {
-			title: nameInput,
-			url: ImageSrc,
-			tags: tagInput,
-			priority: Number(priorityInput),
-			category_name: categoryInput
-			// publish: publishInput
-		};
-
-		axios
-			.post(`${globalUrl}/template/save`, data)
-			.then(function (response) {
-				console.log('Successfully Added Template To Table', response);
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
-	}
+	axios
+		.post(`${globalUrl}/template/save`, data)
+		.then(function (response) {
+			console.log('Successfully Added Template To Table', response);
+		})
+		.catch(function (error) {
+			console.log(error);
+		});
 </script>
 
 <div class="flex flex-col justify-center items-center text-sm ">

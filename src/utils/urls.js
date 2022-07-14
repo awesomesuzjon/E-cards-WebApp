@@ -1,1 +1,1 @@
-export const globalUrl = "http://192.168.86.230:8090"
+export const globalUrl = "http://192.168.86.115:8090"
