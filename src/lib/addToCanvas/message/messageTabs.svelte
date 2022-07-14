@@ -1,6 +1,4 @@
 <script>
-	import IoIosAddCircle from 'svelte-icons/io/IoIosAddCircle.svelte';
-	import Button from '../../reusable/button.svelte';
 	import { onMount } from 'svelte';
 	import { each } from 'svelte/internal';
 	import { pushMsgToCanvasFunc } from '../../../utils/pushTextToCanvas';
@@ -10,7 +8,8 @@
 	var selected = '';
 	let messages = {
 		first: ['Happy Dashain', 'Happy Tika', 'Happy Ghatasthapana', 'Dashain ko subhakamana'],
-		second: ['Happy Tihar', 'Happy Dipawali', 'Happy Laxmi Pooja']
+		second: ['Happy Tihar', 'Happy Dipawali', 'Happy Laxmi Pooja'],
+		third: ['Happy Holi', 'Festival of Colors']
 	};
 	$: reactiveMessageText = selected;
 
@@ -103,6 +102,11 @@
 		</div>
 		<div id="second" class="hidden p-4 text-black text-sm">
 			{#each messages.second as message}
+				<li on:click={eventTarget}>{message}</li>
+			{/each}
+		</div>
+		<div id="third" class="hidden p-4 text-black text-sm">
+			{#each messages.third as message}
 				<li on:click={eventTarget}>{message}</li>
 			{/each}
 		</div>

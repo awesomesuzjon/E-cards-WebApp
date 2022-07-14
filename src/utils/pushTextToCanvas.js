@@ -14,6 +14,7 @@ export function pushTextToCanvasFunc() {
 		storeArrayText = [...storeText];
 	});
 	textStore.set([...storeArrayText, inputText]);
+	
 }
 
 export function pushMsgToCanvasFunc() {
@@ -30,7 +31,6 @@ export function pushMsgToCanvasFunc() {
 	msgStore.set([...storeArrayMsg, inputMsg]);
 	inputMsg = document.getElementById('addNewMsg').value = '';
 	storeArrayText = [];
-	 selected=''
 
 	
 }

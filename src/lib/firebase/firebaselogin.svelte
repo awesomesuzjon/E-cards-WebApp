@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 	import firebase from 'firebase/compat/app';
 	import 'firebase/compat/auth';
 	// import {auth,googleProvider} from "./firebase"
@@ -44,13 +44,12 @@
 </script>
 
 <div>
-	<h1 class="mt-5 text-lg">Login With Google</h1>
+	<h1 class="mt-5 text-lg dark:text-white	">Login With Google</h1>
 </div>
 
 {#if user}
 	<!-- Successfully Logged in as {user.uid} -->
-	<a on:click={logout}><Button >logOut</Button></a>
+	<a on:click={logout}><Button>logOut</Button></a>
 {:else}
-<a on:click={login}><Button >logIn</Button></a>
-
+	<a on:click={login}><Button>logIn</Button></a>
 {/if}

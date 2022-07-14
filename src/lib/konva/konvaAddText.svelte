@@ -27,6 +27,37 @@
 			});
 			layer.add(backgroundRect);
 		});
+
+		// add background image
+		document.getElementById('canvasFileInput').onchange = function (e) {
+			var url = URL.createObjectURL(e.target.files[0]);
+			var img = new Image();
+			img.src = url;
+
+			img.onload = function () {
+				// now load the Konva image
+				var canvasBgImg = new Konva.Image({
+					image: img,
+					x: 0,
+					y: 0,
+					width: 710,
+					height: 500,
+					id: 'bgImg',
+					listening: false
+				});
+				canvasBgImg.setZIndex(0);
+				canvasBgImg.moveToBottom();
+				layer.add(canvasBgImg);
+				layer.draw();
+				
+
+				var removeBtn = document.getElementById('removeBgImg');
+				removeBtn.addEventListener('click', () => {
+					canvasBgImg.hide();
+					layer.draw();
+				});
+			};
+		};
 		textStore.subscribe((data) => {
 			var text = new Konva.Text({
 				x: 50,
@@ -62,16 +93,6 @@
 			layer.add(message);
 		});
 
-		//konva add image as background
-		Konva.Image.fromURL(`ktm.jpg`, function (bgImage) {
-			bgImage.setAttrs({
-				x: 0,
-				y: 0,
-				width: stage.width(),
-				height: stage.height()
-			});
-			// layer.add(bgImage);
-		});
 
 		//transformer for each clicked element on canvas
 		var previousTarget = null;
@@ -113,7 +134,6 @@
 				textEditContainer.style.visibility = 'visible';
 				textEditContainer.style.display = 'block	';
 				stickerEditContainer.style.display = 'none';
-				console.log(e.target.attrs.id, 'is the elements id on canvas');
 			} else {
 				textEditContainer.style.visibility = 'invisible';
 			}
@@ -124,7 +144,6 @@
 				stickerEditContainer.style.visibility = 'visible';
 				textEditContainer.style.display = 'none	';
 				stickerEditContainer.style.display = 'block';
-				console.log(e.target.attrs.id, 'is the stickers id on canvas');
 			} else {
 				stickerEditContainer.style.visibility = 'invisible';
 			}
@@ -138,7 +157,6 @@
 				textEditContainer.style.visibility = 'visible';
 				textEditContainer.style.display = 'block	';
 				stickerEditContainer.style.display = 'none';
-				console.log(e.target.attrs.id, 'is the elements id on canvas');
 			} else {
 				textEditContainer.style.visibility = 'invisible';
 			} // if (
@@ -192,3 +210,92 @@
 		});
 	});
 </script>
+
+<!-- <script>
+	import Konva from 'konva';
+	import { onMount } from 'svelte';
+	const { getStage } = getContext('konva');
+	const { getLayer } = getContext('konva_layer');
+	var stage = getStage();
+	var layer = getLayer();
+	import { getContext } from 'svelte';
+
+	import { selected } from '../../stores/selectedItemId';
+	import { textStore } from '../../stores/storeText';
+	import { msgStore } from '../../stores/storeText';
+	import { canvasBgStore } from '../../stores/canvasColor';
+	var JsonData = {
+		attrs: { width: 678, height: 450, stroke: 'blue', backgroundColor: 'black' },
+		className: 'Stage',
+		children: [
+			{
+				attrs: {},
+				className: 'Layer',
+				children: [
+					{
+						attrs: {
+							x: 50,
+							y: 50,
+							fontSize: 18,
+							fill: '#000000',
+							draggable: true,
+							id: 'textElementId',
+							name: 'd96f41e7-0854-427a-a6cf-e584ddc1fcf2'
+						},
+						className: 'Text'
+					},
+					{
+						attrs: {
+							x: 50,
+							y: 50,
+							fontSize: 18,
+							fill: 'black',
+							draggable: true,
+							id: 'msgElementId'
+						},
+						className: 'Text'
+					},
+					{
+						attrs: {
+							x: 100,
+							y: 150,
+							fontSize: 3,
+							fill: 'green',
+							text: 'Testingg',
+							draggable: true,
+							id: 'textElementId',
+							name: '3aa232b1-cb56-4cd5-b573-a9b1dbcf64a7',
+							rotation: 90,
+							scaleX: 7.367831652107676,
+							scaleY: 7.367831652107679,
+							skewX: -2.6178262080447686e-16,
+							textDecoration: 'underline'
+						},
+						className: 'Text'
+					},
+					{ attrs: {}, className: 'Transformer' }
+				]
+			}
+		]
+	};
+	stage = Konva.Node.create(JsonData, 'container');
+	// stage.destroy();
+
+	// //transformer for each clicked element on canvas
+	// var previousTarget = null;
+	// var transformer = new Konva.Transformer();
+	// layer.add(transformer);
+
+	// stage.on('click tap', function (e) {
+	// 	transformer.destroy();
+	// 	transformer = new Konva.Transformer();
+	// 	layer.add(transformer);
+	// 	$selected = null;
+	// 	previousTarget = null;
+
+	// 	$selected = e.target;
+
+	// 	transformer.attachTo(e.target);
+	// 	previousTarget = e.target;
+	// });
+</script> -->

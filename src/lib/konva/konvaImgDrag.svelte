@@ -15,22 +15,27 @@
 		document.getElementById('drag-items').addEventListener('dragstart', function (e) {
 			itemURL = e.target.src;
 		});
+		document.getElementById('drag-modal-items').addEventListener('click', function (e) {
+			itemURL = e.target.src;
+			console.log(itemURL, 'this is the modal img url');
+		});
 
 		var con = stage.container();
+
 		con.addEventListener('dragover', function (e) {
 			e.preventDefault(); // !important
 		});
 
 		con.addEventListener('drop', function (e) {
 			e.preventDefault();
-
 			stage.setPointersPositions(e);
 			Konva.Image.fromURL(itemURL, function (image) {
 				layer.add(image);
-
 				image.position(stage.getPointerPosition());
 				image.draggable(true);
 			});
+
+			
 
 			//code for  transformer i.e rectangular boundary around elements on click
 

@@ -4,18 +4,20 @@
 
 	let container;
 	let stage;
-
+	// let layersArr = [];
 	onMount(() => {
 		stage = new Konva.Stage({
 			container: 'container',
-			width: 525,
-			height: 434,
+			width: 710,
+			height: 450,
 
 			stroke: 'blue',
 			backgroundColor: 'black'
 		});
-		console.log('stage created');
+		//get layers attrs
+		let layerData = stage.getLayers();
 	});
+
 	setContext('konva', {
 		getStage: () => stage
 	});
