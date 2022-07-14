@@ -1,12 +1,26 @@
 <script>
 	import TemplatesTable from '../lib/tables/templatesTable.svelte';
 	import CreateTemplateBtn from '../lib/reusable/createTemplateBtn.svelte';
+	import { globalUrl } from '../utils/urls';
+	import { onMount } from 'svelte';
+
+	//category dropdown
+	var categoryOptionArr = [];
+	let categoryOptions = `${globalUrl}/category/show-name-list`;
+	onMount(() => {
+		fetch(categoryOptions).then((res) => {
+			res.json().then((data) => {
+				categoryOptionArr = data?.categoryList ?? [];
+				// categoryArr = data;
+			});
+		});
+	});
+	console.log(categoryOptionArr);
 </script>
 
 <svelte:head>
 	<title>All Templates</title>
 </svelte:head>
-
 <CreateTemplateBtn />
-	
+
 <TemplatesTable />
