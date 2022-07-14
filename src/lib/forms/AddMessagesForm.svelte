@@ -40,7 +40,7 @@
 	}
 </script>
 
-<div class="flex flex-col justify-center items-center text-sm my-4">
+<div class="flex flex-col justify-center items-center text-sm my-4 dark:text-white">
 	<form
 		class="addCategoryForm text-lg"
 		on:submit={(e) => {
@@ -56,7 +56,7 @@
 				name="nameMsg"
 				required
 				id="nameMsg"
-				class="border-b-2 bg-gray-100 hover:bg-gray-200 h-8 hover:no-underline"
+				class="border-b-2 dark:text-black bg-gray-100 hover:bg-gray-200 h-8 hover:no-underline"
 			/>
 
 			<!-- <div class="my-2">
@@ -76,7 +76,7 @@
 					id="priorityMsg"
 					name="priorityMsg"
 					required
-					class="border-b-2 bg-gray-100 hover:bg-gray-200  h-8 hover:no-underline"
+					class="border-b-2 dark:text-black bg-gray-100 hover:bg-gray-200  h-8 hover:no-underline"
 				/>
 			</div>
 

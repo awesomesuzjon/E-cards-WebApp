@@ -27,7 +27,7 @@
 >
 	<!-- toggle Sidebar code -->
 
-	<ul class="   w-full mt-4	 ">
+	<ul class="   w-full mt-4	 justify-center items-center">
 		<div class="flex  items-center justify-around ml-3 " id="toggleDarkBtn">
 			<button class=" text-white dark:text-blue-200 w-8 h-16" on:click={toggle}>
 				<FaCloudMoon /></button

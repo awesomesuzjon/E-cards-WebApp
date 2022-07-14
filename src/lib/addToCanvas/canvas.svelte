@@ -29,8 +29,7 @@
 		</Stage>
 	</div>
 	<div>
-		<p class="text-sm mt-2"><strong>Tip:</strong> Press the "Esc" key to exit full screen.</p>
-		<button class="btn" id="saveAsPdf">Save as PDF</button>
+		<p class="text-sm my-2"><strong>Tip:</strong> Drag the Stickers from the sidebar.</p>
 		<button class="btn" id="saveAsImg">Save as Img</button>
 
 		<SaveTemplate />
