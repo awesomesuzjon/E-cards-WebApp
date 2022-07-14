@@ -4,6 +4,21 @@
 	import Button from '../reusable/button.svelte';
 	import DashainStickers from './dashainStickers.svelte';
 	// stickerArray = [...stickers.stickerData];
+	import { stickerTabStore } from '../../stores/stickerTab';
+	import { onMount } from 'svelte';
+	import { globalUrl } from '../../utils/urls';
+	onMount(() => {
+		async function getSticker() {
+			try {
+				const stickerUrl = `${globalUrl}/sticker/show-all-stickers`;
+				const data = await (await fetch(stickerUrl)).json();
+				stickerTabStore.set(data.allStickerList);
+			} catch (e) {
+				console.log('error', e);
+			}
+		}
+		getSticker();
+	});
 </script>
 
 <div
@@ -12,18 +27,14 @@
 >
 	<Carousel particlesToShow={2} particlesToScroll={2} autoplay autoplayDuration={2000} dots={false}>
 		<div id="drag-items" class="flex ">
-			<!-- {#each stickerArray as item, index}
-				<img src={item.src} alt="" class="w-12 " />
-			{/each} -->
-			<div
-				class="duration-700 ease-in-out  inset-0 transition-all transform translate-x-0 flex  mx-4 "
-				data-carousel-item="active"
-			>
-				<img src="ballon.jpg" class="rounded-full w-12 block mx-2" alt="..." />
-				<img src="hand.jpg" class="rounded-full w-12 block mx-2" alt="..." />
-				<img src="hug.jpg" class="rounded-full w-12 block mx-2" alt="..." />
-				<img src="ktm.jpg" class="rounded-full w-12 block mx-2" alt="..." />
-			</div>
+			{#each $stickerTabStore as item}
+				<div
+					class="duration-700 ease-in-out  inset-0 transition-all transform translate-x-0 flex  mx-4 "
+					data-carousel-item="active"
+				>
+					<img src={item.url} class="rounded-full w-12 block mx-2" alt="..." />
+				</div>
+			{/each}
 		</div>
 	</Carousel>
 </div>
@@ -43,10 +54,3 @@
 >
 	<label class="modal-box relative" for=""> <DashainStickers /> </label>
 </label>
-
-<!-- 
-<script>
-	import SvelteStickers from '../reusable/svelteStickers.svelte'
-</script>
-
-<SvelteStickers/> -->

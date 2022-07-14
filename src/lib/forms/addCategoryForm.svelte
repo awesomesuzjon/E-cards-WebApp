@@ -1,7 +1,9 @@
 <script>
 	import { getFirestore, addDoc, deleteDoc, doc, collection, onSnapshot } from 'firebase/firestore';
+	import { imageSrcStore } from '../../stores/imgSrc';
 	import Button from '../reusable/button.svelte';
 	import axios from 'axios';
+	import { globalUrl } from '../../utils/urls';
 
 	// let files;
 	// let uploadValue;
@@ -69,33 +71,37 @@
 	// }
 	//upload image
 	let files;
-	var uploadImageSrc;
+	var imageUrl = '';
 	function addFile(e) {
 		let image = e.target.files[0];
 		let reader = new FileReader();
 		reader.readAsDataURL(image);
 		reader.onload = (e) => {
 			var uploadImageSrc = e.target.result;
-			console.log(uploadImageSrc);
+			imageSrcStore.set(uploadImageSrc);
 		};
 	}
+	imageSrcStore.subscribe((imageSrcStore) => {
+		imageUrl = imageSrcStore;
+	});
+	console.log(imageUrl);
+
 	async function postArticle() {
 		var nameInput = document.getElementById('fname')?.value;
-		// var ImageSrc = uploadImageSrc;
+		var imgUrl = imageUrl;
 		var priorityInput = document.getElementById('priority')?.value;
 		var publishInput = document.getElementById('publish')?.checked;
 		var TrendingInput = document.getElementById('trending')?.checked;
-		console.log(publishInput, 'is input ');
-		console.log(typeof publishInput, 'is input ');
+
 		let data = {
 			name: nameInput,
-			// url: ImageSrc,
+			url: imgUrl,
 			priority: Number(priorityInput),
 			publish: publishInput,
 			trending: TrendingInput
 		};
 		axios
-			.post('http://192.168.86.54:8090/category/save', data)
+			.post(`${globalUrl}/category/save`, data)
 			.then(function (response) {
 				console.log('Successfully Posted Article', response);
 			})
@@ -149,7 +155,6 @@
 			/>
 		</div>
 
-	
 		<div class=" my-2">
 			<input type="checkbox" value="" name="publish" id="publish" />
 			<span> Publish </span>

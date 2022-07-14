@@ -7,13 +7,12 @@
 	import DiMarkdown from 'svelte-icons/di/DiMarkdown.svelte';
 	import axios from 'axios';
 	import { onMount } from 'svelte';
-	let url = 'http://192.168.86.54:8090/message/show-all';
-	// let url = 'https://jsonplaceholder.typicode.com/todos/';
+	import { globalUrl } from '../../utils/urls';
 	var messageArr = [];
 	onMount(() => {
-		fetch(url).then((res) => {
+		fetch(`${globalUrl}/message/show-all-message`).then((res) => {
 			res.json().then((data) => {
-				messageArr = data?.all_message_list ?? [];
+				messageArr = data?.allMessageList ?? [];
 				// categoryArr = data;
 			});
 		});
@@ -104,7 +103,7 @@
 										// post:"/set-trending/{name}/{prev_status}",
 
 										axios
-											.delete(`http://192.168.86.54:8090/delete/message/${deleteItemId}`, {})
+											.delete(`${globalUrl}/message/delete/${deleteItemId}`, {})
 											.then(function (response) {
 												console.log(response);
 												console.log(deleteItemId, 'this is del id');
@@ -134,18 +133,14 @@
 
 									var messageId = item.id;
 									var id = item.id;
-									var isTrending = item.is_trending;
+									var isTrending = item.trending;
 									console.log(isTrending);
 									console.log(id);
 
 									async function setTrendingTemplate() {
 										// post:"/set-trending/{name}/{prev_status}",
-
 										axios
-											.post(
-												`http://192.168.86.54:8090/set-message-trending/${messageId}/${isTrending}`,
-												{}
-											)
+											.post(`${globalUrl}/message/set-trending/${messageId}/${isTrending}`, {})
 											.then(function (response) {
 												console.log(response);
 											})

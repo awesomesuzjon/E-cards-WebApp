@@ -3,13 +3,12 @@
 	import Button from '../reusable/button.svelte';
 	import axios from 'axios';
 	import { onMount } from 'svelte';
-
+	import { globalUrl } from '../../utils/urls';
 	var categoryOptionArr = [];
-	let categoryOptions = 'http://192.168.86.54:8090/category/list-names';
 	onMount(() => {
-		fetch(categoryOptions).then((res) => {
+		fetch(`${globalUrl}/category/show-name-list`).then((res) => {
 			res.json().then((data) => {
-				categoryOptionArr = data?.category_list ?? [];
+				categoryOptionArr = data?.categoryList ?? [];
 				// categoryArr = data;
 			});
 		});
@@ -31,7 +30,7 @@
 			publish: publishInput
 		};
 		axios
-			.post('http://192.168.86.54:8090/message/save', data)
+			.post(`${globalUrl}/message/save`, data)
 			.then(function (response) {
 				console.log('Successfully Posted Article', response);
 			})
@@ -89,7 +88,7 @@
 				<select id="categoryMsg" name="category" class=" text-sm h-8 mx-2" required>
 					<option value="">Select a category</option>
 					{#each categoryOptionArr as item}
-						<option value="{item}">{item}</option>\
+						<option value={item}>{item}</option>\
 					{/each}
 				</select>
 			</div>

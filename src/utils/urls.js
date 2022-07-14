@@ -1,0 +1,1 @@
+export const globalUrl = "http://192.168.86.230:8090"

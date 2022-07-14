@@ -6,6 +6,7 @@
 	import DiMarkdown from 'svelte-icons/di/DiMarkdown.svelte';
 	import Pagination from '../reusable/pagination.svelte';
 	import axios from 'axios';
+
 	//firebase setup here
 	import {
 		getFirestore,
@@ -40,12 +41,13 @@
 
 	//from backend grpc
 	import { onMount } from 'svelte';
-	let url = 'http://192.168.86.54:8090/category/show-all';
-	let trendingUrl = 'http://192.168.86.54:8090/get/trendingtemplate';
+	import { globalUrl } from '../../utils/urls';
+
+	// let trendingUrl = 'http://192.168.86.54:8090/get/trendingtemplate';
 	export var categoryArr = [];
 	var categoryTrendingArr = [];
 	onMount(() => {
-		fetch(url).then((res) => {
+		fetch(`${globalUrl}/category/show-all-category`).then((res) => {
 			res.json().then((data) => {
 				categoryArr = data?.categories ?? [];
 				// categoryArr = data;
@@ -95,8 +97,21 @@
 				<td class=" px-8 py-2">{item.publish}</td>
 				<td class=" px-8 py-2">{item.trending}</td>
 				<!-- <td class=" px-8 py-2">{item.publish}</td> -->
+				<div class="flex justify-end  mt-4 mr-5">
+					<label for="my-modal" class=" modal-button">
+						<img class="w-4 h-auto flex justify-center items-center" src={item.url} alt="" />
+					</label>
+				</div>
 
-				<td class=" px-8 py-2"><img class="w-4 h-auto" src={item.url} alt="" /></td>
+				<input type="checkbox" id="my-modal" class="modal-toggle " />
+				<label
+					for="my-modal"
+					class="modal cursor-pointer bg-gray-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-4xl bg-opacity-50  border border-gray-100"
+				>
+					<label class="modal-box relative" for="">
+						<img class="w-full h-auto flex justify-center items-center" alt="" src={item.url} />
+					</label>
+				</label>
 				<td>
 					<div class="flex justify-around items-center mb-2 list-none">
 						<li class=" text-sm  w-4 hover:bg-gray-300 p-0 cursor:move " id="deleteBtn">
@@ -122,7 +137,7 @@
 										// post:"/set-trending/{name}/{prev_status}",
 
 										axios
-											.delete(`http://192.168.86.54:8090/category/delete/${deleteItemName}`, {})
+											.delete(`${globalUrl}/category/delete/${deleteItemName}`, {})
 											.then(function (response) {
 												console.log(response);
 											})
@@ -170,10 +185,14 @@
 									async function setTrendingTemplate() {
 										// post:"/set-trending/{name}/{prev_status}",
 
+										console.log(globalUrl);
 										axios
 											.post(
-												`http://192.168.86.54:8090/category/mark-trending/${categoryName}/${isTrending}`,
+												// `http://192.168.86.54:8090/category/mark-trending/${categoryName}/${isTrending}`,
+												`${globalUrl}/category/settor-trending-status/${categoryName}/${isTrending}`,
 												{}
+												// let url = globalUrl + `category/show-all-category`;
+												//
 											)
 											.then(function (response) {
 												console.log(response);

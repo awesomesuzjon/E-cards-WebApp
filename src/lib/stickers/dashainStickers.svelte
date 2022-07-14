@@ -1,5 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
+	import { stickerTabStore } from '../../stores/stickerTab';
+	import { globalUrl } from '../../utils/urls';
 
 	onMount(() => {
 		const tabs = document.querySelectorAll('[data-tab-target]');
@@ -19,13 +21,54 @@
 			});
 		});
 	});
+	let catagoryArr = [];
+	let url = `${globalUrl}/category/show-name-list`;
+	fetch(url).then((res) => {
+		res.json().then((data) => {
+			catagoryArr = data?.category_list ?? [];
+			// categoryArr = data;
+			console.log(catagoryArr);
+		});
+	});
+
+	var stickerArr = [];
+	var stickerTabData = [];
+	var stickerTab = '';
+	function getSticker() {
+		stickerTabStore.subscribe((stickerTabStore) => {
+			stickerTab = stickerTabStore;
+		});
+		let stickerUrl = `${globalUrl}/sticker/show-all-stickers`;
+		fetch(stickerUrl).then((res) => {
+			res.json().then((data) => {
+				stickerArr = data?.sticker_urls ?? [];
+				// categoryArr = data;
+			});
+		});
+	}
 </script>
 
-<ul class="tabs ">
-	<li data-tab-target="#home" class="active tab text-black">Dashain</li>
+<ul class="tabs flex flex-row justify-evenly">
+	<!-- {#each catagoryArr as item} -->
+	<li
+		data-tab-target="#home"
+		class="active  text-black"
+		on:click={(e) => {
+			var stickerTabData = { item };
+			stickerTabStore.set(stickerTabData);
+			getSticker();
+		}}
+	>
+		Dashain
+	</li>
 	<li data-tab-target="#pricing" class="tab text-black">Tihar</li>
 	<li data-tab-target="#about" class="tab text-black">Holi</li>
 	<li data-tab-target="#news" class="tab text-black">Others</li>
+	<!-- {/each} -->
+
+	<!-- {#each stickerArr as sticker} -->
+	<!-- <img src={sticker} alt="" /> -->
+	<!-- {/each} -->
 </ul>
 
 <div class="tab-content text-black">

@@ -1,20 +1,22 @@
 <script>
 	import { getFirestore, addDoc, deleteDoc, doc, collection, onSnapshot } from 'firebase/firestore';
 	import Button from '../reusable/button.svelte';
+	import { imageSrcStore } from '../../stores/imgSrc';
 	import axios from 'axios';
 	import { onMount } from 'svelte';
+	import { globalUrl } from '../../utils/urls';
 
 	let files;
 	let uploadValue;
 
 	var categoryOptionArr = [];
-	let categoryOptions = 'http://192.168.86.54:8090/category/list-names';
 	onMount(() => {
-		fetch(categoryOptions).then((res) => {
+		fetch(`${globalUrl}/category/show-name-list`).then((res) => {
 			res.json().then((data) => {
-				categoryOptionArr = data?.category_list ?? [];
+				categoryOptionArr = data?.categoryList ?? [];
 				// categoryArr = data;
 			});
+			console.log(categoryOptionArr);
 		});
 	});
 
@@ -50,34 +52,39 @@
 	// 		});
 	// 	});
 	// };
-
-	var uploadImageSrc;
+	var imgArr = [];
+	var imageUrl = '';
 	function addFile(e) {
 		let image = e.target.files[0];
 		let reader = new FileReader();
 		reader.readAsDataURL(image);
 		reader.onload = (e) => {
 			var uploadImageSrc = e.target.result;
-			console.log(uploadImageSrc);
+			imageSrcStore.set(uploadImageSrc);
 		};
 	}
+	imageSrcStore.subscribe((imageSrcStore) => {
+		imageUrl = imageSrcStore;
+	});
+	console.log(imageUrl);
+
 	let ImageSrc = 'admin.png';
 	async function postSticker() {
 		var nameInput = document.getElementById('nameSticker')?.value;
-		// var ImageSrc = uploadImageSrc;
+		var imgUrl = imageUrl;
 		// var imgSrc = document.getElementById('imgUpload').value;
 		var priorityInput = document.getElementById('prioritySticker')?.value;
 		var categoryInput = document.getElementById('categorySticker')?.selectedOptions[0].value;
 		var publishInput = document.getElementById('publishSticker')?.checked;
 		let data = {
 			name: nameInput,
-			url: ImageSrc,
+			url: imgUrl,
 			priority: Number(priorityInput),
 			category: categoryInput,
 			publish: publishInput
 		};
 		axios
-			.post('http://192.168.86.54:8090/save/sticker', data)
+			.post(`${globalUrl}/sticker/save`, data)
 			.then(function (response) {
 				console.log('Successfully Posted Article', response);
 			})

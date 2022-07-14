@@ -7,6 +7,7 @@
 	import DiMarkdown from 'svelte-icons/di/DiMarkdown.svelte';
 	import { previewImgFunc } from '../../utils/previewImgntbl';
 	import axios from 'axios';
+	import { globalUrl } from '../../utils/urls';
 
 	// import {
 	// 	getFirestore,
@@ -45,7 +46,7 @@
 	// 	});
 	// });
 
-	let url = 'http://192.168.86.54:8090/show/mostDownloaded';
+	let url = `${globalUrl}/show/mostDownloaded`;
 	// let url = 'https://jsonplaceholder.typicode.com/todos/';
 	export var mostDownloadedTemplatesArr = [];
 	onMount(() => {
@@ -145,7 +146,7 @@
 										// post:"/set-trending/{name}/{prev_status}",
 
 										axios
-											.delete(`http://192.168.86.54:8090/delete/catagory/${deleteItemId}`, {})
+											.delete(`${globalUrl}/delete/catagory/${deleteItemId}`, {})
 											.then(function (response) {
 												console.log(response);
 											})
@@ -189,10 +190,7 @@
 										// post:"/set-trending/{name}/{prev_status}",
 
 										axios
-											.post(
-												`http://192.168.86.54:8090/set-trending-status/${categoryName}/${isTrending}`,
-												{}
-											)
+											.post(`${globalUrl}/set-trending-status/${categoryName}/${isTrending}`, {})
 											.then(function (response) {
 												console.log(response);
 											})

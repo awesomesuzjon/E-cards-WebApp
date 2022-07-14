@@ -3,14 +3,15 @@
 	import Button from '../reusable/button.svelte';
 	import axios from 'axios';
 	import { onMount } from 'svelte';
+	import { globalUrl } from '../../utils/urls';
 
 	//category dropdown
 	var categoryOptionArr = [];
-	let categoryOptions = 'http://192.168.86.54:8090/category/list-names';
+	let categoryOptions = `${globalUrl}/category/show-name-list`;
 	onMount(() => {
 		fetch(categoryOptions).then((res) => {
 			res.json().then((data) => {
-				categoryOptionArr = data?.category_list ?? [];
+				categoryOptionArr = data?.categoryList ?? [];
 				// categoryArr = data;
 			});
 		});
@@ -41,7 +42,7 @@
 		};
 
 		axios
-			.post('http://192.168.86.54:8090/template/save', data)
+			.post(`${globalUrl}/template/save`, data)
 			.then(function (response) {
 				console.log('Successfully Added Template To Table', response);
 			})

@@ -18,6 +18,7 @@
 	// 	onSnapshot
 	// } from 'firebase/firestore';
 	import { onMount } from 'svelte';
+	import { globalUrl } from '../../utils/urls';
 
 	let Ecards = [];
 
@@ -46,7 +47,7 @@
 	// });
 	let priority = 0;
 
-	let url = 'http://192.168.86.54:8090/get/trendingtemplate';
+	let url = 'http://192.168.86.54:8090/template/show-trending-templates';
 	// let url = 'https://jsonplaceholder.typicode.com/todos/';
 	export var trendingTemplatesArr = [];
 	onMount(() => {
@@ -146,7 +147,7 @@
 										// post:"/set-trending/{name}/{prev_status}",
 
 										axios
-											.delete(`http://192.168.86.54:8090/delete/template/${deleteItemId}`, {})
+											.delete(`${globalUrl}/delete/template/${deleteItemId}`, {})
 											.then(function (response) {
 												console.log(response);
 											})
@@ -182,10 +183,7 @@
 										// post:"/set-trending/{name}/{prev_status}",
 
 										axios
-											.post(
-												`http://192.168.86.54:8090/update/trending/${templateId}/${isTrending}`,
-												{}
-											)
+											.post(`${globalUrl}/update/trending/${templateId}/${isTrending}`, {})
 											.then(function (response) {
 												console.log(response);
 											})

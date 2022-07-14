@@ -7,6 +7,7 @@
 	import DiMarkdown from 'svelte-icons/di/DiMarkdown.svelte';
 	import { previewImgFunc } from '../../utils/previewImgntbl';
 	import axios from 'axios';
+	import { globalUrl } from '../../utils/urls';
 
 	// import {
 	// 	getFirestore,
@@ -45,8 +46,7 @@
 	// 	});
 	// });
 
-	let url = 'http://192.168.86.54:8090/show/templates';
-	let trendingUrl = 'http://192.168.86.54:8090/get/trendingtemplate';
+	let url = `${globalUrl}/template/show-all-templates`;
 
 	export var allTemplatesArr = [];
 	var templatesTrendingArr = [];
@@ -144,7 +144,7 @@
 										// post:"/set-trending/{name}/{prev_status}",
 
 										axios
-											.delete(`http://192.168.86.54:8090/delete/template/${deleteItemId}`, {})
+											.delete(`${globalUrl}/delete/template/${deleteItemId}`, {})
 											.then(function (response) {
 												console.log(response);
 											})
@@ -181,10 +181,7 @@
 										// post:"/set-trending/{name}/{prev_status}",
 
 										axios
-											.post(
-												`http://192.168.86.54:8090/update/trending/${templateId}/${isTrending}`,
-												{}
-											)
+											.post(`${globalUrl}/update/trending/${templateId}/${isTrending}`, {})
 											.then(function (response) {
 												console.log(response);
 											})

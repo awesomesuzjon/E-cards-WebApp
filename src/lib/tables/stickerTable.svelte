@@ -8,14 +8,15 @@
 	import Pagination from '../reusable/pagination.svelte';
 	import { onMount } from 'svelte';
 	import axios from 'axios';
+	import { globalUrl } from '../../utils/urls';
 	var stickerArr = [];
 
 	onMount(() => {
 		//grpc backend data
-		let url = 'http://192.168.86.54:8090/get/stickers';
+		let url = `${globalUrl}/sticker/show-all-stickers`;
 		fetch(url).then((res) => {
 			res.json().then((data) => {
-				stickerArr = data?.all_sticker_list ?? [];
+				stickerArr = data?.allStickerList ?? [];
 				// categoryArr = data;
 				console.log(stickerArr);
 			});
@@ -74,7 +75,7 @@
 		</tr>
 
 		<!-- {#each paginatedItems as item} -->
-		{#each stickerArr as item}
+		{#each stickerArr as item, i}
 			<tr>
 				<th>
 					<label>
@@ -87,23 +88,31 @@
 				<td class=" px-8 py-2">{item.priority}</td>
 				<td class=" px-8 py-2">{item.category}</td>
 
-				<td class=" px-8 py-2">{item.is_trending}</td>
+				<td class=" px-8 py-2">{item.trending}</td>
 				<td class=" px-8 py-2">{item.publish}</td>
 				<td class=" px-8 py-2">
 					<!-- aa -->
 					<div class="flex justify-end  mt-4 mr-5">
-						<label for="my-modal" class=" modal-button">
-							<img class="w-4 h-auto flex justify-center items-center" src={item.url} alt="" />
+						<label for={i} class=" modal-button">
+							<img
+								class="w-4 h-auto flex justify-center items-center"
+								src={item.url}
+								alt={item.name}
+							/>
 						</label>
 					</div>
 
-					<input type="checkbox" id="my-modal" class="modal-toggle " />
+					<input type="checkbox" id={i} class="modal-toggle" />
 					<label
-						for="my-modal"
+						for={i}
 						class="modal cursor-pointer bg-gray-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-4xl bg-opacity-50  border border-gray-100"
 					>
 						<label class="modal-box relative" for="">
-							<img class="w-full h-auto flex justify-center items-center" alt="" src={item.url} />
+							<img
+								class="w-full h-auto flex justify-center items-center"
+								alt={item.name}
+								src={item.url}
+							/>
 						</label>
 					</label>
 					<!-- bb -->
@@ -138,7 +147,7 @@
 										// post:"/set-trending/{name}/{prev_status}",
 
 										axios
-											.delete(`http://192.168.86.54:8090/sticker/delete/${stickerItemId}`, {})
+											.delete(`${globalUrl}/sticker/delete/${stickerItemId}`, {})
 											.then(function (response) {
 												console.log(response);
 											})
@@ -173,10 +182,7 @@
 										// post:"/set-trending/{name}/{prev_status}",
 
 										axios
-											.post(
-												`http://192.168.86.54:8090/sticker/set-trending/${stickerItemId}/${isTrending}`,
-												{}
-											)
+											.post(`${globalUrl}/sticker/set-trending/${stickerItemId}/${isTrending}`, {})
 											.then(function (response) {
 												console.log(response);
 											})
