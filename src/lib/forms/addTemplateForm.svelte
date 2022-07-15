@@ -2,6 +2,8 @@
 	import { getFirestore, addDoc, deleteDoc, doc, collection, onSnapshot } from 'firebase/firestore';
 	import Button from '../reusable/button.svelte';
 	import axios from 'axios';
+	import { imageSrcStore } from '../../stores/imgSrc';
+
 	import { onMount } from 'svelte';
 	import { globalUrl } from '../../utils/urls';
 
@@ -63,8 +65,13 @@
 		reader.onload = (e) => {
 			var uploadImageSrc = e.target.result;
 			imageSrcStore.set(uploadImageSrc);
+			console.log(uploadImageSrc)
 		};
 	}
+	imageSrcStore.subscribe((imageSrcStore) => {
+		imageUrl = imageSrcStore;
+	});
+	console.log(imageUrl);
 </script>
 
 <div class="flex flex-col justify-center items-center text-sm my-4  p-2 dark:text-white">

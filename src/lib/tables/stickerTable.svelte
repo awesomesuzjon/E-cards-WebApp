@@ -39,7 +39,7 @@
 		});
 	});
 	let priority = 0;
-	//initialiaze an array to store stickers from firestore
+	//initialiaze an array to store stickers from backend
 	var stickers = [];
 	paginationStickerStore.subscribe((paginationStickerStore) => {
 		stickers = paginationStickerStore;
