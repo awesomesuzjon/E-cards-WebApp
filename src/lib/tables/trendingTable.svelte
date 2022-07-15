@@ -45,14 +45,13 @@
 	// 	});
 	// });
 
-	let url = 'http://192.168.86.54:8090/template/show-trending-templates';
-	let jsonUrl = 'https://jsonplaceholder.typicode.com/todos/';
+	// let jsonUrl = 'https://jsonplaceholder.typicode.com/todos/';
 	export var trendingTemplatesArr = [];
 	onMount(() => {
-		fetch(jsonUrl).then((res) => {
+		fetch(`${globalUrl}/template/show-trending-templates`).then((res) => {
 			res.json().then((data) => {
-				// trendingTemplatesArr = data?.templates ?? [];
-				trendingTemplatesArr = data;
+				trendingTemplatesArr = data?.templates ?? [];
+				// trendingTemplatesArr = data;
 				paginationtrendingTemplatesTableStore.set(trendingTemplatesArr);
 			});
 		});
@@ -63,6 +62,7 @@
 	var trendingTemplates = [];
 	paginationtrendingTemplatesTableStore.subscribe((paginationtrendingTemplatesTableStore) => {
 		trendingTemplates = paginationtrendingTemplatesTableStore;
+		console.log(trendingTemplates);
 	});
 </script>
 
@@ -78,11 +78,11 @@
 			</th>
 			<th class="bg-red-700  text-white  px-8 py-2 text-center dark:bg-gray-800 ">Id</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Title</th>
-			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Preview</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Tags</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Category</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Priority</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">isTrending</th>
+			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Preview</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
 		</tr>
 
@@ -97,7 +97,7 @@
 				<td class=" px-8 py-2">{item.id}</td>
 				<td class=" px-8 py-2">{item.title}</td>
 				<td class=" px-8 py-2">{item.tags}</td>
-				<td class=" px-8 py-2">{item.category_name}</td>
+				<td class=" px-8 py-2">{item.categoryName}</td>
 				<td class=" px-8 py-2">{item.priority}</td>
 				<td class=" px-8 py-2">{item.trending}</td>
 				<td class=" px-8 py-2">
@@ -136,13 +136,12 @@
 								title="Delete"
 								on:click={() => {
 									var deleteItemId = item.id;
-									var deleteItemName = item.name;
 									console.log(deleteItemId, 'is my id');
 									async function deleteTemplate(id) {
 										// post:"/set-trending/{name}/{prev_status}",
 
 										axios
-											.delete(`${globalUrl}/delete/template/${deleteItemId}`, {})
+											.delete(`${globalUrl}/template/delete/${deleteItemId}`, {})
 											.then(function (response) {
 												console.log(response);
 											})
@@ -165,7 +164,7 @@
 								on:click={() => {
 									var templateId = item.id;
 									var id = item.id;
-									var isTrending = item.is_trending;
+									var isTrending = item.trending;
 									console.log(isTrending);
 									console.log(id);
 
@@ -173,7 +172,7 @@
 										// post:"/set-trending/{name}/{prev_status}",
 
 										axios
-											.post(`${globalUrl}/update/trending/${templateId}/${isTrending}`, {})
+											.post(`${globalUrl}/template/set-trending/${templateId}/${isTrending}`, {})
 											.then(function (response) {
 												console.log(response);
 											})

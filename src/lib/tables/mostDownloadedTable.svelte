@@ -46,14 +46,13 @@
 	// 	});
 	// });
 
-	let url = `${globalUrl}/show/mostDownloaded`;
+	let url = `${globalUrl}/template/show-most-downloaded-templates`;
 	// let url = 'https://jsonplaceholder.typicode.com/todos/';
 	export var mostDownloadedTemplatesArr = [];
 	onMount(() => {
 		fetch(url).then((res) => {
 			res.json().then((data) => {
 				mostDownloadedTemplatesArr = data?.templates ?? [];
-				// categoryArr = data;
 				console.log(mostDownloadedTemplatesArr, 'this is category array ');
 			});
 		});
@@ -72,11 +71,11 @@
 	<!-- <div class="relative"> -->
 	<table class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-gray-100  ">
 		<tr id="templatesTableRow" class="">
-			<th class="bg-red-700">
+			<!-- <th class="bg-red-700">
 				<label>
 					<input type="checkbox" class="checkbox" />
 				</label>
-			</th>
+			</th> -->
 			<th class="bg-red-700  text-white  px-8 py-2 text-center dark:bg-gray-800 ">Id</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Title</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Preview</th>
@@ -90,11 +89,11 @@
 		<!-- {#each paginatedItems as item} -->
 		{#each mostDownloadedTemplatesArr as item}
 			<tr>
-				<th>
+				<!-- <th>
 					<label>
 						<input type="checkbox" class="checkbox" />
 					</label>
-				</th>
+				</th> -->
 				<td class=" px-8 py-2">{item.id}</td>
 				<td class=" px-8 py-2">{item.title}</td>
 				<td class=" px-8 py-2 " id="toggleImgBtn">
@@ -104,7 +103,7 @@
 				<td class=" px-8 py-2">{item.tags}</td>
 				<td class=" px-8 py-2">{item.categoryName}</td>
 				<td class=" px-8 py-2">{item.priority}</td>
-				<td class=" px-8 py-2">{item.isTrending}</td>
+				<td class=" px-8 py-2">{item.trending}</td>
 
 				<td>
 					<!-- <div class="collapse">

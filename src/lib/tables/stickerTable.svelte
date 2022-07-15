@@ -12,15 +12,18 @@
 	import { globalUrl } from '../../utils/urls';
 	var stickerArr = [];
 
+	// pagination code
+	let paginatedItems = [];
+
+	$: paginatedItems;
 	onMount(() => {
 		//grpc backend data
 		let url = `${globalUrl}/sticker/show-all-stickers`;
-		let dummyUrl = 'https://fakestoreapi.com/products/';
-		fetch(dummyUrl).then((res) => {
+		// let dummyUrl = 'https://fakestoreapi.com/products/';
+		fetch(url).then((res) => {
 			res.json().then((data) => {
-				// stickerArr = data?.allStickerList ?? [];
-				// categoryArr = data;
-				stickerArr = data;
+				stickerArr = data?.allStickerList ?? [];
+				// stickerArr = data;
 				paginationStickerStore.set(stickerArr);
 			});
 		});
@@ -38,11 +41,11 @@
 			});
 		});
 	});
-	let priority = 0;
 	//initialiaze an array to store stickers from backend
 	var stickers = [];
 	paginationStickerStore.subscribe((paginationStickerStore) => {
 		stickers = paginationStickerStore;
+		console.log(stickers, 'is array data');
 	});
 	//init database services
 	const db = getFirestore();
@@ -50,10 +53,6 @@
 	//collection ref
 	const colRef = collection(db, 'Stickers');
 
-	// pagination code
-	let paginatedItems = [];
-
-	$: paginatedItems;
 	//image src
 </script>
 
@@ -121,12 +120,6 @@
 				</td>
 				<td>
 					<div class="flex justify-around items-center mb-2 list-none">
-						<li class="   text-sm w-4">
-							<!-- svelte-ignore a11y-missing-attribute -->
-							<a title="Edit">
-								<span><FaEdit /></span>
-							</a>
-						</li>
 						<li class=" text-sm  w-4 hover:bg-gray-300 p-0 cursor:move ">
 							<!-- svelte-ignore a11y-missing-attribute -->
 							<!-- <a
@@ -164,16 +157,12 @@
 							>
 						</li>
 						<!-- <div class="flex justify-around items-center"> -->
-						<li class="  text-sm  w-4 ">
-							<a href="/" title="Clone"> <MdContentCopy /> </a>
-						</li>
+								
 						<li class="  text-sm   w-4">
 							<!-- svelte-ignore a11y-missing-attribute -->
 							<a
 								title="Mark as Trending"
 								on:click={() => {
-									priority = 1;
-
 									var stickerItemId = item.id;
 									var id = item.id;
 									var isTrending = item.is_trending;

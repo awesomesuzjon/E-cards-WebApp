@@ -9,6 +9,23 @@
 
 	let files;
 
+	//image upload base64
+	var imageUrl = '';
+	function addFile(e) {
+		let image = e.target.files[0];
+		let reader = new FileReader();
+		reader.readAsDataURL(image);
+		reader.onload = (e) => {
+			var uploadImageSrc = e.target.result;
+			imageSrcStore.set(uploadImageSrc);
+			console.log(uploadImageSrc);
+		};
+	}
+	imageSrcStore.subscribe((imageSrcStore) => {
+		imageUrl = imageSrcStore;
+	});
+	console.log(imageUrl);
+
 	//category dropdown
 	var categoryOptionArr = [];
 	let categoryOptions = `${globalUrl}/category/show-name-list`;
@@ -38,12 +55,12 @@
 
 		let data = {
 			title: nameInput,
-			url: imageUrl,
+			url: imgUrl,
 			tags: tagInput,
 			priority: Number(priorityInput),
 			category_name: categoryInput
-			// publish: publishInput
 		};
+		console.log(data,'this is form data')
 
 		axios
 			.post(`${globalUrl}/template/save`, data)
@@ -55,23 +72,6 @@
 				console.log(error);
 			});
 	}
-
-	//image upload base64
-	var imageUrl = '';
-	function addFile(e) {
-		let image = e.target.files[0];
-		let reader = new FileReader();
-		reader.readAsDataURL(image);
-		reader.onload = (e) => {
-			var uploadImageSrc = e.target.result;
-			imageSrcStore.set(uploadImageSrc);
-			console.log(uploadImageSrc)
-		};
-	}
-	imageSrcStore.subscribe((imageSrcStore) => {
-		imageUrl = imageSrcStore;
-	});
-	console.log(imageUrl);
 </script>
 
 <div class="flex flex-col justify-center items-center text-sm my-4  p-2 dark:text-white">
@@ -138,10 +138,7 @@
 			</select>
 		</div>
 		<br />
-		<div class="flex my-4">
-			<input type="checkbox" name="publishTemplate" id="publishTemplate" class="mx-2" />
-			<span>Publish</span>
-		</div>
+
 		<Button>Add Template</Button>
 	</form>
 </div>

@@ -12,11 +12,11 @@
 	import { paginationMessageStore } from '../../stores/paginationStore';
 	var messageArr = [];
 	onMount(() => {
-		// fetch(`${globalUrl}/message/show-all-message`).then((res) => {
-		fetch('https://fakestoreapi.com/products').then((res) => {
+		fetch(`${globalUrl}/message/show-all-message`).then((res) => {
+		// fetch('https://fakestoreapi.com/products').then((res) => {
 			res.json().then((data) => {
-				// messageArr = data?.allMessageList ?? [];
-				messageArr = data;
+				messageArr = data?.allMessageList ?? [];
+				// messageArr = data;
 				paginationMessageStore.set(messageArr);
 			});
 		});
@@ -92,7 +92,6 @@
 								title="Delete"
 								on:click={() => {
 									var deleteItemId = item.id;
-									var deleteItemName = item.name;
 									console.log(deleteItemId, 'is my id');
 									async function deleteTemplate(id) {
 										// post:"/set-trending/{name}/{prev_status}",

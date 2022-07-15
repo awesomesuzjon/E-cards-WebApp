@@ -45,54 +45,71 @@
 	// 	});
 	// });
 
-	var src = 'admin.png';
+	//category fetch
+	var categoryOptionArr = [];
+	onMount(() => {
+		fetch(`${globalUrl}/category/show-name-list`).then((res) => {
+			res.json().then((data) => {
+				categoryOptionArr = data?.categoryList ?? [];
+				// categoryArr = data;
+			});
+			console.log(categoryOptionArr);
+		});
+	});
+
 	let url = `${globalUrl}/template/show-all-templates`;
-	let jsonUrl = `https://fakestoreapi.com/products`;
+	// let jsonUrl = `https://fakestoreapi.com/products`;
 
 	export var allTemplatesArr = [];
 
 	onMount(() => {
-		fetch(jsonUrl).then((res) => {
+		fetch(url).then((res) => {
 			res.json().then((data) => {
-				// allTemplatesArr = data?.templates ?? [];
-				allTemplatesArr = data;
+				allTemplatesArr = data?.templates ?? [];
+				// allTemplatesArr = data;
 				paginationtemplatesTableStore.set(allTemplatesArr);
 			});
 		});
 	});
+
+	function postCategoryValue() {
+		var categoryValue = document.getElementById('categoryTemplateValue')?.selectedOptions[0].value;
+		console.log(categoryValue, 'is vallue choosen');
+	}
 	///pagination code
 
 	var allTemplates = [];
 	paginationtemplatesTableStore.subscribe((paginationtemplatesTableStore) => {
 		allTemplates = paginationtemplatesTableStore;
 	});
-
-	//form value data collection
-	var categoryOptionArr = [];
-	async function postTemplate() {
-		var nameInput = document.getElementById('nameTemplate')?.value;
-		console.log(nameInput, 'nameInput');
-		// var ImageSrc = uploadImageSrc;
-		var priorityInput = document.getElementById('priorityTemplate')?.value;
-		console.log(priorityInput, 'priorityInput');
-
-		var tagInput = document.getElementById('tagTemplate')?.value;
-
-		var categoryInput = document.getElementById('categoryTemplate')?.selectedOptions[0].value;
-		console.log(categoryInput, 'categoryInputsssssssssssss');
-	}
 </script>
 
 <!-- this is category dropdown -->
 <div class="flex my-4 items-center">
 	<label
 		class=" my-2 label-optional label-optional-personal label-required-public"
-		for="categoryTemplate"><h1>Category:</h1></label
+		for="categoryTemplateValue"><h1>Category:</h1></label
 	>
-	<select id="categoryTemplate" name="categoryTemplate" class=" text-sm h-8 mx-2" required>
+	<select id="categoryTemplateValue" name="categoryTemplate" class=" text-sm h-8 mx-2" required>
 		<option value="">Select a category</option>
 		{#each categoryOptionArr as item}
-			<option value={item}>{item}</option>\
+			<option
+				value={item}
+				on:click={() => {
+					var categoryName = item;
+					async function categoryNameFunc(categoryName) {
+						axios
+							.get(`${globalUrl}/template/get-templates-of-this-category/${categoryName}`, {})
+							.then(function (response) {
+								console.log(response);
+							})
+							.catch(function (error) {
+								console.log(error);
+							});
+					}
+					categoryNameFunc(categoryName);
+				}}>{item}</option
+			>
 		{/each}
 	</select>
 </div>
@@ -104,7 +121,7 @@
 	<table class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-gray-100  ">
 		<tr id="templatesTableRow" class="">
 			<!-- <th class="bg-red-700"> -->
-				<!-- <label>
+			<!-- <label>
 					<input type="checkbox" class="checkbox" />
 				</label> -->
 			<!-- </th> -->
@@ -118,7 +135,7 @@
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
 		</tr>
 
-		{#each paginatedItems as item}
+		{#each paginatedItems as item, i}
 			<!-- {#each allTemplatesArr as item} -->
 			<tr>
 				<!-- <th>
@@ -131,18 +148,26 @@
 				<td class=" px-8 py-2">{item.title}</td>
 				<!-- on click of image open image modal -->
 				<div class="flex justify-end  mt-4 mr-5">
-					<label for="i" class=" modal-button">
-						<img class="w-4 h-auto flex justify-center items-center" {src} alt={item.name} />
+					<label for={i} class=" modal-button">
+						<img
+							class="w-4 h-auto flex justify-center items-center"
+							src={item.url}
+							alt={item.name}
+						/>
 					</label>
 				</div>
 
-				<input type="checkbox" id="i" class="modal-toggle" />
+				<input type="checkbox" id={i} class="modal-toggle" />
 				<label
-					for="i"
+					for={i}
 					class="modal cursor-pointer bg-gray-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-4xl bg-opacity-50  border border-gray-100"
 				>
 					<label class="modal-box relative" for="">
-						<img class="w-full h-auto flex justify-center items-center" alt={item.name} {src} />
+						<img
+							class="w-full h-auto flex justify-center items-center"
+							alt={item.name}
+							src={item.url}
+						/>
 					</label>
 				</label>
 				<!-- bb -->
@@ -166,7 +191,7 @@
 										// post:"/set-trending/{name}/{prev_status}",
 
 										axios
-											.delete(`${globalUrl}/delete/template/${deleteItemId}`, {})
+											.delete(`${globalUrl}/template/delete/${deleteItemId}`, {})
 											.then(function (response) {
 												console.log(response);
 											})
@@ -189,11 +214,9 @@
 							<a
 								title="Mark as Trending"
 								on:click={() => {
-									priority = 1;
-
 									var templateId = item.id;
 									var id = item.id;
-									var isTrending = item.is_trending;
+									var isTrending = item.trending;
 									console.log(isTrending);
 									console.log(id);
 
@@ -201,7 +224,7 @@
 										// post:"/set-trending/{name}/{prev_status}",
 
 										axios
-											.post(`${globalUrl}/update/trending/${templateId}/${isTrending}`, {})
+											.post(`${globalUrl}/template/set-trending/${templateId}/${isTrending}`, {})
 											.then(function (response) {
 												console.log(response);
 											})

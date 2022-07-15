@@ -47,11 +47,11 @@
 	export var categoryArr = [];
 
 	onMount(() => {
-		// fetch(`${globalUrl}/category/show-all-category`).then((res) => {
-		fetch(`https://fakestoreapi.com/products`).then((res) => {
+		fetch(`${globalUrl}/category/show-all-category`).then((res) => {
+			// fetch(`https://fakestoreapi.com/products`).then((res) => {
 			res.json().then((data) => {
-				// categoryArr = data?.categories ?? [];
-				categoryArr = data;
+				categoryArr = data?.categories ?? [];
+				// categoryArr = data;
 				paginationCategoryStore.set(categoryArr);
 			});
 		});
@@ -96,22 +96,35 @@
 				<td class=" px-8 py-2">{item.priority}</td>
 				<td class=" px-8 py-2">{item.publish}</td>
 				<td class=" px-8 py-2">{item.trending}</td>
-				<!-- <td class=" px-8 py-2">{item.publish}</td> -->
-				<div class="flex justify-end  mt-4 mr-5">
-					<label for="my-modal" class=" modal-button">
-						<img class="w-4 h-auto flex justify-center items-center" src={item.url} alt="" />
-					</label>
-				</div>
 
-				<input type="checkbox" id={i} class="modal-toggle " />
-				<label
-					for={i}
-					class="modal cursor-pointer bg-gray-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-4xl bg-opacity-50  border border-gray-100"
-				>
-					<label class="modal-box relative" for={i}>
-						<img class="w-full h-auto flex justify-center items-center" alt="" src={item.url} />
+				<td class=" px-8 py-2 items-center">
+					<!-- on click of image open image modal -->
+					<div class="flex justify-end  mt-4 mr-5 items-center">
+						<label for={i} class=" modal-button">
+							<img
+								class="w-4 h-auto flex justify-center items-center"
+								src={item.url}
+								alt={item.name}
+							/>
+						</label>
+					</div>
+
+					<input type="checkbox" id={i} class="modal-toggle" />
+					<label
+						for={i}
+						class="modal cursor-pointer bg-gray-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-4xl bg-opacity-50  border border-gray-100"
+					>
+						<label class="modal-box relative" for="">
+							<img
+								class="w-full h-auto flex justify-center items-center"
+								alt={item.name}
+								src={item.url}
+							/>
+						</label>
 					</label>
-				</label>
+					<!-- bb -->
+				</td>
+
 				<td>
 					<div
 						class="flex justify-around items-center 
