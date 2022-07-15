@@ -113,7 +113,7 @@
 	// <!-- <button on:click={()=>postArticle(data)}>here</button> -->
 </script>
 
-<div class="flex flex-col justify-center items-center text-sm ">
+<div class="flex flex-col justify-center items-center text-sm  dark:text-white">
 	<form
 		class="addCategoryForm text-sm"
 		on:submit={(e) => {
@@ -129,7 +129,7 @@
 				id="fname"
 				name="name"
 				required
-				class="border-b-2 bg-gray-100 hover:bg-gray-200 h-8 hover:no-underline"
+				class="border-b-2 bg-gray-100 dark:text-black hover:bg-gray-200 h-8 hover:no-underline"
 			/>
 		</div>
 		<div>
@@ -139,15 +139,15 @@
 				id="priority"
 				name="priority"
 				required
-				class="border-b-2 bg-gray-100 hover:bg-gray-200  h-8 hover:no-underline"
+				class="border-b-2 bg-gray-100 dark:text-black hover:bg-gray-200  h-8 hover:no-underline"
 			/>
 		</div>
-		<div class="flex justify-center my-4">
+		<div class="flex justify-center items-center  my-4">
 			<label for="name">Upload Sticker : </label>
 			<input
 				type="file"
 				id="uploadImageSrc"
-				class="w-60 mx-2"
+				class="w-60 mx-2 dark:bg-red-700"
 				accept="image/*"
 				name="preview"
 				bind:files

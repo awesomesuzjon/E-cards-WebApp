@@ -8,6 +8,7 @@
 	import { previewImgFunc } from '../../utils/previewImgntbl';
 	import axios from 'axios';
 	import { globalUrl } from '../../utils/urls';
+	import { paginationtemplatesTableStore } from '../../stores/paginationStore';
 
 	// import {
 	// 	getFirestore,
@@ -19,8 +20,6 @@
 	// 	onSnapshot
 	// } from 'firebase/firestore';
 	import { onMount } from 'svelte';
-
-	let Ecards = [];
 
 	///pagination code
 	let paginatedItems = [];
@@ -46,50 +45,71 @@
 	// 	});
 	// });
 
+	//category fetch
+	var categoryOptionArr = [];
+	onMount(() => {
+		fetch(`${globalUrl}/category/show-name-list`).then((res) => {
+			res.json().then((data) => {
+				categoryOptionArr = data?.categoryList ?? [];
+				// categoryArr = data;
+			});
+			console.log(categoryOptionArr);
+		});
+	});
+
 	let url = `${globalUrl}/template/show-all-templates`;
-	let optionsUrl = `${globalUrl}/template/show-all-templates`;
+	// let jsonUrl = `https://fakestoreapi.com/products`;
 
 	export var allTemplatesArr = [];
-	var templatesTrendingArr = [];
-	let priority = 0;
 
 	onMount(() => {
 		fetch(url).then((res) => {
 			res.json().then((data) => {
 				allTemplatesArr = data?.templates ?? [];
-				// categoryArr = data;
-				console.log(allTemplatesArr, 'this is category array ');
+				// allTemplatesArr = data;
+				paginationtemplatesTableStore.set(allTemplatesArr);
 			});
 		});
 	});
 
-	//form value data collection
-	var categoryOptionArr = [];
-	let ImageSrc = 'ballon.jpg';
-	async function postTemplate() {
-		var nameInput = document.getElementById('nameTemplate')?.value;
-		console.log(nameInput, 'nameInput');
-		// var ImageSrc = uploadImageSrc;
-		var priorityInput = document.getElementById('priorityTemplate')?.value;
-		console.log(priorityInput, 'priorityInput');
-
-		var tagInput = document.getElementById('tagTemplate')?.value;
-
-		var categoryInput = document.getElementById('categoryTemplate')?.selectedOptions[0].value;
-		console.log(categoryInput, 'categoryInputsssssssssssss');
+	function postCategoryValue() {
+		var categoryValue = document.getElementById('categoryTemplateValue')?.selectedOptions[0].value;
+		console.log(categoryValue, 'is vallue choosen');
 	}
+	///pagination code
+
+	var allTemplates = [];
+	paginationtemplatesTableStore.subscribe((paginationtemplatesTableStore) => {
+		allTemplates = paginationtemplatesTableStore;
+	});
 </script>
 
 <!-- this is category dropdown -->
 <div class="flex my-4 items-center">
 	<label
 		class=" my-2 label-optional label-optional-personal label-required-public"
-		for="categoryTemplate"><h1>Category:</h1></label
+		for="categoryTemplateValue"><h1>Category:</h1></label
 	>
-	<select id="categoryTemplate" name="categoryTemplate" class=" text-sm h-8 mx-2" required>
+	<select id="categoryTemplateValue" name="categoryTemplate" class=" text-sm h-8 mx-2" required>
 		<option value="">Select a category</option>
 		{#each categoryOptionArr as item}
-			<option value={item}>{item}</option>\
+			<option
+				value={item}
+				on:click={() => {
+					var categoryName = item;
+					async function categoryNameFunc(categoryName) {
+						axios
+							.get(`${globalUrl}/template/get-templates-of-this-category/${categoryName}`, {})
+							.then(function (response) {
+								console.log(response);
+							})
+							.catch(function (error) {
+								console.log(error);
+							});
+					}
+					categoryNameFunc(categoryName);
+				}}>{item}</option
+			>
 		{/each}
 	</select>
 </div>
@@ -97,21 +117,14 @@
 <!-- ????????-->
 <!-- </div> -->
 <div class="flex mt-4 ">
-	<img
-		id="targetContent"
-		class="z-50    absolute w-4/12 h-4/5 hidden   justify-center"
-		src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/holi-design-template-44ce589f65c0ac4315a373fff00def9d_screen.jpg?ts=1600223391"
-		alt=""
-	/>
-
 	<!-- <div class="relative"> -->
 	<table class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-gray-100  ">
 		<tr id="templatesTableRow" class="">
-			<th class="bg-red-700">
-				<label>
+			<!-- <th class="bg-red-700"> -->
+			<!-- <label>
 					<input type="checkbox" class="checkbox" />
-				</label>
-			</th>
+				</label> -->
+			<!-- </th> -->
 			<th class="bg-red-700  text-white  px-8 py-2 text-center dark:bg-gray-800 ">Id</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Title</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Preview</th>
@@ -122,19 +135,42 @@
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
 		</tr>
 
-		<!-- {#each paginatedItems as item} -->
-		{#each allTemplatesArr as item}
+		{#each paginatedItems as item, i}
+			<!-- {#each allTemplatesArr as item} -->
 			<tr>
-				<th>
+				<!-- <th>
 					<label>
 						<input type="checkbox" class="checkbox" />
 					</label>
-				</th>
+				</th> -->
+
 				<td class=" px-8 py-2">{item.id}</td>
 				<td class=" px-8 py-2">{item.title}</td>
-				<td class=" px-8 py-2 " id="toggleImgBtn">
-					<span><button on:click={previewImgFunc}>👁</button></span>
-				</td>
+				<!-- on click of image open image modal -->
+				<div class="flex justify-end  mt-4 mr-5">
+					<label for={i} class=" modal-button">
+						<img
+							class="w-4 h-auto flex justify-center items-center"
+							src={item.url}
+							alt={item.name}
+						/>
+					</label>
+				</div>
+
+				<input type="checkbox" id={i} class="modal-toggle" />
+				<label
+					for={i}
+					class="modal cursor-pointer bg-gray-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-4xl bg-opacity-50  border border-gray-100"
+				>
+					<label class="modal-box relative" for="">
+						<img
+							class="w-full h-auto flex justify-center items-center"
+							alt={item.name}
+							src={item.url}
+						/>
+					</label>
+				</label>
+				<!-- bb -->
 
 				<td class=" px-8 py-2">{item.tags}</td>
 				<td class=" px-8 py-2">{item.categoryName}</td>
@@ -142,30 +178,9 @@
 				<td class=" px-8 py-2">{item.trending}</td>
 
 				<td>
-					<!-- <div class="collapse">
-						<input type="checkbox" class="peer" />
-						<div class="collapse-title ">
-							<Button>:</Button>
-						</div>
-						<div class="collapse-content  ">
-							<div class="  justify-center relative   " id="toggleContent">
-								<ul class="  h-auto  "> -->
 					<div class="flex justify-around items-center mb-2 list-none">
 						<li class=" text-sm  w-4 hover:bg-gray-300 p-0 cursor:move ">
 							<!-- svelte-ignore a11y-missing-attribute -->
-							<!-- <a
-												title="Delete"
-												on:click={//delete row on table through delete button
-												(e) => {
-													e.stopPropagation();
-
-													const docRef = doc(db, 'Stickers', card.Id);
-													console.log(card.Id, 'card item id');
-													deleteDoc(docRef);
-												}}
-											>
-												</a
-											> -->
 							<a
 								title="Delete"
 								on:click={() => {
@@ -176,7 +191,7 @@
 										// post:"/set-trending/{name}/{prev_status}",
 
 										axios
-											.delete(`${globalUrl}/delete/template/${deleteItemId}`, {})
+											.delete(`${globalUrl}/template/delete/${deleteItemId}`, {})
 											.then(function (response) {
 												console.log(response);
 											})
@@ -199,11 +214,9 @@
 							<a
 								title="Mark as Trending"
 								on:click={() => {
-									priority = 1;
-
 									var templateId = item.id;
 									var id = item.id;
-									var isTrending = item.is_trending;
+									var isTrending = item.trending;
 									console.log(isTrending);
 									console.log(id);
 
@@ -211,7 +224,7 @@
 										// post:"/set-trending/{name}/{prev_status}",
 
 										axios
-											.post(`${globalUrl}/update/trending/${templateId}/${isTrending}`, {})
+											.post(`${globalUrl}/template/set-trending/${templateId}/${isTrending}`, {})
 											.then(function (response) {
 												console.log(response);
 											})
@@ -239,5 +252,5 @@
 <!-- </div>   -->
 
 <div class="mx-5">
-	<Pagination items={Ecards} bind:paginatedItems />
+	<Pagination items={allTemplates} bind:paginatedItems />
 </div>

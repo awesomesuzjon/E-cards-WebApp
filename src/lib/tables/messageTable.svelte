@@ -8,17 +8,27 @@
 	import axios from 'axios';
 	import { onMount } from 'svelte';
 	import { globalUrl } from '../../utils/urls';
+	import Pagination from '../reusable/pagination.svelte';
+	import { paginationMessageStore } from '../../stores/paginationStore';
 	var messageArr = [];
 	onMount(() => {
 		fetch(`${globalUrl}/message/show-all-message`).then((res) => {
+		// fetch('https://fakestoreapi.com/products').then((res) => {
 			res.json().then((data) => {
 				messageArr = data?.allMessageList ?? [];
-				// categoryArr = data;
+				// messageArr = data;
+				paginationMessageStore.set(messageArr);
 			});
 		});
 	});
-
-	let priority = 0;
+	//pagination setup
+	var messages = [];
+	paginationMessageStore.subscribe((paginationMessageStore) => {
+		messages = paginationMessageStore;
+	});
+	// pagination code
+	let paginatedItems = [];
+	$: paginatedItems;
 </script>
 
 <svelte:head>
@@ -35,7 +45,7 @@
 <!-- Put this part before </body> tag -->
 <input type="checkbox" id="my-modal-4" class="modal-toggle" />
 <label for="my-modal-4" class="modal cursor-pointer">
-	<label class="modal-box relative" for="">
+	<label class="modal-box relative dark:bg-gray-600" for="">
 		<AddMessagesForm />
 	</label>
 </label>
@@ -44,9 +54,9 @@
 	<table class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-gray-100  ">
 		<tr id="templatesTableRow" class="">
 			<th class="bg-red-700 dark:bg-gray-800">
-				<label>
+				<!-- <label>
 					<input type="checkbox" class="checkbox" />
-				</label>
+				</label> -->
 			</th>
 			<th class="bg-red-700  text-white  px-8 py-2 text-center dark:bg-gray-800 ">Id</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Message</th>
@@ -58,14 +68,15 @@
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
 		</tr>
 
-		{#each messageArr as item}
+		<!-- {#each messageArr as item} -->
+		{#each paginatedItems as item}
 			<tr>
 				<th>
-					<label>
+					<!-- <label>
 						<input type="checkbox" class="checkbox" />
-					</label>
+					</label> -->
 				</th>
-				<td class=" px-8 py-2 text-black">{item.id}</td>
+				<td class=" px-8 py-2 ">{item.id}</td>
 				<td class=" px-8 py-2">{item.message}</td>
 				<td class=" px-8 py-2">{item.category}</td>
 
@@ -75,29 +86,12 @@
 
 				<td>
 					<div class="flex justify-around items-center mb-2 list-none">
-						<li class="   text-sm w-4">
-							<a href="/" title="Edit">
-								<span><FaEdit /></span>
-							</a>
-						</li>
 						<li class=" text-sm  w-4 hover:bg-gray-300 p-0 cursor:move ">
 							<!-- svelte-ignore a11y-missing-attribute -->
-							<!-- <a
-								title="Delete"
-							 on:click={//delete row on table through delete button
-								(e) => {
-									e.stopPropagation();
-
-									const docRef = doc(db, 'Category', item.Id);
-									deleteDoc(docRef);
-								}} 
-							>
-								<MdDelete /></a -->
 							<a
 								title="Delete"
 								on:click={() => {
 									var deleteItemId = item.id;
-									var deleteItemName = item.name;
 									console.log(deleteItemId, 'is my id');
 									async function deleteTemplate(id) {
 										// post:"/set-trending/{name}/{prev_status}",
@@ -120,17 +114,12 @@
 							>
 						</li>
 
-						<li class="  text-sm  w-4 ">
-							<a href="/" title="Clone"> <MdContentCopy /> </a>
-						</li>
 						<li class="  text-sm   w-4">
 							<!-- svelte-ignore a11y-missing-attribute -->
 
 							<a
 								title="Mark as Trending"
 								on:click={() => {
-									priority = 1;
-
 									var messageId = item.id;
 									var id = item.id;
 									var isTrending = item.trending;
@@ -159,4 +148,7 @@
 			</tr>
 		{/each}
 	</table>
+</div>
+<div class="mx-5">
+	<Pagination items={messages} bind:paginatedItems />
 </div>

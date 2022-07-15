@@ -6,27 +6,33 @@
 	import DiMarkdown from 'svelte-icons/di/DiMarkdown.svelte';
 	import { getFirestore, addDoc, deleteDoc, doc, collection, onSnapshot } from 'firebase/firestore';
 	import Pagination from '../reusable/pagination.svelte';
+	import { paginationStickerStore } from '../../stores/paginationStore';
 	import { onMount } from 'svelte';
 	import axios from 'axios';
 	import { globalUrl } from '../../utils/urls';
 	var stickerArr = [];
 
+	// pagination code
+	let paginatedItems = [];
+
+	$: paginatedItems;
 	onMount(() => {
 		//grpc backend data
 		let url = `${globalUrl}/sticker/show-all-stickers`;
+		// let dummyUrl = 'https://fakestoreapi.com/products/';
 		fetch(url).then((res) => {
 			res.json().then((data) => {
 				stickerArr = data?.allStickerList ?? [];
-				// categoryArr = data;
-				console.log(stickerArr);
+				// stickerArr = data;
+				paginationStickerStore.set(stickerArr);
 			});
 		});
 
 		//firebase code
 		onSnapshot(colRef, (snapshot) => {
 			snapshot.docs.forEach((doc) => {
-				Stickers = [
-					...Stickers,
+				stickers = [
+					...stickers,
 					{
 						...doc.data(),
 						Id: doc.id
@@ -35,33 +41,28 @@
 			});
 		});
 	});
-	let priority = 0;
-	//initialiaze an array to store stickers from firestore
-	var Stickers = [];
-	$: Stickers = [];
-
+	//initialiaze an array to store stickers from backend
+	var stickers = [];
+	paginationStickerStore.subscribe((paginationStickerStore) => {
+		stickers = paginationStickerStore;
+		console.log(stickers, 'is array data');
+	});
 	//init database services
 	const db = getFirestore();
 
 	//collection ref
 	const colRef = collection(db, 'Stickers');
 
-	// pagination code
-	let paginatedItems = [];
-	$: paginatedItems;
 	//image src
-	function getImgSrc(e) {
-		console.log(target.Id);
-	}
 </script>
 
 <div class="flex mt-4 ">
 	<table class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-gray-100  ">
 		<tr id="templatesTableRow" class="">
 			<th class="bg-red-700 dark:bg-gray-800">
-				<label>
+				<!-- <label>
 					<input type="checkbox" class="checkbox" />
-				</label>
+				</label> -->
 			</th>
 			<th class="bg-red-700  text-white  px-8 py-2 text-center dark:bg-gray-800 ">Id</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Sticker Name</th>
@@ -75,14 +76,14 @@
 		</tr>
 
 		<!-- {#each paginatedItems as item} -->
-		{#each stickerArr as item, i}
+		{#each paginatedItems as item, i}
 			<tr>
 				<th>
-					<label>
+					<!-- <label>
 						<input type="checkbox" class="checkbox" />
-					</label>
+					</label> -->
 				</th>
-				<td class=" px-8 py-2 text-black">{item.id}</td>
+				<td class=" px-8 py-2 ">{item.id}</td>
 				<td class=" px-8 py-2">{item.name}</td>
 
 				<td class=" px-8 py-2">{item.priority}</td>
@@ -91,7 +92,7 @@
 				<td class=" px-8 py-2">{item.trending}</td>
 				<td class=" px-8 py-2">{item.publish}</td>
 				<td class=" px-8 py-2">
-					<!-- aa -->
+					<!-- on click of image open image modal -->
 					<div class="flex justify-end  mt-4 mr-5">
 						<label for={i} class=" modal-button">
 							<img
@@ -119,12 +120,6 @@
 				</td>
 				<td>
 					<div class="flex justify-around items-center mb-2 list-none">
-						<li class="   text-sm w-4">
-							<!-- svelte-ignore a11y-missing-attribute -->
-							<a title="Edit">
-								<span><FaEdit /></span>
-							</a>
-						</li>
 						<li class=" text-sm  w-4 hover:bg-gray-300 p-0 cursor:move ">
 							<!-- svelte-ignore a11y-missing-attribute -->
 							<!-- <a
@@ -162,16 +157,12 @@
 							>
 						</li>
 						<!-- <div class="flex justify-around items-center"> -->
-						<li class="  text-sm  w-4 ">
-							<a href="/" title="Clone"> <MdContentCopy /> </a>
-						</li>
+								
 						<li class="  text-sm   w-4">
 							<!-- svelte-ignore a11y-missing-attribute -->
 							<a
 								title="Mark as Trending"
 								on:click={() => {
-									priority = 1;
-
 									var stickerItemId = item.id;
 									var id = item.id;
 									var isTrending = item.is_trending;
@@ -208,5 +199,5 @@
 	</table>
 </div>
 <div class="mx-5">
-	<Pagination items={Stickers} bind:paginatedItems />
+	<Pagination items={stickers} bind:paginatedItems />
 </div>

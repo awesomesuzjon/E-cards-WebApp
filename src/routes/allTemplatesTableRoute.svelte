@@ -15,7 +15,6 @@
 			});
 		});
 	});
-	console.log(categoryOptionArr);
 </script>
 
 <svelte:head>

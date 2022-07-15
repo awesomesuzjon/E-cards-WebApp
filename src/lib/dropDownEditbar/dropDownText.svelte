@@ -53,7 +53,7 @@
 </script>
 
 <div
-	class="absolute top-0 right-0  bg-red-300 text-md text-white invisible  w-72 "
+	class="absolute top-0 right-0 dark:bg-gray-600  bg-red-300 text-md text-white invisible  w-72 "
 	id="textEditContainerId"
 >
 	<!-- <div class=" flex justify-end items-center text-sm  ">
@@ -64,7 +64,7 @@
 		<div id="collapse-contentId" class=" p-0">
 			<li class="p-0 list-none justify-center ">
 				<button
-					class=" btn bg-transparent border-none text-red-700 hover:border-1 hover:bg-transparent w-6 p-0   "
+					class=" btn bg-transparent border-none text-red-700 dark:text-gray-800 hover:border-1 hover:bg-transparent w-6 p-0   "
 					title="Delete"
 					on:click={deleteTarget}
 				>

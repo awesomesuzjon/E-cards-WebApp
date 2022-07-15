@@ -5,6 +5,7 @@
 	import MdContentCopy from 'svelte-icons/md/MdContentCopy.svelte';
 	import DiMarkdown from 'svelte-icons/di/DiMarkdown.svelte';
 	import Pagination from '../reusable/pagination.svelte';
+	import { paginationCategoryStore } from '../../stores/paginationStore';
 	import axios from 'axios';
 
 	//firebase setup here
@@ -43,14 +44,15 @@
 	import { onMount } from 'svelte';
 	import { globalUrl } from '../../utils/urls';
 
-	// let trendingUrl = 'http://192.168.86.54:8090/get/trendingtemplate';
 	export var categoryArr = [];
-	var categoryTrendingArr = [];
+
 	onMount(() => {
 		fetch(`${globalUrl}/category/show-all-category`).then((res) => {
+			// fetch(`https://fakestoreapi.com/products`).then((res) => {
 			res.json().then((data) => {
 				categoryArr = data?.categories ?? [];
 				// categoryArr = data;
+				paginationCategoryStore.set(categoryArr);
 			});
 		});
 	});
@@ -58,18 +60,19 @@
 	///pagination code
 	let paginatedItems = [];
 	$: paginatedItems;
-	let priority = 0;
-	// function markAsTrending() {
-	// }
+	var category = [];
+	paginationCategoryStore.subscribe((paginationCategoryStore) => {
+		category = paginationCategoryStore;
+	});
 </script>
 
 <div class="flex mt-4 ">
 	<table class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-gray-100  ">
 		<tr id="templatesTableRow" class="">
 			<th class="bg-red-700 dark:bg-gray-800">
-				<label>
+				<!-- <label>
 					<input type="checkbox" class="checkbox" />
-				</label>
+				</label> -->
 			</th>
 			<th class="bg-red-700  text-white  px-8 py-2 text-center dark:bg-gray-800 ">Id</th>
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Category Name</th>
@@ -80,53 +83,55 @@
 
 			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
 		</tr>
-		<!-- {#if priority == 0} -->
-		{#each categoryArr as item}
-			<!-- {#each paginatedItems as item} -->
-			<!-- {#each categoryTrendingArr as item} -->
-
+		<!-- {#each categoryArr as item} -->
+		{#each paginatedItems as item, i}
 			<tr>
 				<th>
-					<label>
+					<!-- <label>
 						<input type="checkbox" class="checkbox" />
-					</label>
+					</label> -->
 				</th>
-				<td class=" px-8 py-2 text-black">{item.id}</td>
+				<td class=" px-8 py-2 ">{item.id}</td>
 				<td class=" px-8 py-2">{item.name}</td>
 				<td class=" px-8 py-2">{item.priority}</td>
 				<td class=" px-8 py-2">{item.publish}</td>
 				<td class=" px-8 py-2">{item.trending}</td>
-				<!-- <td class=" px-8 py-2">{item.publish}</td> -->
-				<div class="flex justify-end  mt-4 mr-5">
-					<label for="my-modal" class=" modal-button">
-						<img class="w-4 h-auto flex justify-center items-center" src={item.url} alt="" />
-					</label>
-				</div>
 
-				<input type="checkbox" id="my-modal" class="modal-toggle " />
-				<label
-					for="my-modal"
-					class="modal cursor-pointer bg-gray-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-4xl bg-opacity-50  border border-gray-100"
-				>
-					<label class="modal-box relative" for="">
-						<img class="w-full h-auto flex justify-center items-center" alt="" src={item.url} />
+				<td class=" px-8 py-2 items-center">
+					<!-- on click of image open image modal -->
+					<div class="flex justify-end  mt-4 mr-5 items-center">
+						<label for={i} class=" modal-button">
+							<img
+								class="w-4 h-auto flex justify-center items-center"
+								src={item.url}
+								alt={item.name}
+							/>
+						</label>
+					</div>
+
+					<input type="checkbox" id={i} class="modal-toggle" />
+					<label
+						for={i}
+						class="modal cursor-pointer bg-gray-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-4xl bg-opacity-50  border border-gray-100"
+					>
+						<label class="modal-box relative" for="">
+							<img
+								class="w-full h-auto flex justify-center items-center"
+								alt={item.name}
+								src={item.url}
+							/>
+						</label>
 					</label>
-				</label>
+					<!-- bb -->
+				</td>
+
 				<td>
-					<div class="flex justify-around items-center mb-2 list-none">
+					<div
+						class="flex justify-around items-center 
+					mb-2 list-none"
+					>
 						<li class=" text-sm  w-4 hover:bg-gray-300 p-0 cursor:move " id="deleteBtn">
 							<!-- svelte-ignore a11y-missing-attribute -->
-							<!-- <a
-								title="Delete"
-							 on:click={//delete row on table through delete button
-								(e) => {
-									e.stopPropagation();
-
-									const docRef = doc(db, 'Category', item.Id);
-									deleteDoc(docRef);
-								}} 
-							>
-								<MdDelete /></a -->
 							<a
 								title="Delete"
 								on:click={() => {
@@ -214,4 +219,7 @@
 		<!-- {/each} -->
 		<!-- {/if} -->
 	</table>
+</div>
+<div class="mx-5">
+	<Pagination items={category} bind:paginatedItems />
 </div>

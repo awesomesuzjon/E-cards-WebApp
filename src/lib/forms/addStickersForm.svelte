@@ -7,7 +7,6 @@
 	import { globalUrl } from '../../utils/urls';
 
 	let files;
-	let uploadValue;
 
 	var categoryOptionArr = [];
 	onMount(() => {
@@ -52,7 +51,6 @@
 	// 		});
 	// 	});
 	// };
-	var imgArr = [];
 	var imageUrl = '';
 	function addFile(e) {
 		let image = e.target.files[0];
@@ -68,7 +66,6 @@
 	});
 	console.log(imageUrl);
 
-	let ImageSrc = 'admin.png';
 	async function postSticker() {
 		var nameInput = document.getElementById('nameSticker')?.value;
 		var imgUrl = imageUrl;
@@ -94,7 +91,7 @@
 	}
 </script>
 
-<div class="flex flex-col justify-center items-center text-sm my-4  p-2">
+<div class="flex flex-col justify-center items-center text-sm my-4  p-2 dark:text-white">
 	<form
 		class="addStickerForm "
 		on:submit={(e) => {
@@ -109,26 +106,26 @@
 				name="nameSticker"
 				id="nameSticker"
 				required
-				class="border-b-2 bg-gray-100 hover:bg-gray-200 h-8 hover:no-underline"
+				class="border-b-2 dark:text-black bg-gray-100 hover:bg-gray-200 h-8 hover:no-underline"
 			/>
 		</div>
-		<div class="my-4">
+		<div class="my-4 items-start">
 			<label for="priority">Priority:</label>
 			<input
 				type="number"
 				name="prioritySticker"
 				id="prioritySticker"
 				required
-				class="border-b-2 bg-gray-100 hover:bg-gray-200  h-8 hover:no-underline"
+				class="border-b-2 dark:text-black bg-gray-100 hover:bg-gray-200  h-8 hover:no-underline"
 			/>
 		</div>
 
-		<div class="flex justify-center my-4">
+		<div class="flex justify-center items-center my-4">
 			<label for="name">Upload Sticker : </label>
 			<input
 				type="file"
 				id="imgUpload"
-				class="w-60 mx-2"
+				class="w-60 mx-2 bg-red-700 dark:bg-red-700"
 				accept="image/*"
 				name="preview"
 				bind:files

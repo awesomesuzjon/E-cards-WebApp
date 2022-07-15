@@ -10,7 +10,7 @@ import DashboardStickerElement from '../lib/dashboard/dashboardStickerElement.sv
    <title>Dashboard</title>
   </svelte:head>
 
-<div class="grid grid-cols-3  gap-10 grid-flow-grid  mx-8 mt-8   ">
+<div class="grid grid-cols-3  gap-10 grid-flow-grid  mx-8 mt-8  dark:bg-gray-700  ">
  <DashboardTemplateElement/>
  <DashboardChartElement/>
  <DashboardMessageElement/>

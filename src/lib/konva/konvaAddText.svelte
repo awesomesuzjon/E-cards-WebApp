@@ -49,7 +49,6 @@
 				canvasBgImg.moveToBottom();
 				layer.add(canvasBgImg);
 				layer.draw();
-				
 
 				var removeBtn = document.getElementById('removeBgImg');
 				removeBtn.addEventListener('click', () => {
@@ -92,7 +91,6 @@
 			message.setZIndex(2);
 			layer.add(message);
 		});
-
 
 		//transformer for each clicked element on canvas
 		var previousTarget = null;
@@ -187,26 +185,6 @@
 				},
 				false
 			);
-		});
-
-		//save canvas into pdf format
-		document.getElementById('saveAsPdf').addEventListener('click', function () {
-			var pdf = new jsPDF('l', 'px', [stage.width(), stage.height()]);
-			pdf.setTextColor('#000000');
-			// first add texts
-			stage.find('Text').forEach((text) => {
-				const size = text.fontSize() / 0.75; // convert pixels to points
-				pdf.setFontSize(size);
-				pdf.text(text.text(), text.x(), text.y(), {
-					baseline: 'top',
-					angle: -text.getAbsoluteRotation()
-				});
-			});
-
-			// then put image on top of texts (so texts are not visible)
-			pdf.addImage(stage.toDataURL({ pixelRatio: 2 }), 0, 0, stage.width(), stage.height());
-
-			pdf.save('canvas.pdf');
 		});
 	});
 </script>
