@@ -6,78 +6,9 @@
 	import { globalUrl } from '../../utils/urls';
 	import { paginationCategoryStore } from '../../stores/paginationStore';
 
-	// let files;
-	// let uploadValue;
-
-	// function addFile(e) {
-	// 	let image = e.target.files[0];
-	// 	let reader = new FileReader();
-	// 	reader.readAsDataURL(image);
-	// 	reader.onload = (e) => {
-	// 		uploadValue = e.target.result;
-	// 	};
-	// }
-
-	// const db = getFirestore();
-
-	// const colRef = collection(db, 'Category');
-
-	// const storeNewValues = () => {
-	// 	const addCategoryForm = document.querySelector('.addCategoryForm');
-	// 	addDoc(colRef, {
-	// 		Name: addCategoryForm.name.value,
-	// 		Priority: addCategoryForm.priority.value,
-	// 		Publish: addCategoryForm.publish.value,
-	// 		Preview: uploadValue
-	// 	})
-	// 		.then((e) => {
-	// 			// console.log('the value of e ', e);
-	// 			addCategoryForm.reset();
-	// 		})
-	// 		.catch((err) => {
-	// 			console.log('sometihng went wrong while uploading to firestore');
-	// 		});
-	// };
-
-	// const deleteValuesFromStore = () => {
-	// 	const deleteCategoryForm = document.querySelector('.deleteCategory');
-
-	// 	deleteCategoryForm.addEventListener('submit', (e) => {
-	// 		e.preventDefault();
-
-	// 		const docRef = doc(db, 'Category', deleteCategoryForm.id.value);
-	// 		deleteDoc(docRef).then(() => {
-	// 			deleteCategoryForm.reset();
-	// 		});
-	// 	});
-	// };
-	// async function doPost() {
-	// 	var name = document.getElementById('fname').value;
-	// 	var priority = document.getElementById('priority').value;
-	// 	var publish = document.getElementById('publish').value;
-	// 	var isTrending = document.getElementById('isTrending').value;
-	// 	const res = await fetch('https://192.168.86.107:8090/save/catagory', {
-	// 		method: 'POST',
-	// 		body: {
-	// 			name,
-	// 			priority,
-	// 			publish,
-	// 			isTrending
-	// 		}
-	// 	});
-	// 	console.log(name);
-
-	// 	const json = await res.json();
-	// 	result = JSON.stringify(json);
-	// }
-	//upload image
 	let files;
 	var imageUrl = '';
-	var name = '';
-	var priority = '';
 
-	var publish = '';
-	var trending = '';
 	function addFile(e) {
 		let image = e.target.files[0];
 		let reader = new FileReader();
@@ -90,9 +21,8 @@
 	imageSrcStore.subscribe((imageSrcStore) => {
 		imageUrl = imageSrcStore;
 	});
-	console.log(imageUrl);
 
-	async function postArticle() {
+	async function postCategory() {
 		var nameInput = document.getElementById('fname')?.value;
 		var imgUrl = imageUrl;
 		var priorityInput = document.getElementById('priority')?.value;
@@ -106,24 +36,17 @@
 			publish: publishInput,
 			trending: TrendingInput
 		};
+		console.log(data);
 		let newArr = [];
-		axios
-			.post(`${globalUrl}/category/save`, data)
-			.then(function (response) {
-				paginationCategoryStore.subscribe((paginationCategoryStore) => {
-					newArr = paginationCategoryStore;
-					newArr.push(response.data);
-					// paginationCategoryStore.set(paginationCategoryStore)
-				});
-				paginationCategoryStore.set(newArr);
-				console.log(paginationCategoryStore, 'is last data');
-			})
-			.catch(function (error) {
-				console.log(error);
+		axios.post(`${globalUrl}/category/save`, data).then(function (response) {
+			paginationCategoryStore.subscribe((paginationCategoryStore) => {
+				newArr = paginationCategoryStore;
 			});
-	}
 
-	// <!-- <button on:click={()=>postArticle(data)}>here</button> -->
+			newArr.push(response.data);
+			paginationCategoryStore.set(newArr);
+		});
+	}
 </script>
 
 <div class="flex flex-col justify-center items-center text-sm  dark:text-white">
@@ -131,7 +54,7 @@
 		class="addCategoryForm text-sm"
 		on:submit={(e) => {
 			e.preventDefault();
-			postArticle();
+			postCategory();
 		}}
 	>
 		<div class="my-2 text-sm">
@@ -140,7 +63,6 @@
 				type="text"
 				id="fname"
 				name="name"
-				bind:value={name}
 				required
 				class="border-b-2 bg-gray-100 dark:text-black hover:bg-gray-200 h-8 hover:no-underline"
 			/>
@@ -150,7 +72,6 @@
 			<input
 				type="number"
 				id="priority"
-				bind:value={priority}
 				name="priority"
 				required
 				class="border-b-2 bg-gray-100 dark:text-black hover:bg-gray-200  h-8 hover:no-underline"
@@ -164,17 +85,16 @@
 				class="w-60 mx-2 dark:bg-red-700"
 				accept="image/*"
 				name="preview"
-				bind:files
 				on:change={addFile}
 			/>
 		</div>
 
 		<div class=" my-2">
-			<input type="checkbox" value="" name="publish" id="publish" bind={publish} />
+			<input type="checkbox" value="" name="publish" id="publish" />
 			<span> Publish </span>
 		</div>
 		<div class=" my-2">
-			<input type="checkbox" value="" name="trending" id="trending" bind={trending} />
+			<input type="checkbox" value="" name="trending" id="trending" />
 			<span> Trending </span>
 		</div>
 

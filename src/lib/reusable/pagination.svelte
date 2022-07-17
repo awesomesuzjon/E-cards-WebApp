@@ -5,7 +5,7 @@
 
 	let currentPage = 1;
 
-	let pageSize = 2;
+	let pageSize = 5;
 
 	$: paginatedItems = paginate({ items, pageSize, currentPage });
 </script>

@@ -7,6 +7,7 @@
 	import DiMarkdown from 'svelte-icons/di/DiMarkdown.svelte';
 	import { previewImgFunc } from '../../utils/previewImgntbl';
 	import axios from 'axios';
+	import Spinner from 'svelte-spinner';
 	import { globalUrl } from '../../utils/urls';
 	import { paginationtemplatesTableStore } from '../../stores/paginationStore';
 
@@ -20,6 +21,14 @@
 	// 	onSnapshot
 	// } from 'firebase/firestore';
 	import { onMount } from 'svelte';
+
+	//loading spinner
+	let isPageLoaded = false;
+	onMount(() => {
+		setTimeout(() => {
+			isPageLoaded = true;
+		}, 2000);
+	});
 
 	///pagination code
 	let paginatedItems = [];
@@ -51,14 +60,12 @@
 		fetch(`${globalUrl}/category/show-name-list`).then((res) => {
 			res.json().then((data) => {
 				categoryOptionArr = data?.categoryList ?? [];
-				// categoryArr = data;
 			});
 			console.log(categoryOptionArr);
 		});
 	});
 
 	let url = `${globalUrl}/template/show-all-templates`;
-	// let jsonUrl = `https://fakestoreapi.com/products`;
 
 	export var allTemplatesArr = [];
 
@@ -66,16 +73,11 @@
 		fetch(url).then((res) => {
 			res.json().then((data) => {
 				allTemplatesArr = data?.templates ?? [];
-				// allTemplatesArr = data;
 				paginationtemplatesTableStore.set(allTemplatesArr);
 			});
 		});
 	});
 
-	function postCategoryValue() {
-		var categoryValue = document.getElementById('categoryTemplateValue')?.selectedOptions[0].value;
-		console.log(categoryValue, 'is vallue choosen');
-	}
 	///pagination code
 
 	var allTemplates = [];
@@ -84,173 +86,193 @@
 	});
 </script>
 
-<!-- this is category dropdown -->
-<div class="flex my-4 items-center">
-	<label
-		class=" my-2 label-optional label-optional-personal label-required-public"
-		for="categoryTemplateValue"><h1>Category:</h1></label
-	>
-	<select id="categoryTemplateValue" name="categoryTemplate" class=" text-sm h-8 mx-2" required>
-		<option value="">Select a category</option>
-		{#each categoryOptionArr as item}
-			<option
-				value={item}
-				on:click={() => {
-					var categoryName = item;
-					async function categoryNameFunc(categoryName) {
-						axios
-							.get(`${globalUrl}/template/get-templates-of-this-category/${categoryName}`, {})
-							.then(function (response) {
-								console.log(response);
-							})
-							.catch(function (error) {
-								console.log(error);
-							});
-					}
-					categoryNameFunc(categoryName);
-				}}>{item}</option
-			>
-		{/each}
-	</select>
-</div>
+{#if !isPageLoaded}
+	<div class="text-lg spinnerClass text-black  flex flex-col justify-center item-center">
+		<Spinner size="50" speed="750" color="#A82124" thickness="2" gap="40" />
+		<span class="text-red-700 text-lg ">Loading...</span>
+	</div>
+{:else}
+	<!-- this is category dropdown -->
+	<div class="flex my-4 items-center">
+		<label
+			class=" my-2 label-optional label-optional-personal label-required-public"
+			for="categoryTemplateValue"><h1>Category:</h1></label
+		>
+		<select id="categoryTemplateValue" name="categoryTemplate" class=" text-sm h-8 mx-2" required>
+			<option value="">Select a category</option>
+			{#each categoryOptionArr as item}
+				<option
+					value={item}
+					on:click={() => {
+						var categoryName = item;
+						async function categoryNameFunc(categoryName) {
+							axios
+								.get(`${globalUrl}/template/get-templates-of-this-category/${categoryName}`, {})
+								.then(function (response) {
+									paginationtemplatesTableStore.subscribe((paginationtemplatesTableStore) => {
+										allTemplates = paginationtemplatesTableStore;
+									});
 
-<!-- ????????-->
-<!-- </div> -->
-<div class="flex mt-4 ">
-	<!-- <div class="relative"> -->
-	<table class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-gray-100  ">
-		<tr id="templatesTableRow" class="">
-			<!-- <th class="bg-red-700"> -->
-			<!-- <label>
+									allTemplates.push(response.data);
+									paginationtemplatesTableStore.set(allTemplates);
+								})
+								.catch(function (error) {
+									console.log(error);
+								});
+						}
+						categoryNameFunc(categoryName);
+					}}>{item}</option
+				>
+			{/each}
+		</select>
+	</div>
+
+	<!-- ????????-->
+	<!-- </div> -->
+	<div class="flex mt-4 ">
+		<!-- <div class="relative"> -->
+		<table class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-gray-100  ">
+			<tr id="templatesTableRow" class="">
+				<!-- <th class="bg-red-700"> -->
+				<!-- <label>
 					<input type="checkbox" class="checkbox" />
 				</label> -->
-			<!-- </th> -->
-			<th class="bg-red-700  text-white  px-8 py-2 text-center dark:bg-gray-800 ">Id</th>
-			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Title</th>
-			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Preview</th>
-			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Tags</th>
-			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Category</th>
-			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Priority</th>
-			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">isTrending</th>
-			<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
-		</tr>
+				<!-- </th> -->
+				<th class="bg-red-700  text-white  px-8 py-2 text-center dark:bg-gray-800 ">Id</th>
+				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Title</th>
+				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Preview</th>
+				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Tags</th>
+				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Category</th>
+				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Priority</th>
+				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">isTrending</th>
+				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
+			</tr>
 
-		{#each paginatedItems as item, i}
-			<!-- {#each allTemplatesArr as item} -->
-			<tr>
-				<!-- <th>
+			{#each paginatedItems as item, i}
+				<!-- {#each allTemplatesArr as item} -->
+				<tr>
+					<!-- <th>
 					<label>
 						<input type="checkbox" class="checkbox" />
 					</label>
 				</th> -->
 
-				<td class=" px-8 py-2">{item.id}</td>
-				<td class=" px-8 py-2">{item.title}</td>
-				<!-- on click of image open image modal -->
-				<div class="flex justify-end  mt-4 mr-5">
-					<label for={i} class=" modal-button">
-						<img
-							class="w-4 h-auto flex justify-center items-center"
-							src={item.url}
-							alt={item.name}
-						/>
-					</label>
-				</div>
-
-				<input type="checkbox" id={i} class="modal-toggle" />
-				<label
-					for={i}
-					class="modal cursor-pointer bg-gray-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-4xl bg-opacity-50  border border-gray-100"
-				>
-					<label class="modal-box relative" for="">
-						<img
-							class="w-full h-auto flex justify-center items-center"
-							alt={item.name}
-							src={item.url}
-						/>
-					</label>
-				</label>
-				<!-- bb -->
-
-				<td class=" px-8 py-2">{item.tags}</td>
-				<td class=" px-8 py-2">{item.categoryName}</td>
-				<td class=" px-8 py-2">{item.priority}</td>
-				<td class=" px-8 py-2">{item.trending}</td>
-
-				<td>
-					<div class="flex justify-around items-center mb-2 list-none">
-						<li class=" text-sm  w-4 hover:bg-gray-300 p-0 cursor:move ">
-							<!-- svelte-ignore a11y-missing-attribute -->
-							<a
-								title="Delete"
-								on:click={() => {
-									var deleteItemId = item.id;
-									var deleteItemName = item.name;
-									console.log(deleteItemId, 'is my id');
-									async function deleteTemplate(id) {
-										// post:"/set-trending/{name}/{prev_status}",
-
-										axios
-											.delete(`${globalUrl}/template/delete/${deleteItemId}`, {})
-											.then(function (response) {
-												console.log(response);
-											})
-											.catch(function (error) {
-												console.log(error);
-											});
-									}
-									deleteTemplate(deleteItemId);
-									console.log(deleteItemId, 'deleted');
-								}}
-							>
-								<MdDelete /></a
-							>
-						</li>
-						<!-- <div class="flex justify-around items-center"> -->
-
-						<li class="  text-sm   w-4">
-							<!-- svelte-ignore missing-declaration -->
-							<!-- svelte-ignore a11y-missing-attribute -->
-							<a
-								title="Mark as Trending"
-								on:click={() => {
-									var templateId = item.id;
-									var id = item.id;
-									var isTrending = item.trending;
-									console.log(isTrending);
-									console.log(id);
-
-									async function setTrendingTemplate() {
-										// post:"/set-trending/{name}/{prev_status}",
-
-										axios
-											.post(`${globalUrl}/template/set-trending/${templateId}/${isTrending}`, {})
-											.then(function (response) {
-												console.log(response);
-											})
-											.catch(function (error) {
-												console.log(error);
-											});
-									}
-									setTrendingTemplate();
-								}}
-							>
-								<DiMarkdown />
-							</a>
-						</li>
-						<!-- </div> -->
+					<td class=" px-8 py-2">{item.id}</td>
+					<td class=" px-8 py-2">{item.title}</td>
+					<!-- on click of image open image modal -->
+					<div class="flex justify-end  mt-4 mr-5">
+						<label for={i} class=" modal-button">
+							<img
+								class="w-4 h-auto flex justify-center items-center"
+								src={item.url}
+								alt={item.name}
+							/>
+						</label>
 					</div>
-					<!-- </ul>
+
+					<input type="checkbox" id={i} class="modal-toggle" />
+					<label
+						for={i}
+						class="modal cursor-pointer bg-gray-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-4xl bg-opacity-50  border border-gray-100"
+					>
+						<label class="modal-box relative" for="">
+							<img
+								class="w-full h-auto flex justify-center items-center"
+								alt={item.name}
+								src={item.url}
+							/>
+						</label>
+					</label>
+					<!-- bb -->
+
+					<td class=" px-8 py-2">{item.tags}</td>
+					<td class=" px-8 py-2">{item.categoryName}</td>
+					<td class=" px-8 py-2">{item.priority}</td>
+					<td class=" px-8 py-2">{item.trending}</td>
+
+					<td>
+						<div class="flex justify-around items-center mb-2 list-none">
+							<li class=" text-sm  w-4 hover:bg-gray-300 p-0 cursor:move ">
+								<!-- svelte-ignore a11y-missing-attribute -->
+								<a
+									title="Delete"
+									on:click={() => {
+										var deleteItemId = item.id;
+										async function deleteTemplate(id) {
+											let newArr = [];
+
+											axios
+												.delete(`${globalUrl}/template/delete/${deleteItemId}`, {})
+												.then(function (response) {
+													paginationtemplatesTableStore.subscribe(
+														(paginationtemplatesTableStore) => {
+															newArr = paginationtemplatesTableStore;
+														}
+													);
+													newArr.pop();
+													paginationtemplatesTableStore.set(newArr);
+												});
+										}
+										deleteTemplate(deleteItemId);
+									}}
+								>
+									<MdDelete /></a
+								>
+							</li>
+							<!-- <div class="flex justify-around items-center"> -->
+
+							<li class="  text-sm   w-4">
+								<!-- svelte-ignore missing-declaration -->
+								<!-- svelte-ignore a11y-missing-attribute -->
+								<a
+									title="Mark as Trending"
+									on:click={() => {
+										var templateId = item.id;
+										var id = item.id;
+										var isTrending = item.trending;
+										console.log(isTrending);
+										console.log(id);
+
+										async function setTrendingTemplate() {
+											// post:"/set-trending/{name}/{prev_status}",
+
+											axios
+												.post(`${globalUrl}/template/set-trending/${templateId}/${isTrending}`, {})
+												.then(function (response) {
+													console.log(response);
+												})
+												.catch(function (error) {
+													console.log(error);
+												});
+										}
+										setTrendingTemplate();
+									}}
+								>
+									<DiMarkdown />
+								</a>
+							</li>
+							<!-- </div> -->
+						</div>
+						<!-- </ul>
 							</div>
 						</div>
 					</div> -->
-				</td>
-			</tr>
-		{/each}
-	</table>
-</div>
-<!-- </div>   -->
+					</td>
+				</tr>
+			{/each}
+		</table>
+	</div>
+	<!-- </div>   -->
 
-<div class="mx-5">
-	<Pagination items={allTemplates} bind:paginatedItems />
-</div>
+	<div class="mx-5">
+		<Pagination items={allTemplates} bind:paginatedItems />
+	</div>
+{/if}
+
+<style>
+	.spinnerClass {
+		position: absolute;
+		top: 20%;
+		left: 50%;
+	}
+</style>

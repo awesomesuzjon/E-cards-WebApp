@@ -4,6 +4,8 @@
 	import axios from 'axios';
 	import { onMount } from 'svelte';
 	import { globalUrl } from '../../utils/urls';
+	import { paginationMessageStore } from '../../stores/paginationStore';
+
 	var categoryOptionArr = [];
 	onMount(() => {
 		fetch(`${globalUrl}/category/show-name-list`).then((res) => {
@@ -16,27 +18,27 @@
 
 	async function postMessage() {
 		var nameInput = document.getElementById('nameMsg')?.value;
-		// var ImageSrc = uploadImageSrc;
 		var priorityInput = document.getElementById('priorityMsg')?.value;
 		var categoryInput = document.getElementById('categoryMsg')?.selectedOptions[0].value;
-		console.log(categoryInput);
 		var publishInput = document.getElementById('publishMsg')?.checked;
+		var TrendingInput = document.getElementById('trending')?.checked;
 
 		let data = {
 			message: nameInput,
-			// url: ImageSrc,
 			priority: Number(priorityInput),
 			category: categoryInput,
-			publish: publishInput
+			publish: publishInput,
+			trending: TrendingInput
 		};
-		axios
-			.post(`${globalUrl}/message/save`, data)
-			.then(function (response) {
-				console.log('Successfully Posted Article', response);
-			})
-			.catch(function (error) {
-				console.log(error);
+
+		let newArr = [];
+		axios.post(`${globalUrl}/message/save`, data).then(function (response) {
+			paginationMessageStore.subscribe((paginationMessageStore) => {
+				newArr = paginationMessageStore;
 			});
+			newArr.push(response.data.message);
+			paginationMessageStore.set(newArr);
+		});
 	}
 </script>
 
@@ -97,10 +99,11 @@
 				<input type="checkbox" name="publishMsg" id="publishMsg" class="mx-2" />
 				<span> Publish </span>
 			</div>
-			<!-- <div class=" my-2">
-			<input type="checkbox" name="trendingMsg" id="trendingMsg" class="mx-2" />
-			<span> Trending </span>
-		</div> -->
+
+			<div class=" my-2">
+				<input type="checkbox" name="trendingMsg" id="trendingMsg" class="mx-2" />
+				<span> Trending </span>
+			</div>
 			<!-- svelte-ignore a11y-missing-attribute -->
 			<a> <Button>Add Message</Button> </a>
 		</div>

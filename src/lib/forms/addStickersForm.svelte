@@ -5,6 +5,7 @@
 	import axios from 'axios';
 	import { onMount } from 'svelte';
 	import { globalUrl } from '../../utils/urls';
+	import { paginationStickerStore } from '../../stores/paginationStore';
 
 	let files;
 
@@ -19,39 +20,8 @@
 		});
 	});
 
-	// const db = getFirestore();
-
-	// const colRef = collection(db, 'Stickers');
-
-	// const storeNewStickerValues = () => {
-	// 	const addStickerForm = document.querySelector('.addStickerForm');
-	// 	addDoc(colRef, {
-	// 		Name: addStickerForm.name.value,
-	// 		Category: addStickerForm.category.value,
-	// 		Priority: addStickerForm.priority.value,
-	// 		Preview: uploadValue
-	// 	})
-	// 		.then((e) => {
-	// 			addStickerForm.reset();
-	// 		})
-	// 		.catch((err) => {
-	// 			console.log('sometihng went wrong on stickerstable while uploading to firestore');
-	// 		});
-	// };
-
-	// export const deleteValues = () => {
-	// 	const deleteStickerForm = document.querySelector('.deleteStickerForm');
-
-	// 	deleteStickerForm.addEventListener('submit', (e) => {
-	// 		e.preventDefault();
-	// 		//delete row on table through input id value
-	// 		const docRef = doc(db, 'Stickers', deleteStickerForm.id.value);
-	// 		deleteDoc(docRef).then(() => {
-	// 			deleteStickerForm.reset();
-	// 		});
-	// 	});
-	// };
 	var imageUrl = '';
+
 	function addFile(e) {
 		let image = e.target.files[0];
 		let reader = new FileReader();
@@ -64,30 +34,29 @@
 	imageSrcStore.subscribe((imageSrcStore) => {
 		imageUrl = imageSrcStore;
 	});
-	console.log(imageUrl);
 
 	async function postSticker() {
-		var nameInput = document.getElementById('nameSticker')?.value;
+		var stickerNameInput = document.getElementById('nameSticker')?.value;
 		var imgUrl = imageUrl;
-		// var imgSrc = document.getElementById('imgUpload').value;
 		var priorityInput = document.getElementById('prioritySticker')?.value;
 		var categoryInput = document.getElementById('categorySticker')?.selectedOptions[0].value;
 		var publishInput = document.getElementById('publishSticker')?.checked;
 		let data = {
-			name: nameInput,
+			name: stickerNameInput,
 			url: imgUrl,
 			priority: Number(priorityInput),
 			category: categoryInput,
 			publish: publishInput
 		};
-		axios
-			.post(`${globalUrl}/sticker/save`, data)
-			.then(function (response) {
-				console.log('Successfully Posted Article', response);
-			})
-			.catch(function (error) {
-				console.log(error);
+
+		let stickerArr = [];
+		axios.post(`${globalUrl}/sticker/save`, data).then(function (response) {
+			paginationStickerStore.subscribe((paginationStickerStore) => {
+				stickerArr = paginationStickerStore;
 			});
+			stickerArr.push(response.data.savedSticker);
+			paginationStickerStore.set(stickerArr);
+		});
 	}
 </script>
 
