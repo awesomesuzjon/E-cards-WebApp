@@ -49,72 +49,70 @@
 	}
 </script>
 
-<div class="flex flex-col justify-center items-center text-sm  dark:text-white">
-	<form
-		class="addCategoryForm text-sm"
-		on:submit={(e) => {
-			e.preventDefault();
-			postCategory();
-		}}
-	>
-		<div class="my-2 text-sm">
-			<label for="name">Name :</label>
-			<input
-				type="text"
-				id="fname"
-				name="name"
-				required
-				class="border-b-2 bg-gray-100 dark:text-black hover:bg-gray-200 h-8 hover:no-underline"
-			/>
-		</div>
-		<div>
-			<label for="priority">Priority:</label>
-			<input
-				type="number"
-				id="priority"
-				name="priority"
-				required
-				class="border-b-2 bg-gray-100 dark:text-black hover:bg-gray-200  h-8 hover:no-underline"
-			/>
-		</div>
-		<div class="flex justify-center items-center  my-4">
-			<label for="name">Upload Sticker : </label>
-			<input
-				type="file"
-				id="uploadImageSrc"
-				class="w-60 mx-2 dark:bg-red-700"
-				accept="image/*"
-				name="preview"
-				on:change={addFile}
-			/>
-		</div>
+<!-- newform -->
+<form class="w-full max-w-sm" on:submit={(e) => {
+	e.preventDefault();
+	postCategory();
+}}>
+	<div class="md:flex md:items-center mb-6">
+	  <div class="md:w-1/3">
+		<label for="name" class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" >
+		 Name
+		</label>
+	  </div>
+	  <div class="md:w-2/3">
+		<input type="text" 	id="nameSticker"
+		name="nameSticker" required class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"  placeholder="Enter Name">
+	  </div>
+	</div>
+	<div class="md:flex md:items-center mb-6">
+	  <div class="md:w-1/3">
+		<label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="priority">
+			Priority
+		</label>
+	  </div>
+	  <div class="md:w-2/3">
+		<input type="number"
+		id="priority"
+		name="priority"
+		required class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" >
+	  </div>
+	</div>
+	<div class="flex justify-center items-center  my-4 ml-8">
+		<label for="name" class="block text-gray-500 font-bold  mb-1 md:mb-0 ml-4">Upload Sticker  </label>
+		<input
+			type="file"
+			id="uploadImageSrc"
+			class="w-60 mx-2 dark:bg-red-700 block text-gray-500 font-bold  mb-1 md:mb-0 ml-4"
+			accept="image/*"
+			name="preview"
+			on:change={addFile}
+		/>
+	</div>
 
-		<div class=" my-2">
-			<input type="checkbox" value="" name="publish" id="publish" />
-			<span> Publish </span>
-		</div>
-		<div class=" my-2">
-			<input type="checkbox" value="" name="trending" id="trending" />
-			<span> Trending </span>
-		</div>
-
+	<div class="md:flex md:items-center justify-start mb-6 ml-20">
+	  <div class="md:w-3/3"></div>
+	  <label class="md:w-2/3 block text-gray-500 font-bold">
+		<input class="mr-4 leading-tight" type="checkbox" value="" name="publish" id="publish" >
+		<span class="text-sm">
+			Publish
+		</span>
+	  </label>
+	</div>
+	<div class="md:flex md:items-center mb-6 ml-20">
+		<div class="md:w-3/3"></div>
+		<label class="md:w-2/3 block text-gray-500 font-bold">
+		  <input class="mr-2 leading-tight" type="checkbox" value="" name="trending" id="trending" >
+		  <span class="text-sm">
+			Trending
+		  </span>
+		</label>
+	  </div>
 		<!-- svelte-ignore a11y-missing-attribute -->
 		<Button>Add Category</Button>
-	</form>
-	<!-- <form
-		class="deleteCategory text-sm mt-2  flex flex-col "
-		on:submit={(e) => {
-			deleteValuesFromStore();
-			e.preventDefault();
-		}}
-	>
-		<label for="id">Document id:</label>
-		<input
-			type="text"
-			name="id"
-			class="border-b-2 bg-gray-100 hover:bg-gray-200  mb-2 h-8 hover:no-underline"
-			required
-		/>
-		<Button>Delete Category</Button>
-	</form> -->
-</div>
+  </form>
+  
+ 
+
+<!-- newform -->
+

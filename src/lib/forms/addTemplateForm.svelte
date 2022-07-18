@@ -31,7 +31,6 @@
 		fetch(categoryOptions).then((res) => {
 			res.json().then((data) => {
 				categoryOptionArr = data?.categoryList ?? [];
-				// categoryArr = data;
 			});
 		});
 	});

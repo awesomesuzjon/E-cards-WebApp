@@ -60,65 +60,92 @@
 	}
 </script>
 
-<div class="flex flex-col justify-center items-center text-sm my-4  p-2 dark:text-white">
-	<form
-		class="addStickerForm "
-		on:submit={(e) => {
-			e.preventDefault();
-			postSticker();
-		}}
-	>
-		<div class="my-2">
-			<label for="name">Sticker Name:</label>
+<form
+	class="w-full max-w-sm"
+	on:submit={(e) => {
+		e.preventDefault();
+		postSticker();
+	}}
+>
+	<div class="md:flex md:items-center mb-6">
+		<div class="md:w-1/3">
+			<label for="name" class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+				Name:
+			</label>
+		</div>
+		<div class="md:w-2/3">
 			<input
 				type="text"
-				name="nameSticker"
-				id="nameSticker"
+				id="fname"
+				name="name"
 				required
-				class="border-b-2 dark:text-black bg-gray-100 hover:bg-gray-200 h-8 hover:no-underline"
+				class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+				placeholder="Enter Sticker Name"
 			/>
 		</div>
-		<div class="my-4 items-start">
-			<label for="priority">Priority:</label>
+	</div>
+
+	<div class="md:flex md:items-center mb-6 ">
+		<div class="md:w-1/3">
+			<label class="block 	 text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="priority">
+				Priority
+			</label>
+		</div>
+		<div class="md:w-2/3">
 			<input
 				type="number"
-				name="prioritySticker"
 				id="prioritySticker"
+				name="prioritySticker"
 				required
-				class="border-b-2 dark:text-black bg-gray-100 hover:bg-gray-200  h-8 hover:no-underline"
+				class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
 			/>
 		</div>
+	</div>
 
-		<div class="flex justify-center items-center my-4">
-			<label for="name">Upload Sticker : </label>
+	<div class="flex justify-center items-center my-4 text-gray-500 font-bold  mb-1 md:mb-0 ml-4">
+		<label for="name">Upload Sticker : </label>
+		<input
+			type="file"
+			id="imgUpload"
+			class="w-60 mx-2 dark:bg-red-700 block text-gray-500 font-bold  mb-1 md:mb-0 ml-4"
+			accept="image/*"
+			name="preview"
+			bind:files
+			on:change={addFile}
+		/>
+	</div>
+
+	<div class="md:flex md:items-center mb-6 ml-10 my-4">
+		<label
+			class=" my-2 label-optional label-optional-personal label-required-public text-gray-500 font-bold  mb-1 md:mb-0 ml-4"
+			for="categoryMsg"><h1>Category:</h1></label
+		>
+		<select
+			id="categorySticker"
+			name="category"
+			class="text-gray-500 font-bold  mb-1 md:mb-0 ml-4 text-sm h-8 mx-2"
+			required
+		>
+			<option value="">Select a category</option>
+			{#each categoryOptionArr as item}
+				<option value={item}>{item}</option>\
+			{/each}
+		</select>
+	</div>
+
+	<div class="md:flex md:items-center justify-start mb-6 ml-20">
+		<div class="md:w-3/3" />
+		<label class="md:w-2/3 block text-gray-500 font-bold">
 			<input
-				type="file"
-				id="imgUpload"
-				class="w-60 mx-2 bg-red-700 dark:bg-red-700"
-				accept="image/*"
-				name="preview"
-				bind:files
-				on:change={addFile}
+				class="mr-4 leading-tight"
+				type="checkbox"
+				value=""
+				name="publishSticker"
+				id="publishSticker"
 			/>
-		</div>
-		<div class="flex my-4 items-center">
-			<label
-				class=" my-2 label-optional label-optional-personal label-required-public"
-				for="categorySticker"><h1>Category:</h1></label
-			>
-			<select id="categorySticker" name="category" class=" text-sm h-8 mx-2" required>
-				<option value="">Select a category</option>
-				{#each categoryOptionArr as item}
-					<option value={item}>{item}</option>\
-				{/each}
-			</select>
-		</div>
+			<span class="text-sm"> Publish </span>
+		</label>
+	</div>
 
-		<div class=" my-2">
-			<input type="checkbox" value="" name="publishSticker" id="publishSticker" />
-			<span> Publish </span>
-		</div>
-
-		<Button>Add Sticker</Button>
-	</form>
-</div>
+	<Button>Add Sticker</Button>
+</form>
