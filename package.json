@@ -67,6 +67,7 @@
     "svelte-icons": "^2.1.0",
     "svelte-materialify": "^0.3.11",
     "svelte-moveable": "^0.20.0",
+    "svelte-spinner": "^2.0.2",
     "sveltestrap": "^5.9.0",
     "uuid": "^8.3.2"
   }
