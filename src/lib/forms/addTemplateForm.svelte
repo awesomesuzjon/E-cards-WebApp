@@ -3,7 +3,7 @@
 	import Button from '../reusable/button.svelte';
 	import axios from 'axios';
 	import { imageSrcStore } from '../../stores/imgSrc';
-
+	import { paginationtemplatesTableStore } from '../../stores/paginationStore';
 	import { onMount } from 'svelte';
 	import { globalUrl } from '../../utils/urls';
 
@@ -18,13 +18,11 @@
 		reader.onload = (e) => {
 			var uploadImageSrc = e.target.result;
 			imageSrcStore.set(uploadImageSrc);
-			console.log(uploadImageSrc);
 		};
 	}
 	imageSrcStore.subscribe((imageSrcStore) => {
 		imageUrl = imageSrcStore;
 	});
-	console.log(imageUrl);
 
 	//category dropdown
 	var categoryOptionArr = [];
@@ -33,25 +31,16 @@
 		fetch(categoryOptions).then((res) => {
 			res.json().then((data) => {
 				categoryOptionArr = data?.categoryList ?? [];
-				// categoryArr = data;
 			});
 		});
 	});
 
 	async function postTemplate() {
 		var nameInput = document.getElementById('nameTemplate')?.value;
-		console.log(nameInput, 'nameInput');
 		var imgUrl = imageUrl;
-
 		var priorityInput = document.getElementById('priorityTemplate')?.value;
-		console.log(priorityInput, 'priorityInput');
-
 		var tagInput = document.getElementById('tagTemplate')?.value;
-
 		var categoryInput = document.getElementById('categoryTemplate')?.selectedOptions[0].value;
-		console.log(categoryInput, 'categoryInput');
-
-		// var publishInput = document.getElementById('publishTemplate')?.checked;
 
 		let data = {
 			title: nameInput,
@@ -60,17 +49,16 @@
 			priority: Number(priorityInput),
 			category_name: categoryInput
 		};
-		console.log(data,'this is form data')
-
-		axios
-			.post(`${globalUrl}/template/save`, data)
-
-			.then(function (response) {
-				console.log('Successfully Added Template To Table', response);
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+		console.log(data, 'it is');
+		let newArr = [];
+		axios.post(`${globalUrl}/template/save`, data).then(function (response) {
+			// paginationtemplatesTableStore.subscribe((paginationtemplatesTableStore) => {
+			// newArr = paginationtemplatesTableStore;
+			// });
+			// newArr.push(response.data);
+			// console.log(response.data);
+			// paginationtemplatesTableStore.set(newArr);
+		});
 	}
 </script>
 
@@ -142,14 +130,3 @@
 		<Button>Add Template</Button>
 	</form>
 </div>
-<!-- <form class="delete text-lg ">	
-			<label for="id">Document id:</label>
-			<input
-				type="text"
-				name="id"
-				class="border-b-2 bg-gray-100 hover:bg-gray-200  h-8  hover:no-underline"
-				required
-			/>
-
-			<button class="btn my-4">Delete</button>
-		</form> -->

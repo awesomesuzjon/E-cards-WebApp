@@ -5,7 +5,6 @@
 	import FaSearch from 'svelte-icons/fa/FaSearch.svelte';
 	import FaAngleDown from 'svelte-icons/fa/FaAngleDown.svelte';
 	import { toggleSidebarFunc } from '../../utils/toggleComponent';
-	import FaCloudMoon from 'svelte-icons/fa/FaCloudMoon.svelte';
 	import FaSmileWink from 'svelte-icons/fa/FaSmileWink.svelte';
 
 	// let files;
@@ -15,11 +14,6 @@
 	//upload a new theme template from the local device
 	let files = [];
 	$: file = files[0];
-
-	//dark and Light Mode toggle button
-	function toggle() {
-		window.document.body.classList.toggle('dark');
-	}
 </script>
 
 <div class="bg-red-700  flex  dark:bg-customColorGray  text-center relative h-screen   sidebar">
@@ -29,19 +23,13 @@
 		<!-- //////////////////////////////////////////////////////// -->
 		<div id="sidebarToggleDiv">
 			<div class="flex flex-row   justify-around items-center  ml-4 " id="toggleDarkBtn">
-				<div>
-					<button class=" text-white dark:text-blue-200 w-8 h-16" on:click={toggle}>
-						<FaCloudMoon />
-					</button>
-				</div>
-
 				<div class="form-control">
 					<label class="label cursor-pointer ">
 						<input
 							type="checkbox"
 							id="toggleSidebarBtn"
 							on:click={toggleSidebarFunc}
-							class="toggle bg-white text-red-700 active:bg-gray-200  border-none "
+							class="toggle bg-red-700 active:bg-gray-200  border-none "
 							checked
 						/>
 					</label>
@@ -73,30 +61,28 @@
 							>
 						</div>
 					</li>
-					<div class="collapse-content hover:bg-gray-300 ">
+					<div class="collapse-content  ">
 						<div class="  justify-center relative   " id="toggleContent">
-							<li
-								class=" w-full py-4 hover:shadow-xl text-white   hover:text-red-700 dark:hover:text-customColorGray "
-							>
+							<li class=" w-full py-4 text-white    dark:hover:text-customColorGray ">
 								<ul id="dropdown-example" class=" py-2 space-y-2">
 									<li>
 										<a
 											href="/trendingTemplatesTableRoute"
-											class="hover:shadow-xl hover:bg-white truncate flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group hover:text-red-700 "
+											class=" hover:bg-white truncate flex items-center w-full p-2 text-sm   transition duration-75 rounded-lg  hover:text-red-700 "
 											>Trending E-cards</a
 										>
 									</li>
 									<li>
 										<a
 											href="/downloadTemplatesTableRoute"
-											class="hover:shadow-xl truncate flex items-center hover:bg-white w-full p-2 text-base font-normal transition duration-75 rounded-lg group "
+											class=" truncate flex items-center text-sm hover:bg-white w-full p-2 transition duration-75 rounded-lg group hover:text-red-700 "
 											>Most Downloaded
 										</a>
 									</li>
 									<li>
 										<a
 											href="/allTemplatesTableRoute"
-											class="hover:shadow-xl flex items-center w-full hover:bg-white p-2 text-base font-normal  transition duration-75 rounded-lg group "
+											class=" flex items-center w-full hover:bg-white p-2 text-sm transition duration-75 rounded-lg group hover:text-red-700 "
 											>All E-cards</a
 										>
 									</li>
@@ -110,7 +96,7 @@
 			<!-- ///////////////////////////////////////////////////////////////////// -->
 
 			<li
-				class="w-full py-4 hover:shadow-xl  text-white hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
+				class="w-full py-4   text-white hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
 			>
 				<a
 					href="/stickerTableRoute"
@@ -126,7 +112,7 @@
 				</a>
 			</li>
 			<li
-				class="w-full py-4 hover:shadow-xl  text-white hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
+				class="w-full py-4   text-white hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
 			>
 				<a
 					href="/messageTableRoute"
@@ -143,7 +129,7 @@
 			</li>
 
 			<li
-				class="w-full py-4 hover:shadow-xl text-white hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
+				class="w-full py-4  text-white hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
 			>
 				<a
 					href="/categoryTableRoute"
@@ -163,9 +149,9 @@
 			<!-- toggle Sidebar code -->
 			<div class="flex flex-col   justify-start items-start  ml-4 " id="toggleDarkBtn">
 				<div>
-					<button class=" text-white dark:text-blue-200 w-8 h-16" on:click={toggle}>
-						<FaCloudMoon />
-					</button>
+					<!-- <button class=" text-white dark:text-blue-200 w-8 h-16" on:click={toggle}> -->
+					<!-- <FaCloudMoon /> -->
+					<!-- </button> -->
 				</div>
 
 				<div class="form-control">
@@ -183,7 +169,7 @@
 
 			<ul class="   w-full mt-2	flex flex-col  items-start">
 				<li
-					class="w-full py-4 hover:shadow-xl text-white hover:bg-white hover:text-red-700 dark:hover:text-customColorGray  "
+					class="w-full py-4  text-white hover:bg-white hover:text-red-700 dark:hover:text-customColorGray  "
 				>
 					<a
 						href="/dashboard"
@@ -206,27 +192,27 @@
 					<div class="collapse-content hover:bg-gray-300 ">
 						<div class="  justify-center relative   " id="toggleContent">
 							<li
-								class=" w-full py-4 hover:shadow-xl text-white   hover:text-red-700 dark:hover:text-customColorGray "
+								class=" w-full py-4  text-white   hover:text-red-700 dark:hover:text-customColorGray "
 							>
 								<ul id="dropdown-example" class=" py-2 space-y-2">
 									<li>
 										<a
 											href="/allTemplatesTableRoute"
-											class="hover:shadow-xl flex items-center w-full hover:bg-white p-2 text-base font-normal  transition duration-75 rounded-lg group "
+											class=" flex items-center w-full hover:bg-white p-2 text-base font-normal  transition duration-75 rounded-lg group "
 											>A</a
 										>
 									</li>
 									<li>
 										<a
 											href="/trendingTemplatesTableRoute"
-											class="hover:shadow-xl hover:bg-white truncate flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group hover:text-red-700 "
+											class=" hover:bg-white truncate flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group hover:text-red-700 "
 											>T</a
 										>
 									</li>
 									<li>
 										<a
 											href="/downloadTemplatesTableRoute"
-											class="hover:shadow-xl truncate flex items-center hover:bg-white w-full p-2 text-base font-normal transition duration-75 rounded-lg group "
+											class=" truncate flex items-center hover:bg-white w-full p-2 text-base font-normal transition duration-75 rounded-lg group "
 											>M
 										</a>
 									</li>
@@ -237,7 +223,7 @@
 				</div>
 
 				<li
-					class="w-full py-4 hover:shadow-xl text-white  hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
+					class="w-full py-4  text-white  hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
 				>
 					<a
 						href="/stickerTableRoute"
@@ -251,7 +237,7 @@
 					</a>
 				</li>
 				<li
-					class="w-full py-4 hover:shadow-xl text-white  hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
+					class="w-full py-4  text-white  hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
 				>
 					<a
 						href="/messageTableRoute"
@@ -264,7 +250,7 @@
 				</li>
 
 				<li
-					class="w-full py-4 hover:shadow-xl text-white  hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
+					class="w-full py-4  text-white  hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
 				>
 					<a
 						href="/categoryTableRoute"

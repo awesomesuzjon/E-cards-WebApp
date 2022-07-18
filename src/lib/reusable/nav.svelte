@@ -9,6 +9,12 @@
 	import IoIosSettings from 'svelte-icons/io/IoIosSettings.svelte';
 	import IoIosLogOut from 'svelte-icons/io/IoIosLogOut.svelte';
 	import { page } from '$app/stores';
+	import FaCloudMoon from 'svelte-icons/fa/FaCloudMoon.svelte';
+
+	//dark and Light Mode toggle button
+	function toggle() {
+		window.document.body.classList.toggle('dark');
+	}
 </script>
 
 <div
@@ -42,38 +48,44 @@
 		</div>
 	</div>
 	<!-- /////////////////////// -->
-	<div class="dropdown dropdown-left mr-8">
+
+	<div class="flex flex-row items-center ">
+		<div>
+			<button class=" text-white dark:text-blue-200 w-6 mr-12 h-16" on:click={toggle}>
+				<FaCloudMoon />
+			</button>
+		</div>
 		<!-- svelte-ignore a11y-label-has-associated-control -->
-		<label tabindex="0" class=" m-1">
-			<img src="admin.png" class="w-8 ml-1   rounded-full " alt="Admin Image" />
-		</label>
+		<div class="dropdown dropdown-left mr-8">
+			<label tabindex="0" class=" m-1">
+				<!-- svelte-ignore a11y-img-redundant-alt -->
+				<img src="admin.png" class="w-8 ml-1   rounded-full " alt="Admin Image" />
+			</label>
+		
 		<ul
 			tabindex="0"
 			class="dropdown-content mt-16 menu p-2 text-black shadow bg-base-100 rounded-box w-52 dark:bg-gray-400 "
 		>
-			<li class="flex flex-row items-center  dark:hover:bg-gray-100 dark:hover:text-red-600 hover:bg-gray-600 hover:text-white">
+			<li
+				class="flex flex-row items-center  dark:hover:bg-gray-100 dark:hover:text-red-600 hover:bg-gray-600 hover:text-white"
+			>
 				<h1 class="w-12 ml-1"><IoIosPerson /></h1>
 
 				<a href="#" class="block px-4 py-2 "> Profile</a>
 			</li>
-			<li class="flex flex-row items-center  dark:hover:bg-gray-100 dark:hover:text-red-600 hover:bg-gray-600 hover:text-white">
+			<li
+				class="flex flex-row items-center  dark:hover:bg-gray-100 dark:hover:text-red-600 hover:bg-gray-600 hover:text-white"
+			>
 				<h2 class="w-12  ml-1 "><IoIosSettings /></h2>
-				<a
-					href="#"
-					class="block px-4 py-2 "
-				>
-					Setting</a
-				>
+				<a href="#" class="block px-4 py-2 "> Setting</a>
 			</li>
-			<li class="flex flex-row items-center  dark:hover:bg-gray-100 dark:hover:text-red-600 hover:bg-gray-600 hover:text-white">
+			<li
+				class="flex flex-row items-center  dark:hover:bg-gray-100 dark:hover:text-red-600 hover:bg-gray-600 hover:text-white"
+			>
 				<h2 class="w-12 ml-1 "><IoIosLogOut /></h2>
-				<a
-					href="#"
-					class="block px-4 py-2 "
-				>
-					Log out</a
-				>
+				<a href="#" class="block px-4 py-2 "> Log out</a>
 			</li>
 		</ul>
 	</div>
+</div>
 </div>
