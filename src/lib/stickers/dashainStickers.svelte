@@ -27,7 +27,7 @@
 		res.json().then((data) => {
 			catagoryArr = data?.category_list ?? [];
 			// categoryArr = data;
-			console.log(catagoryArr);
+			catagoryArr;
 		});
 	});
 

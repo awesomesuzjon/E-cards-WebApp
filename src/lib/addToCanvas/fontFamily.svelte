@@ -5,7 +5,7 @@
 	export function fontFamilyChangeFunc() {
 		subscribe = true;
 		const unSubscribe = selected.subscribe((data) => {
-			// console.log(data);
+			// (data);
 			if (!subscribe) {
 				return;
 			}

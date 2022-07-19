@@ -49,15 +49,15 @@
 			priority: Number(priorityInput),
 			category_name: categoryInput
 		};
-		console.log(data, 'it is');
+		data, 'it is';
 		let newArr = [];
 		axios.post(`${globalUrl}/template/save`, data).then(function (response) {
-			// paginationtemplatesTableStore.subscribe((paginationtemplatesTableStore) => {
-			// newArr = paginationtemplatesTableStore;
-			// });
-			// newArr.push(response.data);
-			// console.log(response.data);
-			// paginationtemplatesTableStore.set(newArr);
+			paginationtemplatesTableStore.subscribe((paginationtemplatesTableStore) => {
+				newArr = paginationtemplatesTableStore;
+			});
+			newArr.push(response.data);
+			response.data;
+			paginationtemplatesTableStore.set(newArr);
 		});
 	}
 </script>

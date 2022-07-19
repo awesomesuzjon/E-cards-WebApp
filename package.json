@@ -35,6 +35,7 @@
     "svelte-check": "^2.2.6",
     "svelte-chota": "^1.8.6",
     "svelte-dnd-action": "^0.9.18",
+    "svelte-loading-spinners": "^0.1.7",
     "svelte-mui": "^0.5.0",
     "svelte-paginate": "^0.0.1",
     "svelte-preprocess": "^4.10.1",
@@ -65,6 +66,7 @@
     "svelte-icons": "^2.1.0",
     "svelte-materialify": "^0.3.11",
     "svelte-moveable": "^0.20.0",
+    "svelte-spinner": "^2.0.2",
     "sveltestrap": "^5.9.0",
     "uuid": "^8.3.2"
   }

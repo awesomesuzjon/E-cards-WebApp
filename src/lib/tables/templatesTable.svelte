@@ -61,7 +61,7 @@
 			res.json().then((data) => {
 				categoryOptionArr = data?.categoryList ?? [];
 			});
-			console.log(categoryOptionArr);
+			categoryOptionArr;
 		});
 	});
 
@@ -105,19 +105,22 @@
 					value={item}
 					on:click={() => {
 						var categoryName = item;
+						console.log(categoryName);
 						async function categoryNameFunc(categoryName) {
 							axios
 								.get(`${globalUrl}/template/get-templates-of-this-category/${categoryName}`, {})
 								.then(function (response) {
-									paginationtemplatesTableStore.subscribe((paginationtemplatesTableStore) => {
-										allTemplates = paginationtemplatesTableStore;
-									});
-
-									allTemplates.push(response.data);
-									paginationtemplatesTableStore.set(allTemplates);
+									if (response?.data?.templates) {
+										allTemplates = [...response.data.templates];
+									} else {
+										paginationtemplatesTableStore.subscribe((paginationtemplatesTableStore) => {
+											allTemplates = [...paginationtemplatesTableStore];
+											paginationtemplatesTableStore.set(allTemplates);
+										});
+									}
 								})
 								.catch(function (error) {
-									console.log(error);
+									error;
 								});
 						}
 						categoryNameFunc(categoryName);
@@ -148,7 +151,7 @@
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
 			</tr>
 
-			{#each paginatedItems as item, i}
+			{#each paginatedItems as item}
 				<!-- {#each allTemplatesArr as item} -->
 				<tr>
 					<!-- <th>
@@ -160,8 +163,8 @@
 					<td class=" px-8 py-2">{item.id}</td>
 					<td class=" px-8 py-2">{item.title}</td>
 					<!-- on click of image open image modal -->
-					<div class="flex justify-end  mt-4 mr-5">
-						<label for={i} class=" modal-button">
+					<div class="flex my-4 justify-end   mr-5">
+						<label for={item.id} class=" modal-button">
 							<img
 								class="w-4 h-auto flex justify-center items-center"
 								src={item.url}
@@ -170,9 +173,9 @@
 						</label>
 					</div>
 
-					<input type="checkbox" id={i} class="modal-toggle" />
+					<input type="checkbox" id={item.id} class="modal-toggle" />
 					<label
-						for={i}
+						for={item.id}
 						class="modal cursor-pointer bg-gray-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-4xl bg-opacity-50  border border-gray-100"
 					>
 						<label class="modal-box relative" for="">
@@ -200,6 +203,7 @@
 										var deleteItemId = item.id;
 										async function deleteTemplate(id) {
 											let newArr = [];
+											var newArrIndex = '';
 
 											axios
 												.delete(`${globalUrl}/template/delete/${deleteItemId}`, {})
@@ -207,11 +211,20 @@
 													paginationtemplatesTableStore.subscribe(
 														(paginationtemplatesTableStore) => {
 															newArr = paginationtemplatesTableStore;
+															newArrIndex = newArr.findIndex((item) => item.id === deleteItemId);
 														}
 													);
-													newArr.pop();
+													newArr.splice(newArrIndex, 1);
 													paginationtemplatesTableStore.set(newArr);
 												});
+
+											// paginationCategoryStore.subscribe((paginationCategoryStore) => {
+											// 		newArr = paginationCategoryStore;
+											// 		newArrIndex = newArr.findIndex((item) => item.id === deleteItemId);
+											// 	});
+											// 	newArr.splice(newArrIndex, 1);
+											// 	paginationCategoryStore.set(newArr);
+											// });
 										}
 										deleteTemplate(deleteItemId);
 									}}
@@ -227,23 +240,28 @@
 								<a
 									title="Mark as Trending"
 									on:click={() => {
-										var templateId = item.id;
-										var id = item.id;
+										let newArr = [];
+										const templateId = item.id;
 										var isTrending = item.trending;
-										console.log(isTrending);
-										console.log(id);
-
+										isTrending;
 										async function setTrendingTemplate() {
 											// post:"/set-trending/{name}/{prev_status}",
-
-											axios
-												.post(`${globalUrl}/template/set-trending/${templateId}/${isTrending}`, {})
-												.then(function (response) {
-													console.log(response);
-												})
-												.catch(function (error) {
-													console.log(error);
+											try {
+												const response = await axios.post(
+													`${globalUrl}/template/set-trending/${templateId}/${isTrending}`,
+													{}
+												);
+												paginationtemplatesTableStore.subscribe((paginationtemplatesTableStore) => {
+													newArr = paginationtemplatesTableStore;
 												});
+												const filteredData = newArr.find((data) => data.id === templateId);
+												filteredData.trending = response.data.trending;
+												console.log(filteredData);
+
+												paginationtemplatesTableStore.set(newArr);
+											} catch (e) {
+												console.log(e);
+											}
 										}
 										setTrendingTemplate();
 									}}

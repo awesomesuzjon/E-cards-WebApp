@@ -92,7 +92,6 @@
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Tags</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Category</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Priority</th>
-				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">isTrending</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Preview</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
 			</tr>
@@ -110,7 +109,6 @@
 					<td class=" px-8 py-2">{item.tags}</td>
 					<td class=" px-8 py-2">{item.categoryName}</td>
 					<td class=" px-8 py-2">{item.priority}</td>
-					<td class=" px-8 py-2">{item.trending}</td>
 					<td class=" px-8 py-2">
 						<!-- on click of image open image modal -->
 						<div class="flex justify-end  mt-4 mr-5">
@@ -147,21 +145,31 @@
 									title="Delete"
 									on:click={() => {
 										var deleteItemId = item.id;
-										console.log(deleteItemId, 'is my id');
+										deleteItemId, 'is my id';
+										var newArr = [];
+										var newArrIndex = '';
 										async function deleteTemplate(id) {
 											// post:"/set-trending/{name}/{prev_status}",
 
 											axios
 												.delete(`${globalUrl}/template/delete/${deleteItemId}`, {})
 												.then(function (response) {
-													console.log(response);
+													paginationtrendingTemplatesTableStore.subscribe(
+														(paginationtrendingTemplatesTableStore) => {
+															newArr = paginationtrendingTemplatesTableStore;
+															newArrIndex = newArr.findIndex((item) => item.id === deleteItemId);
+														}
+													);
+													newArr.splice(newArrIndex, 1);
+
+													paginationtrendingTemplatesTableStore.set(newArr);
 												})
 												.catch(function (error) {
-													console.log(error);
+													error;
 												});
 										}
 										deleteTemplate(deleteItemId);
-										console.log(deleteItemId, 'deleted');
+										deleteItemId, 'deleted';
 									}}
 								>
 									<MdDelete /></a
@@ -176,8 +184,8 @@
 										var templateId = item.id;
 										var id = item.id;
 										var isTrending = item.trending;
-										console.log(isTrending);
-										console.log(id);
+										isTrending;
+										id;
 
 										async function setTrendingTemplate() {
 											// post:"/set-trending/{name}/{prev_status}",
@@ -185,10 +193,10 @@
 											axios
 												.post(`${globalUrl}/template/set-trending/${templateId}/${isTrending}`, {})
 												.then(function (response) {
-													console.log(response);
+													response;
 												})
 												.catch(function (error) {
-													console.log(error);
+													error;
 												});
 										}
 										setTrendingTemplate();

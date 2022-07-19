@@ -35,7 +35,7 @@
 	async function login() {
 		let userCredential = await auth.signInWithPopup(googleProvider);
 		let token = await userCredential.user.getIdToken(true);
-		console.log('logged in ' + token);
+		'logged in ' + token;
 	}
 
 	function logout() {

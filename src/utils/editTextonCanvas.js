@@ -4,7 +4,7 @@ let subscribe = false;
 export function StrokeWidth() {
 	subscribe = true;
 	const unSubscribe = selected.subscribe((data) => {
-		// console.log(data);
+		// (data);
 		if (!subscribe) {
 			return;
 		}
@@ -24,7 +24,7 @@ export function StrokeWidth() {
 	export function editFontSize() {
 		subscribe = true;
 		const unSubscribe = selected.subscribe((data) => {
-			// console.log(data);
+			// (data);
 			if (!subscribe) {
 				return;
 			}
@@ -49,7 +49,7 @@ export function StrokeWidth() {
 	export function editTextColor() {
 		subscribe = true;
 		const unSubscribe = selected.subscribe((data) => {
-			// console.log(data);
+			// (data);
 			if (!subscribe) {
 				return;
 			}
@@ -67,7 +67,7 @@ export function StrokeWidth() {
 	export function editTextOpacity() {
 		subscribe = true;
 		const unSubscribe = selected.subscribe((data) => {
-			// console.log(data);
+			// (data);
 			if (!subscribe) {
 				return;
 			}
@@ -105,7 +105,7 @@ export function StrokeWidth() {
 	export function editElementPosition() {
 		subscribe = true;
 		const unSubscribe = selected.subscribe((data) => {
-			// console.log(data);
+			// (data);
 			if (!subscribe) {
 				return;
 			}
@@ -127,7 +127,7 @@ export function StrokeWidth() {
 	export function deleteTarget() {
 		subscribe = true;
 		const unSubscribe = selected.subscribe((data) => {
-			// console.log(data);
+			// (data);
 			if (!subscribe) {
 				return;
 			}

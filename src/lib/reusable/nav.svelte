@@ -10,20 +10,24 @@
 	import IoIosLogOut from 'svelte-icons/io/IoIosLogOut.svelte';
 	import { page } from '$app/stores';
 	import FaCloudMoon from 'svelte-icons/fa/FaCloudMoon.svelte';
-
+	// import DarkBtn from '../reusable/darkBtn.svelte';
 	//dark and Light Mode toggle button
 	function toggle() {
 		window.document.body.classList.toggle('dark');
 	}
 </script>
 
+<!-- <DarkBtn />
+ -->
 <div
 	class="bg-red-700  dark:bg-customColorGray    text-white justify-between	 flex   h-16  items-center "
 >
-	<div>
-		<a href="/"><img src="logo.png" alt="HamroPatro Logo" class="w-12 mt-2 ml-6 " /></a>
-	</div>
-
+	<a href="/">
+		<div class="flex flex-row   items-center text-lg font-bold text-bold">
+			<img src="logo.png" alt="HamroPatro Logo" class="w-12 mt-2 ml-6 " />
+			<h1 class="text-white text-lg ml-4 ">Hamro E-cards</h1>
+		</div>
+	</a>
 	<div class="flex justify-start text-sm ">
 		<div class="text-sm breadcrumbs">
 			<ul>
@@ -43,6 +47,7 @@
 						>
 						<p class="dark:text-white">Home{$page.url.pathname}</p>
 					</a>
+					
 				</li>
 			</ul>
 		</div>
@@ -61,31 +66,31 @@
 				<!-- svelte-ignore a11y-img-redundant-alt -->
 				<img src="admin.png" class="w-8 ml-1   rounded-full " alt="Admin Image" />
 			</label>
-		
-		<ul
-			tabindex="0"
-			class="dropdown-content mt-16 menu p-2 text-black shadow bg-base-100 rounded-box w-52 dark:bg-gray-400 "
-		>
-			<li
-				class="flex flex-row items-center  dark:hover:bg-gray-100 dark:hover:text-red-600 hover:bg-gray-600 hover:text-white"
-			>
-				<h1 class="w-12 ml-1"><IoIosPerson /></h1>
 
-				<a href="#" class="block px-4 py-2 "> Profile</a>
-			</li>
-			<li
-				class="flex flex-row items-center  dark:hover:bg-gray-100 dark:hover:text-red-600 hover:bg-gray-600 hover:text-white"
+			<ul
+				tabindex="0"
+				class="dropdown-content mt-16 menu p-2 text-white shadow bg-base-100 rounded-box w-52 dark:bg-gray-400 "
 			>
-				<h2 class="w-12  ml-1 "><IoIosSettings /></h2>
-				<a href="#" class="block px-4 py-2 "> Setting</a>
-			</li>
-			<li
-				class="flex flex-row items-center  dark:hover:bg-gray-100 dark:hover:text-red-600 hover:bg-gray-600 hover:text-white"
-			>
-				<h2 class="w-12 ml-1 "><IoIosLogOut /></h2>
-				<a href="#" class="block px-4 py-2 "> Log out</a>
-			</li>
-		</ul>
+				<li
+					class="flex flex-row items-center  dark:hover:bg-gray-100 dark:hover:text-red-600 hover:bg-gray-600 hover:text-white"
+				>
+					<h1 class="w-12 ml-1"><IoIosPerson /></h1>
+
+					<a href="#" class="block px-4 py-2 "> Profile</a>
+				</li>
+				<li
+					class="flex flex-row items-center  dark:hover:bg-gray-100 dark:hover:text-red-600 hover:bg-gray-600 hover:text-white"
+				>
+					<h2 class="w-12  ml-1 "><IoIosSettings /></h2>
+					<a href="#" class="block px-4 py-2 "> Setting</a>
+				</li>
+				<li
+					class="flex flex-row items-center  dark:hover:bg-gray-100 dark:hover:text-red-600 hover:bg-gray-600 hover:text-white"
+				>
+					<h2 class="w-12 ml-1 "><IoIosLogOut /></h2>
+					<a href="#" class="block px-4 py-2 "> Log out</a>
+				</li>
+			</ul>
+		</div>
 	</div>
-</div>
 </div>

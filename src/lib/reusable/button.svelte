@@ -1,6 +1,6 @@
 <script>
 	function newFunction() {
-		console.log('i m new functon clicked');
+		('i m new functon clicked');
 	}
 </script>
 

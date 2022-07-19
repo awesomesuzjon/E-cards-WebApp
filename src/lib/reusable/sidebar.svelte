@@ -16,7 +16,9 @@
 	$: file = files[0];
 </script>
 
-<div class="bg-red-700  flex  dark:bg-customColorGray  text-center relative h-screen   sidebar">
+<div
+	class="bg-red-700 text-white  flex  dark:bg-customColorGray  text-center relative h-screen   sidebar"
+>
 	<!-- toggle Sidebar code -->
 
 	<ul class="   w-full mt-4	 justify-center items-center">
@@ -40,7 +42,7 @@
 			>
 				<a
 					href="/dashboard"
-					class="w-full   flex items-center  p-2 text-base font-normal rounded-lg  "
+					class="w-full   flex items-center  p-2 text-base font-normal	 rounded-lg  "
 				>
 					<div class="flex items-center align-middle ">
 						<span class="mt-3 ml-3 w-6 h-6 flex  "> <FaHome /></span>
@@ -53,10 +55,16 @@
 			<td>
 				<div class="collapse  py-2 ">
 					<input type="checkbox" class="peer" />
-					<li class="collapse-title truncate flex text-white   dark:hover:text-customColorGray  ">
-						<div class="flex items-center align-middle ">
-							<span class="mt-3 ml-2 w-6 h-6 flex  "> <FaImages /></span>
-							<span class="whitespace-nowrap mt-3 ml-4 center flex  hover:text-red-700 ">
+					<li
+						class="collapse-title truncate flex hover:bg-white hover:text-red-700   dark:hover:text-customColorGray  "
+					>
+						<div class="flex items-center align-middle hover:bg-white hover:text-red-700">
+							<span class="mt-3 ml-2 w-6 h-6 flex hover:bg-white hover:text-red-700 ">
+								<FaImages /></span
+							>
+							<span
+								class="whitespace-nowrap mt-3 ml-4 center flex hover:bg-white hover:text-red-700"
+							>
 								Templates</span
 							>
 						</div>
@@ -68,21 +76,21 @@
 									<li>
 										<a
 											href="/trendingTemplatesTableRoute"
-											class=" hover:bg-white truncate flex items-center w-full p-2 text-sm   transition duration-75 rounded-lg  hover:text-red-700 "
+											class=" hover:bg-white hover:text-red-700 truncate flex items-center w-full p-2 text-sm   transition duration-75 rounded-lg  "
 											>Trending E-cards</a
 										>
 									</li>
 									<li>
 										<a
 											href="/downloadTemplatesTableRoute"
-											class=" truncate flex items-center text-sm hover:bg-white w-full p-2 transition duration-75 rounded-lg group hover:text-red-700 "
+											class=" truncate flex items-center text-sm hover:bg-white hover:text-red-700 w-full p-2 transition duration-75 rounded-lg group  "
 											>Most Downloaded
 										</a>
 									</li>
 									<li>
 										<a
 											href="/allTemplatesTableRoute"
-											class=" flex items-center w-full hover:bg-white p-2 text-sm transition duration-75 rounded-lg group hover:text-red-700 "
+											class=" flex items-center w-full hover:bg-white hover:text-red-700 p-2 text-sm transition duration-75 rounded-lg group  "
 											>All E-cards</a
 										>
 									</li>
@@ -160,7 +168,7 @@
 							type="checkbox"
 							id="toggleSidebarBtn"
 							on:click={toggleSidebarFunc}
-							class="toggle bg-white text-red-700 dark:text-black m-0 active:bg-gray-200  border-none "
+							class="toggle bg-white text-red-700 dark:text-white m-0 active:bg-gray-200  border-none "
 							checked
 						/>
 					</label>
@@ -186,33 +194,31 @@
 					<li class="collapse-title truncate flex text-white   dark:hover:text-customColorGray  ">
 						<div class="flex items-center align-middle ">
 							<span class="mt-3 ml-2 w-6 h-6 flex  "> <FaImages /></span>
-							<span class="whitespace-nowrap mt-3 ml-4 center flex  hover:text-red-700 " />
+							<span class="whitespace-nowrap mt-3 ml-4 center flex  hover:text-white " />
 						</div>
 					</li>
-					<div class="collapse-content hover:bg-gray-300 ">
+					<div class="collapse-content ">
 						<div class="  justify-center relative   " id="toggleContent">
-							<li
-								class=" w-full py-4  text-white   hover:text-red-700 dark:hover:text-customColorGray "
-							>
+							<li class=" w-full py-4  text-white   dark:hover:text-customColorGray ">
 								<ul id="dropdown-example" class=" py-2 space-y-2">
 									<li>
 										<a
 											href="/allTemplatesTableRoute"
-											class=" flex items-center w-full hover:bg-white p-2 text-base font-normal  transition duration-75 rounded-lg group "
+											class=" flex items-center w-full hover:bg-white hover:text-red-700 p-2 text-base font-normal  transition duration-75 rounded-lg group "
 											>A</a
 										>
 									</li>
 									<li>
 										<a
 											href="/trendingTemplatesTableRoute"
-											class=" hover:bg-white truncate flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group hover:text-red-700 "
+											class="hover:bg-white hover:text-red-700 truncate flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group "
 											>T</a
 										>
 									</li>
 									<li>
 										<a
 											href="/downloadTemplatesTableRoute"
-											class=" truncate flex items-center hover:bg-white w-full p-2 text-base font-normal transition duration-75 rounded-lg group "
+											class=" truncate flex items-center hover:bg-white hover:text-red-700 w-full p-2 text-base font-normal transition duration-75 rounded-lg group   "
 											>M
 										</a>
 									</li>
@@ -223,7 +229,7 @@
 				</div>
 
 				<li
-					class="w-full py-4  text-white  hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
+					class="w-full py-4  text-white  hover:bg-red-700 hover:text-white dark:hover:text-customColorGray "
 				>
 					<a
 						href="/stickerTableRoute"
@@ -237,7 +243,7 @@
 					</a>
 				</li>
 				<li
-					class="w-full py-4  text-white  hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
+					class="w-full py-4  text-white  hover:bg-red-700 hover:text-white dark:hover:text-customColorGray "
 				>
 					<a
 						href="/messageTableRoute"
@@ -250,7 +256,7 @@
 				</li>
 
 				<li
-					class="w-full py-4  text-white  hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
+					class="w-full py-4  text-white  hover:bg-red-700 hover:text-white dark:hover:text-customColorGray "
 				>
 					<a
 						href="/categoryTableRoute"

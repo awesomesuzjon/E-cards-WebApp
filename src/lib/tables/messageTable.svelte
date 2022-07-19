@@ -76,8 +76,6 @@
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Message</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Category</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Publish</th>
-				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Priority</th>
-				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Mark as Trending</th>
 
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
 			</tr>
@@ -94,8 +92,6 @@
 					<td class=" px-8 py-2">{item.message}</td>
 					<td class=" px-8 py-2">{item.category}</td>
 
-					<td class=" px-8 py-2">{item.publish}</td>
-					<td class=" px-8 py-2">{item.priority}</td>
 					<td class=" px-8 py-2">{item.trending}</td>
 
 					<td>
@@ -106,55 +102,28 @@
 									title="Delete"
 									on:click={() => {
 										var deleteItemId = item.id;
-										console.log(deleteItemId, 'is my id');
+										deleteItemId, 'is my id';
 										async function deleteTemplate(id) {
 											let newArr = [];
+											var newArrIndex = '';
 
 											axios
 												.delete(`${globalUrl}/message/delete/${deleteItemId}`, {})
 												.then(function (response) {
 													paginationMessageStore.subscribe((paginationMessageStore) => {
 														newArr = paginationMessageStore;
+														newArrIndex = newArr.findIndex((item) => item.id === deleteItemId);
 													});
-													newArr.pop();
+													newArr.splice(newArrIndex, 1);
 													paginationMessageStore.set(newArr);
 												});
 										}
 										deleteTemplate(deleteItemId);
+										
 									}}
 								>
 									<MdDelete /></a
 								>
-							</li>
-
-							<li class="  text-sm   w-4">
-								<!-- svelte-ignore a11y-missing-attribute -->
-
-								<a
-									title="Mark as Trending"
-									on:click={() => {
-										var messageId = item.id;
-										var id = item.id;
-										var isTrending = item.trending;
-										console.log(isTrending);
-										console.log(id);
-
-										async function setTrendingTemplate() {
-											// post:"/set-trending/{name}/{prev_status}",
-											axios
-												.post(`${globalUrl}/message/set-trending/${messageId}/${isTrending}`, {})
-												.then(function (response) {
-													console.log(response);
-												})
-												.catch(function (error) {
-													console.log(error);
-												});
-										}
-										setTrendingTemplate();
-									}}
-								>
-									<DiMarkdown />
-								</a>
 							</li>
 						</div>
 					</td>

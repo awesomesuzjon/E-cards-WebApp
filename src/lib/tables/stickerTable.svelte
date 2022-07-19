@@ -56,8 +56,6 @@
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Sticker Name</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Priority</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Category</th>
-				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Mark as Trending</th>
-
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Publish</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Preview</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
@@ -77,11 +75,10 @@
 					<td class=" px-8 py-2">{item.priority}</td>
 					<td class=" px-8 py-2">{item.category}</td>
 
-					<td class=" px-8 py-2">{item.trending}</td>
 					<td class=" px-8 py-2">{item.publish}</td>
 					<td class=" px-8 py-2">
 						<!-- on click of image open image modal -->
-						<div class="flex justify-end  mt-4 mr-5">
+						<div class="flex justify-end   mr-5">
 							<label for={i} class=" modal-button">
 								<img
 									class="w-4 h-auto flex justify-center items-center"
@@ -107,8 +104,8 @@
 						<!-- bb -->
 					</td>
 					<td>
-						<div class="flex justify-around items-center mb-2 list-none">
-							<li class=" text-sm  w-4 hover:bg-gray-300 p-0 cursor:move ">
+						<div class="flex justify-center items-center mb-2 list-none">
+							<li class=" text-sm  w-4 mx-4 hover:bg-gray-300 p-0 cursor:move ">
 								<!-- svelte-ignore a11y-missing-attribute -->
 								<!-- <a
 								title="Delete"
@@ -128,19 +125,22 @@
 										var deleteItemName = item.name;
 										async function deleteSticker(id) {
 											let newArr = [];
+											var newArrIndex = '';
 
 											axios
 												.delete(`${globalUrl}/sticker/delete/${stickerItemId}`, {})
 												.then(function (response) {
 													paginationStickerStore.subscribe((paginationStickerStore) => {
 														newArr = paginationStickerStore;
+														newArrIndex = newArr.findIndex((item) => item.id === stickerItemId);
 													});
-													newArr.pop();
+													newArr.splice(newArrIndex, 1);
+
 													paginationStickerStore.set(newArr);
 												});
 										}
 										deleteSticker(stickerItemId);
-									}}
+										}}
 								>
 									<MdDelete /></a
 								>
@@ -154,13 +154,11 @@
 									on:click={() => {
 										var stickerItemId = item.id;
 										var id = item.id;
-										var isTrending = item.is_trending;
-										console.log(isTrending);
-										console.log(id);
+										var isTrending = item.trending;
+										isTrending;
+										id;
 
 										async function setTrendingSticker() {
-											// post:"/set-trending/{name}/{prev_status}",
-
 											axios
 												.post(
 													`${globalUrl}/sticker/set-trending/${stickerItemId}/${isTrending}`,
@@ -170,7 +168,7 @@
 													console.log(response);
 												})
 												.catch(function (error) {
-													console.log(error);
+													error;
 												});
 										}
 										setTrendingSticker();

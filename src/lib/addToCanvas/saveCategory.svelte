@@ -35,7 +35,7 @@
 		const addCategoryForm = document.querySelector('.addCategoryForm');
 		addCategoryForm.addEventListener('submit', (e) => {
 			// e.preventDefault();
-			console.log('the preview image is ', addCategoryForm.preview.value);
+			('the preview image is ', addCategoryForm.preview.value);
 			//look at ecard collection and fill data here
 			// addDoc(colRef, {
 			// 	Name: addCategoryForm.name.value,

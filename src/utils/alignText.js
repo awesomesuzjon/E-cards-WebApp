@@ -1,6 +1,6 @@
    export function textLeftAlignFunction() {
         let result = document.getElementById('colortext').style.textAlign = "left"; 
-        console.log(result);
+        (result);
    }
    export function textCenterAlignFunction() {
        document.getElementById('colortext').style.textAlign = "center"; 
