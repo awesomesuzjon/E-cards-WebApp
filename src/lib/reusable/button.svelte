@@ -4,7 +4,9 @@
 	}
 </script>
 
-<button class="  dark:text-white text-sm bg-customHamroPatroColor dark:bg-gray-800 text-white">
+<button
+	class="  dark:text-white text-sm bg-customHamroPatroColor dark:bg-gray-800 text-white 2xl:text-3xl"
+>
 	<slot />
 </button>
 

@@ -21,11 +21,13 @@
 
 {#if !isPageLoaded}
 	<div class="text-lg spinnerClass text-black  flex flex-col justify-center item-center">
-    <Spinner size="50" speed="750" color="#A82124" thickness="2" gap="40" />
+		<Spinner size="50" speed="750" color="#A82124" thickness="2" gap="40" />
 		<span class="text-red-700 text-lg ">Loading...</span>
 	</div>
 {:else}
-	<div class="grid grid-cols-3  gap-10 grid-flow-grid  mx-8 mt-8  dark:bg-gray-700  ">
+	<div
+		class="grid grid-cols-3 xl:gap-16  gap-2 grid-flow-grid  mx-8 2xl:gap-24 2xl:mt-12 mt-4 dark:bg-gray-700  "
+	>
 		<DashboardTemplateElement />
 		<DashboardChartElement />
 		<DashboardMessageElement />

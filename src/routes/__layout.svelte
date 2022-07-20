@@ -9,7 +9,7 @@
 </script>
 
 <Nav />
-<div class="relative h-screen flex ">
+<div class="relative h-screen 2xl:h-screen	flex ">
 	<Sidebar />
 
 	<div
