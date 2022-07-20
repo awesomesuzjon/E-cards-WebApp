@@ -57,7 +57,7 @@
 	//category fetch
 	var categoryOptionArr = [];
 	onMount(() => {
-		fetch(`${globalUrl}/category/show-name-list`).then((res) => {
+		fetch(`${globalUrl}category/show-name-list`).then((res) => {
 			res.json().then((data) => {
 				categoryOptionArr = data?.categoryList ?? [];
 			});
@@ -65,7 +65,7 @@
 		});
 	});
 
-	let url = `${globalUrl}/template/show-all-templates`;
+	let url = `${globalUrl}template/show-all-templates`;
 
 	export var allTemplatesArr = [];
 
@@ -113,7 +113,7 @@
 						console.log(categoryName);
 						async function categoryNameFunc(categoryName) {
 							axios
-								.get(`${globalUrl}/template/get-templates-of-this-category/${categoryName}`, {})
+								.get(`${globalUrl}template/get-templates-of-this-category/${categoryName}`, {})
 								.then(function (response) {
 									if (response?.data?.templates) {
 										allTemplates = [...response.data.templates];
@@ -211,7 +211,7 @@
 											var newArrIndex = '';
 
 											axios
-												.delete(`${globalUrl}/template/delete/${deleteItemId}`, {})
+												.delete(`${globalUrl}template/delete/${deleteItemId}`, {})
 												.then(function (response) {
 													paginationtemplatesTableStore.subscribe(
 														(paginationtemplatesTableStore) => {
@@ -253,7 +253,7 @@
 											// post:"/set-trending/{name}/{prev_status}",
 											try {
 												const response = await axios.post(
-													`${globalUrl}/template/set-trending/${templateId}/${isTrending}`,
+													`${globalUrl}template/set-trending/${templateId}/${isTrending}`,
 													{}
 												);
 												paginationtemplatesTableStore.subscribe((paginationtemplatesTableStore) => {
