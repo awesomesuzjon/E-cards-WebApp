@@ -9,11 +9,11 @@
 </script>
 
 <Nav />
-<div class="relative h-screen flex overflow-y-hidden ">
+<div class="relative h-screen 2xl:h-screen	flex overflow-hidden ">
 	<Sidebar />
 
 	<div
-		class="w-full  text-center text-bold text-sm overflow-hidden dark:bg-gray-700"
+		class="w-full  text-center text-bold text-sm dark:bg-gray-700 bg-gray-100"
 		id="main-container"
 	>
 		<slot />

@@ -4,7 +4,7 @@ let subscribe = false;
 export function editFontUndeline() {
     subscribe = true;
     const unSubscribe = selected.subscribe((data) => {
-        // console.log(data);
+        // (data);
         if (!subscribe) {
             return;
         }
@@ -22,7 +22,7 @@ export function editFontUndeline() {
 export function editFontNoUnderline() {
     subscribe = true;
     const unSubscribe = selected.subscribe((data) => {
-        // console.log(data);
+        // (data);
         if (!subscribe) {
             return;
         }
@@ -42,7 +42,7 @@ export function editFontNoUnderline() {
 export function editFontLineThrough() {
     subscribe = true;
     const unSubscribe = selected.subscribe((data) => {
-        // console.log(data);
+        // (data);
         if (!subscribe) {
             return;
         }

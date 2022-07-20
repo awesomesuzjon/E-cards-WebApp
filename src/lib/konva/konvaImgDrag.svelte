@@ -17,7 +17,7 @@
 		});
 		document.getElementById('drag-modal-items').addEventListener('click', function (e) {
 			itemURL = e.target.src;
-			console.log(itemURL, 'this is the modal img url');
+			itemURL, 'this is the modal img url';
 		});
 
 		var con = stage.container();
@@ -34,8 +34,6 @@
 				image.position(stage.getPointerPosition());
 				image.draggable(true);
 			});
-
-			
 
 			//code for  transformer i.e rectangular boundary around elements on click
 

@@ -66,7 +66,7 @@
 
 	<div class="flex mt-4 ">
 		<table class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-gray-100  ">
-			<tr id="templatesTableRow" class="">
+			<tr id="templatesTableRow" class="2xl:text-3xl">
 				<th class="bg-red-700 dark:bg-gray-800">
 					<!-- <label>
 					<input type="checkbox" class="checkbox" />
@@ -76,15 +76,13 @@
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Message</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Category</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Publish</th>
-				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Priority</th>
-				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Mark as Trending</th>
 
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
 			</tr>
 
 			<!-- {#each messageArr as item} -->
 			{#each paginatedItems as item}
-				<tr>
+				<tr class="2xl:text-3xl">
 					<th>
 						<!-- <label>
 						<input type="checkbox" class="checkbox" />
@@ -94,29 +92,31 @@
 					<td class=" px-8 py-2">{item.message}</td>
 					<td class=" px-8 py-2">{item.category}</td>
 
-					<td class=" px-8 py-2">{item.publish}</td>
-					<td class=" px-8 py-2">{item.priority}</td>
 					<td class=" px-8 py-2">{item.trending}</td>
 
 					<td>
 						<div class="flex justify-around items-center mb-2 list-none">
-							<li class=" text-sm  w-4 hover:bg-gray-300 p-0 cursor:move ">
+							<li
+								class=" text-sm  w-4 hover:bg-gray-300 active:bg-red-400 focus:bg-red-500 p-0 cursor:move 2xl:w-10  "
+							>
 								<!-- svelte-ignore a11y-missing-attribute -->
 								<a
 									title="Delete"
 									on:click={() => {
 										var deleteItemId = item.id;
-										console.log(deleteItemId, 'is my id');
+										deleteItemId, 'is my id';
 										async function deleteTemplate(id) {
 											let newArr = [];
+											var newArrIndex = '';
 
 											axios
 												.delete(`${globalUrl}/message/delete/${deleteItemId}`, {})
 												.then(function (response) {
 													paginationMessageStore.subscribe((paginationMessageStore) => {
 														newArr = paginationMessageStore;
+														newArrIndex = newArr.findIndex((item) => item.id === deleteItemId);
 													});
-													newArr.pop();
+													newArr.splice(newArrIndex, 1);
 													paginationMessageStore.set(newArr);
 												});
 										}
@@ -125,36 +125,6 @@
 								>
 									<MdDelete /></a
 								>
-							</li>
-
-							<li class="  text-sm   w-4">
-								<!-- svelte-ignore a11y-missing-attribute -->
-
-								<a
-									title="Mark as Trending"
-									on:click={() => {
-										var messageId = item.id;
-										var id = item.id;
-										var isTrending = item.trending;
-										console.log(isTrending);
-										console.log(id);
-
-										async function setTrendingTemplate() {
-											// post:"/set-trending/{name}/{prev_status}",
-											axios
-												.post(`${globalUrl}/message/set-trending/${messageId}/${isTrending}`, {})
-												.then(function (response) {
-													console.log(response);
-												})
-												.catch(function (error) {
-													console.log(error);
-												});
-										}
-										setTrendingTemplate();
-									}}
-								>
-									<DiMarkdown />
-								</a>
 							</li>
 						</div>
 					</td>

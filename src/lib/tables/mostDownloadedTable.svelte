@@ -53,7 +53,7 @@
 		fetch(url).then((res) => {
 			res.json().then((data) => {
 				mostDownloadedTemplatesArr = data?.templates ?? [];
-				console.log(mostDownloadedTemplatesArr, 'this is category array ');
+				mostDownloadedTemplatesArr, 'this is category array ';
 			});
 		});
 	});
@@ -129,7 +129,7 @@
 													e.stopPropagation();
 
 													const docRef = doc(db, 'Stickers', card.Id);
-													console.log(card.Id, 'card item id');
+													(card.Id, 'card item id');
 													deleteDoc(docRef);
 												}}
 											>
@@ -140,21 +140,21 @@
 								on:click={() => {
 									var deleteItemId = item.id;
 									var deleteItemName = item.name;
-									console.log(deleteItemId, 'is my id');
+									deleteItemId, 'is my id';
 									async function deleteTemplate(id) {
 										// post:"/set-trending/{name}/{prev_status}",
 
 										axios
 											.delete(`${globalUrl}/delete/catagory/${deleteItemId}`, {})
 											.then(function (response) {
-												console.log(response);
+												response;
 											})
 											.catch(function (error) {
-												console.log(error);
+												error;
 											});
 									}
 									deleteTemplate(deleteItemId);
-									console.log(deleteItemId, 'deleted');
+									deleteItemId, 'deleted';
 								}}
 							>
 								<MdDelete /></a
@@ -171,7 +171,7 @@
 								title="Mark as Trending"
 								on:click={() => {
 									priority = 1;
-									console.log('click');
+									('click');
 									// fetch(trendingUrl).then((res) => {
 									// 	res.json().then((data) => {
 									// 		categoryTrendingArr = data?.templates ?? [];
@@ -181,9 +181,9 @@
 									var categoryName = item.name;
 									var id = item.id;
 									var isTrending = item.is_trending;
-									console.log(categoryName);
-									console.log(isTrending);
-									console.log(id);
+									categoryName;
+									isTrending;
+									id;
 
 									async function setTrendingTemplate() {
 										// post:"/set-trending/{name}/{prev_status}",
@@ -191,10 +191,10 @@
 										axios
 											.post(`${globalUrl}/set-trending-status/${categoryName}/${isTrending}`, {})
 											.then(function (response) {
-												console.log(response);
+												response;
 											})
 											.catch(function (error) {
-												console.log(error);
+												error;
 											});
 									}
 									setTrendingTemplate();

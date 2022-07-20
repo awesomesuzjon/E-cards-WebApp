@@ -4,7 +4,7 @@ let subscribe = false;
 	export function editFontStyleBold() {
 		subscribe = true;
 		const unSubscribe = selected.subscribe((data) => {
-			// console.log(data);
+			// (data);
 			if (!subscribe) {
 				return;
 			}
@@ -22,7 +22,7 @@ let subscribe = false;
 	export function editFontStyleItalic() {
 		subscribe = true;
 		const unSubscribe = selected.subscribe((data) => {
-			// console.log(data);
+			// (data);
 			if (!subscribe) {
 				return;
 			}
@@ -40,7 +40,7 @@ let subscribe = false;
 	export function editFontStyleItalicBold() {
 		subscribe = true;
 		const unSubscribe = selected.subscribe((data) => {
-			// console.log(data);
+			// (data);
 			if (!subscribe) {
 				return;
 			}
@@ -58,7 +58,7 @@ let subscribe = false;
 	export function editFontStyleNormal() {
 		subscribe = true;
 		const unSubscribe = selected.subscribe((data) => {
-			// console.log(data);
+			// (data);
 			if (!subscribe) {
 				return;
 			}

@@ -45,7 +45,7 @@
 </script>
 
 <div
-	class="absolute top-0 right-0 bg-red-300 text-white text-sm invisible w-72 h-screen"
+	class="absolute top-0 right-0 dark:bg-gray-600 text-white text-sm invisible w-72 h-screen"
 	id="stickerEditContainerId"
 >
 	<div tabindex="0" class="collapse">

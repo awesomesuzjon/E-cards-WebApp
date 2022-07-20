@@ -1,15 +1,14 @@
 <div
-	class="flex flex-row items-center justify-around hover:shadow-customHoverBoxShadow shadow-customBoxShadow  col-span-2 row-start-4 row-end-5 col-start-2 row-span-2  dark:bg-gray-800 dark:text-gray-300  rounded-box box-border  text-base font-normal "
+	class="flex flex-row items-center p-6 justify-around hover:shadow-customHoverBoxShadow shadow-customBoxShadow  col-span-2 row-start-4 row-end-5 col-start-2 row-span-2  dark:bg-gray-800 dark:text-gray-300  rounded-box box-border  text-base font-normal "
 >
-	<div class=" flex ">
-		<a href="/stickerTableRoute">
-			<h6
-				class="text-black text-2xl  font-extrabold dark:text-gray-100 dark:hover:text-gray-400 hover:text-red-700"
-			>
-				Stickers
-			</h6>
-		</a>
+	<div>
+		<h6
+			class="text-black text-2xl 2xl:text-4xl 2xl:p-8  font-extrabold dark:text-gray-100 dark:hover:text-gray-400 hover:text-red-700"
+		>
+			<a href="/stickerTableRoute"> Stickers </a>
+		</h6>
 	</div>
+
 	<div class="gap-2">
 		<ul class="flex justify-center">
 			<li>

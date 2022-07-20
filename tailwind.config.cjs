@@ -16,7 +16,7 @@ module.exports = {
 
       },
       boxShadow :{
-        'customBoxShadow' : '0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2);',
+        'customBoxShadow' : '0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.8);',
         'darkBoxShadowTop' : '0px 1px 2px 0px rgba(0,255,255,0.7)',
         'darkBoxShadowRight':'1px 2px 4px 0px rgba(0,255,255,0.7)',
         'darkBoxShadowBottom':'2px 4px 8px 0px rgba(0,255,255,0.7)',

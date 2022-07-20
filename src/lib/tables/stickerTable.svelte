@@ -39,33 +39,32 @@
 </script>
 
 {#if !isPageLoaded}
-	<div class="text-lg spinnerClass text-black  flex flex-col justify-center item-center">
+	<div class="text-lg  spinnerClass text-black  flex flex-col justify-center item-center">
 		<Spinner size="50" speed="750" color="#A82124" thickness="2" gap="40" />
 		<span class="text-red-700 text-lg ">Loading...</span>
 	</div>
 {:else}
 	<div class="flex mt-4 ">
 		<table class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-gray-100  ">
-			<tr id="templatesTableRow" class="">
-				<th class="bg-red-700 dark:bg-gray-800">
+			<tr id="templatesTableRow" class="2xl:text-4xl">
+				<th class="bg-red-700 dark:bg-gray-800 ">
 					<!-- <label>
 					<input type="checkbox" class="checkbox" />
 				</label> -->
 				</th>
-				<th class="bg-red-700  text-white  px-8 py-2 text-center dark:bg-gray-800 ">Id</th>
-				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Sticker Name</th>
-				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Priority</th>
-				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Category</th>
-				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Mark as Trending</th>
-
-				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Publish</th>
-				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Preview</th>
-				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
+				<th class="bg-red-700  text-white  px-8 py-2 text-center dark:bg-gray-800 2xl:text-4xl "
+					>Id</th
+				>
+				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800">Sticker Name</th>
+				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800">Priority</th>
+				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800">Category</th>
+				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800">Publish</th>
+				<th class="bg-red-700  text-white py-2 dark:bg-gray-800">Preview</th>
+				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800">Action</th>
 			</tr>
-
 			<!-- {#each paginatedItems as item} -->
 			{#each paginatedItems as item, i}
-				<tr>
+				<tr class="2xl:text-3xl">
 					<th>
 						<!-- <label>
 						<input type="checkbox" class="checkbox" />
@@ -77,14 +76,13 @@
 					<td class=" px-8 py-2">{item.priority}</td>
 					<td class=" px-8 py-2">{item.category}</td>
 
-					<td class=" px-8 py-2">{item.trending}</td>
 					<td class=" px-8 py-2">{item.publish}</td>
-					<td class=" px-8 py-2">
+					<td class="justify-center flex ml-0 items-center py-2">
 						<!-- on click of image open image modal -->
-						<div class="flex justify-end  mt-4 mr-5">
+						<div class="flex justify-end    2xl:text-4xl">
 							<label for={i} class=" modal-button">
 								<img
-									class="w-4 h-auto flex justify-center items-center"
+									class="w-4 2xl:w-12 h-auto flex justify-center  items-center"
 									src={item.url}
 									alt={item.name}
 								/>
@@ -98,7 +96,7 @@
 						>
 							<label class="modal-box relative" for="">
 								<img
-									class="w-full h-auto flex justify-center items-center"
+									class="w-full h-auto flex justify-center items-center "
 									alt={item.name}
 									src={item.url}
 								/>
@@ -107,8 +105,8 @@
 						<!-- bb -->
 					</td>
 					<td>
-						<div class="flex justify-around items-center mb-2 list-none">
-							<li class=" text-sm  w-4 hover:bg-gray-300 p-0 cursor:move ">
+						<div class="flex justify-center items-center mb-2 list-none">
+							<li class=" text-sm  w-4 mx-4 hover:bg-gray-300 p-0 cursor:move 2xl:w-10">
 								<!-- svelte-ignore a11y-missing-attribute -->
 								<!-- <a
 								title="Delete"
@@ -128,14 +126,17 @@
 										var deleteItemName = item.name;
 										async function deleteSticker(id) {
 											let newArr = [];
+											var newArrIndex = '';
 
 											axios
 												.delete(`${globalUrl}/sticker/delete/${stickerItemId}`, {})
 												.then(function (response) {
 													paginationStickerStore.subscribe((paginationStickerStore) => {
 														newArr = paginationStickerStore;
+														newArrIndex = newArr.findIndex((item) => item.id === stickerItemId);
 													});
-													newArr.pop();
+													newArr.splice(newArrIndex, 1);
+
 													paginationStickerStore.set(newArr);
 												});
 										}
@@ -147,20 +148,20 @@
 							</li>
 							<!-- <div class="flex justify-around items-center"> -->
 
-							<li class="  text-sm   w-4">
+							<li
+								class="  text-sm   w-4 2xl:w-10 hover:bg-blue-400 active:bg-blue-300 focus:bg-blue-600 "
+							>
 								<!-- svelte-ignore a11y-missing-attribute -->
 								<a
 									title="Mark as Trending"
 									on:click={() => {
 										var stickerItemId = item.id;
 										var id = item.id;
-										var isTrending = item.is_trending;
-										console.log(isTrending);
-										console.log(id);
+										var isTrending = item.trending;
+										isTrending;
+										id;
 
 										async function setTrendingSticker() {
-											// post:"/set-trending/{name}/{prev_status}",
-
 											axios
 												.post(
 													`${globalUrl}/sticker/set-trending/${stickerItemId}/${isTrending}`,
@@ -170,7 +171,7 @@
 													console.log(response);
 												})
 												.catch(function (error) {
-													console.log(error);
+													error;
 												});
 										}
 										setTrendingSticker();

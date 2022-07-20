@@ -5,7 +5,7 @@
 	export function editStickerSize() {
 		subscribe = true;
 		const unSubscribe = selected.subscribe((data) => {
-			// console.log(data);
+			// (data);
 			if (!subscribe) {
 				return;
 			}
@@ -46,7 +46,7 @@
 	export function editStickerPosition() {
 		subscribe = true;
 		const unSubscribe = selected.subscribe((data) => {
-			// console.log(data);
+			// (data);
 			if (!subscribe) {
 				return;
 			}
@@ -68,7 +68,7 @@
 	export function editStickerOpacity() {
 		subscribe = true;
 		const unSubscribe = selected.subscribe((data) => {
-			// console.log(data);
+			// (data);
 			if (!subscribe) {
 				return;
 			}

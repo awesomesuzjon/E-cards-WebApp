@@ -14,7 +14,7 @@
 				const data = await (await fetch(stickerUrl)).json();
 				stickerTabStore.set(data.allStickerList);
 			} catch (e) {
-				console.log('error', e);
+				'error', e;
 			}
 		}
 		getSticker();

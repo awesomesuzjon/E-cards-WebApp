@@ -8,10 +8,12 @@
 	import { paginationCategoryStore } from '../../stores/paginationStore';
 	import Spinner from 'svelte-spinner';
 	import axios from 'axios';
+	var responseMessage = '';
+	var responseStatus = '';
 	//from backend grpc
 	import { onMount } from 'svelte';
 	import { globalUrl } from '../../utils/urls';
-
+import { timestamp } from 'rxjs';
 	//loading spinner
 	let isPageLoaded = false;
 	onMount(() => {
@@ -37,6 +39,13 @@
 	paginationCategoryStore.subscribe((paginationCategoryStore) => {
 		category = paginationCategoryStore;
 	});
+
+	function timeStampFunc() {
+		var timestamp = item.timestamp;
+		var date = new Date(timestamp);
+		console.log(date.getTime());
+		console.log(date);
+	}
 </script>
 
 {#if !isPageLoaded}
@@ -46,34 +55,40 @@
 	</div>
 {:else}
 	<div class="flex mt-4 ">
-		<table class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-gray-100  ">
-			<tr id="templatesTableRow" class="">
+		<table
+			class="shadow-lg text-sm w-full mx-5  items-center bg-white  dark:bg-gray-800 dark:text-gray-100  "
+		>
+			<tr id="templatesTableRow" class="2xl:text-3xl">
 				<th class="bg-red-700 dark:bg-gray-800" />
 				<th class="bg-red-700  text-white  px-8 py-2 text-center dark:bg-gray-800 ">Id</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Category Name</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Priority</th>
+				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Added Date</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Publish</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Mark as Trending</th>
-				<th class="bg-red-700  text-white px-8  dark:bg-gray-800 ">Preview</th>
+				<th class="bg-red-700  text-white px-8  dark:bg-gray-800 items-center">Preview</th>
 
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
 			</tr>
 			<!-- {#each categoryArr as item} -->
 			{#each paginatedItems as item, i}
-				<tr>
+				<tr class="2xl:text-3xl">
 					<th />
 					<td class=" px-8 py-2 ">{item.id}</td>
 					<td class=" px-8 py-2">{item.name}</td>
 					<td class=" px-8 py-2">{item.priority}</td>
+					<td class=" px-8 py-2">
+						{new Date(Number(item.timestamp))}
+					</td>
 					<td class=" px-8 py-2">{item.publish}</td>
 					<td class=" px-8 py-2">{item.trending}</td>
 
-					<td class=" px-8  ">
+					<td class=" px-8 justify-center flex items-center mt-2  ">
 						<!-- on click of image open image modal -->
-						<div class="flex justify-end  mt-4 mr-5 items-center">
+						<div class="flex justify-end    items-center">
 							<label for={i} class=" modal-button">
 								<img
-									class="w-4 h-auto flex justify-center items-center"
+									class="w-6 2xl:w-12 h-auto flex justify-center items-center"
 									src={item.url}
 									alt={item.name}
 								/>
@@ -98,25 +113,31 @@
 
 					<td>
 						<div
-							class="flex justify-around items-center 
+							class="flex justify-center  items-center 
 					mb-2 list-none"
 						>
-							<li class=" text-sm  w-4 hover:bg-gray-300 p-0 cursor:move " id="deleteBtn">
+							<li
+								class=" text-sm mx-4  w-4 hover:bg-gray-300 p-0 cursor:move 2xl:w-10 active:bg-red-400 focus:bg-red-500"
+								id="deleteBtn"
+							>
 								<!-- svelte-ignore a11y-missing-attribute -->
 								<a
 									title="Delete"
 									on:click={() => {
 										var deleteItemId = item.id;
+
 										var deleteItemName = item.name;
 										async function deleteTemplate(id) {
 											let newArr = [];
+											var newArrIndex = '';
 											axios
 												.delete(`${globalUrl}/category/delete/${deleteItemName}`, {})
 												.then(function (response) {
 													paginationCategoryStore.subscribe((paginationCategoryStore) => {
 														newArr = paginationCategoryStore;
+														newArrIndex = newArr.findIndex((item) => item.id === deleteItemId);
 													});
-													newArr.pop();
+													newArr.splice(newArrIndex, 1);
 													paginationCategoryStore.set(newArr);
 												});
 										}
@@ -127,41 +148,39 @@
 								>
 							</li>
 
-							<li class="  text-sm   w-4">
+							<li
+								class="  text-sm   w-4 2xl:w-10 hover:bg-gray-300 active:bg-blue-400 focus:bg-blue-500"
+							>
 								<!-- svelte-ignore a11y-missing-attribute -->
 								<a
 									title="Mark as Trending"
 									on:click={() => {
-										console.log('click');
-
+										let newArr = [];
 										var categoryName = item.name;
-										var id = item.id;
+										var categoryId = item.id;
 										var isTrending = item.trending;
-										if (isTrending != true) {
-											isTrending = false;
 
-											console.log(isTrending, 'status ');
-										}
-										console.log(categoryName);
-										console.log(isTrending);
-										console.log(id);
+										async function setTrendingCategory() {
+											try {
+												const response = await axios.post(
+													`${globalUrl}/category/set-trending/${categoryName}/${isTrending}`,
 
-										async function setTrendingTemplate() {
-											let newArr = [];
-											axios
-												.post(
-													`${globalUrl}/category/settor-trending-status/${categoryName}/${isTrending}`,
 													{}
-												)
-												.then(function (response) {
-													paginationCategoryStore.subscribe((paginationCategoryStore) => {
-														newArr = paginationCategoryStore;
-													});
-
-													paginationCategoryStore.set(newArr);
+												);
+												console.log(response);
+												paginationCategoryStore.subscribe((paginationCategoryStore) => {
+													newArr = paginationCategoryStore;
 												});
+												const filteredData = newArr.find((data) => data.id === categoryId);
+												filteredData.trending = response.data.trending;
+												console.log(filteredData);
+
+												paginationCategoryStore.set(newArr);
+											} catch (e) {
+												console.log(e);
+											}
 										}
-										setTrendingTemplate();
+										setTrendingCategory();
 									}}
 								>
 									<DiMarkdown />
