@@ -48,7 +48,6 @@
 			category: categoryInput,
 			publish: publishInput
 		};
-		console.log(data);
 
 		let stickerArr = [];
 		axios.post(`${globalUrl}/sticker/save`, data).then(function (response) {
@@ -62,15 +61,18 @@
 </script>
 
 <form
-	class="w-full max-w-sm"
+	class="w-full max-w-sm 2xl:text-2xl 2xl:p-8  dark:text-white"
 	on:submit={(e) => {
 		e.preventDefault();
 		postSticker();
 	}}
 >
-	<div class="md:flex md:items-center mb-6">
+	<div class="md:flex md:items-center mb-6 ">
 		<div class="md:w-1/3">
-			<label for="name" class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+			<label
+				for="name"
+				class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4  dark:text-white"
+			>
 				Name:
 			</label>
 		</div>
@@ -88,7 +90,10 @@
 
 	<div class="md:flex md:items-center mb-6 ">
 		<div class="md:w-1/3">
-			<label class="block 	 text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="priority">
+			<label
+				class="block 	 text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4  dark:text-white"
+				for="priority"
+			>
 				Priority:
 			</label>
 		</div>
@@ -103,12 +108,14 @@
 		</div>
 	</div>
 
-	<div class="flex justify-center items-center my-4 text-gray-500 font-bold  mb-1 md:mb-0 ml-4">
+	<div
+		class="flex justify-center items-center my-4 truncate text-gray-500 font-bold  mb-1 md:mb-0 ml-14 dark:text-white"
+	>
 		<label for="name">Upload Sticker : </label>
 		<input
 			type="file"
 			id="imgUpload"
-			class="w-60 mx-2 dark:bg-red-700 block text-gray-500 font-bold  mb-1 md:mb-0 ml-4"
+			class="w-60 mx-2 dark:bg-black block text-gray-500 font-bold  mb-1 md:mb-0  dark:text-white"
 			accept="image/*"
 			name="preview"
 			bind:files
@@ -116,15 +123,15 @@
 		/>
 	</div>
 
-	<div class="md:flex md:items-center mb-6 ml-10 my-4">
+	<div class="md:flex md:items-center mb-6 my-4 ml-14">
 		<label
-			class=" my-2 label-optional label-optional-personal label-required-public text-gray-500 font-bold  mb-1 md:mb-0 ml-4"
+			class=" my-2 label-optional label-optional-personal label-required-public text-gray-500 font-bold  mb-1 md:mb-0  dark:text-white"
 			for="categoryMsg"><h1>Category:</h1></label
 		>
 		<select
 			id="categorySticker"
 			name="category"
-			class="text-gray-500 font-bold  mb-1 md:mb-0 ml-4 text-sm h-8 mx-2"
+			class="text-gray-500 font-bold  mb-1 md:mb-0 text-sm h-8 mx-2 2xl:h-12  dark:text-white"
 			required
 		>
 			<option value="">Select a category</option>
@@ -144,7 +151,7 @@
 				name="publishSticker"
 				id="publishSticker"
 			/>
-			<span class="text-sm"> Publish </span>
+			<span class="text-sm 2xl:text-2xl  dark:text-white"> Publish </span>
 		</label>
 	</div>
 

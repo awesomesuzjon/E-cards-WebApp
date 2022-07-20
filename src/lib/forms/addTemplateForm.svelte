@@ -68,7 +68,7 @@
 			postTemplate();
 			e.preventDefault();
 		}}
-		class="addTemplateForm flex flex-col text-sm justify-center items-center "
+		class="addTemplateForm flex flex-col text-sm justify-center items-center 2xl:text-3xl"
 	>
 		<div class="my-2">
 			<label for="title">Title:</label>
@@ -100,9 +100,11 @@
 				class="border-b-2 dark:text-black bg-gray-100 hover:bg-gray-200  h-8  hover:no-underline"
 			/>
 		</div>
-		<span class=" ml-8 italic bold text-sm">Tip:Separate tags with comma (,)</span>
+		<span class=" ml-8 2xl:m-0 italic bold text-sm 2xl:text-lg"
+			>Tip:Separate tags with comma (,)</span
+		>
 		<div class="flex justify-center items-center my-4">
-			<label for="name">Upload Sticker : </label>
+			<label for="name">Upload Sticker </label>
 			<input
 				type="file"
 				id="imgUpload"
@@ -118,7 +120,12 @@
 				class=" my-2 label-optional label-optional-personal label-required-public"
 				for="categoryTemplate"><h1>Category:</h1></label
 			>
-			<select id="categoryTemplate" name="categoryTemplate" class=" text-sm h-8 mx-2" required>
+			<select
+				id="categoryTemplate"
+				name="categoryTemplate"
+				class=" text-sm h-8 mx-2 2xl:h-12"
+				required
+			>
 				<option value="">Select a category</option>
 				{#each categoryOptionArr as item}
 					<option value={item}>{item}</option>\

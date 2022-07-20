@@ -95,10 +95,15 @@
 	<!-- this is category dropdown -->
 	<div class="flex my-4 items-center">
 		<label
-			class=" my-2 label-optional label-optional-personal label-required-public"
+			class=" my-2 label-optional dark:text-white ml-4 label-optional-personal label-required-public"
 			for="categoryTemplateValue"><h1>Category:</h1></label
 		>
-		<select id="categoryTemplateValue" name="categoryTemplate" class=" text-sm h-8 mx-2" required>
+		<select
+			id="categoryTemplateValue"
+			name="categoryTemplate"
+			class=" text-sm h-10 mx-2 2xl:h-16 2xl:text-2xl"
+			required
+		>
 			<option value="">Select a category</option>
 			{#each categoryOptionArr as item}
 				<option
@@ -135,7 +140,7 @@
 	<div class="flex mt-4 ">
 		<!-- <div class="relative"> -->
 		<table class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-gray-100  ">
-			<tr id="templatesTableRow" class="">
+			<tr id="templatesTableRow" class="2xl:text-3xl">
 				<!-- <th class="bg-red-700"> -->
 				<!-- <label>
 					<input type="checkbox" class="checkbox" />
@@ -153,7 +158,7 @@
 
 			{#each paginatedItems as item}
 				<!-- {#each allTemplatesArr as item} -->
-				<tr>
+				<tr class="2xl:text-3xl">
 					<!-- <th>
 					<label>
 						<input type="checkbox" class="checkbox" />
@@ -163,7 +168,7 @@
 					<td class=" px-8 py-2">{item.id}</td>
 					<td class=" px-8 py-2">{item.title}</td>
 					<!-- on click of image open image modal -->
-					<div class="flex my-4 justify-end   mr-5">
+					<div class="flex my-4 justify-center    mr-5 ">
 						<label for={item.id} class=" modal-button">
 							<img
 								class="w-4 h-auto flex justify-center items-center"
@@ -195,7 +200,7 @@
 
 					<td>
 						<div class="flex justify-around items-center mb-2 list-none">
-							<li class=" text-sm  w-4 hover:bg-gray-300 p-0 cursor:move ">
+							<li class=" text-sm  w-4 hover:bg-gray-300 p-0 cursor:move 2xl:w-10">
 								<!-- svelte-ignore a11y-missing-attribute -->
 								<a
 									title="Delete"
@@ -234,7 +239,7 @@
 							</li>
 							<!-- <div class="flex justify-around items-center"> -->
 
-							<li class="  text-sm   w-4">
+							<li class="  text-sm   w-4 2xl:w-10">
 								<!-- svelte-ignore missing-declaration -->
 								<!-- svelte-ignore a11y-missing-attribute -->
 								<a

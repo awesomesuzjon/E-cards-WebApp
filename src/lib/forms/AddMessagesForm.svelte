@@ -32,22 +32,25 @@
 			paginationMessageStore.subscribe((paginationMessageStore) => {
 				newArr = paginationMessageStore;
 			});
-			newArr.push(response.data.message);
+			newArr.push(response.data.savedMessage);
 			paginationMessageStore.set(newArr);
 		});
 	}
 </script>
 
 <form
-	class="w-full max-w-sm"
+	class="w-full max-w-sm 2xl:text-2xl"
 	on:submit={(e) => {
 		e.preventDefault();
 		postMessage();
 	}}
 >
-	<div class="md:flex md:items-center mb-6">
+	<div class="md:flex md:items-center mb-6 ">
 		<div class="md:w-1/3">
-			<label for="name" class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+			<label
+				for="name"
+				class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4  dark:text-white"
+			>
 				Message
 			</label>
 		</div>
@@ -63,15 +66,15 @@
 		</div>
 	</div>
 
-	<div class="md:flex md:items-center mb-6 ml-10">
+	<div class="md:flex md:items-center mb-6">
 		<label
-			class=" my-2 label-optional label-optional-personal label-required-public text-gray-500 font-bold  mb-1 md:mb-0 ml-4"
+			class=" my-2 label-optional label-optional-personal label-required-public text-gray-500 font-bold  mb-1 md:mb-0 ml-14 dark:text-white "
 			for="categoryMsg"><h1>Category:</h1></label
 		>
 		<select
 			id="categoryMsg"
 			name="category"
-			class="text-gray-500 font-bold  mb-1 md:mb-0 ml-4 text-sm h-8 mx-2"
+			class="text-gray-500 font-bold  mb-1 md:mb-0 ml-4 text-sm h-8 mx-2 2xl:h-10"
 			required
 		>
 			<option value="">Select a category</option>
@@ -85,16 +88,16 @@
 		<div class="md:w-3/3" />
 		<label class="md:w-2/3 block text-gray-500 font-bold">
 			<input
-				class="mr-4 leading-tight"
+				class="mr-4 leading-tight 2xl:h-6"
 				type="checkbox"
 				value=""
 				name="publishMsg"
 				id="publishMsg"
 			/>
-			<span class="text-sm"> Publish </span>
+			<span class="text-sm 2xl:text-2xl dark:text-white"> Publish </span>
 		</label>
 	</div>
-	
+
 	<!-- svelte-ignore a11y-missing-attribute -->
 	<a> <Button>Add Message</Button> </a>
 </form>

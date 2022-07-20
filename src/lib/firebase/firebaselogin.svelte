@@ -44,7 +44,7 @@
 </script>
 
 <div>
-	<h1 class="mt-5 text-lg dark:text-white	">Login With Google</h1>
+	<h1 class="mt-5  dark:text-white	text-2xl mb-4">Login With Google</h1>
 </div>
 
 {#if user}

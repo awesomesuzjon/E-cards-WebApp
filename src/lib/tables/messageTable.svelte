@@ -66,7 +66,7 @@
 
 	<div class="flex mt-4 ">
 		<table class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-gray-100  ">
-			<tr id="templatesTableRow" class="">
+			<tr id="templatesTableRow" class="2xl:text-3xl">
 				<th class="bg-red-700 dark:bg-gray-800">
 					<!-- <label>
 					<input type="checkbox" class="checkbox" />
@@ -82,7 +82,7 @@
 
 			<!-- {#each messageArr as item} -->
 			{#each paginatedItems as item}
-				<tr>
+				<tr class="2xl:text-3xl">
 					<th>
 						<!-- <label>
 						<input type="checkbox" class="checkbox" />
@@ -96,7 +96,9 @@
 
 					<td>
 						<div class="flex justify-around items-center mb-2 list-none">
-							<li class=" text-sm  w-4 hover:bg-gray-300 p-0 cursor:move ">
+							<li
+								class=" text-sm  w-4 hover:bg-gray-300 active:bg-red-400 focus:bg-red-500 p-0 cursor:move 2xl:w-10  "
+							>
 								<!-- svelte-ignore a11y-missing-attribute -->
 								<a
 									title="Delete"
@@ -119,7 +121,6 @@
 												});
 										}
 										deleteTemplate(deleteItemId);
-										
 									}}
 								>
 									<MdDelete /></a

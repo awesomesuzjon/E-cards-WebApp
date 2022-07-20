@@ -59,13 +59,12 @@
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800">Priority</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800">Category</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800">Publish</th>
-				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800">Preview</th>
+				<th class="bg-red-700  text-white py-2 dark:bg-gray-800">Preview</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800">Action</th>
 			</tr>
 			<!-- {#each paginatedItems as item} -->
 			{#each paginatedItems as item, i}
-				<tr
-					>A
+				<tr class="2xl:text-3xl">
 					<th>
 						<!-- <label>
 						<input type="checkbox" class="checkbox" />
@@ -78,12 +77,12 @@
 					<td class=" px-8 py-2">{item.category}</td>
 
 					<td class=" px-8 py-2">{item.publish}</td>
-					<td class=" px-8 py-2">
+					<td class="justify-center flex ml-0 items-center py-2">
 						<!-- on click of image open image modal -->
-						<div class="flex justify-end   mr-5 2xl:text-4xl">
+						<div class="flex justify-end    2xl:text-4xl">
 							<label for={i} class=" modal-button">
 								<img
-									class="w-4 h-auto flex justify-center  items-center"
+									class="w-4 2xl:w-12 h-auto flex justify-center  items-center"
 									src={item.url}
 									alt={item.name}
 								/>
@@ -107,7 +106,7 @@
 					</td>
 					<td>
 						<div class="flex justify-center items-center mb-2 list-none">
-							<li class=" text-sm  w-4 mx-4 hover:bg-gray-300 p-0 cursor:move ">
+							<li class=" text-sm  w-4 mx-4 hover:bg-gray-300 p-0 cursor:move 2xl:w-10">
 								<!-- svelte-ignore a11y-missing-attribute -->
 								<!-- <a
 								title="Delete"
@@ -149,7 +148,9 @@
 							</li>
 							<!-- <div class="flex justify-around items-center"> -->
 
-							<li class="  text-sm   w-4">
+							<li
+								class="  text-sm   w-4 2xl:w-10 hover:bg-blue-400 active:bg-blue-300 focus:bg-blue-600 "
+							>
 								<!-- svelte-ignore a11y-missing-attribute -->
 								<a
 									title="Mark as Trending"

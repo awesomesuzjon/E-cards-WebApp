@@ -38,7 +38,7 @@
 				</div>
 			</div>
 			<li
-				class="w-full py-4  text-white  hover:bg-white hover:text-red-700  dark:hover:text-customColorGray  2xl:mb-4 "
+				class="w-full py-4  text-white  hover:bg-white hover:text-red-700    2xl:mb-4 "
 			>
 				<a
 					href="/dashboard"
@@ -56,7 +56,7 @@
 				<div class="collapse  py-2 ">
 					<input type="checkbox" class="peer" />
 					<li
-						class="collapse-title truncate flex hover:bg-white hover:text-red-700   dark:hover:text-customColorGray  "
+						class="collapse-title truncate flex hover:bg-white hover:text-red-700     "
 					>
 						<div class="flex items-center align-middle hover:bg-white hover:text-red-700">
 							<span
@@ -73,7 +73,7 @@
 					</li>
 					<div class="collapse-content  ">
 						<div class="  justify-center relative   " id="toggleContent">
-							<li class=" w-full py-4 text-white    dark:hover:text-customColorGray ">
+							<li class=" w-full py-4 text-white     ">
 								<ul id="dropdown-example" class=" py-2 space-y-2">
 									<li>
 										<a
@@ -106,7 +106,7 @@
 			<!-- ///////////////////////////////////////////////////////////////////// -->
 
 			<li
-				class="w-full py-4   text-white hover:bg-white hover:text-red-700 dark:hover:text-customColorGray 2xl:my-4"
+				class="w-full py-4   text-white hover:bg-white hover:text-red-700 2xl:my-4"
 			>
 				<a
 					href="/stickerTableRoute"
@@ -122,7 +122,7 @@
 				</a>
 			</li>
 			<li
-				class="w-full py-4   text-white hover:bg-white hover:text-red-700 dark:hover:text-customColorGray 2xl:mb-4"
+				class="w-full py-4   text-white hover:bg-white hover:text-red-700  2xl:mb-4"
 			>
 				<a
 					href="/messageTableRoute"
@@ -139,7 +139,7 @@
 			</li>
 
 			<li
-				class="w-full py-4  text-white hover:bg-white hover:text-red-700 dark:hover:text-customColorGray "
+				class="w-full py-4  text-white hover:bg-white hover:text-red-700 "
 			>
 				<a
 					href="/categoryTableRoute"
@@ -193,31 +193,31 @@
 
 				<div class="collapse  py-2  ">
 					<input type="checkbox" class="peer" />
-					<li class="collapse-title truncate  text-white  	   dark:hover:text-customColorGray 2xl:mt-4 ">
+					<li class="collapse-title truncate  text-white  	    2xl:mt-4 ">
 						<span class="w-6 ml-1 flex  2xl:w-16 2xl:h-12 "> <FaImages /></span>
 					</li>
 					<div class="collapse-content ">
 						<div class="  justify-center relative   " id="toggleContent">
-							<li class=" w-full py-2  text-white   dark:hover:text-customColorGray ">
+							<li class=" w-full py-2  text-white    ">
 								<ul id="dropdown-example" class=" py-2 space-y-2">
 									<li>
 										<a
 											href="/allTemplatesTableRoute"
-											class=" flex items-center w-full justify-center hover:bg-white hover:text-red-700 p-2 text-base font-normal  transition duration-75 rounded-lg group "
+											class=" flex items-center w-full justify-center dark:hover:text-customColorGray hover:bg-white hover:text-red-700 p-2 text-base font-normal  transition duration-75 rounded-lg group "
 											>A</a
 										>
 									</li>
 									<li>
 										<a
 											href="/trendingTemplatesTableRoute"
-											class="hover:bg-white justify-center hover:text-red-700 truncate flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group "
+											class="hover:bg-white justify-center dark:hover:text-customColorGray hover:text-red-700 truncate flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group "
 											>T</a
 										>
 									</li>
 									<li>
 										<a
 											href="/downloadTemplatesTableRoute"
-											class=" truncate flex items-center justify-center hover:bg-white hover:text-red-700 w-full p-2 text-base font-normal transition duration-75 rounded-lg group   "
+											class=" truncate flex items-center justify-center dark:hover:text-customColorGray hover:bg-white hover:text-red-700 w-full p-2 text-base font-normal transition duration-75 rounded-lg group   "
 											>M
 										</a>
 									</li>
@@ -228,7 +228,7 @@
 				</div>
 
 				<li
-					class="w-full py-4  text-white  hover:bg-red-700 hover:text-white dark:hover:text-customColorGray 2xl:mt-4"
+					class="w-full py-4  text-white  hover:bg-white dark:hover:text-customColorGray hover:text-white 2xl:mt-4"
 				>
 					<a
 						href="/stickerTableRoute"
@@ -242,7 +242,7 @@
 					</a>
 				</li>
 				<li
-					class="w-full py-4  text-white  hover:bg-red-700 hover:text-white dark:hover:text-customColorGray 2xl:mt-4"
+					class="w-full py-4  text-white hover:bg-white dark:hover:text-customColorGray  hover:text-white  2xl:mt-4"
 				>
 					<a
 						href="/messageTableRoute"
@@ -255,7 +255,7 @@
 				</li>
 
 				<li
-					class="w-full py-4  text-white  hover:bg-red-700 hover:text-white dark:hover:text-customColorGray 2xl:mt-4"
+					class="w-full py-4  text-white hover:bg-white dark:hover:text-customColorGray hover:text-white 2xl:mt-4"
 				>
 					<a
 						href="/categoryTableRoute"
