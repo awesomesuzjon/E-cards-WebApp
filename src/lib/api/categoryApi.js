@@ -1,6 +1,6 @@
 	// import { onMount } from 'svelte';
 	// let url = 'http://192.168.86.55:8090/get/catagory';
-	// export var categoryArr = [];
+	// export let categoryArr = [];
 	// onMount(() => {
 	// 	fetch(url).then((res) => {
 	// 		res.json().then((data) => {

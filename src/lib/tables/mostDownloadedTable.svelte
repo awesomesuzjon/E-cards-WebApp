@@ -48,7 +48,7 @@
 
 	let url = `${globalUrl}/template/show-most-downloaded-templates`;
 	// let url = 'https://jsonplaceholder.typicode.com/todos/';
-	export var mostDownloadedTemplatesArr = [];
+	export let mostDownloadedTemplatesArr = [];
 	onMount(() => {
 		fetch(url).then((res) => {
 			res.json().then((data) => {
@@ -138,8 +138,8 @@
 							<a
 								title="Delete"
 								on:click={() => {
-									var deleteItemId = item.id;
-									var deleteItemName = item.name;
+									let deleteItemId = item.id;
+									let deleteItemName = item.name;
 									deleteItemId, 'is my id';
 									async function deleteTemplate(id) {
 										// post:"/set-trending/{name}/{prev_status}",
@@ -178,9 +178,9 @@
 									// 		// categoryArr = data;
 									// 	});
 									// });
-									var categoryName = item.name;
-									var id = item.id;
-									var isTrending = item.is_trending;
+									let categoryName = item.name;
+									let id = item.id;
+									let isTrending = item.is_trending;
 									categoryName;
 									isTrending;
 									id;

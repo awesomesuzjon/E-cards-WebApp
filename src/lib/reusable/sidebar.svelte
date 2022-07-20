@@ -29,7 +29,7 @@
 				<div class="form-control">
 					<!-- svelte-ignore a11y-label-has-associated-control -->
 					<label
-						class="label cursor-pointer w-8 2xl:w-16 2xl:mt-8 2xl:mb-4"
+						class="label cursor-pointer w-8 2xl:w-16 2xl:mt-8 2xl:mb-4 focus:text-gray-200 active:text-gray-400"
 						id="toggleSidebarBtn"
 						on:click={toggleSidebarFunc}
 					>
@@ -37,9 +37,7 @@
 					</label>
 				</div>
 			</div>
-			<li
-				class="w-full py-4  text-white  hover:bg-white hover:text-red-700    2xl:mb-4 "
-			>
+			<li class="w-full py-4  text-white  hover:bg-white hover:text-red-700    2xl:mb-4 ">
 				<a
 					href="/dashboard"
 					class="w-full   flex items-center  p-2 text-base font-normal	 rounded-lg  "
@@ -55,9 +53,7 @@
 			<td>
 				<div class="collapse  py-2 ">
 					<input type="checkbox" class="peer" />
-					<li
-						class="collapse-title truncate flex hover:bg-white hover:text-red-700     "
-					>
+					<li class="collapse-title truncate flex hover:bg-white hover:text-red-700     ">
 						<div class="flex items-center align-middle hover:bg-white hover:text-red-700">
 							<span
 								class="mt-3 ml-2 w-6 h-6 flex hover:bg-white hover:text-red-700  2xl:w-14 2xl:h-12 "
@@ -105,9 +101,7 @@
 
 			<!-- ///////////////////////////////////////////////////////////////////// -->
 
-			<li
-				class="w-full py-4   text-white hover:bg-white hover:text-red-700 2xl:my-4"
-			>
+			<li class="w-full py-4   text-white hover:bg-white hover:text-red-700 2xl:my-4">
 				<a
 					href="/stickerTableRoute"
 					class=" flex items-center p-2 text-base font-normal  rounded-lg  "
@@ -121,9 +115,7 @@
 					</div>
 				</a>
 			</li>
-			<li
-				class="w-full py-4   text-white hover:bg-white hover:text-red-700  2xl:mb-4"
-			>
+			<li class="w-full py-4   text-white hover:bg-white hover:text-red-700  2xl:mb-4">
 				<a
 					href="/messageTableRoute"
 					class=" flex items-center p-2 text-base font-normal  rounded-lg  "
@@ -138,9 +130,7 @@
 				</a>
 			</li>
 
-			<li
-				class="w-full py-4  text-white hover:bg-white hover:text-red-700 "
-			>
+			<li class="w-full py-4  text-white hover:bg-white hover:text-red-700 ">
 				<a
 					href="/categoryTableRoute"
 					class=" flex items-center p-2 text-base font-normal  rounded-lg  "
@@ -168,7 +158,7 @@
 				<div class="form-control">
 					<!-- svelte-ignore a11y-label-has-associated-control -->
 					<label
-						class="label cursor-pointer w-8 2xl:w-14"
+						class="label cursor-pointer w-8 2xl:w-14 focus:text-gray-200 active:text-gray-400"
 						id="toggleSidebarBtn"
 						on:click={toggleSidebarFunc}
 					>
@@ -228,11 +218,11 @@
 				</div>
 
 				<li
-					class="w-full py-4  text-white  hover:bg-white dark:hover:text-customColorGray hover:text-white 2xl:mt-4"
+					class="w-full py-4  text-white hover:text-red-700  hover:bg-white dark:hover:text-customColorGray 0 2xl:mt-4"
 				>
 					<a
 						href="/stickerTableRoute"
-						class=" flex items-center p-2 text-base font-normal justify-center rounded-lg dark: "
+						class=" flex items-center p-2 text-base font-normal justify-center  rounded-lg dark: "
 					>
 						<div class="flex items-center align-middle">
 							<span class="mt-3  w-6 h-6 flex 2xl:w-16 2xl:h-12">
@@ -242,7 +232,7 @@
 					</a>
 				</li>
 				<li
-					class="w-full py-4  text-white hover:bg-white dark:hover:text-customColorGray  hover:text-white  2xl:mt-4"
+					class="w-full py-4 hover:text-red-700  text-white hover:bg-white dark:hover:text-customColorGray    2xl:mt-4 "
 				>
 					<a
 						href="/messageTableRoute"
@@ -255,11 +245,11 @@
 				</li>
 
 				<li
-					class="w-full py-4  text-white hover:bg-white dark:hover:text-customColorGray hover:text-white 2xl:mt-4"
+					class="w-full py-4 hover:text-red-70 text-white hover:text-red-700 hover:bg-white dark:hover:text-customColorGray 2xl:mt-4 "
 				>
 					<a
 						href="/categoryTableRoute"
-						class=" flex items-center p-2 text-base font-normal justify-center rounded-lg dark: "
+						class=" flex items-center p-2 text-base font-normal justify-center  rounded-lg dark: "
 					>
 						<div class="flex items-center align-middle">
 							<span class="mt-3  w-6 h-6 flex  2xl:w-16 2xl:h-12"> <FaSearch /></span>

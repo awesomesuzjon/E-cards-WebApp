@@ -14,7 +14,7 @@
 
 		//real time get collection data
 		onSnapshot(colRef, (snapshot) => {
-			var Category = [];
+			let Category = [];
 
 			snapshot.docs.forEach((doc) => {
 				Category.push({

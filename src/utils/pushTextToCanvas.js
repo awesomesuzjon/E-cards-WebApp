@@ -3,8 +3,8 @@ import { msgStore } from '../stores/storeText';
 import selected from '../lib/addToCanvas/message/messageTabs.svelte'
 
 export function pushTextToCanvasFunc() {
-	var textCanvas = [];
-	var i, slen, inputText, text;
+	let textCanvas = [];
+	let i, slen, inputText, text;
 	inputText = document.getElementById('addNew').value;
 	textCanvas.push(inputText);
 
@@ -18,8 +18,8 @@ export function pushTextToCanvasFunc() {
 }
 
 export function pushMsgToCanvasFunc() {
-	var textCanvas = [];
-	var  slen, inputMsg;
+	let textCanvas = [];
+	let  slen, inputMsg;
 	inputMsg = document.getElementById('addNewMsg').value;
 	textCanvas.push(inputMsg);
 

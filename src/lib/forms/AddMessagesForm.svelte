@@ -6,7 +6,7 @@
 	import { globalUrl } from '../../utils/urls';
 	import { paginationMessageStore } from '../../stores/paginationStore';
 
-	var categoryOptionArr = [];
+	let categoryOptionArr = [];
 	onMount(() => {
 		fetch(`${globalUrl}/category/show-name-list`).then((res) => {
 			res.json().then((data) => {
@@ -17,9 +17,9 @@
 	});
 
 	async function postMessage() {
-		var nameInput = document.getElementById('nameMsg')?.value;
-		var categoryInput = document.getElementById('categoryMsg')?.selectedOptions[0].value;
-		var publishInput = document.getElementById('publishMsg')?.checked;
+		let nameInput = document.getElementById('nameMsg')?.value;
+		let categoryInput = document.getElementById('categoryMsg')?.selectedOptions[0].value;
+		let publishInput = document.getElementById('publishMsg')?.checked;
 
 		let data = {
 			message: nameInput,

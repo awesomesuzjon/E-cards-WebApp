@@ -6,9 +6,8 @@
 		getLayer: () => layer
 	});
 	const stage = getStage();
-	var layer = new Konva.Layer();
+	let layer = new Konva.Layer();
 	stage.add(layer);
-
 </script>
 
 <slot />

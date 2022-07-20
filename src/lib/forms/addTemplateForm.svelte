@@ -10,13 +10,13 @@
 	let files;
 
 	//image upload base64
-	var imageUrl = '';
+	let imageUrl = '';
 	function addFile(e) {
 		let image = e.target.files[0];
 		let reader = new FileReader();
 		reader.readAsDataURL(image);
 		reader.onload = (e) => {
-			var uploadImageSrc = e.target.result;
+			let uploadImageSrc = e.target.result;
 			imageSrcStore.set(uploadImageSrc);
 		};
 	}
@@ -25,7 +25,7 @@
 	});
 
 	//category dropdown
-	var categoryOptionArr = [];
+	let categoryOptionArr = [];
 	let categoryOptions = `${globalUrl}/category/show-name-list`;
 	onMount(() => {
 		fetch(categoryOptions).then((res) => {
@@ -36,11 +36,11 @@
 	});
 
 	async function postTemplate() {
-		var nameInput = document.getElementById('nameTemplate')?.value;
-		var imgUrl = imageUrl;
-		var priorityInput = document.getElementById('priorityTemplate')?.value;
-		var tagInput = document.getElementById('tagTemplate')?.value;
-		var categoryInput = document.getElementById('categoryTemplate')?.selectedOptions[0].value;
+		let nameInput = document.getElementById('nameTemplate')?.value;
+		let imgUrl = imageUrl;
+		let priorityInput = document.getElementById('priorityTemplate')?.value;
+		let tagInput = document.getElementById('tagTemplate')?.value;
+		let categoryInput = document.getElementById('categoryTemplate')?.selectedOptions[0].value;
 
 		let data = {
 			title: nameInput,

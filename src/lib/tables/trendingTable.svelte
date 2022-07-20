@@ -53,7 +53,7 @@
 	// 	});
 	// });
 
-	export var trendingTemplatesArr = [];
+	export let trendingTemplatesArr = [];
 	onMount(() => {
 		fetch(`${globalUrl}/template/show-trending-templates`).then((res) => {
 			res.json().then((data) => {
@@ -65,7 +65,7 @@
 
 	///pagination code
 
-	var trendingTemplates = [];
+	let trendingTemplates = [];
 	paginationtrendingTemplatesTableStore.subscribe((paginationtrendingTemplatesTableStore) => {
 		trendingTemplates = paginationtrendingTemplatesTableStore;
 	});
@@ -144,10 +144,10 @@
 								<a
 									title="Delete"
 									on:click={() => {
-										var deleteItemId = item.id;
+										let deleteItemId = item.id;
 										deleteItemId, 'is my id';
-										var newArr = [];
-										var newArrIndex = '';
+										let newArr = [];
+										let newArrIndex = '';
 										async function deleteTemplate(id) {
 											// post:"/set-trending/{name}/{prev_status}",
 
@@ -181,9 +181,9 @@
 								<a
 									title="Mark as Trending"
 									on:click={() => {
-										var templateId = item.id;
-										var id = item.id;
-										var isTrending = item.trending;
+										let templateId = item.id;
+										let id = item.id;
+										let isTrending = item.trending;
 										isTrending;
 										id;
 

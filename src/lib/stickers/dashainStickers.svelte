@@ -31,9 +31,9 @@
 		});
 	});
 
-	var stickerArr = [];
-	var stickerTabData = [];
-	var stickerTab = '';
+	let stickerArr = [];
+	let stickerTabData = [];
+	let stickerTab = '';
 	function getSticker() {
 		stickerTabStore.subscribe((stickerTabStore) => {
 			stickerTab = stickerTabStore;
@@ -54,7 +54,7 @@
 		data-tab-target="#home"
 		class="active  text-black"
 		on:click={(e) => {
-			var stickerTabData = { item };
+			let stickerTabData = { item };
 			stickerTabStore.set(stickerTabData);
 			getSticker();
 		}}

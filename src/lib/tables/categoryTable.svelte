@@ -8,12 +8,12 @@
 	import { paginationCategoryStore } from '../../stores/paginationStore';
 	import Spinner from 'svelte-spinner';
 	import axios from 'axios';
-	var responseMessage = '';
-	var responseStatus = '';
+	let responseMessage = '';
+	let responseStatus = '';
 	//from backend grpc
 	import { onMount } from 'svelte';
 	import { globalUrl } from '../../utils/urls';
-import { timestamp } from 'rxjs';
+	import { timestamp } from 'rxjs';
 	//loading spinner
 	let isPageLoaded = false;
 	onMount(() => {
@@ -22,7 +22,7 @@ import { timestamp } from 'rxjs';
 		}, 2000);
 	});
 
-	export var categoryArr = [];
+	export let categoryArr = [];
 	onMount(() => {
 		fetch(`${globalUrl}/category/show-all-category`).then((res) => {
 			res.json().then((data) => {
@@ -35,14 +35,14 @@ import { timestamp } from 'rxjs';
 	///pagination code
 	let paginatedItems = [];
 	$: paginatedItems;
-	var category = [];
+	let category = [];
 	paginationCategoryStore.subscribe((paginationCategoryStore) => {
 		category = paginationCategoryStore;
 	});
 
 	function timeStampFunc() {
-		var timestamp = item.timestamp;
-		var date = new Date(timestamp);
+		let timestamp = item.timestamp;
+		let date = new Date(timestamp);
 		console.log(date.getTime());
 		console.log(date);
 	}
@@ -124,12 +124,12 @@ import { timestamp } from 'rxjs';
 								<a
 									title="Delete"
 									on:click={() => {
-										var deleteItemId = item.id;
+										let deleteItemId = item.id;
 
-										var deleteItemName = item.name;
+										let deleteItemName = item.name;
 										async function deleteTemplate(id) {
 											let newArr = [];
-											var newArrIndex = '';
+											let newArrIndex = '';
 											axios
 												.delete(`${globalUrl}/category/delete/${deleteItemName}`, {})
 												.then(function (response) {
@@ -156,9 +156,9 @@ import { timestamp } from 'rxjs';
 									title="Mark as Trending"
 									on:click={() => {
 										let newArr = [];
-										var categoryName = item.name;
-										var categoryId = item.id;
-										var isTrending = item.trending;
+										let categoryName = item.name;
+										let categoryId = item.id;
+										let isTrending = item.trending;
 
 										async function setTrendingCategory() {
 											try {

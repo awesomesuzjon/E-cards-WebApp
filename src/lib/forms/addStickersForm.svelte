@@ -9,7 +9,7 @@
 
 	let files;
 
-	var categoryOptionArr = [];
+	let categoryOptionArr = [];
 	onMount(() => {
 		fetch(`${globalUrl}/category/show-name-list`).then((res) => {
 			res.json().then((data) => {
@@ -20,14 +20,14 @@
 		});
 	});
 
-	var imageUrl = '';
+	let imageUrl = '';
 
 	function addFile(e) {
 		let image = e.target.files[0];
 		let reader = new FileReader();
 		reader.readAsDataURL(image);
 		reader.onload = (e) => {
-			var uploadImageSrc = e.target.result;
+			let uploadImageSrc = e.target.result;
 			imageSrcStore.set(uploadImageSrc);
 		};
 	}
@@ -36,11 +36,11 @@
 	});
 
 	async function postSticker() {
-		var stickerNameInput = document.getElementById('nameSticker')?.value;
-		var imgUrl = imageUrl;
-		var priorityInput = document.getElementById('prioritySticker')?.value;
-		var categoryInput = document.getElementById('categorySticker')?.selectedOptions[0].value;
-		var publishInput = document.getElementById('publishSticker')?.checked;
+		let stickerNameInput = document.getElementById('nameSticker')?.value;
+		let imgUrl = imageUrl;
+		let priorityInput = document.getElementById('prioritySticker')?.value;
+		let categoryInput = document.getElementById('categorySticker')?.selectedOptions[0].value;
+		let publishInput = document.getElementById('publishSticker')?.checked;
 		let data = {
 			name: stickerNameInput,
 			url: imgUrl,

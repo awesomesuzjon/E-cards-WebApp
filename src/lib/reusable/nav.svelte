@@ -8,7 +8,7 @@
 	import IoIosArrowDown from 'svelte-icons/io/IoIosArrowDown.svelte';
 	import IoIosSettings from 'svelte-icons/io/IoIosSettings.svelte';
 	import IoIosLogOut from 'svelte-icons/io/IoIosLogOut.svelte';
-	import { page } from '$app/stores';
+	import DarkBtn from '../reusable/darkBtn.svelte';
 	import FaCloudMoon from 'svelte-icons/fa/FaCloudMoon.svelte';
 	// import DarkBtn from '../reusable/darkBtn.svelte';
 	//dark and Light Mode toggle button
@@ -28,38 +28,28 @@
 			<h1 class="text-white text-lg ml-4 2xl:text-3xl ">Hamro E-cards</h1>
 		</div>
 	</a>
-	<div class="flex justify-start text-sm ">
-		<div class="text-sm breadcrumbs">
-			<ul>
-				<li>
-					<a href="dashboard">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							class="w-4 h-4 mr-2 stroke-current"
-							><path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
-							/></svg
-						>
-						<p class="dark:text-white 2xl:text-2xl">Home{$page.url.pathname}</p>
-					</a>
-				</li>
-			</ul>
-		</div>
-	</div>
+
 	<!-- /////////////////////// -->
 
 	<div class="flex flex-row items-center ">
-	
+		<div>
+			<button
+				class=" text-white dark:text-blue-200 w-6 mr-8 h-16 2xl:w-16 2xl:h-20 2xl:mr-16 "
+				on:click={toggle}
+			>
+				<!-- <FaCloudMoon /> -->
+				<DarkBtn />
+			</button>
+		</div>
 		<!-- svelte-ignore a11y-label-has-associated-control -->
-		<div class="dropdown dropdown-left mr-8">
+		<div class="dropdown dropdown-left mr-1">
 			<label tabindex="0" class=" m-1">
-				<!-- svelte-ignore a11y-img-redundant-alt -->
-				<img src="admin.png" class="w-8  2xl:w-16 2xl:mr-8   rounded-full " alt="Admin Image" />
+				<!-- svelte-ignore a11y-img-redundant-alt da-->
+				<img
+					src="admin.png"
+					class="w-9  mr-4 2xl:w-16 2xl:mr-8   rounded-full "
+					alt="Admin Image"
+				/>
 			</label>
 
 			<ul
@@ -86,14 +76,6 @@
 					<a href="/" class="block px-4 py-2 "> Log out</a>
 				</li>
 			</ul>
-		</div>
-		<div>
-			<button
-				class=" text-white dark:text-blue-200 w-6 mr-12 h-16 2xl:w-16 2xl:h-20 2xl:mr-16"
-				on:click={toggle}
-			>
-				<FaCloudMoon />
-			</button>
 		</div>
 	</div>
 </div>

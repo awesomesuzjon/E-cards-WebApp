@@ -14,7 +14,7 @@
 
 	onMount(() => {
 		canvasBgStore.subscribe((color) => {
-			var backgroundRect = new Konva.Rect({
+			let backgroundRect = new Konva.Rect({
 				x: 0,
 				y: 0,
 				zIndex: 0,
@@ -30,13 +30,13 @@
 
 		// add background image
 		document.getElementById('canvasFileInput').onchange = function (e) {
-			var url = URL.createObjectURL(e.target.files[0]);
-			var img = new Image();
+			let url = URL.createObjectURL(e.target.files[0]);
+			let img = new Image();
 			img.src = url;
 
 			img.onload = function () {
 				// now load the Konva image
-				var canvasBgImg = new Konva.Image({
+				let canvasBgImg = new Konva.Image({
 					image: img,
 					x: 0,
 					y: 0,
@@ -50,7 +50,7 @@
 				layer.add(canvasBgImg);
 				layer.draw();
 
-				var removeBtn = document.getElementById('removeBgImg');
+				let removeBtn = document.getElementById('removeBgImg');
 				removeBtn.addEventListener('click', () => {
 					canvasBgImg.hide();
 					layer.draw();
@@ -58,7 +58,7 @@
 			};
 		};
 		textStore.subscribe((data) => {
-			var text = new Konva.Text({
+			let text = new Konva.Text({
 				x: 50,
 				y: 50,
 				zIndex: 3,
@@ -76,7 +76,7 @@
 		});
 
 		msgStore.subscribe((data) => {
-			var message = new Konva.Text({
+			let message = new Konva.Text({
 				x: 50,
 				y: 50,
 				zIndex: 3,
@@ -93,8 +93,8 @@
 		});
 
 		//transformer for each clicked element on canvas
-		var previousTarget = null;
-		var transformer = new Konva.Transformer();
+		let previousTarget = null;
+		let transformer = new Konva.Transformer();
 		layer.add(transformer);
 
 		stage.on('click tap', function (e) {
@@ -119,9 +119,9 @@
 		layer.on('click', function (e) {
 			//on click of sticker	 open sticker editbar
 
-			var textEditContainer = document.getElementById('textEditContainerId');
-			var stickerEditContainer = document.getElementById('stickerEditContainerId');
-			// var messageEditContainer = document.getElementById('messageEditContainerId');
+			let textEditContainer = document.getElementById('textEditContainerId');
+			let stickerEditContainer = document.getElementById('stickerEditContainerId');
+			// let messageEditContainer = document.getElementById('messageEditContainerId');
 
 			//on click of message open message editbar
 
@@ -162,7 +162,7 @@
 			//save img url on localstorage
 
 			function downloadURI(uri, name) {
-				var link = document.createElement('a');
+				let link = document.createElement('a');
 				link.download = name;
 				link.href = uri;
 				document.body.appendChild(link);
@@ -173,7 +173,7 @@
 			document.getElementById('saveAsImg').addEventListener(
 				'click',
 				function () {
-					var dataURL = stage.toDataURL({ pixelRatio: 3 });
+					let dataURL = stage.toDataURL({ pixelRatio: 3 });
 					// imgSavedArray.push(dataURL);
 					downloadURI(dataURL, 'MyNewCanvas.png');
 					//saving img data url on localStorage
@@ -194,15 +194,15 @@
 	import { onMount } from 'svelte';
 	const { getStage } = getContext('konva');
 	const { getLayer } = getContext('konva_layer');
-	var stage = getStage();
-	var layer = getLayer();
+	let stage = getStage();
+	let layer = getLayer();
 	import { getContext } from 'svelte';
 
 	import { selected } from '../../stores/selectedItemId';
 	import { textStore } from '../../stores/storeText';
 	import { msgStore } from '../../stores/storeText';
 	import { canvasBgStore } from '../../stores/canvasColor';
-	var JsonData = {
+	let JsonData = {
 		attrs: { width: 678, height: 450, stroke: 'blue', backgroundColor: 'black' },
 		className: 'Stage',
 		children: [
@@ -260,8 +260,8 @@
 	// stage.destroy();
 
 	// //transformer for each clicked element on canvas
-	// var previousTarget = null;
-	// var transformer = new Konva.Transformer();
+	// let previousTarget = null;
+	// let transformer = new Konva.Transformer();
 	// layer.add(transformer);
 
 	// stage.on('click tap', function (e) {

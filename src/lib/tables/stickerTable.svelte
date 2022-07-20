@@ -19,7 +19,7 @@
 		}, 2000);
 	});
 
-	export var stickerArr = [];
+	export let stickerArr = [];
 	onMount(() => {
 		//grpc backend data
 		fetch(`${globalUrl}/sticker/show-all-stickers`).then((res) => {
@@ -32,7 +32,7 @@
 	//initialiaze an array to store stickers from backend
 	let paginatedItems = [];
 	$: paginatedItems;
-	var stickers = [];
+	let stickers = [];
 	paginationStickerStore.subscribe((paginationStickerStore) => {
 		stickers = paginationStickerStore;
 	});
@@ -122,11 +122,11 @@
 							> --><a
 									title="Delete"
 									on:click={() => {
-										var stickerItemId = item.id;
-										var deleteItemName = item.name;
+										let stickerItemId = item.id;
+										let deleteItemName = item.name;
 										async function deleteSticker(id) {
 											let newArr = [];
-											var newArrIndex = '';
+											let newArrIndex = '';
 
 											axios
 												.delete(`${globalUrl}/sticker/delete/${stickerItemId}`, {})
@@ -155,9 +155,9 @@
 								<a
 									title="Mark as Trending"
 									on:click={() => {
-										var stickerItemId = item.id;
-										var id = item.id;
-										var isTrending = item.trending;
+										let stickerItemId = item.id;
+										let id = item.id;
+										let isTrending = item.trending;
 										isTrending;
 										id;
 

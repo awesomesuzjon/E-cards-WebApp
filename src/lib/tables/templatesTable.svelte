@@ -55,7 +55,7 @@
 	// });
 
 	//category fetch
-	var categoryOptionArr = [];
+	let categoryOptionArr = [];
 	onMount(() => {
 		fetch(`${globalUrl}category/show-name-list`).then((res) => {
 			res.json().then((data) => {
@@ -67,7 +67,7 @@
 
 	let url = `${globalUrl}template/show-all-templates`;
 
-	export var allTemplatesArr = [];
+	export let allTemplatesArr = [];
 
 	onMount(() => {
 		fetch(url).then((res) => {
@@ -80,7 +80,7 @@
 
 	///pagination code
 
-	var allTemplates = [];
+	let allTemplates = [];
 	paginationtemplatesTableStore.subscribe((paginationtemplatesTableStore) => {
 		allTemplates = paginationtemplatesTableStore;
 	});
@@ -109,7 +109,7 @@
 				<option
 					value={item}
 					on:click={() => {
-						var categoryName = item;
+						let categoryName = item;
 						console.log(categoryName);
 						async function categoryNameFunc(categoryName) {
 							axios
@@ -205,10 +205,10 @@
 								<a
 									title="Delete"
 									on:click={() => {
-										var deleteItemId = item.id;
+										let deleteItemId = item.id;
 										async function deleteTemplate(id) {
 											let newArr = [];
-											var newArrIndex = '';
+											let newArrIndex = '';
 
 											axios
 												.delete(`${globalUrl}template/delete/${deleteItemId}`, {})
@@ -247,7 +247,7 @@
 									on:click={() => {
 										let newArr = [];
 										const templateId = item.id;
-										var isTrending = item.trending;
+										let isTrending = item.trending;
 										isTrending;
 										async function setTrendingTemplate() {
 											// post:"/set-trending/{name}/{prev_status}",

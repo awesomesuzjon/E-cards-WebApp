@@ -5,6 +5,7 @@
 	import Sidebar from '../lib/reusable/sidebar.svelte';
 	import { onMount } from 'svelte';
 	import { firebaseConfig } from '../utils/firebaseConfig';
+	import BreadCrumb from '../lib/reusable/breadCrumb.svelte';
 	const firebaseApp = initializeApp(firebaseConfig);
 </script>
 
@@ -16,6 +17,7 @@
 		class="w-full  text-center text-bold text-sm dark:bg-gray-700 bg-gray-100"
 		id="main-container"
 	>
+		<BreadCrumb />
 		<slot />
 	</div>
 	<script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>

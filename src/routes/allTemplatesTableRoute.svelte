@@ -5,7 +5,7 @@
 	import { onMount } from 'svelte';
 
 	//category dropdown
-	var categoryOptionArr = [];
+	let categoryOptionArr = [];
 	let categoryOptions = `${globalUrl}/category/show-name-list`;
 	onMount(() => {
 		fetch(categoryOptions).then((res) => {

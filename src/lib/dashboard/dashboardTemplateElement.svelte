@@ -1,8 +1,8 @@
 <script>
 	import MdTrendingUp from 'svelte-icons/md/MdTrendingUp.svelte';
 	import MdFileDownload from 'svelte-icons/md/MdFileDownload.svelte';
-	var trendingCount = 30;
-	var downloadCount = 1000;
+	let trendingCount = 30;
+	let downloadCount = 1000;
 </script>
 
 <div

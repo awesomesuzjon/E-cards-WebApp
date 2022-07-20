@@ -12,7 +12,7 @@
 	import { paginationMessageStore } from '../../stores/paginationStore';
 	import Spinner from 'svelte-spinner';
 
-	var messageArr = [];
+	let messageArr = [];
 	//loading spinner
 	let isPageLoaded = false;
 
@@ -34,7 +34,7 @@
 	//pagination setup
 	let paginatedItems = [];
 	$: paginatedItems;
-	var messages = [];
+	let messages = [];
 	paginationMessageStore.subscribe((paginationMessageStore) => {
 		messages = paginationMessageStore;
 	});
@@ -103,11 +103,11 @@
 								<a
 									title="Delete"
 									on:click={() => {
-										var deleteItemId = item.id;
+										let deleteItemId = item.id;
 										deleteItemId, 'is my id';
 										async function deleteTemplate(id) {
 											let newArr = [];
-											var newArrIndex = '';
+											let newArrIndex = '';
 
 											axios
 												.delete(`${globalUrl}/message/delete/${deleteItemId}`, {})

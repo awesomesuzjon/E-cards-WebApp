@@ -1,5 +1,5 @@
  export function openFullScreenFunc() {
-    var elem = document.getElementById("canvasText");
+    let elem = document.getElementById("canvasText");
       if (elem.requestFullscreen) {
         elem.requestFullscreen();
       } else if (elem.webkitRequestFullscreen) { /* Safari */

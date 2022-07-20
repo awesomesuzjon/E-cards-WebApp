@@ -7,14 +7,14 @@
 	import { paginationCategoryStore } from '../../stores/paginationStore';
 
 	let files;
-	var imageUrl = '';
+	let imageUrl = '';
 
 	function addFile(e) {
 		let image = e.target.files[0];
 		let reader = new FileReader();
 		reader.readAsDataURL(image);
 		reader.onload = (e) => {
-			var uploadImageSrc = e.target.result;
+			let uploadImageSrc = e.target.result;
 			imageSrcStore.set(uploadImageSrc);
 		};
 	}
@@ -23,11 +23,11 @@
 	});
 
 	async function postCategory() {
-		var nameInput = document.getElementById('nameSticker')?.value;
-		var imgUrl = imageUrl;
-		var priorityInput = document.getElementById('priority')?.value;
-		var publishInput = document.getElementById('publish')?.checked;
-		var TrendingInput = document.getElementById('trending')?.checked;
+		let nameInput = document.getElementById('nameSticker')?.value;
+		let imgUrl = imageUrl;
+		let priorityInput = document.getElementById('priority')?.value;
+		let publishInput = document.getElementById('publish')?.checked;
+		let TrendingInput = document.getElementById('trending')?.checked;
 
 		let data = {
 			name: nameInput,

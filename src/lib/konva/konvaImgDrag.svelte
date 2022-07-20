@@ -11,7 +11,7 @@
 		const stage = getStage();
 		const layer = getLayer();
 
-		var itemURL = '';
+		let itemURL = '';
 		document.getElementById('drag-items').addEventListener('dragstart', function (e) {
 			itemURL = e.target.src;
 		});
@@ -20,7 +20,7 @@
 			itemURL, 'this is the modal img url';
 		});
 
-		var con = stage.container();
+		let con = stage.container();
 
 		con.addEventListener('dragover', function (e) {
 			e.preventDefault(); // !important
@@ -37,9 +37,9 @@
 
 			//code for  transformer i.e rectangular boundary around elements on click
 
-			var previousTarget = null;
+			let previousTarget = null;
 
-			var transformer = new Konva.Transformer();
+			let transformer = new Konva.Transformer();
 
 			layer.add(transformer);
 
@@ -66,7 +66,7 @@
 
 			//save canvas into pdf format
 			document.getElementById('saveAsPdf').addEventListener('click', function () {
-				var pdf = new jsPDF('l', 'px', [stage.width(), stage.height()]);
+				let pdf = new jsPDF('l', 'px', [stage.width(), stage.height()]);
 				pdf.setTextColor('#000000');
 				// first add texts
 				stage.find('Text').forEach((text) => {

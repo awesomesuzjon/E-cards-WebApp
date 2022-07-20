@@ -5,7 +5,7 @@
 
 	// import { clearModalMsgFunc } from '../../../utils/pushTextToCanvas';
 
-	var selected = '';
+	let selected = '';
 	let messages = {
 		first: ['Happy Dashain', 'Happy Tika', 'Happy Ghatasthapana', 'Dashain ko subhakamana'],
 		second: ['Happy Tihar', 'Happy Dipawali', 'Happy Laxmi Pooja'],
