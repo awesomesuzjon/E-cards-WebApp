@@ -3,7 +3,7 @@
 	import KonvaImgDrag from '$lib/konva/konvaImgDrag.svelte';
 	import FaAngleRight from 'svelte-icons/fa/FaAngleRight.svelte';
 	import SaveTemplate from '../addToCanvas/saveTemplate.svelte';
-
+	import Button from '../reusable/button.svelte';
 	import Stage from '../../lib/konva/stage.svelte';
 	import Layer from '../../lib/konva/layer.svelte';
 	import MessageTabs from '../addToCanvas/message/messageTabs.svelte';
@@ -29,9 +29,12 @@
 		</Stage>
 	</div>
 	<div>
-		<p class="text-sm my-2 text-black dark:text-white"><strong>Tip:</strong> Drag the Stickers from the sidebar.</p>
-		<button class="btn" id="saveAsImg">Save as Img</button>
-
+		<p class="text-sm my-2 text-black dark:text-white">
+			<strong>Tip:</strong> Drag the Stickers from the sidebar.
+		</p>
+		<Button>
+			<button id="saveAsImg">Save as Img</button>
+		</Button>
 		<SaveTemplate />
 	</div>
 </div>

@@ -115,7 +115,7 @@
 		<input
 			type="file"
 			id="imgUpload"
-			class="w-60 mx-2 dark:bg-black block text-gray-500 font-bold  mb-1 md:mb-0  dark:text-white"
+			class="w-60 mx-2 dark:bg-gray-700 block text-gray-500 font-bold  mb-1 md:mb-0  dark:text-white "
 			accept="image/*"
 			name="preview"
 			bind:files
@@ -157,3 +157,12 @@
 
 	<Button>Add Sticker</Button>
 </form>
+
+<style>
+	input[type='file']::file-selector-button {
+		border: 2px solid transparent;
+		border-right: black;
+		background-color: hwb(0 13% 23%);
+		transition: 1s;
+	}
+</style>

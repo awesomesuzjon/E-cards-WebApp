@@ -7,7 +7,7 @@
 
 	<input
 		id="canvasFileInput"
-		class="my-2 w-72 ml-6 text-sm text-white bg-red-700 rounded-lg border border-gray-300 cursor-pointer dark:text-white focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-red-700"
+		class="my-2 w-72 ml-6 text-sm text-white bg-red-700  rounded-lg border border-gray-300 cursor-pointer dark:text-white focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-red-700"
 		type="file"
 	/>
 
@@ -19,7 +19,7 @@
 	input[type='file']::file-selector-button {
 		border: 2px solid transparent;
 		border-right: black;
-		background-color: darkslategray;
+		background-color: hwb(0 13% 23%);
 		transition: 1s;
 	}
 </style>

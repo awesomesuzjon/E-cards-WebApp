@@ -1,4 +1,5 @@
 <script>
+	import FaHome from 'svelte-icons/fa/FaHome.svelte';
 	import { page } from '$app/stores';
 	$: path = $page.url.pathname.slice(1);
 </script>
@@ -8,9 +9,11 @@
 	<ol role="list" class="max-w-screen-xl w-full mx-auto px-4 flex space-x-4 sm:px-4 lg:px-6">
 		<li class="flex">
 			<div class="flex items-center">
-				<a href="/dashboard" class="text-gray-400 hover:text-gray-500 w-5 h-5 ">
+				<a href="/dashboard" class="text-black hover:text-red-500  w-5 h-5 ">
 					<!-- Heroicon name: solid/home -->
-					<img src="houseIcon.png" alt="" />
+					<span class="dark:text-white dark:hover:text-black">
+						<FaHome />
+					</span>
 					<span class="sr-only" />
 				</a>
 			</div>
@@ -31,7 +34,7 @@
 					</svg>
 					<a
 						href="#"
-						class="ml-4 font-medium  text-md dark:text-white hover:text-gray-700 text-red-700"
+						class="ml-4 font-medium  text-md dark:text-white hover:text-gray-500 dark:hover:text-black text-black"
 						>{path}</a
 					>
 				</div>

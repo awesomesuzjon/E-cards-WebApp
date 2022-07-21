@@ -24,4 +24,15 @@
 </div>
 
 <style>
+	@font-face {
+		font-family: 'gilroy';
+		font-style: normal bold extrabold light medium regular;
+		font-weight: 400;
+		src: local('gilroy-bold'), local('gilroy-extrabold'), local('gilroy-light'),
+			local('gilroy-medium'), local('gilroy-regular') url('static/fonts/gilroy') format('otf');
+	}
+
+	* {
+		font-family: 'gilroy';
+	}
 </style>

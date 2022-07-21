@@ -1,5 +1,6 @@
 <script>
 	import AddtemplateForm from '../forms/addTemplateForm.svelte';
+	import Button from '../reusable/button.svelte';
 
 	//fireStore used from here to save form inputs on firebase Database
 	// 	import { initializeApp } from 'firebase/app';
@@ -69,11 +70,13 @@
 	// });
 </script>
 
-<label
-	for="my-modal-5"
-	class="btn modal-button hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white  btn-gray-50 center  text-sm p-2"
-	>Save</label
->
+<Button>
+	<label
+		for="my-modal-5"
+		class=" modal-button hover:text-gray-800 hover:no-underline hover:border-gray-800 hover:bg-white  btn-gray-50 center  text-sm p-2"
+		>Save</label
+	>
+</Button>
 
 <!-- Put this part before </body> tag -->
 <input type="checkbox" id="my-modal-5" class="modal-toggle" />

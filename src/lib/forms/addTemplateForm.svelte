@@ -137,3 +137,12 @@
 		<Button>Add Template</Button>
 	</form>
 </div>
+
+<style>
+	input[type='file']::file-selector-button {
+		border: 2px solid transparent;
+		border-right: black;
+		background-color: hwb(0 13% 23%);
+		transition: 1s;
+	}
+</style>

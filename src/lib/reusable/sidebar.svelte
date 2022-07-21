@@ -3,9 +3,8 @@
 	import FaImages from 'svelte-icons/fa/FaImages.svelte';
 	import IoMdText from 'svelte-icons/io/IoMdText.svelte';
 	import FaSearch from 'svelte-icons/fa/FaSearch.svelte';
-	import FaAngleDown from 'svelte-icons/fa/FaAngleDown.svelte';
 	import { toggleSidebarFunc } from '../../utils/toggleComponent';
-	import FaSmileWink from 'svelte-icons/fa/FaSmileWink.svelte';
+	import MdFace from 'svelte-icons/md/MdFace.svelte';
 	import GiHamburgerMenu from 'svelte-icons/gi/GiHamburgerMenu.svelte';
 
 	// let files;
@@ -18,7 +17,7 @@
 </script>
 
 <div
-	class="bg-gray-50 text-black dark:text-white flex  dark:bg-customColorGray   text-center relative h-screen 2xl:h-screen    sidebar"
+	class="bg-gray-50   text-black dark:text-white flex  dark:bg-customColorGray   text-center relative h-screen 2xl:h-screen    sidebar"
 >
 	<!-- toggle Sidebar code -->
 
@@ -46,7 +45,7 @@
 				>
 					<div class="flex items-center align-middle ">
 						<span class=" ml-3 w-5 flex   2xl:w-14 2xl:h-12 ">
-							<img src="houseIcon.png" alt="" class="color-white" />
+							<FaHome />
 						</span>
 						<span class="whitespace-nowrap ml-4 center flex  2xl:text-3xl "> Dashboard</span>
 					</div>
@@ -57,10 +56,12 @@
 			<td>
 				<div class="collapse    ">
 					<input type="checkbox" class="peer" />
-					<li class="collapse-title truncate flex hover:bg-red-700 hover:text-black  dark:hover:bg-white dark:hover:text-black     ">
+					<li
+						class="collapse-title truncate flex hover:bg-red-700 hover:text-black  dark:hover:bg-white dark:hover:text-black     "
+					>
 						<div class="flex items-center align-middle ">
 							<span class=" ml-1 w-5 h-5 flex  2xl:w-14 2xl:h-12 ">
-								<img src="imageIcon.png" alt="" />
+								<FaImages />
 							</span>
 							<span class="whitespace-nowrap  ml-4 dark:text-white  center flex  2xl:text-3xl">
 								Templates</span
@@ -102,7 +103,7 @@
 			<!-- ///////////////////////////////////////////////////////////////////// -->
 
 			<li
-				class="w-full  py-3  dark:text-white text-black hover:bg-red-700 dark:hover:bg-white dark:hover:text-black   hover:text-black 2xl:my-4"
+				class="w-full  py-3   text-black hover:bg-red-700 dark:text-white dark:hover:bg-white dark:hover:text-black   hover:text-black 2xl:my-4"
 			>
 				<a
 					href="/stickerTableRoute"
@@ -110,8 +111,8 @@
 				>
 					<div class="flex items-center">
 						<span class=" ml-3 w-5 h-5 flex  2xl:w-14 2xl:h-12">
-							<img src="stickerIcon.png" alt="" /></span
-						><span class=" whitespace-nowrap  ml-4 center flex  2xl:text-3xl"> Stickers</span>
+							<MdFace />
+						</span><span class=" whitespace-nowrap  ml-4 center flex  2xl:text-3xl"> Stickers</span>
 					</div>
 				</a>
 			</li>
@@ -124,21 +125,30 @@
 				>
 					<div class="flex  items-center">
 						<span class=" ml-3 w-5 h-5 flex  2xl:w-14 2xl:h-12 mt-1">
-							<img src="messageIcon.png" alt="" /></span
-						><span class="whitespace-nowrap  ml-4 center flex 2xl:text-3xl dark:hover:bg-white dark:hover:text-black  "> Messages</span>
+							<IoMdText />
+						</span>
+						<span
+							class="whitespace-nowrap  ml-4 center flex 2xl:text-3xl dark:hover:bg-white dark:hover:text-black  "
+						>
+							Messages</span
+						>
 					</div>
 				</a>
 			</li>
 
-			<li class="w-full   py-3 dark:text-white text-black hover:bg-red-700 hover:text-black dark:hover:bg-white dark:hover:text-black  ">
+			<li
+				class="w-full   py-3 dark:text-white text-black hover:bg-red-700 hover:text-black dark:hover:bg-white dark:hover:text-black  "
+			>
 				<a
 					href="/categoryTableRoute"
 					class=" flex items-center p-2 text-base font-normal  rounded-lg  "
 				>
 					<div class="flex items-center align-middle">
 						<span class=" ml-3 w-5 h-5 flex 2xl:w-14 2xl:h-12 mt-1">
-							<img src="searchIcon.png" alt="" /></span
-						><span class=" whitespace-nowrap  ml-4 center flex 2xl:text-3xl   ">Categories</span>
+							<FaSearch />
+						</span><span class=" whitespace-nowrap  ml-4 center flex 2xl:text-3xl   "
+							>Categories</span
+						>
 					</div>
 				</a>
 			</li>
@@ -158,7 +168,7 @@
 				<div class="form-control">
 					<!-- svelte-ignore a11y-label-has-associated-control -->
 					<label
-						class="label cursor-pointer w-5 2xl:w-14 focus:text-gray-200 active:text-gray-400"
+						class="label cursor-pointer w-6 2xl:w-14 focus:text-gray-200 active:text-gray-400"
 						id="toggleSidebarBtn"
 						on:click={toggleSidebarFunc}
 					>
@@ -169,49 +179,51 @@
 
 			<ul class="   justify-center items-center w-full  	flex flex-col ">
 				<li
-					class="w-full    text-black hover:bg-red-700 hover:text-white   dark:hover:bg-white dark:hover:text-black   2xl:mt-4 "
+					class="w-full dark:text-white    hover:bg-red-700   hover:text-black dark:hover:text-black  dark:hover:bg-white   2xl:mt-4 "
 				>
 					<a
 						href="/dashboard"
-						class="w-full   flex items-center justify-center  p-2 text-base font-normal rounded-lg  "
+						class="   flex items-center justify-center  p-2 text-base font-normal rounded-lg  "
 					>
 						<div class="flex items-center align-middle ">
-							<span class=" w-5 h-5 flex 2xl:w-16 2xl:h-12">
-								<img src="houseIcon.png" alt="" /></span
-							>
+							<span class=" w-5 h-5 flex 2xl:w-16 2xl:h-12  ">
+								<FaHome />
+							</span>
 						</div>
 					</a>
 				</li>
 
 				<div class="collapse">
 					<input type="checkbox" class="peer" />
-					<li class="collapse-title truncate   text-black  hover:bg-red-700 	    2xl:mt-4 ">
-						<span class="w-5 ml-2 flex  2xl:w-16 2xl:h-12 ">
-							<img src="imageIcon.png" alt="" /></span
-						>
+					<li
+						class="collapse-title truncate  dark:text-white text-black  hover:bg-red-700 	dark:hover:bg-white    2xl:mt-4 "
+					>
+						<span class="w-5 ml-2 flex  2xl:w-16 2xl:h-12 dark:text-white">
+							<FaImages />
+						</span>
 					</li>
 					<div class="collapse-content p-0 m-0">
 						<div class="  justify-center relative   " id="toggleContent">
-							<li class=" w-full   text-black    ">
+							<li class="  text-black    ">
 								<ul id="dropdown-example" class="  ">
 									<li>
 										<a
 											href="/allTemplatesTableRoute"
-											class=" flex items-center  justify-center dark:hover:bg-white dark:hover:text-black   hover:bg-red-700   hover:text-black p-2 text-base font-normal  transition duration-75 rounded-lg group "
+											class=" flex items-center  justify-center dark:text-white dark:hover:bg-white dark:hover:text-black   hover:bg-red-700   hover:text-black p-2 text-base font-normal  transition duration-75 rounded-lg group "
 											>A</a
 										>
 									</li>
 									<li>
 										<a
 											href="/trendingTemplatesTableRoute"
-											class="hover:bg-red-700 justify-center  dark:hover:bg-white dark:hover:text-black   hover:text-black truncate flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group "
+											class="hover:bg-red-700 justify-center dark:text-white dark:hover:bg-white dark:hover:text-black   hover:text-black truncate flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group "
 											>T</a
 										>
 									</li>
 									<li>
 										<a
 											href="/downloadTemplatesTableRoute"
-											class=" truncate flex items-center  justify-center dark:hover:bg-white dark:hover:text-black   hover:bg-red-700 hover:text-black w-full p-2 text-base font-normal transition duration-75 rounded-lg group   "
+											class=" truncate flex items-center  justify-center dark:text-white dark:hover:bg-white dark:hover:text-black   hover:bg-red-700 hover:text-black w-full p-2 text-base font-normal transition duration-75 rounded-lg group   "
 											>M
 										</a>
 									</li>
@@ -222,7 +234,7 @@
 				</div>
 
 				<li
-					class="w-full py-2  mb-3 hover:bg-red-700   hover:text-black dark:hover:bg-white dark:hover:text-black   2xl:mt-4"
+					class="w-full py-2  mb-3 hover:bg-red-700   hover:text-black  dark:hover:bg-white dark:hover:text-black   2xl:mt-4"
 				>
 					<a
 						href="/stickerTableRoute"
@@ -230,13 +242,13 @@
 					>
 						<div class="flex items-center align-middle">
 							<span class="  w-5 h-5 flex 2xl:w-16 2xl:h-12">
-								<img src="stickerIcon.png" alt="" />
+								<MdFace />
 							</span>
 						</div>
 					</a>
 				</li>
 				<li
-					class="w-full  hover:bg-red-700   hover:text-black mb-3  text-black  dark:hover:bg-white dark:hover:text-black    2xl:mt-4 "
+					class="w-full  hover:bg-red-700   hover:text-black mb-3  text-black dark:text-white dark:hover:bg-white dark:hover:text-black    2xl:mt-4 "
 				>
 					<a
 						href="/messageTableRoute"
@@ -244,14 +256,14 @@
 					>
 						<div class="flex items-center align-middle">
 							<span class="  w-5 h-5 flex  2xl:w-16 2xl:h-12">
-								<img src="messageIcon.png" alt="" /></span
-							>
+								<IoMdText />
+							</span>
 						</div>
 					</a>
 				</li>
 
 				<li
-					class="w-full   text-black  hover:bg-red-700   hover:text-black dark:hover:bg-white dark:hover:text-black   2xl:mt-4 "
+					class="w-full   text-black  hover:bg-red-700   hover:text-black dark:text-white dark:hover:bg-white dark:hover:text-black   2xl:mt-4 "
 				>
 					<a
 						href="/categoryTableRoute"
@@ -259,8 +271,8 @@
 					>
 						<div class="flex items-center align-middle">
 							<span class="  w-5 h-5 flex  2xl:w-16 2xl:h-12">
-								<img src="searchIcon.png" alt="" /></span
-							>
+								<FaSearch />
+							</span>
 						</div>
 					</a>
 				</li>
@@ -268,3 +280,15 @@
 		</div>
 	</ul>
 </div>
+
+<style>
+	.collapse-title,
+	.collapse > input[type='checkbox'] {
+		width: 100%;
+		padding: 1rem;
+		padding-right: 1rem;
+		padding-right: 3rem;
+		min-height: 0;
+		transition: background-color 0.2s ease-in-out;
+	}
+</style>
