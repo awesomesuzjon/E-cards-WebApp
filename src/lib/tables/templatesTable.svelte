@@ -7,10 +7,9 @@
 	import DiMarkdown from 'svelte-icons/di/DiMarkdown.svelte';
 	import { previewImgFunc } from '../../utils/previewImgntbl';
 	import axios from 'axios';
-	import Spinner from 'svelte-spinner';
 	import { globalUrl } from '../../utils/urls';
+	import Spinner from 'svelte-spinner';
 	import { paginationtemplatesTableStore } from '../../stores/paginationStore';
-
 	// import {
 	// 	getFirestore,
 	// 	addDoc,
@@ -21,6 +20,7 @@
 	// 	onSnapshot
 	// } from 'firebase/firestore';
 	import { onMount } from 'svelte';
+	import { dataset_dev } from 'svelte/internal';
 
 	//loading spinner
 	let isPageLoaded = false;
@@ -55,13 +55,12 @@
 	// });
 
 	//category fetch
-	let categoryOptionArr = [];
+	let categoryOptionArr = ['All'];
 	onMount(() => {
 		fetch(`${globalUrl}category/show-name-list`).then((res) => {
 			res.json().then((data) => {
-				categoryOptionArr = data?.categoryList ?? [];
+				categoryOptionArr = [...categoryOptionArr, ...data?.categoryList] ?? [];
 			});
-			categoryOptionArr;
 		});
 	});
 
@@ -73,6 +72,7 @@
 		fetch(url).then((res) => {
 			res.json().then((data) => {
 				allTemplatesArr = data?.templates ?? [];
+				console.log(res, 'this is response');
 				paginationtemplatesTableStore.set(allTemplatesArr);
 			});
 		});
@@ -95,16 +95,16 @@
 	<!-- this is category dropdown -->
 	<div class="flex my-4 items-center">
 		<label
-			class=" my-2 label-optional dark:text-white ml-4 label-optional-personal label-required-public"
+			class=" my-2 label-optional ml-4 label-optional-personal label-required-public dark:text-white text-black"
 			for="categoryTemplateValue"><h1>Category:</h1></label
 		>
 		<select
 			id="categoryTemplateValue"
 			name="categoryTemplate"
-			class=" text-sm h-10 mx-2 2xl:h-16 2xl:text-2xl"
+			class=" text-sm h-10 mx-2 2xl:h-16 2xl:text-2xl dark:text-white text-black"
 			required
 		>
-			<option value="">Select a category</option>
+			<option value="all">Select a category</option>
 			{#each categoryOptionArr as item}
 				<option
 					value={item}
@@ -112,17 +112,15 @@
 						let categoryName = item;
 						console.log(categoryName);
 						async function categoryNameFunc(categoryName) {
+							if (item.toLowerCase() === 'all') {
+								axios.get(`${globalUrl}template/show-all-templates`, {}).then((response) => {
+									allTemplates = [...response.data.templates];
+								});
+							}
 							axios
 								.get(`${globalUrl}template/get-templates-of-this-category/${categoryName}`, {})
 								.then(function (response) {
-									if (response?.data?.templates) {
-										allTemplates = [...response.data.templates];
-									} else {
-										paginationtemplatesTableStore.subscribe((paginationtemplatesTableStore) => {
-											allTemplates = [...paginationtemplatesTableStore];
-											paginationtemplatesTableStore.set(allTemplates);
-										});
-									}
+									allTemplates = [...response.data.templates];
 								})
 								.catch(function (error) {
 									error;
@@ -139,7 +137,9 @@
 	<!-- </div> -->
 	<div class="flex mt-4 ">
 		<!-- <div class="relative"> -->
-		<table class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-gray-100  ">
+		<table
+			class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-white text-black  "
+		>
 			<tr id="templatesTableRow" class="2xl:text-3xl">
 				<!-- <th class="bg-red-700"> -->
 				<!-- <label>
@@ -151,6 +151,7 @@
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Preview</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Tags</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Category</th>
+				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Created on</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Priority</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">isTrending</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
@@ -168,7 +169,8 @@
 					<td class=" px-8 py-2">{item.id}</td>
 					<td class=" px-8 py-2">{item.title}</td>
 					<!-- on click of image open image modal -->
-					<div class="flex my-4 justify-center    mr-5 ">
+					<div class="flex justify-center mt-2 items-center
+					">
 						<label for={item.id} class=" modal-button">
 							<img
 								class="w-4 h-auto flex justify-center items-center"
@@ -195,6 +197,7 @@
 
 					<td class=" px-8 py-2">{item.tags}</td>
 					<td class=" px-8 py-2">{item.categoryName}</td>
+					<td class=" px-8 py-2">{new Date(Number(item.timestamp)).toDateString()}</td>
 					<td class=" px-8 py-2">{item.priority}</td>
 					<td class=" px-8 py-2">{item.trending}</td>
 

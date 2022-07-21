@@ -24,7 +24,7 @@
 
 	export let categoryArr = [];
 	onMount(() => {
-		fetch(`${globalUrl}/category/show-all-category`).then((res) => {
+		fetch(`${globalUrl}category/show-all-category`).then((res) => {
 			res.json().then((data) => {
 				categoryArr = data?.categories ?? [];
 				paginationCategoryStore.set(categoryArr);
@@ -56,14 +56,14 @@
 {:else}
 	<div class="flex mt-4 ">
 		<table
-			class="shadow-lg text-sm w-full mx-5  items-center bg-white  dark:bg-gray-800 dark:text-gray-100  "
+			class="shadow-lg text-sm w-full mx-5  items-center bg-white  text-black dark:bg-gray-800 dark:text-white  "
 		>
 			<tr id="templatesTableRow" class="2xl:text-3xl">
 				<th class="bg-red-700 dark:bg-gray-800" />
 				<th class="bg-red-700  text-white  px-8 py-2 text-center dark:bg-gray-800 ">Id</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Category Name</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Priority</th>
-				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Added Date</th>
+				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">	</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Publish</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Mark as Trending</th>
 				<th class="bg-red-700  text-white px-8  dark:bg-gray-800 items-center">Preview</th>
@@ -78,7 +78,7 @@
 					<td class=" px-8 py-2">{item.name}</td>
 					<td class=" px-8 py-2">{item.priority}</td>
 					<td class=" px-8 py-2">
-						{new Date(Number(item.timestamp))}
+						{new Date(Number(item.timestamp)).toDateString()}
 					</td>
 					<td class=" px-8 py-2">{item.publish}</td>
 					<td class=" px-8 py-2">{item.trending}</td>
@@ -131,7 +131,7 @@
 											let newArr = [];
 											let newArrIndex = '';
 											axios
-												.delete(`${globalUrl}/category/delete/${deleteItemName}`, {})
+												.delete(`${globalUrl}category/delete/${deleteItemName}`, {})
 												.then(function (response) {
 													paginationCategoryStore.subscribe((paginationCategoryStore) => {
 														newArr = paginationCategoryStore;
@@ -163,7 +163,7 @@
 										async function setTrendingCategory() {
 											try {
 												const response = await axios.post(
-													`${globalUrl}/category/set-trending/${categoryName}/${isTrending}`,
+													`${globalUrl}category/set-trending/${categoryName}/${isTrending}`,
 
 													{}
 												);

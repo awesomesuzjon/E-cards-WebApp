@@ -29,7 +29,7 @@
 		</Stage>
 	</div>
 	<div>
-		<p class="text-sm my-2"><strong>Tip:</strong> Drag the Stickers from the sidebar.</p>
+		<p class="text-sm my-2 text-black dark:text-white"><strong>Tip:</strong> Drag the Stickers from the sidebar.</p>
 		<button class="btn" id="saveAsImg">Save as Img</button>
 
 		<SaveTemplate />

@@ -20,12 +20,12 @@
 <!-- <DarkBtn />
  -->
 <div
-	class="bg-red-700  dark:bg-customColorGray    text-white justify-between	 flex   h-16 2xl:h-32  items-center "
+	class="bg-white  dark:bg-customColorGray    text-black justify-between	 flex   h-16 2xl:h-32  items-center "
 >
-	<a href="/">
+	<a href="/dashboard">
 		<div class="flex flex-row   items-center text-lg font-bold text-bold">
 			<img src="logo.png" alt="HamroPatro Logo" class="w-12 2xl:w-20 mt-2 ml-6 " />
-			<h1 class="text-white text-lg ml-4 2xl:text-3xl ">Hamro E-cards</h1>
+			<h1 class="text-black text-lg ml-4 2xl:text-3xl dark:text-white">HAMRO E-CARDS</h1>
 		</div>
 	</a>
 

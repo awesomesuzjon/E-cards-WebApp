@@ -38,7 +38,7 @@
 		};
 		data;
 		let newArr = [];
-		axios.post(`${globalUrl}/category/save`, data).then(function (response) {
+		axios.post(`${globalUrl}category/save`, data).then(function (response) {
 			paginationCategoryStore.subscribe((paginationCategoryStore) => {
 				newArr = paginationCategoryStore;
 			});

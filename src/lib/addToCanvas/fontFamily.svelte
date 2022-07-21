@@ -26,7 +26,7 @@
 	name="selectFontFamily"
 	id="fontInput"
 	on:change={fontFamilyChangeFunc}
-	class="text-black w-24 h-8	 text-sm p-2"
+	class="text-black w-24 h-10 mx-2 rounded	 text-sm p-2"
 >
 	<option> Serif </option>
 	<option> Brush Script MT </option>

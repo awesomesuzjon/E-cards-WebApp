@@ -22,7 +22,7 @@
 		});
 	});
 	let catagoryArr = [];
-	let url = `${globalUrl}/category/show-name-list`;
+	let url = `${globalUrl}category/show-name-list`;
 	fetch(url).then((res) => {
 		res.json().then((data) => {
 			catagoryArr = data?.category_list ?? [];
@@ -38,7 +38,7 @@
 		stickerTabStore.subscribe((stickerTabStore) => {
 			stickerTab = stickerTabStore;
 		});
-		let stickerUrl = `${globalUrl}/sticker/show-all-stickers`;
+		let stickerUrl = `${globalUrl}sticker/show-all-stickers`;
 		fetch(stickerUrl).then((res) => {
 			res.json().then((data) => {
 				stickerArr = data?.sticker_urls ?? [];

@@ -26,7 +26,7 @@
 	</div>
 {:else}
 	<div
-		class="grid grid-cols-3 xl:gap-16  gap-2 grid-flow-grid  mx-8 2xl:gap-24 2xl:mt-12 mt-4 dark:bg-gray-700  "
+		class="grid grid-cols-3 xl:gap-8  gap-2 grid-flow-grid  mx-8 2xl:gap-24 2xl:mt-12 mt-2 dark:bg-gray-700  "
 	>
 		<DashboardTemplateElement />
 		<DashboardChartElement />

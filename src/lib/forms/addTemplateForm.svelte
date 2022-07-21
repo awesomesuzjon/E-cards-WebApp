@@ -26,7 +26,7 @@
 
 	//category dropdown
 	let categoryOptionArr = [];
-	let categoryOptions = `${globalUrl}/category/show-name-list`;
+	let categoryOptions = `${globalUrl}category/show-name-list`;
 	onMount(() => {
 		fetch(categoryOptions).then((res) => {
 			res.json().then((data) => {
@@ -51,11 +51,11 @@
 		};
 		data, 'it is';
 		let newArr = [];
-		axios.post(`${globalUrl}/template/save`, data).then(function (response) {
+		axios.post(`${globalUrl}template/save`, data).then(function (response) {
 			paginationtemplatesTableStore.subscribe((paginationtemplatesTableStore) => {
 				newArr = paginationtemplatesTableStore;
 			});
-			newArr.push(response.data);
+			newArr.push(response.data.savedTemplate);
 			response.data;
 			paginationtemplatesTableStore.set(newArr);
 		});

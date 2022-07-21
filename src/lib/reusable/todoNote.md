@@ -1,0 +1,4 @@
+- white nav
+- white sidebar
+- black gray text hover on red
+- 

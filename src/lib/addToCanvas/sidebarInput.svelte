@@ -15,7 +15,7 @@
 		  "
 		>
 			<!-- <label for="my-drawer" class="drawer-overlay" /> -->
-			<ul class=" divide-y-2 w-full h-screen  bg-red-300 dark:bg-gray-600 text-sm text-white 2xl:text-2xl" >
+			<ul class=" divide-y-2 w-full h-screen  bg-gray-300 dark:bg-gray-600 dark:text-white text-sm text-white 2xl:text-2xl" >
 				<li class="p-2 2xl:p-6 2xl:mt-4">
 					<ElementPushToCanvas />
 				</li>

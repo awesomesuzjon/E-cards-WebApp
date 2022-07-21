@@ -55,7 +55,7 @@
 
 	export let trendingTemplatesArr = [];
 	onMount(() => {
-		fetch(`${globalUrl}/template/show-trending-templates`).then((res) => {
+		fetch(`${globalUrl}template/show-trending-templates`).then((res) => {
 			res.json().then((data) => {
 				trendingTemplatesArr = data?.templates ?? [];
 				paginationtrendingTemplatesTableStore.set(trendingTemplatesArr);
@@ -80,7 +80,7 @@
 	<!-- </div> -->
 	<div class="flex mt-4 ">
 		<!-- <div class="relative"> -->
-		<table class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-gray-100  ">
+		<table class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-white text-black  ">
 			<tr id="templatesTableRow" class="">
 				<th class="bg-red-700">
 					<!-- <label>
@@ -111,7 +111,8 @@
 					<td class=" px-8 py-2">{item.priority}</td>
 					<td class=" px-8 py-2">
 						<!-- on click of image open image modal -->
-						<div class="flex justify-end  mt-4 mr-5">
+						<div class="flex justify-center items-center
+						">
 							<label for={i} class=" modal-button">
 								<img
 									class="w-4 h-auto flex justify-center items-center"
@@ -152,7 +153,7 @@
 											// post:"/set-trending/{name}/{prev_status}",
 
 											axios
-												.delete(`${globalUrl}/template/delete/${deleteItemId}`, {})
+												.delete(`${globalUrl}template/delete/${deleteItemId}`, {})
 												.then(function (response) {
 													paginationtrendingTemplatesTableStore.subscribe(
 														(paginationtrendingTemplatesTableStore) => {
@@ -176,35 +177,6 @@
 								>
 							</li>
 
-							<li class="  text-sm   w-4">
-								<!-- svelte-ignore a11y-missing-attribute -->
-								<a
-									title="Mark as Trending"
-									on:click={() => {
-										let templateId = item.id;
-										let id = item.id;
-										let isTrending = item.trending;
-										isTrending;
-										id;
-
-										async function setTrendingTemplate() {
-											// post:"/set-trending/{name}/{prev_status}",
-
-											axios
-												.post(`${globalUrl}/template/set-trending/${templateId}/${isTrending}`, {})
-												.then(function (response) {
-													response;
-												})
-												.catch(function (error) {
-													error;
-												});
-										}
-										setTrendingTemplate();
-									}}
-								>
-									<DiMarkdown />
-								</a>
-							</li>
 							<!-- </div> -->
 						</div>
 						<!-- </ul>

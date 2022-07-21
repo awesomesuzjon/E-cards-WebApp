@@ -8,7 +8,7 @@
 
 	let categoryOptionArr = [];
 	onMount(() => {
-		fetch(`${globalUrl}/category/show-name-list`).then((res) => {
+		fetch(`${globalUrl}category/show-name-list`).then((res) => {
 			res.json().then((data) => {
 				categoryOptionArr = data?.categoryList ?? [];
 				// categoryArr = data;
@@ -28,7 +28,7 @@
 		};
 
 		let newArr = [];
-		axios.post(`${globalUrl}/message/save`, data).then(function (response) {
+		axios.post(`${globalUrl}message/save`, data).then(function (response) {
 			paginationMessageStore.subscribe((paginationMessageStore) => {
 				newArr = paginationMessageStore;
 			});
@@ -74,12 +74,12 @@
 		<select
 			id="categoryMsg"
 			name="category"
-			class="text-gray-500 font-bold  mb-1 md:mb-0 ml-4 text-sm h-8 mx-2 2xl:h-10"
+			class="text-gray-500 font-bold  mb-1 md:mb-0 ml-2 text-sm h-10 mx-2 2xl:h-10"
 			required
 		>
 			<option value="">Select a category</option>
 			{#each categoryOptionArr as item}
-				<option value={item}>{item}</option>\
+				<option value={item}>{item}</option>
 			{/each}
 		</select>
 	</div>
@@ -88,7 +88,7 @@
 		<div class="md:w-3/3" />
 		<label class="md:w-2/3 block text-gray-500 font-bold">
 			<input
-				class="mr-4 leading-tight 2xl:h-6"
+				class="mr-2 leading-tight 2xl:h-6"
 				type="checkbox"
 				value=""
 				name="publishMsg"

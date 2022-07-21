@@ -11,7 +11,7 @@
 
 	let categoryOptionArr = [];
 	onMount(() => {
-		fetch(`${globalUrl}/category/show-name-list`).then((res) => {
+		fetch(`${globalUrl}category/show-name-list`).then((res) => {
 			res.json().then((data) => {
 				categoryOptionArr = data?.categoryList ?? [];
 				// categoryArr = data;
@@ -50,7 +50,7 @@
 		};
 
 		let stickerArr = [];
-		axios.post(`${globalUrl}/sticker/save`, data).then(function (response) {
+		axios.post(`${globalUrl}sticker/save`, data).then(function (response) {
 			paginationStickerStore.subscribe((paginationStickerStore) => {
 				stickerArr = paginationStickerStore;
 			});

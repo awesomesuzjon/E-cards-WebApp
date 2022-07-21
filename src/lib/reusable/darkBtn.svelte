@@ -26,7 +26,7 @@
 
 <style>
 	.power-switch {
-		--color-invert: #ffffff;
+		--color-invert: #ef0a0a;
 		--width: 55px;
 		--height: 55px;
 		position: relative;

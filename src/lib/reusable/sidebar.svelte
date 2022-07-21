@@ -18,18 +18,18 @@
 </script>
 
 <div
-	class="bg-red-700 text-white  flex  dark:bg-customColorGray  text-center relative h-screen 2xl:h-screen   sidebar"
+	class="bg-gray-50 text-black dark:text-white flex  dark:bg-customColorGray   text-center relative h-screen 2xl:h-screen    sidebar"
 >
 	<!-- toggle Sidebar code -->
 
-	<ul class="   w-full mt-4	 justify-center items-center">
+	<ul class="   w-full mt-4	 justify-start items-center">
 		<!-- //////////////////////////////////////////////////////// -->
 		<div id="sidebarToggleDiv">
-			<div class="flex flex-row   justify-around items-center  ml-4 " id="toggleDarkBtn">
+			<div class="flex flex-row   justify-start items-center  ml-4 " id="toggleDarkBtn">
 				<div class="form-control">
 					<!-- svelte-ignore a11y-label-has-associated-control -->
 					<label
-						class="label cursor-pointer w-8 2xl:w-16 2xl:mt-8 2xl:mb-4 focus:text-gray-200 active:text-gray-400"
+						class="label cursor-pointer w-6 2xl:w-16 2xl:mt-8 2xl:mb-4 focus:text-gray-200 active:text-gray-400"
 						id="toggleSidebarBtn"
 						on:click={toggleSidebarFunc}
 					>
@@ -37,58 +37,58 @@
 					</label>
 				</div>
 			</div>
-			<li class="w-full py-4  text-white  hover:bg-white hover:text-red-700    2xl:mb-4 ">
+			<li
+				class="w-full  py-3 dark:text-white text-black  hover:bg-red-700  hover:text-black dark:hover:bg-white dark:hover:text-black    2xl:mb-4 "
+			>
 				<a
 					href="/dashboard"
 					class="w-full   flex items-center  p-2 text-base font-normal	 rounded-lg  "
 				>
 					<div class="flex items-center align-middle ">
-						<span class="mt-3 ml-3 w-6 h-6 flex   2xl:w-14 2xl:h-12 "> <FaHome /></span>
-						<span class="whitespace-nowrap mt-3 ml-4 center flex  2xl:text-3xl "> Dashboard</span>
+						<span class=" ml-3 w-5 flex   2xl:w-14 2xl:h-12 ">
+							<img src="houseIcon.png" alt="" class="color-white" />
+						</span>
+						<span class="whitespace-nowrap ml-4 center flex  2xl:text-3xl "> Dashboard</span>
 					</div>
 				</a>
 			</li>
 
 			<!-- ///////////////////////////////////////////////////////////////////// -->
 			<td>
-				<div class="collapse  py-2 ">
+				<div class="collapse    ">
 					<input type="checkbox" class="peer" />
-					<li class="collapse-title truncate flex hover:bg-white hover:text-red-700     ">
-						<div class="flex items-center align-middle hover:bg-white hover:text-red-700">
-							<span
-								class="mt-3 ml-2 w-6 h-6 flex hover:bg-white hover:text-red-700  2xl:w-14 2xl:h-12 "
-							>
-								<FaImages /></span
-							>
-							<span
-								class="whitespace-nowrap mt-3 ml-4  center flex hover:bg-white hover:text-red-700 2xl:text-3xl"
-							>
+					<li class="collapse-title truncate flex hover:bg-red-700 hover:text-black  dark:hover:bg-white dark:hover:text-black     ">
+						<div class="flex items-center align-middle ">
+							<span class=" ml-1 w-5 h-5 flex  2xl:w-14 2xl:h-12 ">
+								<img src="imageIcon.png" alt="" />
+							</span>
+							<span class="whitespace-nowrap  ml-4 dark:text-white  center flex  2xl:text-3xl">
 								Templates</span
 							>
 						</div>
 					</li>
 					<div class="collapse-content  ">
 						<div class="  justify-center relative   " id="toggleContent">
-							<li class=" w-full py-4 text-white     ">
-								<ul id="dropdown-example" class=" py-2 space-y-2">
+							<li class=" w-full  text-black     ">
+								<ul id="dropdown-example" class="  space-y-2">
 									<li>
 										<a
 											href="/trendingTemplatesTableRoute"
-											class="2xl:text-3xl hover:bg-white 2xl:my-6 hover:text-red-700 truncate flex items-center w-full p-2 text-sm   transition duration-75 rounded-lg  "
+											class="2xl:text-3xl hover:text-black dark:text-white dark:hover:bg-white dark:hover:text-black   hover:bg-red-700 2xl:my-6 truncate flex items-center w-full p-2 text-sm   transition duration-75 rounded-lg  "
 											>Trending E-cards</a
 										>
 									</li>
 									<li>
 										<a
 											href="/downloadTemplatesTableRoute"
-											class="2xl:text-3xl truncate flex items-center text-sm hover:bg-white hover:text-red-700 w-full p-2 transition duration-75 rounded-lg group  "
+											class="2xl:text-3xl truncate flex dark:hover:bg-white dark:hover:text-black   dark:text-white items-center text-sm hover:text-black  hover:bg-red-700 w-full p-2 transition duration-75 rounded-lg group  "
 											>Most Downloaded
 										</a>
 									</li>
 									<li>
 										<a
 											href="/allTemplatesTableRoute"
-											class="2xl:text-3xl flex items-center 2xl:my-6 w-full hover:bg-white hover:text-red-700 p-2 text-sm transition duration-75 rounded-lg group  "
+											class="2xl:text-3xl flex items-center dark:hover:bg-white dark:hover:text-black   dark:text-white 2xl:my-6 w-full hover:text-black  hover:bg-red-700 p-2 text-sm transition duration-75 rounded-lg group  "
 											>All E-cards</a
 										>
 									</li>
@@ -101,44 +101,44 @@
 
 			<!-- ///////////////////////////////////////////////////////////////////// -->
 
-			<li class="w-full py-4   text-white hover:bg-white hover:text-red-700 2xl:my-4">
+			<li
+				class="w-full  py-3  dark:text-white text-black hover:bg-red-700 dark:hover:bg-white dark:hover:text-black   hover:text-black 2xl:my-4"
+			>
 				<a
 					href="/stickerTableRoute"
 					class=" flex items-center p-2 text-base font-normal  rounded-lg  "
 				>
-					<div class="flex items-center align-middle">
-						<span class="mt-3 ml-3 w-6 h-6 flex  2xl:w-14 2xl:h-12"> <FaSmileWink /></span><span
-							class=" whitespace-nowrap mt-3 ml-4 center flex  2xl:text-3xl"
-						>
-							Stickers</span
-						>
+					<div class="flex items-center">
+						<span class=" ml-3 w-5 h-5 flex  2xl:w-14 2xl:h-12">
+							<img src="stickerIcon.png" alt="" /></span
+						><span class=" whitespace-nowrap  ml-4 center flex  2xl:text-3xl"> Stickers</span>
 					</div>
 				</a>
 			</li>
-			<li class="w-full py-4   text-white hover:bg-white hover:text-red-700  2xl:mb-4">
+			<li
+				class="w-full  py-3 dark:text-white  items-center  text-black hover:bg-red-700 dark:hover:bg-white dark:hover:text-black   hover:text-black  2xl:mb-4"
+			>
 				<a
 					href="/messageTableRoute"
 					class=" flex items-center p-2 text-base font-normal  rounded-lg  "
 				>
-					<div class="flex items-center align-middle">
-						<span class="mt-3 ml-3 w-6 h-6 flex  2xl:w-14 2xl:h-12"> <IoMdText /></span><span
-							class="whitespace-nowrap mt-3 ml-4 center flex 2xl:text-3xl"
-						>
-							Messages</span
-						>
+					<div class="flex  items-center">
+						<span class=" ml-3 w-5 h-5 flex  2xl:w-14 2xl:h-12 mt-1">
+							<img src="messageIcon.png" alt="" /></span
+						><span class="whitespace-nowrap  ml-4 center flex 2xl:text-3xl dark:hover:bg-white dark:hover:text-black  "> Messages</span>
 					</div>
 				</a>
 			</li>
 
-			<li class="w-full py-4  text-white hover:bg-white hover:text-red-700 ">
+			<li class="w-full   py-3 dark:text-white text-black hover:bg-red-700 hover:text-black dark:hover:bg-white dark:hover:text-black  ">
 				<a
 					href="/categoryTableRoute"
 					class=" flex items-center p-2 text-base font-normal  rounded-lg  "
 				>
 					<div class="flex items-center align-middle">
-						<span class="mt-3 ml-3 w-6 h-6 flex 2xl:w-14 2xl:h-12 "> <FaSearch /></span><span
-							class=" whitespace-nowrap mt-3 ml-4 center flex 2xl:text-3xl">Categories</span
-						>
+						<span class=" ml-3 w-5 h-5 flex 2xl:w-14 2xl:h-12 mt-1">
+							<img src="searchIcon.png" alt="" /></span
+						><span class=" whitespace-nowrap  ml-4 center flex 2xl:text-3xl   ">Categories</span>
 					</div>
 				</a>
 			</li>
@@ -150,7 +150,7 @@
 			<!-- toggle Sidebar code -->
 			<div class="flex flex-col   justify-center items-center   " id="toggleDarkBtn">
 				<div>
-					<!-- <button class=" text-white dark:text-blue-200 w-8 h-16" on:click={toggle}> -->
+					<!-- <button class=" text-black dark:text-blue-200 w-8 h-16" on:click={toggle}> -->
 					<!-- <FaCloudMoon /> -->
 					<!-- </button> -->
 				</div>
@@ -158,7 +158,7 @@
 				<div class="form-control">
 					<!-- svelte-ignore a11y-label-has-associated-control -->
 					<label
-						class="label cursor-pointer w-8 2xl:w-14 focus:text-gray-200 active:text-gray-400"
+						class="label cursor-pointer w-5 2xl:w-14 focus:text-gray-200 active:text-gray-400"
 						id="toggleSidebarBtn"
 						on:click={toggleSidebarFunc}
 					>
@@ -167,47 +167,51 @@
 				</div>
 			</div>
 
-			<ul class="   justify-center items-center w-full mt-2 	flex flex-col ">
+			<ul class="   justify-center items-center w-full  	flex flex-col ">
 				<li
-					class="w-full py-4   text-white hover:bg-white hover:text-red-700 dark:hover:text-customColorGray  2xl:mt-4 "
+					class="w-full    text-black hover:bg-red-700 hover:text-white   dark:hover:bg-white dark:hover:text-black   2xl:mt-4 "
 				>
 					<a
 						href="/dashboard"
 						class="w-full   flex items-center justify-center  p-2 text-base font-normal rounded-lg  "
 					>
 						<div class="flex items-center align-middle ">
-							<span class="mt-3 w-6 h-6 flex 2xl:w-16 2xl:h-12 "> <FaHome /></span>
+							<span class=" w-5 h-5 flex 2xl:w-16 2xl:h-12">
+								<img src="houseIcon.png" alt="" /></span
+							>
 						</div>
 					</a>
 				</li>
 
-				<div class="collapse  py-2  ">
+				<div class="collapse">
 					<input type="checkbox" class="peer" />
-					<li class="collapse-title truncate  text-white  	    2xl:mt-4 ">
-						<span class="w-6 ml-1 flex  2xl:w-16 2xl:h-12 "> <FaImages /></span>
+					<li class="collapse-title truncate   text-black  hover:bg-red-700 	    2xl:mt-4 ">
+						<span class="w-5 ml-2 flex  2xl:w-16 2xl:h-12 ">
+							<img src="imageIcon.png" alt="" /></span
+						>
 					</li>
-					<div class="collapse-content ">
+					<div class="collapse-content p-0 m-0">
 						<div class="  justify-center relative   " id="toggleContent">
-							<li class=" w-full py-2  text-white    ">
-								<ul id="dropdown-example" class=" py-2 space-y-2">
+							<li class=" w-full   text-black    ">
+								<ul id="dropdown-example" class="  ">
 									<li>
 										<a
 											href="/allTemplatesTableRoute"
-											class=" flex items-center w-full justify-center dark:hover:text-customColorGray hover:bg-white hover:text-red-700 p-2 text-base font-normal  transition duration-75 rounded-lg group "
+											class=" flex items-center  justify-center dark:hover:bg-white dark:hover:text-black   hover:bg-red-700   hover:text-black p-2 text-base font-normal  transition duration-75 rounded-lg group "
 											>A</a
 										>
 									</li>
 									<li>
 										<a
 											href="/trendingTemplatesTableRoute"
-											class="hover:bg-white justify-center dark:hover:text-customColorGray hover:text-red-700 truncate flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group "
+											class="hover:bg-red-700 justify-center  dark:hover:bg-white dark:hover:text-black   hover:text-black truncate flex items-center w-full p-2 text-base font-normal  transition duration-75 rounded-lg group "
 											>T</a
 										>
 									</li>
 									<li>
 										<a
 											href="/downloadTemplatesTableRoute"
-											class=" truncate flex items-center justify-center dark:hover:text-customColorGray hover:bg-white hover:text-red-700 w-full p-2 text-base font-normal transition duration-75 rounded-lg group   "
+											class=" truncate flex items-center  justify-center dark:hover:bg-white dark:hover:text-black   hover:bg-red-700 hover:text-black w-full p-2 text-base font-normal transition duration-75 rounded-lg group   "
 											>M
 										</a>
 									</li>
@@ -218,41 +222,45 @@
 				</div>
 
 				<li
-					class="w-full py-4  text-white hover:text-red-700  hover:bg-white dark:hover:text-customColorGray 0 2xl:mt-4"
+					class="w-full py-2  mb-3 hover:bg-red-700   hover:text-black dark:hover:bg-white dark:hover:text-black   2xl:mt-4"
 				>
 					<a
 						href="/stickerTableRoute"
-						class=" flex items-center p-2 text-base font-normal justify-center  rounded-lg dark: "
+						class=" flex items-center  text-base font-normal justify-center  rounded-lg dark: "
 					>
 						<div class="flex items-center align-middle">
-							<span class="mt-3  w-6 h-6 flex 2xl:w-16 2xl:h-12">
-								<FaSmileWink />
+							<span class="  w-5 h-5 flex 2xl:w-16 2xl:h-12">
+								<img src="stickerIcon.png" alt="" />
 							</span>
 						</div>
 					</a>
 				</li>
 				<li
-					class="w-full py-4 hover:text-red-700  text-white hover:bg-white dark:hover:text-customColorGray    2xl:mt-4 "
+					class="w-full  hover:bg-red-700   hover:text-black mb-3  text-black  dark:hover:bg-white dark:hover:text-black    2xl:mt-4 "
 				>
 					<a
 						href="/messageTableRoute"
 						class=" flex items-center p-2 text-base font-normal justify-center  rounded-lg dark: "
 					>
 						<div class="flex items-center align-middle">
-							<span class="mt-3  w-6 h-6 flex  2xl:w-16 2xl:h-12"> <IoMdText /></span>
+							<span class="  w-5 h-5 flex  2xl:w-16 2xl:h-12">
+								<img src="messageIcon.png" alt="" /></span
+							>
 						</div>
 					</a>
 				</li>
 
 				<li
-					class="w-full py-4 hover:text-red-70 text-white hover:text-red-700 hover:bg-white dark:hover:text-customColorGray 2xl:mt-4 "
+					class="w-full   text-black  hover:bg-red-700   hover:text-black dark:hover:bg-white dark:hover:text-black   2xl:mt-4 "
 				>
 					<a
 						href="/categoryTableRoute"
 						class=" flex items-center p-2 text-base font-normal justify-center  rounded-lg dark: "
 					>
 						<div class="flex items-center align-middle">
-							<span class="mt-3  w-6 h-6 flex  2xl:w-16 2xl:h-12"> <FaSearch /></span>
+							<span class="  w-5 h-5 flex  2xl:w-16 2xl:h-12">
+								<img src="searchIcon.png" alt="" /></span
+							>
 						</div>
 					</a>
 				</li>

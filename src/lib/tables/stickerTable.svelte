@@ -22,7 +22,7 @@
 	export let stickerArr = [];
 	onMount(() => {
 		//grpc backend data
-		fetch(`${globalUrl}/sticker/show-all-stickers`).then((res) => {
+		fetch(`${globalUrl}sticker/show-all-stickers`).then((res) => {
 			res.json().then((data) => {
 				stickerArr = data?.allStickerList ?? [];
 				paginationStickerStore.set(stickerArr);
@@ -45,7 +45,7 @@
 	</div>
 {:else}
 	<div class="flex mt-4 ">
-		<table class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-gray-100  ">
+		<table class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-white text-black  ">
 			<tr id="templatesTableRow" class="2xl:text-4xl">
 				<th class="bg-red-700 dark:bg-gray-800 ">
 					<!-- <label>
@@ -58,6 +58,7 @@
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800">Sticker Name</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800">Priority</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800">Category</th>
+				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800">Created on</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800">Publish</th>
 				<th class="bg-red-700  text-white py-2 dark:bg-gray-800">Preview</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800">Action</th>
@@ -75,6 +76,7 @@
 
 					<td class=" px-8 py-2">{item.priority}</td>
 					<td class=" px-8 py-2">{item.category}</td>
+					<td class=" px-8 py-2">{new Date(Number(item.timestamp)).toDateString()}</td>
 
 					<td class=" px-8 py-2">{item.publish}</td>
 					<td class="justify-center flex ml-0 items-center py-2">
@@ -129,7 +131,7 @@
 											let newArrIndex = '';
 
 											axios
-												.delete(`${globalUrl}/sticker/delete/${stickerItemId}`, {})
+												.delete(`${globalUrl}sticker/delete/${stickerItemId}`, {})
 												.then(function (response) {
 													paginationStickerStore.subscribe((paginationStickerStore) => {
 														newArr = paginationStickerStore;
@@ -148,38 +150,6 @@
 							</li>
 							<!-- <div class="flex justify-around items-center"> -->
 
-							<li
-								class="  text-sm   w-4 2xl:w-10 hover:bg-blue-400 active:bg-blue-300 focus:bg-blue-600 "
-							>
-								<!-- svelte-ignore a11y-missing-attribute -->
-								<a
-									title="Mark as Trending"
-									on:click={() => {
-										let stickerItemId = item.id;
-										let id = item.id;
-										let isTrending = item.trending;
-										isTrending;
-										id;
-
-										async function setTrendingSticker() {
-											axios
-												.post(
-													`${globalUrl}/sticker/set-trending/${stickerItemId}/${isTrending}`,
-													{}
-												)
-												.then(function (response) {
-													console.log(response);
-												})
-												.catch(function (error) {
-													error;
-												});
-										}
-										setTrendingSticker();
-									}}
-								>
-									<DiMarkdown />
-								</a>
-							</li>
 							<!-- </div> -->
 						</div>
 						<!-- </ul>

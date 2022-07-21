@@ -14,7 +14,7 @@
 	<Sidebar />
 
 	<div
-		class="w-full  text-center text-bold text-sm dark:bg-gray-700 bg-gray-100"
+		class="w-full  text-center text-bold text-sm dark:bg-gray-700 bg-gray-100 overflow-y-hidden"
 		id="main-container"
 	>
 		<BreadCrumb />

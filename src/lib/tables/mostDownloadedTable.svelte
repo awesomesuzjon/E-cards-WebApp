@@ -46,7 +46,7 @@
 	// 	});
 	// });
 
-	let url = `${globalUrl}/template/show-most-downloaded-templates`;
+	let url = `${globalUrl}template/show-most-downloaded-templates`;
 	// let url = 'https://jsonplaceholder.typicode.com/todos/';
 	export let mostDownloadedTemplatesArr = [];
 	onMount(() => {
@@ -145,7 +145,7 @@
 										// post:"/set-trending/{name}/{prev_status}",
 
 										axios
-											.delete(`${globalUrl}/delete/catagory/${deleteItemId}`, {})
+											.delete(`${globalUrl}delete/catagory/${deleteItemId}`, {})
 											.then(function (response) {
 												response;
 											})
@@ -189,7 +189,7 @@
 										// post:"/set-trending/{name}/{prev_status}",
 
 										axios
-											.post(`${globalUrl}/set-trending-status/${categoryName}/${isTrending}`, {})
+											.post(`${globalUrl}set-trending-status/${categoryName}/${isTrending}`, {})
 											.then(function (response) {
 												response;
 											})

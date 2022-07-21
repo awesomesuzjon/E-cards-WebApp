@@ -10,7 +10,7 @@
 	onMount(() => {
 		async function getSticker() {
 			try {
-				const stickerUrl = `${globalUrl}/sticker/show-all-stickers`;
+				const stickerUrl = `${globalUrl}sticker/show-all-stickers`;
 				const data = await (await fetch(stickerUrl)).json();
 				stickerTabStore.set(data.allStickerList);
 			} catch (e) {
@@ -25,14 +25,15 @@
 	class="w-64
  flex  text-black"
 >
-	<Carousel particlesToShow={2} particlesToScroll={2} autoplay autoplayDuration={2000} dots={false}>
+	<Carousel particlesToShow={3} particlesToScroll={3} dots={false}>
+		<!-- <Carousel particlesToShow={2} particlesToScroll={2} autoplay autoplayDuration={8000} dots={false}> -->
 		<div id="drag-items" class="flex ">
 			{#each $stickerTabStore as item}
 				<div
 					class="duration-700 ease-in-out  inset-0 transition-all transform translate-x-0 flex  mx-4 "
 					data-carousel-item="active"
 				>
-					<img src={item.url} class="rounded-full w-12 block mx-2" alt="..." />
+					<img src={item.url} class="rounded w-16 block mx-2" alt="" />
 				</div>
 			{/each}
 		</div>
@@ -40,10 +41,10 @@
 </div>
 
 <!-- The button to open modal -->
-<div class="flex justify-end  mt-4 mr-5">
+<div class="flex justify-center  my-3 ">
 	<Button>
 		<label for="my-modal-sticker" class=" modal-button">
-			<span class="font-bold "> Show All..</span>
+			<span class="font-bold "> Show All Stickers</span>
 		</label>
 	</Button>
 </div>

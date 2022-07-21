@@ -5,20 +5,17 @@
 </script>
 
 <button
-	class="  dark:text-white text-sm bg-customHamroPatroColor dark:bg-gray-800 text-white 2xl:text-3xl"
+	class=" d-flex items-center justify-center font-bold rounded dark:text-white text-sm bg-customHamroPatroColor dark:bg-gray-800 text-white 2xl:text-3xl"
 >
 	<slot />
 </button>
 
 <style>
 	button {
-		border: 0;
 		cursor: pointer;
-		padding: 4px 10px;
+		padding: 0.5rem 0.5rem;
 		box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
-		font-weight: bold;
-		font-size: 12 !important;
-		border-radius: 6px;
+
 	}
 
 	button:active {

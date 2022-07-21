@@ -6,7 +6,7 @@
 
 	//category dropdown
 	let categoryOptionArr = [];
-	let categoryOptions = `${globalUrl}/category/show-name-list`;
+	let categoryOptions = `${globalUrl}category/show-name-list`;
 	onMount(() => {
 		fetch(categoryOptions).then((res) => {
 			res.json().then((data) => {

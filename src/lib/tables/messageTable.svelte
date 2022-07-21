@@ -22,7 +22,7 @@
 		}, 2000);
 	});
 	onMount(() => {
-		fetch(`${globalUrl}/message/show-all-message`).then((res) => {
+		fetch(`${globalUrl}message/show-all-message`).then((res) => {
 			// fetch('https://fakestoreapi.com/products').then((res) => {
 			res.json().then((data) => {
 				messageArr = data?.allMessageList ?? [];
@@ -65,7 +65,7 @@
 	</label>
 
 	<div class="flex mt-4 ">
-		<table class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-gray-100  ">
+		<table class="shadow-lg text-sm w-full mx-5   bg-white  dark:bg-gray-800 dark:text-white text-black  ">
 			<tr id="templatesTableRow" class="2xl:text-3xl">
 				<th class="bg-red-700 dark:bg-gray-800">
 					<!-- <label>
@@ -75,6 +75,7 @@
 				<th class="bg-red-700  text-white  px-8 py-2 text-center dark:bg-gray-800 ">Id</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Message</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Category</th>
+				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Created on</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Publish</th>
 
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Action</th>
@@ -91,6 +92,7 @@
 					<td class=" px-8 py-2 ">{item.id}</td>
 					<td class=" px-8 py-2">{item.message}</td>
 					<td class=" px-8 py-2">{item.category}</td>
+					<td class=" px-8 py-2">{new Date(Number(item.timestamp)).toDateString()}</td>
 
 					<td class=" px-8 py-2">{item.trending}</td>
 
@@ -110,7 +112,7 @@
 											let newArrIndex = '';
 
 											axios
-												.delete(`${globalUrl}/message/delete/${deleteItemId}`, {})
+												.delete(`${globalUrl}message/delete/${deleteItemId}`, {})
 												.then(function (response) {
 													paginationMessageStore.subscribe((paginationMessageStore) => {
 														newArr = paginationMessageStore;
