@@ -25,14 +25,25 @@
 
 <style>
 	@font-face {
-		font-family: 'gilroy';
-		font-style: normal bold extrabold light medium regular;
-		font-weight: 400;
-		src: local('gilroy-bold'), local('gilroy-extrabold'), local('gilroy-light'),
-			local('gilroy-medium'), local('gilroy-regular') url('static/fonts/gilroy') format('otf');
+		font-family: Gilroy;
+		src: url('$lib/fonts/gilroy-regular.otf') format('opentype');
 	}
-
+	@font-face {
+		font-family: 'Gilroy';
+		font-weight: bold;
+		src: url('$lib/fonts/gilroy-bold.otf') format('opentype');
+	}
+	@font-face {
+		font-family: 'Gilroy';
+		font-weight: lighter;
+		src: url('$lib/fonts/gilroy-light.otf') format('opentype');
+	}
+	@font-face {
+		font-family: 'Gilroy';
+		font-weight: normal;
+		src: url('$lib/fonts/gilroy-medium.otf') format('opentype');
+	}
 	* {
-		font-family: 'gilroy';
+		font-family: 'Gilroy', Fallback, 'Lucida Console', 'Courier New', monospace;
 	}
 </style>

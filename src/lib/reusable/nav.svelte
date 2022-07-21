@@ -25,7 +25,7 @@
 	<a href="/dashboard">
 		<div class="flex flex-row   items-center text-lg font-bold text-bold">
 			<img src="logo.png" alt="HamroPatro Logo" class="w-12 2xl:w-20 mt-2 ml-6 " />
-			<h1 class="text-black text-lg ml-4 2xl:text-3xl dark:text-white " id="logoHeading">
+			<h1 class="text-black text-xl ml-4 2xl:text-3xl dark:text-white " id="logoHeading">
 				HAMRO E-CARDS
 			</h1>
 		</div>
