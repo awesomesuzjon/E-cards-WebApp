@@ -54,7 +54,7 @@
 
 			<ul
 				tabindex="0"
-				class="dropdown-content mt-16 menu p-2 text-black shadow bg-base-100 rounded-box w-52 2xl:60 2xl:mt-20  2xl:h-48 dark:bg-gray-400 "
+				class="dropdown-content mt-16 menu p-2 text-white  shadow bg-gray-400 rounded-box w-52 2xl:60 2xl:mt-20  2xl:h-48 dark:bg-gray-400 "
 			>
 				<li
 					class="flex flex-row items-center  dark:hover:bg-gray-100 dark:hover:text-red-600 hover:bg-gray-600 hover:text-white"
