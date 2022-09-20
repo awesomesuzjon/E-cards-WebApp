@@ -36,6 +36,7 @@
 			publish: publishInput,
 			trending: TrendingInput
 		};
+		console.log(typeof url, 'is url');
 		data;
 		let newArr = [];
 		axios.post(`${globalUrl}category/save`, data).then(function (response) {

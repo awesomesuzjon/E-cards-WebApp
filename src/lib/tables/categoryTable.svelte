@@ -63,7 +63,7 @@
 				<th class="bg-red-700  text-white  px-8 py-2 text-center dark:bg-gray-800 ">Id</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800  ">Category Name</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Priority</th>
-				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">	</th>
+				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 "> Added on:</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Publish</th>
 				<th class="bg-red-700  text-white px-8 py-2 dark:bg-gray-800 ">Mark as Trending</th>
 				<th class="bg-red-700  text-white px-8  dark:bg-gray-800 items-center">Preview</th>
@@ -121,6 +121,7 @@
 								id="deleteBtn"
 							>
 								<!-- svelte-ignore a11y-missing-attribute -->
+
 								<a
 									title="Delete"
 									on:click={() => {
