@@ -1,6 +1,6 @@
 tag=latest
 prod_tag=1.0.0
-image=hamropatrorepo/ecards-frontend
+image=myrepo/ecards-frontend
 
 clean:
 	rm -rf build

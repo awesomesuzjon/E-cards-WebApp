@@ -12,7 +12,7 @@ module.exports = {
       colors:{
         'customColorPink' : '#F2E5E7',
         'customColorGray' : '#1F2937',
-        'customHamroPatroColor' : '#b71c1c',
+        'customColor' : '#b71c1c',
 
       },
        screens: {
